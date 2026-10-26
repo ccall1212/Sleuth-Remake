@@ -39,8 +39,8 @@ def test_validator_catches_broken_layouts():
     next(s for s in bad["screens"] if s["id"] == "library")["portals"][0]["target"] = "nowhere"
     assert lay.problems(bad)
     bad = copy.deepcopy(layout)
-    next(s for s in bad["screens"] if s["id"] == "hall_2")["portals"] = [
-        p for p in next(s for s in bad["screens"] if s["id"] == "hall_2")["portals"] if p["target"] != "study"]
+    next(s for s in bad["screens"] if s["id"] == "hall_1")["portals"] = [
+        p for p in next(s for s in bad["screens"] if s["id"] == "hall_1")["portals"] if p["target"] != "study"]
     assert any("no door back" in p or "unreachable" in p for p in lay.problems(bad))   # study's door has no partner
     bad = copy.deepcopy(layout)
     next(s for s in bad["screens"] if s["id"] == "kitchen")["spawn"] = [60, 170]       # inside the counter
@@ -57,3 +57,12 @@ def test_step_costs_are_symmetric_enough_and_grow_with_distance():
         assert abs(c - costs[(b, a)]) <= 2                       # door arrivals make it nearly symmetric
     slower = lay.step_costs(build(), px_per_step=12)
     assert all(slower[k] >= v for k, v in costs.items())
+
+
+def test_halls_are_large_corridors_with_four_to_six_room_doors():
+    layout = build()
+    halls = [s for s in layout["screens"] if s["role"] == "hall"]
+    assert len(halls) == 2
+    for hall in halls:
+        room_doors = [p for p in hall["portals"] if p["kind"] == "door" and p["target"].startswith(("hall_",)) is False]
+        assert 4 <= len(room_doors) <= 6

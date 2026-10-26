@@ -32,12 +32,14 @@ screen reachable from the start (the secret panel counts as an edge), room count
 
 ## House 01 (first blockout)
 
-One floor. Four hall screens west to east (the front door, locked, is at the west end), eight rooms hanging
-off the halls' north and south sides, a bathroom off the bedroom, and a secret passage entered from the
-library (panel on the north wall) with a one-way exit into the sewing room. 9 ordinary rooms + the secret
-passage = 10 rooms, the size a six-suspect case needs. Door-to-door steps between rooms: 11 for neighbours up
-to 88 for the far ends (median 49, at the assumed 24 px per step). All of this is placeholder to be tuned in
-the viewer; the original needed about 19 steps from one room to the next on a tour.
+One floor with two **large halls** (user, 2026-10-26: corridors with 4-6 doors, like the original's long
+corridors). The main hall has five room doors (library, study, ballroom to the north; kitchen, parlor to the
+south) and the locked front door at its west end. The east hall has four (bedroom, bathroom north; dining room,
+sewing room south). The halls join end to end. The secret passage is entered from a panel on the library's north
+wall and exits one-way into the sewing room. 9 ordinary rooms + the secret passage = 10 rooms, the size a
+six-suspect case needs. Step cost between rooms at the assumed 24 px per step: 11 for neighbours to 44 for the far
+ends (median 23); the original needed about 19 from one room to the next on a tour. Placeholder numbers, to be tuned
+in the viewer.
 
 ## What happens next
 
