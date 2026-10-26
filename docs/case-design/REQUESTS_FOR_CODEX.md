@@ -53,3 +53,8 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     `fixed-mansion.json`): draw walk regions, obstacles, doors, item slots and guest spots, let the player walk
     between screens, and show a step counter so hall length can be tuned. The Python side already validates the
     file and exports a review page. Say if the format needs changes for your loader.
+14. **Use `house-02` as the first real map.** `assets/maps/house-02.layout.json` is the user's own ten-room blockout (nine
+    rooms, one north-south hall with eight doors, the secret passage), validated by `layout.problems()`. Point the
+    blockout viewer (item 13) at it first; it also has `obstacle_kinds`, `guest_spot_kinds` and `guest_spot_facing`
+    (one side, several sides or "any"), documented in `docs/case-design/HOUSE_LAYOUT_FORMAT.md`. Spots describe places and
+    are separate from personalities.

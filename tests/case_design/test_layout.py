@@ -114,3 +114,26 @@ def test_guest_spot_facing_accepts_any_and_several_sides():
     assert lay.problems(layout) == []
     lib["guest_spot_facing"][1] = ["east", "north"]          # wrong order
     assert any("facing" in p for p in lay.problems(layout))
+
+
+HOUSE_02 = Path(__file__).resolve().parents[2] / "assets" / "maps" / "house-02.layout.json"
+
+
+def test_house_02_is_consistent_and_fits_six_suspects():
+    layout = lay.load(HOUSE_02)
+    assert lay.problems(layout) == []
+    counts = lay.rooms_summary(layout)
+    assert counts == {"ordinary": 9, "halls": 1, "secret": 1}
+    assert layout["supports_suspects"] == [6]
+    assert counts["ordinary"] + counts["secret"] == ROOM_COUNT[6]
+
+
+def test_house_02_labels_and_facings_are_complete_and_wall_aware():
+    layout = lay.load(HOUSE_02)
+    for s in layout["screens"]:
+        assert len(s["obstacle_kinds"]) == len(s["obstacles"])
+        assert len(s["guest_spot_kinds"]) == len(s["guest_spots"]) == len(s["guest_spot_facing"])
+        for kind, facing in zip(s["guest_spot_kinds"], s["guest_spot_facing"]):
+            if kind == "stand":
+                assert facing == "any"                      # plain standing places may face any way
+            assert lay.valid_facing(facing)

@@ -68,3 +68,13 @@ Hall screens carry `orientation` (`ew` or `ns`) so a viewer knows which way the 
    the step counter shown), so hall length can be felt before art.
 3. Export a clean layout guide image per screen from the viewer; background prompts use it as the reference.
 4. Other houses (smaller for 4-5 suspects, larger for 7-8) are new generator configs, not hand edits.
+
+## House 02 (the user's ten-room layout, 2026-10-26)
+
+`assets/maps/house-02.layout.json` (review page `docs/case-design/house-02-blockout/index.html`). Built by the user in the
+layout editor: one north-south hall with eight doors (west side: Living Room, Master Bedroom, Study; east side: Guest
+Bedroom, Kitchen, Dining Room; Library at the north end, Front Entry at the south end), plus the Basement off the Guest
+Bedroom and direct links Library to Living Room, Study to Master Bedroom and Kitchen to Dining Room. Nine rooms plus the
+secret passage = 10, a six-suspect house. Steps between rooms (24 px per step): 16 to 56, median 34. Room ids are still
+the editor's generic ones (`room`, `room_2`, ...; the Study has the id `kitchen`); names are authoritative.
+Furniture kinds and guest-spot kinds and facings were filled by `tools/case_design/auto_label.py`.
