@@ -19,6 +19,9 @@ except ImportError:  # run as a script: python tools/case_design/validate_dialog
     import dialogue as dlg
 
 MAX_LENGTH = 240
+MAX_EXPANDED = 270   # after slots are filled with worst-case values (names the player types, long rooms)
+SLOT_WIDTH = {"weapon": 24, "rank": 24, "moves": 5}
+DEFAULT_SLOT_WIDTH = 16
 MIN_VARIANTS = 6
 
 BANNED_PHRASES = (
@@ -51,6 +54,9 @@ def _check_text(where: str, text: str, allowed: tuple[str, ...], required: tuple
         errors.append(f"{where}: stray brace: {text!r}")
     if len(text) > MAX_LENGTH:
         errors.append(f"{where}: {len(text)} characters, max {MAX_LENGTH}: {text!r}")
+    expanded = dlg._SLOT.sub(lambda m: "x" * SLOT_WIDTH.get(m.group(1), DEFAULT_SLOT_WIDTH), text)
+    if len(expanded) > MAX_EXPANDED:
+        errors.append(f"{where}: {len(expanded)} characters with worst-case slots, max {MAX_EXPANDED}: {text!r}")
     lowered = text.lower()
     for phrase in BANNED_PHRASES:
         if phrase.lower() in lowered:

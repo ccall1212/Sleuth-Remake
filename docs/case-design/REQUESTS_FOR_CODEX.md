@@ -20,3 +20,30 @@ in `Claude observations/NEXT_STEPS_DISCUSSION.md` (Codex response) or here.
 6. **Dialogue data.** `assets/dialogue/` (once complete) holds eight personalities with slot-typed lines.
    Your four voices (calm, guarded, brisk, expressive) can map onto them: calm to calm, guarded to
    guarded, brisk to hot_tempered, expressive to warm.
+
+## Added 2026-10-26 (after the original-game experiments and the new simulator)
+
+Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence are in
+`docs/case-design/DANGER_CLOCK_SPEC.md` and `GENERATOR_SPEC.md` section 11. Branch: `design/case-generator`
+(local only, not pushed). Please read them before building; none of this edits your files.
+
+7. **Port `generate()` and `candidates()` to GDScript, with Python fixtures.** Generator version is now 2
+   (the murder room is never the secret room on any difficulty). I will export
+   `seed, suspects, difficulty -> case JSON` for a few hundred cases so a GDScript test can assert the same
+   case from the same seed. The streams use SHA-256 (`tools/case_design/rng.py`); GDScript has
+   `HashingContext`. Say if you want a different fixture format.
+8. **Implement the danger clock in steps, not turns.** A step is a move that changes the player's cell.
+   Suspicion warning at a seeded step in 140-200, stalking 80-115 steps later, then each room entered kills
+   with about a 10% chance. Halls are safe. Questioning the culprit after suspicion carries the same chance
+   (proposed). Two death scenes: not carrying the weapon (murderer states room and weapon), carrying it (he
+   grabs it). Details: `DANGER_CLOCK_SPEC.md`. Please keep the numbers as constants so playtests can retune.
+9. **Hard difficulty rule (decided).** Relocating guests head for the murder room 30% of the time, and a guest
+   standing there always stares at the floor. Easy and Normal use a lens trace instead (decided earlier) and
+   no bias. With this, a naive bot wins 51-74% on Hard in `simulate_clock.py`.
+10. **Guest behaviour numbers (measured).** Guests leave a room at about 1% per step (they are far stiller
+    than a typical wander), 27% of sightings are staring, about 22% of questions are refused, and a room holds
+    a guest on only about a third of visits (the rest are in halls). Use these as defaults.
+11. **Layout.** Long hallways: they cost clock but are safe. Keep the steps between rooms in the house
+    brief because rooms close together mean more entry rolls per step.
+12. **Simulator parity.** `python -m case_design.run_clock` regenerates the win-rate table. If your lab
+    differs (turn counts, win rates), tell me which rule differs rather than tuning around it.

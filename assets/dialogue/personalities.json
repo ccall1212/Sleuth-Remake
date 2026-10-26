@@ -140,7 +140,7 @@
       "{speaker} stands, looking stricken. \"Please don't blame them, they've done nothing. It was the {weapon} in the {room}, and {victim} died by my hand. It was me.\"",
       "{speaker} rises, trembling but clear. \"You've the right room but the wrong person, dear. I took the {weapon} to {victim} in the {room}. I'll not let anyone else carry it.\"",
       "{speaker} stands and speaks gently. \"Oh, stop, stop. It's the {room}, yes, but it wasn't them. I used the {weapon} on {victim}. I should have said so sooner.\"",
-      "{speaker} gets up and lays a hand on the accused's shoulder. \"No, dear, you've got the wrong one. {victim} died by the {weapon} in the {room}, and I'm the one who did it.\"",
+      "{speaker} gets up and steps between you and the person you named. \"No, dear, you've got the wrong one. {victim} died by the {weapon} in the {room}, and I'm the one who did it.\"",
       "{speaker} pushes back a chair and says warmly, \"That poor soul has had no part in this, you know. The {weapon}, the {room}, {victim}, all of it mine.\"",
       "{speaker} stands, eyes bright. \"I can't sit and watch the wrong person pay. It was my hand, the {weapon}, the {room}, and {victim} is dead because of me.\""
     ]
@@ -432,7 +432,7 @@
       "{speaker} stands. \"Enough. The room is right, but the person is a fool's choice. I used the {weapon} on {victim} in the {room}. I shall not let a lesser mind carry my credit.\"",
       "{speaker} rises with an air of weary superiority. \"You have blamed the wrong person. It was I who took the {weapon} to {victim} in the {room}. Do attend.\"",
       "{speaker} stands and raps the table. \"No. That person could not have managed it. The {weapon}, {victim}, the {room}: all mine.\"",
-      "{speaker} pushes back a chair, offended on another's behalf. \"Quite wrong, inspector. The {room} is correct, the culprit is not. I killed {victim} with the {weapon}.\"",
+      "{speaker} pushes back a chair, offended on another's behalf. \"Quite wrong, inspector. The {room} is correct, the name you gave is not. I killed {victim} with the {weapon}.\"",
       "{speaker} stands in a swirl of coat. \"It is simple courtesy to correct such blunders. {victim}, the {weapon}, the {room}. It was I, and nobody else.\"",
       "{speaker} rises, unhurried. \"A passable guess at the room, and a poor guess at the person. I took the {weapon} to {victim} in the {room}. Do sit down, everyone.\""
     ]

@@ -186,3 +186,12 @@ def test_bad_claim_kind_and_bad_pick_are_errors():
         _reply("warm", "duo", False, lambda n: 0)
     with pytest.raises(DialogueError):
         _reply("warm", "solo", False, lambda n: n)
+
+
+def test_validator_flags_lines_too_long_once_slots_are_filled():
+    # 230 raw characters pass the raw limit, but six slots at worst-case width push it past the expanded limit.
+    filler = "x" * 170
+    line = "{speaker} says: " + filler + " {victim} {room} {weapon} {speaker} {victim}."
+    assert len(line) <= validate_dialogue.MAX_LENGTH
+    errs = _bad(lambda d: d["personalities"]["warm"]["confession_defiant"].__setitem__(0, line))
+    assert any("worst-case slots" in e for e in errs)
