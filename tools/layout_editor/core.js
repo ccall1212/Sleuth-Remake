@@ -12,7 +12,14 @@ const ROOM_COUNT = { 4: 7, 5: 8, 6: 10, 7: 11, 8: 12 };
 const MIN_GUEST_SPOTS = 2;
 const ARRIVAL_OFFSET = 16;
 const PLAN_GAP = 40;
-const DEFAULT_PANEL_COLUMNS = [60, 110, 160, 210, 260, 310, 360];
+const OBSTACLE_KINDS = ['bookshelf', 'shelf', 'table', 'dining_table', 'coffee_table', 'console_table', 'desk', 'chair', 'armchair',
+  'sofa', 'stool', 'bench', 'bed', 'dresser', 'wardrobe', 'window', 'fireplace', 'counter', 'island', 'pantry', 'sideboard',
+  'plant', 'pillar', 'stairs', 'crate', 'rubble', 'other'];
+const SPOT_KINDS = ['stand', 'seat', 'table', 'browse', 'window', 'fireplace', 'stairs'];
+const DEFAULT_OBSTACLE_KIND = 'other';
+const DEFAULT_SPOT_KIND = 'stand';
+const DEFAULT_FACING = 'south';
+const DEFAULT_PANEL_COLUMNS =[60, 110, 160, 210, 260, 310, 360];
 
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const rnd = Math.round;
@@ -54,6 +61,95 @@ function rotateFacing(f, rot) {
     case 270: return [fy, 0 - fx];
     default: return [fx, fy];
   }
+}
+
+/* ---------- kind labels (parallel arrays) ---------- */
+
+/* Facing value: a side string, "any", or an array of 2-3 distinct sides in N,E,S,W order.
+   Returns the canonical form, or null when the value is invalid. */
+function canonFacing(v) {
+  if (v === 'any' || SIDES.includes(v)) return v;
+  if (!Array.isArray(v) || !v.length) return null;
+  if (!v.every((x) => SIDES.includes(x)) || new Set(v).size !== v.length) return null;
+  if (v.length === 4) return 'any';
+  const sorted = SIDES.filter((d) => v.includes(d));
+  return sorted.length === 1 ? sorted[0] : sorted;
+}
+function facingSides(v) {
+  const c = canonFacing(v);
+  return c === 'any' ? SIDES.slice() : Array.isArray(c) ? c : c ? [c] : [];
+}
+function rotateFacingValue(v, rot) {
+  const c = canonFacing(v);
+  if (c === null || c === 'any') return c === null ? v : c;
+  return canonFacing(facingSides(c).map((d) => rotateSide(d, rot)));
+}
+
+function isKindName(k) { return /^[a-z0-9_]+$/.test(String(k)); }
+
+/* Make obstacle_kinds / guest_spot_kinds the same length as their lists. Returns warning strings
+   for arrays that were too long (extra entries are dropped). Missing or short arrays are padded silently. */
+function normalizeScreenKinds(s) {
+  const warns = [];
+  for (const [list, kinds, def, label] of [['obstacles', 'obstacle_kinds', DEFAULT_OBSTACLE_KIND, 'obstacle'],
+    ['guest_spots', 'guest_spot_kinds', DEFAULT_SPOT_KIND, 'guest spot']]) {
+    if (!Array.isArray(s[list])) s[list] = [];
+    const n = s[list].length;
+    const had = Array.isArray(s[kinds]);
+    let k = had ? s[kinds].map((x) => (typeof x === 'string' && x ? x : def)) : [];
+    if (had && k.length > n) warns.push(`${s.id}: ${kinds} had ${k.length} entries for ${n} ${label}s; the extra entries were dropped`);
+    if (k.length > n) k = k.slice(0, n);
+    while (k.length < n) k.push(def);
+    s[kinds] = k;
+  }
+  // guest_spot_facing: parallel to guest_spots, each one of the four sides
+  const nSp = s.guest_spots.length;
+  const hadF = Array.isArray(s.guest_spot_facing);
+  let f = hadF ? s.guest_spot_facing.slice() : [];
+  if (hadF && f.length > nSp) warns.push(`${s.id}: guest_spot_facing had ${f.length} entries for ${nSp} guest spots; the extra entries were dropped`);
+  f = f.slice(0, nSp);
+  for (let i = 0; i < f.length; i++) {
+    const c = canonFacing(f[i]);
+    if (c === null) {
+      warns.push(`${s.id}: guest spot ${i + 1} had invalid facing ${JSON.stringify(f[i])}; set to ${DEFAULT_FACING}`);
+      f[i] = DEFAULT_FACING;
+    } else f[i] = c;
+  }
+  while (f.length < nSp) f.push(DEFAULT_FACING);
+  s.guest_spot_facing = f;
+  return warns;
+}
+
+function normalizeKinds(layout) {
+  const warns = [];
+  for (const s of layout.screens || []) warns.push(...normalizeScreenKinds(s));
+  return warns;
+}
+
+function addObstacle(s, rect, kind) {
+  normalizeScreenKinds(s);
+  s.obstacles.push(rect);
+  s.obstacle_kinds.push(kind || DEFAULT_OBSTACLE_KIND);
+  return s.obstacles.length - 1;
+}
+function removeObstacle(s, i) {
+  normalizeScreenKinds(s);
+  s.obstacles.splice(i, 1);
+  s.obstacle_kinds.splice(i, 1);
+}
+function addGuestSpot(s, pt, kind, facing) {
+  normalizeScreenKinds(s);
+  s.guest_spots.push(pt);
+  s.guest_spot_kinds.push(kind || DEFAULT_SPOT_KIND);
+  const cf = canonFacing(facing);
+  s.guest_spot_facing.push(cf === null ? DEFAULT_FACING : cf);
+  return s.guest_spots.length - 1;
+}
+function removeGuestSpot(s, i) {
+  normalizeScreenKinds(s);
+  s.guest_spots.splice(i, 1);
+  s.guest_spot_kinds.splice(i, 1);
+  s.guest_spot_facing.splice(i, 1);
 }
 
 /* ---------- lookups ---------- */
@@ -155,6 +251,7 @@ function recomputeArrivals(layout) {
 
 function bakeLayout(layout) {
   const out = clone(layout);
+  normalizeKinds(out); // per-item labels keep their order: rotation never reorders obstacles or guest spots
   const rots = {};
   out.screens.forEach((s) => { rots[s.id] = rotOf(s); });
   for (const s of out.screens) {
@@ -169,6 +266,7 @@ function bakeLayout(layout) {
     if (s.spawn) s.spawn = rotatePoint(s.spawn, rot);
     if (s.item_slot) s.item_slot = rotatePoint(s.item_slot, rot);
     if (s.guest_spots) s.guest_spots = s.guest_spots.map((g) => rotatePoint(g, rot));
+    if (s.guest_spot_facing) s.guest_spot_facing = s.guest_spot_facing.map((f) => rotateFacingValue(f, rot));
     for (const p of portalsOf(s)) {
       if (p.at) p.at = rotatePoint(p.at, rot);
       if (p.facing) p.facing = rotateFacing(p.facing, rot);
@@ -232,6 +330,19 @@ function problems(layout) {
     if (!(s.walk_regions || []).length) out.push(`${sid}: no walk regions`);
     for (const r of (s.walk_regions || []).concat(s.obstacles || [])) {
       if (!rectOk(r)) out.push(`${sid}: rectangle [${r.join(', ')}] outside the ${SCREEN_W}x${SCREEN_H} screen`);
+    }
+    for (const [list, kinds] of [['obstacles', 'obstacle_kinds'], ['guest_spots', 'guest_spot_kinds']]) {
+      if (Array.isArray(s[kinds]) && s[kinds].length !== (s[list] || []).length) {
+        out.push(`${sid}: ${kinds} has ${s[kinds].length} entries but ${list} has ${(s[list] || []).length}`);
+      }
+    }
+    if (Array.isArray(s.guest_spot_facing)) {
+      if (s.guest_spot_facing.length !== (s.guest_spots || []).length) {
+        out.push(`${sid}: guest_spot_facing has ${s.guest_spot_facing.length} entries but guest_spots has ${(s.guest_spots || []).length}`);
+      }
+      for (const f of s.guest_spot_facing) {
+        if (canonFacing(f) === null) out.push(`${sid}: guest spot facing ${JSON.stringify(f)} is not a side, "any" or a list of 2-3 distinct sides`);
+      }
     }
     if (!s.spawn || !openFloor(s, s.spawn[0], s.spawn[1])) out.push(`${sid}: spawn is not on open floor`);
     for (const p of portalsOf(s)) {
@@ -360,22 +471,23 @@ function uniquePortalId(layout, base) {
 }
 
 function newScreen(kind, id, name) {
-  const base = { id: id, name: name || id, floor: 0, obstacles: [], portals: [] };
+  const base = { id: id, name: name || id, floor: 0, obstacles: [], obstacle_kinds: [], portals: [] };
+  const stand3 = ['stand', 'stand', 'stand'];
   if (kind === 'room') {
     return Object.assign(base, { role: 'room', walk_regions: [[24, 150, 432, 172]], spawn: [240, 235],
-      item_slot: [380, 285], guest_spots: [[120, 235], [240, 290], [380, 200]] });
+      item_slot: [380, 285], guest_spots: [[120, 235], [240, 290], [380, 200]], guest_spot_kinds: stand3.slice(), guest_spot_facing: stand3.map(() => 'south') });
   }
   if (kind === 'hall_ew') {
     return Object.assign(base, { role: 'hall', orientation: 'ew', walk_regions: [[16, 170, 448, 50]], spawn: [240, 195],
-      guest_spots: [[90, 195], [240, 195], [390, 195]] });
+      guest_spots: [[90, 195], [240, 195], [390, 195]], guest_spot_kinds: stand3.slice(), guest_spot_facing: stand3.map(() => 'south') });
   }
   if (kind === 'hall_ns') {
     return Object.assign(base, { role: 'hall', orientation: 'ns', walk_regions: [[190, 24, 100, 312]], spawn: [240, 180],
-      guest_spots: [[240, 80], [240, 180], [240, 290]] });
+      guest_spots: [[240, 80], [240, 180], [240, 290]], guest_spot_kinds: stand3.slice(), guest_spot_facing: stand3.map(() => 'south') });
   }
   if (kind === 'secret') {
     return Object.assign(base, { role: 'secret', walk_regions: [[16, 150, 448, 60]], spawn: [40, 180],
-      item_slot: [420, 180], guest_spots: [[120, 180], [240, 180], [360, 180]] });
+      item_slot: [420, 180], guest_spots: [[120, 180], [240, 180], [360, 180]], guest_spot_kinds: stand3.slice(), guest_spot_facing: stand3.map(() => 'south') });
   }
   throw new Error('unknown screen kind ' + kind);
 }
@@ -614,6 +726,8 @@ function sampleLayout() {
 }
 
 const LayoutCore = {
+  OBSTACLE_KINDS, SPOT_KINDS, DEFAULT_OBSTACLE_KIND, DEFAULT_SPOT_KIND, DEFAULT_FACING, canonFacing, facingSides, rotateFacingValue,
+  isKindName, normalizeKinds, normalizeScreenKinds, addObstacle, removeObstacle, addGuestSpot, removeGuestSpot,
   SCREEN_W, SCREEN_H, ROLES, KINDS, SIDES, SIDE_VEC, ROOM_COUNT, PLAN_GAP,
   rotatePoint, rotateRect, rotateSide, oppositeSide, rotateFacing, normRot,
   bakeLayout, recomputeArrivals, refreshArrival, problems, stepCosts, summary, roomsSummary,

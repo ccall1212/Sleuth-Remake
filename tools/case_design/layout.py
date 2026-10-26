@@ -4,7 +4,9 @@ The layout is a graph of **screens** (rooms and hall segments), the same idea as
 `assets/mansion/fixed-mansion.json`: each screen is 480x360 logical pixels (the game doubles it to
 960x720), has walkable rectangles, obstacle rectangles and portals (doors). Field names follow that file
 (`walk_regions`, `obstacles`, `portals` with `at`/`target`/`arrival`/`facing`/`side`/`kind`, `spawn`) so one
-loader can read both. Extra blockout fields: `role`, `item_slot`, `guest_spots`, `secret`.
+loader can read both. Extra blockout fields: `role`, `item_slot`, `guest_spots`, `secret`, and optional parallel label lists
+`obstacle_kinds` / `guest_spot_kinds` (one string per obstacle / guest spot, e.g. "bookshelf", "seat") and `guest_spot_facing` (per guest spot: "north", "east",
+"south" or "west", "any", or a list of 2-3 sides such as ["north", "east"]: the way a guest standing there may face).
 
 Backgrounds are painted *afterwards* to match this layout, so doors never have to be moved to fit art.
 
@@ -25,8 +27,18 @@ from .model import ROOM_COUNT
 SCREEN_W, SCREEN_H = 480, 360
 ROLES = ("room", "hall", "secret")
 KINDS = ("door", "front_door", "secret_exit")
+SIDES = ("north", "east", "south", "west")
 DEFAULT_PX_PER_STEP = 24
 MIN_GUEST_SPOTS = 2
+
+
+def valid_facing(value) -> bool:
+    """A guest spot facing: one side, "any", or a list of 2-3 distinct sides in north/east/south/west order."""
+    if value == "any" or value in SIDES:
+        return True
+    if isinstance(value, list) and 2 <= len(value) <= 3 and len(set(value)) == len(value):
+        return all(v in SIDES for v in value) and value == sorted(value, key=SIDES.index)
+    return False
 
 
 def load(path: str | Path) -> dict:
@@ -73,6 +85,16 @@ def problems(layout: dict) -> list[str]:
         for r in s.get("walk_regions", []) + s.get("obstacles", []):
             if not _rect_ok(r):
                 out.append(f"{sid}: rectangle {r} outside the {SCREEN_W}x{SCREEN_H} screen")
+        if "guest_spot_facing" in s:
+            facing = s["guest_spot_facing"]
+            if len(facing) != len(s.get("guest_spots", [])):
+                out.append(f"{sid}: guest_spot_facing has {len(facing)} entries but guest_spots has {len(s.get('guest_spots', []))}")
+            for f in facing:
+                if not valid_facing(f):
+                    out.append(f"{sid}: guest spot facing {f!r} is not a side, 'any' or a list of 2-3 distinct sides")
+        for items, kinds in (("obstacles", "obstacle_kinds"), ("guest_spots", "guest_spot_kinds")):
+            if kinds in s and len(s[kinds]) != len(s.get(items, [])):
+                out.append(f"{sid}: {kinds} has {len(s[kinds])} entries but {items} has {len(s.get(items, []))}")
         spawn = s.get("spawn")
         if spawn is None or not _in_walk(s, *spawn) or _in_obstacle(s, *spawn):
             out.append(f"{sid}: spawn is not on open floor")

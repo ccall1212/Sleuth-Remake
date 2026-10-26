@@ -76,3 +76,41 @@ def test_there_is_a_north_south_hall_with_doors_on_both_side_walls():
     assert {"west", "east"} <= sides
     x, y, w, h = ns[0]["walk_regions"][0]
     assert h > w                                   # tall and narrow
+
+
+def test_kind_label_lists_must_match_their_items():
+    layout = build()
+    lib = next(s for s in layout["screens"] if s["id"] == "library")
+    lib["obstacle_kinds"] = ["bookshelf"] * len(lib["obstacles"])
+    lib["guest_spot_kinds"] = ["stand"] * len(lib["guest_spots"])
+    assert lay.problems(layout) == []
+    lib["obstacle_kinds"].pop()
+    assert any("obstacle_kinds" in p for p in lay.problems(layout))
+    lib["obstacle_kinds"].append("bookshelf")
+    lib["guest_spot_kinds"].append("seat")
+    assert any("guest_spot_kinds" in p for p in lay.problems(layout))
+
+
+def test_guest_spot_facing_must_be_a_compass_side_per_spot():
+    layout = build()
+    lib = next(s for s in layout["screens"] if s["id"] == "library")
+    lib["guest_spot_facing"] = ["south"] * len(lib["guest_spots"])
+    assert lay.problems(layout) == []
+    lib["guest_spot_facing"][0] = "up"
+    assert any("facing" in p for p in lay.problems(layout))
+    lib["guest_spot_facing"][0] = "north"
+    lib["guest_spot_facing"].pop()
+    assert any("guest_spot_facing has" in p for p in lay.problems(layout))
+
+
+def test_guest_spot_facing_accepts_any_and_several_sides():
+    assert all(lay.valid_facing(v) for v in ("north", "any", ["north", "east"], ["east", "south", "west"]))
+    assert not any(lay.valid_facing(v) for v in ("up", [], ["north"], ["east", "north"], ["north", "north"],
+                                                  ["north", "east", "south", "west"], ["north", "up"]))
+    layout = build()
+    lib = next(s for s in layout["screens"] if s["id"] == "library")
+    lib["guest_spot_facing"] = ["any"] * len(lib["guest_spots"])
+    lib["guest_spot_facing"][0] = ["north", "east"]
+    assert lay.problems(layout) == []
+    lib["guest_spot_facing"][1] = ["east", "north"]          # wrong order
+    assert any("facing" in p for p in lay.problems(layout))

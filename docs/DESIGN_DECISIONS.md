@@ -23,6 +23,7 @@ sample sizes are small (14 games).
 | Murder room | Never the secret room, on any difficulty (glass and weapon may still be there on Hard; guests can stand in it) | 10-26 |
 | Hard bias | On Hard, relocating guests head for the murder room 30% of the time and always stare there | 10-26 |
 | Layout and danger | Long hallways; about 10% death chance per room entered once stalking starts; halls are safe but spend clock | 10-26 |
+| Guest spots | Each spot carries a kind and a facing (one side, several, or any). This is separate from personalities; personalities later use the allowed directions when choosing a stance | 10-26 |
 | Poses | A new resigned shrug for reveals; rest and sleep poses; two body-language templates (women follow Char; men follow a male template made with Chris first); neutral male standing is hands in pockets | 10-25, 10-26 |
 
 ## Observed in the original (use as evidence, not as rules)

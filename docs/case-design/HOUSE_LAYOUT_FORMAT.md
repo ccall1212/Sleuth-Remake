@@ -30,6 +30,22 @@ seven `panel_columns`, as observed in the original).
 floor and not inside obstacles, arrivals on open floor of the target, every `door` has a door back, every
 screen reachable from the start (the secret panel counts as an edge), room counts match the generator.
 
+## Furniture kinds and guest spots (labels, 2026-10-26)
+
+Two optional label lists run in parallel with a screen's lists and must have the same length:
+
+- `obstacle_kinds`: one string per obstacle: `bookshelf`, `table`, `bed`, `window`, `sofa`, `crate`, and so on. Rough
+  on purpose; furniture ids and seat spots are added later.
+- `guest_spot_kinds`: one string per guest spot: `stand`, `seat`, `table`, `browse`, `window`, `fireplace`,
+  `stairs`. The `stand` kind is used when nothing is nearby.
+- `guest_spot_facing`: one value per guest spot: `"north"`, `"east"`, `"south"` or `"west"`, `"any"`, or a list
+  of 2-3 sides in north/east/south/west order such as `["north", "east"]`. It says which ways a guest may face
+  when standing there. Rotating a room rotates every side.
+
+**These fields describe the spot, not who stands on it** (user, 2026-10-26). They are completely separate from
+personalities. Personalities stay voice and mood only for the case data; later a personality will *use* a spot's
+allowed facings and kinds when it picks a stance or pose, but nothing about a personality is stored in the map.
+
 ## House 01 (first blockout)
 
 One floor with two **large halls** (user, 2026-10-26: corridors with 4-6 doors, like the original's long

@@ -38,6 +38,42 @@ recomputed along the rotated wall. With every rotation at 0 the exported geometr
 `plan.x`, `plan.y` are the top-left of the unrotated 480x360 tile in plan units (1 unit = 1 logical pixel);
 the tile turns around the centre of that rectangle. The plan draws tiles at 0.4 scale.
 
+## Kinds (obstacle and guest spot labels)
+
+Each screen can carry two parallel arrays next to the lists they describe:
+
+- `obstacle_kinds`: one string per entry of `obstacles`, same order and length.
+- `guest_spot_kinds`: one string per entry of `guest_spots`, same order and length.
+
+Obstacle vocabulary: bookshelf, shelf, table, dining_table, coffee_table, console_table, desk, chair, armchair,
+sofa, stool, bench, bed, dresser, wardrobe, window, fireplace, counter, island, pantry, sideboard, plant, pillar,
+stairs, crate, rubble, other. Guest spot vocabulary: stand, seat, table, browse, window, fireplace, stairs. Any
+other string in a file is kept as written, drawn grey and offered in the dropdowns.
+
+In the inside view obstacles are filled with their kind colour and labelled (the label is hidden when the box is
+too small); guest spots are coloured circles, labelled when selected. Select one to change its **Kind** in the
+side panel (one undo step); "other..." asks for a custom name (lower-case letters, digits, underscore). The
+toolbar's "New obstacle kind" and "New spot kind" pick the kind given to items you add (defaults `other` and
+`stand`). The **Kind legend** in the side panel is collapsible. Add, delete, undo, rotation and baking always
+keep the arrays in step. On load a missing array is created, a short one is padded with the defaults, and a
+too-long one is truncated with a warning in the problems panel. Save and Export baked both write the arrays.
+
+## Guest spot facing
+
+`guest_spot_facing` is a third parallel array, one entry per `guest_spots` entry: how a guest standing there
+may face. An entry is a side string (`"north"`, `"east"`, `"south"`, `"west"`), `"any"`, or an array of 2 or 3
+distinct sides in the order north, east, south, west (for example `["north","east"]`). Four sides become
+`"any"` and a one-side array becomes the plain string. It is kept in step with `guest_spots` by every add,
+delete and undo. On load a missing array is padded with `south`, a short one is padded, a too-long one is
+truncated, and an invalid entry (unknown string, empty array, duplicates) becomes `south`; truncation and
+invalid entries are reported in the problems panel. Baking rotates every side with the room (rotation 90:
+north to east to south to west; arrays are re-sorted; `"any"` stays). The inside view draws one arrow per
+facing direction (a circle with a cross for `"any"`; the rotated value in "Preview rotated"). With a guest
+spot selected, the **Facing** buttons N, E, S, W toggle directions independently and **Any** selects `"any"`
+(one undo step each). `Shift`+arrow sets exactly that direction; `Shift`+`Alt`+arrow toggles it in or out of
+the set. "New spot facing" in the toolbar uses the same buttons for spots you add. Save and Export baked write
+the array.
+
 ## Files
 
 - Project file: the normal layout format (see `docs/case-design/HOUSE_LAYOUT_FORMAT.md`) plus
