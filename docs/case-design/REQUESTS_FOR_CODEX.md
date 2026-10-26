@@ -47,3 +47,9 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     brief because rooms close together mean more entry rolls per step.
 12. **Simulator parity.** `python -m case_design.run_clock` regenerates the win-rate table. If your lab
     differs (turn counts, win rates), tell me which rule differs rather than tuning around it.
+13. **Blockout viewer.** Decision (user, 2026-10-26): maps are built as plain-rectangle blockouts first and
+    backgrounds are painted afterwards. Please write a loader and a Godot scene for
+    `assets/maps/house-01.layout.json` (format in `docs/case-design/HOUSE_LAYOUT_FORMAT.md`; same field names as
+    `fixed-mansion.json`): draw walk regions, obstacles, doors, item slots and guest spots, let the player walk
+    between screens, and show a step counter so hall length can be tuned. The Python side already validates the
+    file and exports a review page. Say if the format needs changes for your loader.
