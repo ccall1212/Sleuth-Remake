@@ -33,13 +33,17 @@ screen reachable from the start (the secret panel counts as an edge), room count
 ## House 01 (first blockout)
 
 One floor with two **large halls** (user, 2026-10-26: corridors with 4-6 doors, like the original's long
-corridors). The main hall has five room doors (library, study, ballroom to the north; kitchen, parlor to the
-south) and the locked front door at its west end. The east hall has four (bedroom, bathroom north; dining room,
-sewing room south). The halls join end to end. The secret passage is entered from a panel on the library's north
-wall and exits one-way into the sewing room. 9 ordinary rooms + the secret passage = 10 rooms, the size a
-six-suspect case needs. Step cost between rooms at the assumed 24 px per step: 11 for neighbours to 44 for the far
-ends (median 23); the original needed about 19 from one room to the next on a tour. Placeholder numbers, to be tuned
-in the viewer.
+corridors, and some north-south). The **main hall** runs east-west and has five room doors (library, study,
+ballroom to the north; kitchen, parlor to the south) and the locked front door at its west end. The **east hall**
+is a tall, narrow north-south corridor (`orientation: "ns"`) with four doors, two on each side wall: bedroom and
+dining room to the west, bathroom and sewing room to the east. Rooms off it open on their side walls instead of
+north or south. The main hall's east end meets the east hall's north end. The secret passage is entered from a
+panel on the library's north wall and exits one-way into the sewing room. 9 ordinary rooms + the secret
+passage = 10 rooms, the size a six-suspect case needs. Step cost between rooms at the assumed 24 px per step:
+13 for neighbours to 44 for the far ends (median 31); the original needed about 19 from one room to the next on a
+tour. Placeholder numbers, to be tuned in the viewer.
+
+Hall screens carry `orientation` (`ew` or `ns`) so a viewer knows which way the corridor runs.
 
 ## What happens next
 

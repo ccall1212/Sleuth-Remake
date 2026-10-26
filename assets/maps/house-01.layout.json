@@ -32,6 +32,7 @@
    "id": "hall_1",
    "name": "Main hall",
    "role": "hall",
+   "orientation": "ew",
    "floor": 0,
    "walk_regions": [
     [
@@ -141,8 +142,8 @@
      ],
      "target": "hall_2",
      "arrival": [
-      30,
-      195
+      240,
+      50
      ],
      "facing": [
       1,
@@ -191,15 +192,16 @@
   },
   {
    "id": "hall_2",
-   "name": "East hall",
+   "name": "East hall (north-south)",
    "role": "hall",
+   "orientation": "ns",
    "floor": 0,
    "walk_regions": [
     [
-     16,
-     170,
-     448,
-     50
+     190,
+     24,
+     100,
+     312
     ]
    ],
    "obstacles": [],
@@ -207,85 +209,13 @@
     {
      "id": "hall_2--bedroom",
      "at": [
-      110,
-      170
+      190,
+      110
      ],
      "target": "bedroom",
      "arrival": [
-      240,
-      300
-     ],
-     "facing": [
-      0,
-      -1
-     ],
-     "side": "north",
-     "kind": "door"
-    },
-    {
-     "id": "hall_2--bathroom",
-     "at": [
-      370,
-      170
-     ],
-     "target": "bathroom",
-     "arrival": [
-      240,
-      300
-     ],
-     "facing": [
-      0,
-      -1
-     ],
-     "side": "north",
-     "kind": "door"
-    },
-    {
-     "id": "hall_2--dining",
-     "at": [
-      110,
-      222
-     ],
-     "target": "dining",
-     "arrival": [
-      240,
-      190
-     ],
-     "facing": [
-      0,
-      1
-     ],
-     "side": "south",
-     "kind": "door"
-    },
-    {
-     "id": "hall_2--sewing",
-     "at": [
-      370,
-      222
-     ],
-     "target": "sewing",
-     "arrival": [
-      240,
-      190
-     ],
-     "facing": [
-      0,
-      1
-     ],
-     "side": "south",
-     "kind": "door"
-    },
-    {
-     "id": "hall_2--hall_1",
-     "at": [
-      18,
-      195
-     ],
-     "target": "hall_1",
-     "arrival": [
-      450,
-      195
+      440,
+      240
      ],
      "facing": [
       -1,
@@ -293,24 +223,96 @@
      ],
      "side": "west",
      "kind": "door"
+    },
+    {
+     "id": "hall_2--bathroom",
+     "at": [
+      290,
+      110
+     ],
+     "target": "bathroom",
+     "arrival": [
+      40,
+      240
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--dining",
+     "at": [
+      190,
+      250
+     ],
+     "target": "dining",
+     "arrival": [
+      440,
+      240
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--sewing",
+     "at": [
+      290,
+      250
+     ],
+     "target": "sewing",
+     "arrival": [
+      40,
+      240
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--hall_1",
+     "at": [
+      240,
+      26
+     ],
+     "target": "hall_1",
+     "arrival": [
+      450,
+      195
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
     }
    ],
    "spawn": [
     240,
-    195
+    180
    ],
    "guest_spots": [
     [
-     90,
-     195
+     240,
+     80
     ],
     [
      240,
-     195
+     180
     ],
     [
-     390,
-     195
+     240,
+     290
     ]
    ]
   },
@@ -719,25 +721,25 @@
     {
      "id": "bedroom--hall_2",
      "at": [
-      240,
-      326
+      462,
+      240
      ],
      "target": "hall_2",
      "arrival": [
-      110,
-      186
+      206,
+      110
      ],
      "facing": [
-      0,
-      1
+      1,
+      0
      ],
-     "side": "south",
+     "side": "east",
      "kind": "door"
     }
    ],
    "spawn": [
     240,
-    235
+    255
    ],
    "item_slot": [
     405,
@@ -789,25 +791,25 @@
     {
      "id": "bathroom--hall_2",
      "at": [
-      240,
-      326
+      18,
+      240
      ],
      "target": "hall_2",
      "arrival": [
-      370,
-      186
+      274,
+      110
      ],
      "facing": [
-      0,
-      1
+      -1,
+      0
      ],
-     "side": "south",
+     "side": "west",
      "kind": "door"
     }
    ],
    "spawn": [
     240,
-    235
+    255
    ],
    "item_slot": [
     415,
@@ -859,19 +861,19 @@
     {
      "id": "dining--hall_2",
      "at": [
-      240,
-      152
+      462,
+      240
      ],
      "target": "hall_2",
      "arrival": [
-      110,
-      208
+      206,
+      250
      ],
      "facing": [
-      0,
-      -1
+      1,
+      0
      ],
-     "side": "north",
+     "side": "east",
      "kind": "door"
     }
    ],
@@ -935,19 +937,19 @@
     {
      "id": "sewing--hall_2",
      "at": [
-      240,
-      152
+      18,
+      240
      ],
      "target": "hall_2",
      "arrival": [
-      370,
-      208
+      274,
+      250
      ],
      "facing": [
-      0,
-      -1
+      -1,
+      0
      ],
-     "side": "north",
+     "side": "west",
      "kind": "door"
     }
    ],

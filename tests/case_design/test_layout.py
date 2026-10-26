@@ -66,3 +66,13 @@ def test_halls_are_large_corridors_with_four_to_six_room_doors():
     for hall in halls:
         room_doors = [p for p in hall["portals"] if p["kind"] == "door" and p["target"].startswith(("hall_",)) is False]
         assert 4 <= len(room_doors) <= 6
+
+
+def test_there_is_a_north_south_hall_with_doors_on_both_side_walls():
+    layout = build()
+    ns = [s for s in layout["screens"] if s.get("orientation") == "ns"]
+    assert len(ns) == 1
+    sides = {p["side"] for p in ns[0]["portals"] if p["kind"] == "door"}
+    assert {"west", "east"} <= sides
+    x, y, w, h = ns[0]["walk_regions"][0]
+    assert h > w                                   # tall and narrow

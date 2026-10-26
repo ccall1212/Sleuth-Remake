@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sleuth Layout Editor</title>
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --bg: #14161b; --panel: #1c1f26; --panel2: #232731; --line: #343a47; --text: #e4e7ee; --dim: #9aa3b5;
+  --accent: #5b9bf0; --danger: #ef4444; --ok: #4ade80;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 13px/1.4 system-ui, Segoe UI, sans-serif; overflow-x: hidden; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+button, select, input { font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .4; cursor: default; }
+button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.danger:hover:not(:disabled) { border-color: var(--danger); }
+input[type=text], input[type=number], select { width: 100%; min-width: 0; }
+input[type=checkbox] { width: auto; }
+label { color: var(--dim); }
+#bar, #insideBar { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 6px 10px; background: var(--panel); border-bottom: 1px solid var(--line); align-items: center; }
+.grp { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.grp b { color: var(--dim); font-weight: 500; margin-right: 2px; }
+#bar h1 { font-size: 14px; margin: 0 8px 0 0; }
+#hint { padding: 4px 10px; background: var(--panel2); border-bottom: 1px solid var(--line); color: var(--dim); min-height: 26px; }
+#hint span { color: var(--ok); margin-left: 10px; }
+#main { flex: 1; display: flex; min-height: 0; }
+#stage { position: relative; flex: 1; min-width: 0; min-height: 420px; }
+#cv { position: absolute; left: 0; top: 0; width: 100%; height: 100%; touch-action: none; display: block; }
+#side { width: 330px; flex: none; overflow-y: auto; background: var(--panel); border-left: 1px solid var(--line); padding: 8px 10px; max-height: calc(100vh - 100px); }
+#side h3 { margin: 12px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+#side h3:first-child { margin-top: 0; }
+.row { display: grid; grid-template-columns: 92px 1fr; gap: 6px; align-items: center; margin: 4px 0; }
+.btns { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
+.doorlist { display: flex; flex-direction: column; gap: 2px; }
+.doorlist button { text-align: left; display: flex; gap: 6px; align-items: center; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+#probs { list-style: none; margin: 0; padding: 0; }
+#probs li { padding: 3px 6px; margin: 2px 0; border-left: 3px solid var(--danger); background: var(--panel2); cursor: pointer; word-break: break-word; }
+#probs li.ok { border-color: var(--ok); cursor: default; }
+#matrix { overflow-x: auto; max-width: 100%; }
+table { border-collapse: collapse; font-size: 11px; }
+td, th { border: 1px solid var(--line); padding: 2px 4px; text-align: right; }
+th { color: var(--dim); font-weight: 500; }
+.dim { color: var(--dim); }
+.hidden { display: none !important; }
+#help { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; z-index: 10; padding: 16px; }
+#help > div { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; max-width: 560px; max-height: 90vh; overflow: auto; }
+#help kbd { background: var(--panel2); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; }
+#help td { text-align: left; border: 0; padding: 2px 10px 2px 0; font-size: 13px; }
+@media (max-width: 900px) {
+  #main { flex-direction: column; }
+  #side { width: 100%; max-height: none; border-left: 0; border-top: 1px solid var(--line); }
+  #stage { min-height: 360px; flex: none; height: 55vh; }
+}
+</style>
+</head>
+<body>
+<div id="bar" role="toolbar" aria-label="Editor toolbar">
+  <h1>Layout Editor</h1>
+  <div class="grp"><b>Project</b>
+    <button id="bNew">New</button><button id="bOpen">Open</button><button id="bSample">Load sample</button>
+    <button id="bSave">Save</button><button id="bExport" title="Download the baked layout that the game and Python read">Export baked</button>
+  </div>
+  <div class="grp"><b>Edit</b><button id="bUndo" title="Ctrl+Z">Undo</button><button id="bRedo" title="Ctrl+Y">Redo</button></div>
+  <div class="grp"><b>Add screen</b>
+    <button id="aRoom">Room</button><button id="aHallEW">Hall (E-W)</button><button id="aHallNS">Hall (N-S)</button><button id="aSecret">Secret passage</button>
+  </div>
+  <div class="grp"><b>Tile</b>
+    <button id="bRotCW" title="R">Rotate 90&deg; cw</button><button id="bRotCCW" title="Shift+R">90&deg; ccw</button><button id="bRot180" title="T">180&deg;</button>
+    <button id="bInside" title="E or double-click">Edit inside</button>
+  </div>
+  <div class="grp"><b>Doors</b>
+    <button id="bAddDoor" title="D">Add door</button><button id="bLink" title="L">Link</button><button id="bUnlink">Unlink</button><button id="bDelDoor" class="danger" title="Delete">Delete door</button>
+  </div>
+  <div class="grp"><b>View</b>
+    <label><input type="checkbox" id="cSnap" checked> Snap grid</label>
+    <button id="bArrange">Auto arrange</button><button id="bFit">Fit</button><button id="bHelp" title="?">Help (?)</button>
+  </div>
+</div>
+<div id="insideBar" class="hidden" role="toolbar" aria-label="Inside view toolbar">
+  <div class="grp"><button id="iBack">&larr; Back to plan</button><strong id="iTitle"></strong></div>
+  <div class="grp"><label><input type="checkbox" id="cPreview"> Preview rotated (read-only)</label></div>
+  <div class="grp"><button id="iWalk">Add walk region</button><button id="iObs">Add obstacle</button><button id="iGuest">Add guest spot</button><button id="iDel" class="danger">Delete selected</button></div>
+  <div class="grp dim">Snap 4 px. Drag shapes, corner handles, points and doors (along their wall).</div>
+</div>
+<div id="hint"><span id="hintText"></span><span id="status"></span></div>
+<div id="main">
+  <div id="stage"><canvas id="cv" tabindex="0" aria-label="Layout canvas"></canvas></div>
+  <aside id="side">
+    <div id="props"></div>
+    <h3>Project</h3>
+    <div id="proj"></div>
+    <h3>Live checks</h3>
+    <div id="checks"></div>
+  </aside>
+</div>
+<div id="help" class="hidden" role="dialog" aria-label="Help">
+  <div>
+    <h3 style="margin-top:0">Keyboard shortcuts</h3>
+    <table>
+      <tr><td><kbd>R</kbd></td><td>Rotate selected tile 90&deg; clockwise</td></tr>
+      <tr><td><kbd>Shift</kbd>+<kbd>R</kbd></td><td>Rotate 90&deg; counter-clockwise</td></tr>
+      <tr><td><kbd>T</kbd></td><td>Rotate 180&deg;</td></tr>
+      <tr><td><kbd>D</kbd></td><td>Add door mode (click a tile edge)</td></tr>
+      <tr><td><kbd>L</kbd></td><td>Link mode (select a door, then click another room's door)</td></tr>
+      <tr><td><kbd>E</kbd> / double-click</td><td>Edit selected screen inside</td></tr>
+      <tr><td><kbd>Delete</kbd></td><td>Delete selected door (or selected shape inside)</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Cancel mode / deselect / back to plan</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Undo / redo (100 states)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Save project JSON</td></tr>
+      <tr><td><kbd>?</kbd></td><td>This help</td></tr>
+      <tr><td>Wheel</td><td>Zoom (plan and inside)</td></tr>
+      <tr><td>Drag empty space / middle mouse</td><td>Pan the plan</td></tr>
+    </table>
+    <p class="dim">Doors: green = linked, red = unlinked, gold = front door, purple = secret exit. Click a door, then another room's door to link them. Drag a door marker along its wall to move it.</p>
+    <p><button id="bHelpClose">Close</button></p>
+  </div>
+</div>
+<input type="file" id="fileIn" accept=".json,application/json" class="hidden">
+
+<script src="core.js"></script>
+<script>
+'use strict';
+const C = LayoutCore;
+const $ = (id) => document.getElementById(id);
+const KEY = 'sleuth.layoutEditor.v1';
+const ROLE_COL = { room: '#3d6a99', hall: '#8b7a3c', secret: '#7b4d92' };
+const KIND_COL = { door: '#4ade80', front_door: '#fbbf24', secret_exit: '#c084fc' };
+const PLAN_SCALE = 0.4;
+
+let layout = C.sampleLayout();
+let states = [], hi = -1;
+let sel = null;          // selected screen id
+let selDoor = null;      // selected portal id
+let mode = 'select';     // select | addDoor | link
+let view = 'plan';       // plan | inside
+let snapOn = true;
+let showMatrix = false;
+const pv = { ox: 40, oy: 40, zoom: 1 };
+const ins = { screen: null, sel: null, preview: false };
+let drag = null;
+let checkTimer = null;
+let lastChecks = null;
+let W = 800, H = 600, dpr = 1;
+
+const cv = $('cv');
+const ctx = cv.getContext('2d');
+
+/* ---------- helpers ---------- */
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
+const snap = (v, g) => Math.round(v / g) * g;
+const scr = (id) => C.screenById(layout, id);
+const portals = (s) => s.portals || [];
+function status(msg) { $('status').textContent = msg || ''; }
+function geoRot(dx, dy, rot) {
+  switch (C.normRot(rot)) { case 90: return [-dy, dx]; case 180: return [-dx, -dy]; case 270: return [dy, -dx]; default: return [dx, dy]; }
+}
+
+/* ---------- history / storage ---------- */
+function resetHistory() { states = [JSON.stringify(layout)]; hi = 0; save(states[0]); }
+function save(str) { try { localStorage.setItem(KEY, str); } catch (e) { /* storage unavailable */ } }
+function commit() {
+  const str = JSON.stringify(layout);
+  if (str !== states[hi]) {
+    states = states.slice(0, hi + 1);
+    states.push(str);
+    if (states.length > 100) states.shift();
+    hi = states.length - 1;
+    save(str);
+  }
+  refresh();
+}
+function restore(i) {
+  hi = i;
+  layout = JSON.parse(states[hi]);
+  save(states[hi]);
+  fixSelection();
+  refresh();
+}
+function undo() { if (hi > 0) restore(hi - 1); }
+function redo() { if (hi < states.length - 1) restore(hi + 1); }
+function fixSelection() {
+  if (sel && !scr(sel)) sel = null;
+  if (selDoor && !C.findPortal(layout, selDoor)) selDoor = null;
+  if (ins.screen && !scr(ins.screen)) { ins.screen = null; ins.sel = null; if (view === 'inside') setView('plan'); }
+}
+function act(fn) {
+  let r;
+  try { r = fn(); } catch (err) { console.error(err); status('Error: ' + err.message); return undefined; }
+  commit();
+  return r;
+}
+
+/* ---------- loading ---------- */
+function loadLayout(obj, name) {
+  if (!obj || !Array.isArray(obj.screens)) throw new Error('not a layout: missing screens[]');
+  layout = obj;
+  if (layout.screens.some((s) => !s.plan)) C.autoPlan(layout, false);
+  sel = null; selDoor = null; mode = 'select'; ins.screen = null; ins.sel = null;
+  setView('plan');
+  resetHistory();
+  fitView();
+  refresh();
+  status(name ? 'Loaded ' + name : 'Loaded');
+}
+
+/* ---------- plan geometry ---------- */
+const S = () => PLAN_SCALE * pv.zoom;
+const toScr = (x, y) => [pv.ox + x * S(), pv.oy + y * S()];
+const toPlan = (x, y) => [(x - pv.ox) / S(), (y - pv.oy) / S()];
+function localToPlan(s, lx, ly) {
+  const pl = s.plan || { x: 0, y: 0, rot: 0 };
+  const d = geoRot(lx - 240, ly - 180, pl.rot);
+  return [pl.x + 240 + d[0], pl.y + 180 + d[1]];
+}
+function planToLocal(s, px, py) {
+  const pl = s.plan || { x: 0, y: 0, rot: 0 };
+  const d = geoRot(px - pl.x - 240, py - pl.y - 180, 360 - C.normRot(pl.rot));
+  return [240 + d[0], 180 + d[1]];
+}
+function edgePoint(p) {
+  const at = p.at || [240, 180];
+  switch (p.side) {
+    case 'north': return [at[0], 0];
+    case 'south': return [at[0], 360];
+    case 'west': return [0, at[1]];
+    default: return [480, at[1]];
+  }
+}
+function doorMarkers() {
+  const out = [];
+  for (const s of layout.screens) {
+    for (const p of portals(s)) {
+      const pp = localToPlan(s, ...edgePoint(p));
+      const sp = toScr(pp[0], pp[1]);
+      out.push({ s, p, x: sp[0], y: sp[1] });
+    }
+  }
+  return out;
+}
+function hitDoor(mx, my) {
+  let best = null, bd = 10;
+  for (const m of doorMarkers()) {
+    const d = Math.hypot(m.x - mx, m.y - my);
+    if (d <= bd) { bd = d; best = m; }
+  }
+  return best;
+}
+function hitTile(mx, my) {
+  const pp = toPlan(mx, my);
+  const order = layout.screens.slice().reverse();
+  const cands = order.filter((s) => { const r = C.tileRect(s); return pp[0] >= r.x && pp[0] <= r.x + r.w && pp[1] >= r.y && pp[1] <= r.y + r.h; });
+  const selFirst = cands.find((s) => s.id === sel);
+  return selFirst || cands[0] || null;
+}
+function fitView() {
+  if (!layout.screens.length) { pv.ox = 40; pv.oy = 40; pv.zoom = 1; return; }
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const s of layout.screens) { const r = C.tileRect(s); x0 = Math.min(x0, r.x); y0 = Math.min(y0, r.y); x1 = Math.max(x1, r.x + r.w); y1 = Math.max(y1, r.y + r.h); }
+  const z = clamp(Math.min((W - 60) / ((x1 - x0) * PLAN_SCALE), (H - 60) / ((y1 - y0) * PLAN_SCALE)), 0.2, 2);
+  pv.zoom = z;
+  pv.ox = (W - (x1 - x0) * S()) / 2 - x0 * S();
+  pv.oy = (H - (y1 - y0) * S()) / 2 - y0 * S();
+}
+function centerOn(s) {
+  const r = C.tileRect(s);
+  pv.ox = W / 2 - (r.x + r.w / 2) * S();
+  pv.oy = H / 2 - (r.y + r.h / 2) * S();
+}
+
+/* ---------- view switching ---------- */
+function setView(v) {
+  view = v;
+  $('insideBar').classList.toggle('hidden', v !== 'inside');
+  $('bar').classList.toggle('hidden', v === 'inside');
+  if (v === 'inside') { const s = scr(ins.screen); $('iTitle').textContent = s ? s.name + ' (' + s.id + ')' : ''; }
+  mode = 'select';
+  refresh();
+  resizeCanvas();
+}
+function openInside(id) {
+  if (!scr(id)) return;
+  ins.screen = id; ins.sel = null; ins.preview = false; $('cPreview').checked = false;
+  sel = id;
+  setView('inside');
+}
+
+/* ---------- drawing: plan ---------- */
+function drawPlan() {
+  const s = S();
+  ctx.fillStyle = '#101216';
+  ctx.fillRect(0, 0, W, H);
+  // grid on 20-unit spacing
+  let step = 20;
+  while (step * s < 8) step *= 5;
+  const a = toPlan(0, 0), b = toPlan(W, H);
+  ctx.lineWidth = 1;
+  for (let gx = Math.floor(a[0] / step) * step; gx <= b[0]; gx += step) {
+    const x = Math.round(toScr(gx, 0)[0]) + 0.5;
+    ctx.strokeStyle = gx % (step * 5) === 0 ? '#262b35' : '#1b1f27';
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let gy = Math.floor(a[1] / step) * step; gy <= b[1]; gy += step) {
+    const y = Math.round(toScr(0, gy)[1]) + 0.5;
+    ctx.strokeStyle = gy % (step * 5) === 0 ? '#262b35' : '#1b1f27';
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+  // secret passage links (dashed)
+  const sec = layout.secret;
+  if (sec) {
+    const e = scr(sec.entrance_room), p = scr(sec.screen), x = scr(sec.exit_room);
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = '#c084fc'; ctx.lineWidth = 1.5;
+    const mid = (t) => { const r = C.tileRect(t); return toScr(r.x + r.w / 2, r.y + r.h / 2); };
+    if (e && p) { const m = mid(e), n = mid(p); ctx.beginPath(); ctx.moveTo(m[0], m[1]); ctx.lineTo(n[0], n[1]); ctx.stroke(); }
+    if (x && p) { const m = mid(x), n = mid(p); ctx.beginPath(); ctx.moveTo(m[0], m[1]); ctx.lineTo(n[0], n[1]); ctx.stroke(); }
+    ctx.setLineDash([]);
+  }
+  // tiles
+  for (const sc of layout.screens) {
+    const pl = sc.plan || { x: 0, y: 0, rot: 0 };
+    const r = C.tileRect(sc);
+    const tl = toScr(r.x, r.y);
+    const col = ROLE_COL[sc.role] || '#555';
+    ctx.save();
+    const c = toScr(r.x + r.w / 2, r.y + r.h / 2);
+    ctx.translate(c[0], c[1]); ctx.rotate(C.normRot(pl.rot) * Math.PI / 180); ctx.scale(s, s); ctx.translate(-240, -180);
+    ctx.fillStyle = col; ctx.globalAlpha = 0.45; ctx.fillRect(0, 0, 480, 360);
+    ctx.globalAlpha = 0.9; ctx.fillStyle = '#d7e8cf';
+    for (const w of sc.walk_regions || []) ctx.fillRect(w[0], w[1], w[2], w[3]);
+    ctx.globalAlpha = 1; ctx.fillStyle = '#7a5a36';
+    for (const o of sc.obstacles || []) ctx.fillRect(o[0], o[1], o[2], o[3]);
+    // north notch shows which edge is the unrotated top
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.moveTo(210, 0); ctx.lineTo(270, 0); ctx.lineTo(240, -34); ctx.closePath(); ctx.fill();
+    ctx.restore();
+    ctx.lineWidth = sc.id === sel ? 3 : 1.5;
+    ctx.strokeStyle = sc.id === sel ? '#fff' : '#0b0c0f';
+    ctx.strokeRect(tl[0], tl[1], r.w * s, r.h * s);
+    if (sc.id === sel) { ctx.strokeStyle = '#5b9bf0'; ctx.lineWidth = 2; ctx.strokeRect(tl[0] - 3, tl[1] - 3, r.w * s + 6, r.h * s + 6); }
+    // labels
+    ctx.save();
+    ctx.beginPath(); ctx.rect(tl[0], tl[1], r.w * s, r.h * s); ctx.clip();
+    ctx.font = '600 12px system-ui'; ctx.textBaseline = 'top';
+    const label = sc.name + (layout.start === sc.id ? '  (start)' : '');
+    const tw = ctx.measureText(label).width;
+    ctx.fillStyle = 'rgba(10,12,16,.75)'; ctx.fillRect(tl[0] + 3, tl[1] + 3, tw + 8, 18);
+    ctx.fillStyle = '#fff'; ctx.fillText(label, tl[0] + 7, tl[1] + 6);
+    if (C.normRot(pl.rot)) {
+      const t = '↻ ' + C.normRot(pl.rot) + '°';
+      const w2 = ctx.measureText(t).width;
+      ctx.fillStyle = 'rgba(10,12,16,.75)'; ctx.fillRect(tl[0] + 3, tl[1] + 23, w2 + 8, 18);
+      ctx.fillStyle = '#ffd36b'; ctx.fillText(t, tl[0] + 7, tl[1] + 26);
+    }
+    ctx.restore();
+  }
+  // door links and markers
+  const marks = doorMarkers();
+  const pos = {};
+  marks.forEach((m) => { pos[m.p.id] = m; });
+  ctx.lineWidth = 2; ctx.strokeStyle = '#cfd6e6';
+  for (const m of marks) {
+    const q = C.partnerOf(layout, m.s, m.p);
+    if (q && pos[q.id] && m.p.id < q.id) {
+      ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(pos[q.id].x, pos[q.id].y); ctx.stroke();
+    }
+  }
+  for (const m of marks) {
+    const kind = m.p.kind || 'door';
+    const linked = kind !== 'door' || !!C.partnerOf(layout, m.s, m.p);
+    ctx.beginPath(); ctx.arc(m.x, m.y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = linked ? KIND_COL[kind] || '#4ade80' : '#ef4444'; ctx.fill();
+    ctx.lineWidth = m.p.id === selDoor ? 3 : 1.5; ctx.strokeStyle = m.p.id === selDoor ? '#fff' : '#0b0c0f'; ctx.stroke();
+    if (m.p.id === selDoor) {
+      ctx.font = '11px system-ui'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'bottom';
+      ctx.fillText(m.p.id, m.x + 9, m.y - 4);
+    }
+  }
+}
+
+/* ---------- drawing: inside ---------- */
+function insMap() {
+  const sc = Math.min((W - 40) / 480, (H - 40) / 360);
+  return { sc, ox: (W - 480 * sc) / 2, oy: (H - 360 * sc) / 2 };
+}
+function insShown() {
+  const s = scr(ins.screen);
+  if (!s) return null;
+  if (ins.preview) {
+    const baked = C.bakeLayout(layout);
+    return C.screenById(baked, s.id);
+  }
+  return s;
+}
+function drawInside() {
+  ctx.fillStyle = '#101216'; ctx.fillRect(0, 0, W, H);
+  const s = insShown();
+  if (!s) return;
+  const m = insMap();
+  const X = (x) => m.ox + x * m.sc, Y = (y) => m.oy + y * m.sc;
+  ctx.fillStyle = '#1a1d24'; ctx.fillRect(X(0), Y(0), 480 * m.sc, 360 * m.sc);
+  ctx.lineWidth = 1;
+  for (let g = 0; g <= 480; g += 20) { ctx.strokeStyle = g % 100 === 0 ? '#2b303b' : '#21252e'; ctx.beginPath(); ctx.moveTo(X(g), Y(0)); ctx.lineTo(X(g), Y(360)); ctx.stroke(); }
+  for (let g = 0; g <= 360; g += 20) { ctx.strokeStyle = g % 100 === 0 ? '#2b303b' : '#21252e'; ctx.beginPath(); ctx.moveTo(X(0), Y(g)); ctx.lineTo(X(480), Y(g)); ctx.stroke(); }
+  ctx.strokeStyle = '#555c6b'; ctx.lineWidth = 2; ctx.strokeRect(X(0), Y(0), 480 * m.sc, 360 * m.sc);
+  const isSel = (t, i) => !ins.preview && ins.sel && ins.sel.type === t && ins.sel.idx === i;
+  (s.walk_regions || []).forEach((r, i) => {
+    ctx.fillStyle = 'rgba(74,190,110,.35)'; ctx.fillRect(X(r[0]), Y(r[1]), r[2] * m.sc, r[3] * m.sc);
+    ctx.strokeStyle = isSel('walk', i) ? '#fff' : '#4ade80'; ctx.lineWidth = isSel('walk', i) ? 2.5 : 1.5;
+    ctx.strokeRect(X(r[0]), Y(r[1]), r[2] * m.sc, r[3] * m.sc);
+  });
+  (s.obstacles || []).forEach((r, i) => {
+    ctx.fillStyle = 'rgba(160,105,50,.7)'; ctx.fillRect(X(r[0]), Y(r[1]), r[2] * m.sc, r[3] * m.sc);
+    ctx.strokeStyle = isSel('obs', i) ? '#fff' : '#c88a4a'; ctx.lineWidth = isSel('obs', i) ? 2.5 : 1.5;
+    ctx.strokeRect(X(r[0]), Y(r[1]), r[2] * m.sc, r[3] * m.sc);
+  });
+  if (!ins.preview && ins.sel && (ins.sel.type === 'walk' || ins.sel.type === 'obs')) {
+    const r = (ins.sel.type === 'walk' ? s.walk_regions : s.obstacles)[ins.sel.idx];
+    if (r) for (const c of rectCorners(r)) { ctx.fillStyle = '#fff'; ctx.fillRect(X(c[0]) - 4, Y(c[1]) - 4, 8, 8); }
+  }
+  (s.guest_spots || []).forEach((g, i) => {
+    ctx.beginPath(); ctx.arc(X(g[0]), Y(g[1]), 6, 0, Math.PI * 2); ctx.fillStyle = '#4a8cf0'; ctx.fill();
+    ctx.lineWidth = isSel('guest', i) ? 3 : 1; ctx.strokeStyle = isSel('guest', i) ? '#fff' : '#0b0c0f'; ctx.stroke();
+  });
+  if (s.item_slot) {
+    const x = X(s.item_slot[0]), y = Y(s.item_slot[1]);
+    ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(x + 8, y); ctx.lineTo(x, y + 8); ctx.lineTo(x - 8, y); ctx.closePath();
+    ctx.fillStyle = '#fbbf24'; ctx.fill(); ctx.lineWidth = isSel('item', 0) ? 3 : 1; ctx.strokeStyle = isSel('item', 0) ? '#fff' : '#0b0c0f'; ctx.stroke();
+  }
+  if (s.spawn) {
+    ctx.fillStyle = '#fff'; ctx.fillRect(X(s.spawn[0]) - 6, Y(s.spawn[1]) - 6, 12, 12);
+    ctx.lineWidth = isSel('spawn', 0) ? 3 : 1; ctx.strokeStyle = isSel('spawn', 0) ? '#5b9bf0' : '#0b0c0f'; ctx.strokeRect(X(s.spawn[0]) - 6, Y(s.spawn[1]) - 6, 12, 12);
+  }
+  ctx.font = '11px system-ui'; ctx.textBaseline = 'bottom';
+  for (const p of portals(s)) {
+    const kind = p.kind || 'door';
+    const linked = kind !== 'door' || !!C.partnerOf(layout, scr(ins.screen), p);
+    ctx.beginPath(); ctx.arc(X(p.at[0]), Y(p.at[1]), 7, 0, Math.PI * 2);
+    ctx.fillStyle = linked ? KIND_COL[kind] || '#4ade80' : '#ef4444'; ctx.fill();
+    const ds = !ins.preview && ins.sel && ins.sel.type === 'door' && ins.sel.id === p.id;
+    ctx.lineWidth = ds ? 3 : 1.5; ctx.strokeStyle = ds ? '#fff' : '#0b0c0f'; ctx.stroke();
+    ctx.fillStyle = '#cfd6e6'; ctx.fillText('→ ' + (p.target || '?'), X(p.at[0]) + 10, Y(p.at[1]) - 6);
+  }
+  if (ins.preview) {
+    ctx.fillStyle = '#ffd36b'; ctx.font = '12px system-ui'; ctx.textBaseline = 'top';
+    ctx.fillText('Baked ' + C.rotOf(scr(ins.screen)) + '° preview (read-only)', X(0) + 6, Y(0) + 6);
+  }
+}
+function rectCorners(r) { return [[r[0], r[1]], [r[0] + r[2], r[1]], [r[0] + r[2], r[1] + r[3]], [r[0], r[1] + r[3]]]; }
+
+function draw() { if (view === 'plan') drawPlan(); else drawInside(); }
+
+/* ---------- pointer: plan ---------- */
+function mousePos(e) { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+
+function addDoorAt(mx, my) {
+  const pp = toPlan(mx, my);
+  let best = null, bd = Infinity;
+  for (const s of layout.screens) {
+    const l = planToLocal(s, pp[0], pp[1]);
+    if (l[0] < -40 || l[0] > 520 || l[1] < -40 || l[1] > 400) continue;
+    for (const [side, d, along] of [['north', Math.abs(l[1]), l[0]], ['south', Math.abs(360 - l[1]), l[0]], ['west', Math.abs(l[0]), l[1]], ['east', Math.abs(480 - l[0]), l[1]]]) {
+      if (d < bd) { bd = d; best = { s, side, along }; }
+    }
+  }
+  if (!best || bd * S() > 16) { status('Click closer to a tile edge'); return; }
+  const p = act(() => C.addDoor(layout, best.s.id, best.side, snap(best.along, 4)));
+  if (p) { sel = best.s.id; selDoor = p.id; mode = 'select'; refresh(); status('Door added. Click another room\'s door to link it.'); }
+}
+
+function planDown(e, mx, my) {
+  if (e.button === 1) { drag = { type: 'pan', mx, my, ox: pv.ox, oy: pv.oy }; return; }
+  if (e.button !== 0) return;
+  if (mode === 'addDoor') { addDoorAt(mx, my); return; }
+  const d = hitDoor(mx, my);
+  if (d) {
+    const prev = selDoor && C.findPortal(layout, selDoor);
+    if (prev && prev.portal.id !== d.p.id && prev.screen.id !== d.s.id && (prev.portal.kind || 'door') !== 'front_door') {
+      const ok = act(() => C.linkDoors(layout, prev.portal.id, d.p.id));
+      mode = 'select';
+      sel = d.s.id; selDoor = d.p.id; refresh();
+      status(ok ? 'Linked ' + prev.screen.id + ' ↔ ' + d.s.id : 'Could not link');
+      return;
+    }
+    sel = d.s.id; selDoor = d.p.id; refresh();
+    drag = { type: 'door', id: d.p.id, sid: d.s.id, mx, my, moved: false };
+    return;
+  }
+  const t = hitTile(mx, my);
+  if (t) {
+    sel = t.id; selDoor = null;
+    const r = C.tileRect(t), pp = toPlan(mx, my);
+    drag = { type: 'tile', id: t.id, offx: pp[0] - r.x, offy: pp[1] - r.y, mx, my, moved: false };
+    refresh();
+    return;
+  }
+  sel = null; selDoor = null; mode = 'select';
+  drag = { type: 'pan', mx, my, ox: pv.ox, oy: pv.oy };
+  refresh();
+}
+
+function planMove(e, mx, my) {
+  if (!drag) return;
+  if (drag.type === 'pan') { pv.ox = drag.ox + mx - drag.mx; pv.oy = drag.oy + my - drag.my; draw(); return; }
+  if (!drag.moved && Math.hypot(mx - drag.mx, my - drag.my) < 4) return;
+  drag.moved = true;
+  const pp = toPlan(mx, my);
+  if (drag.type === 'tile') {
+    const s = scr(drag.id);
+    let x = pp[0] - drag.offx, y = pp[1] - drag.offy;
+    if (snapOn) { x = snap(x, 20); y = snap(y, 20); }
+    C.setTileTopLeft(s, x, y);
+    draw();
+  } else if (drag.type === 'door') {
+    const f = C.findPortal(layout, drag.id);
+    if (!f) return;
+    const l = planToLocal(f.screen, pp[0], pp[1]);
+    const along = (f.portal.side === 'north' || f.portal.side === 'south') ? l[0] : l[1];
+    C.moveDoor(layout, drag.id, f.portal.side, snapOn ? snap(along, 4) : along);
+    draw();
+  }
+}
+
+function pointerUp() {
+  const d = drag;
+  drag = null;
+  if (d && d.moved) commit();
+}
+
+/* ---------- pointer: inside ---------- */
+function insToLocal(mx, my) { const m = insMap(); return [(mx - m.ox) / m.sc, (my - m.oy) / m.sc]; }
+function insHitR() { return 9 / insMap().sc; }
+function getSelRect(s) {
+  if (!ins.sel) return null;
+  if (ins.sel.type === 'walk') return s.walk_regions[ins.sel.idx];
+  if (ins.sel.type === 'obs') return s.obstacles[ins.sel.idx];
+  return null;
+}
+function insDown(e, mx, my) {
+  if (e.button !== 0 || ins.preview) return;
+  const s = scr(ins.screen);
+  if (!s) return;
+  const [lx, ly] = insToLocal(mx, my);
+  const hr = insHitR();
+  const r0 = getSelRect(s);
+  if (r0) {
+    const cs = rectCorners(r0);
+    for (let i = 0; i < 4; i++) {
+      if (Math.hypot(cs[i][0] - lx, cs[i][1] - ly) <= hr) { drag = { type: 'resize', fixed: cs[(i + 2) % 4], moved: false, mx, my }; return; }
+    }
+  }
+  const pt = (type, idx, arr) => { ins.sel = { type, idx }; selDoor = null; drag = { type: 'point', arr, moved: false, mx, my }; refresh(); };
+  const g = (s.guest_spots || []).findIndex((q) => Math.hypot(q[0] - lx, q[1] - ly) <= hr);
+  if (g >= 0) return pt('guest', g, s.guest_spots[g]);
+  if (s.item_slot && Math.hypot(s.item_slot[0] - lx, s.item_slot[1] - ly) <= hr) return pt('item', 0, s.item_slot);
+  if (s.spawn && Math.hypot(s.spawn[0] - lx, s.spawn[1] - ly) <= hr) return pt('spawn', 0, s.spawn);
+  const door = portals(s).find((p) => Math.hypot(p.at[0] - lx, p.at[1] - ly) <= hr);
+  if (door) { ins.sel = { type: 'door', id: door.id }; selDoor = door.id; drag = { type: 'indoor', id: door.id, moved: false, mx, my }; refresh(); return; }
+  let best = null, ba = Infinity;
+  const test = (type, arr) => (arr || []).forEach((r, i) => {
+    if (lx >= r[0] && lx <= r[0] + r[2] && ly >= r[1] && ly <= r[1] + r[3] && r[2] * r[3] < ba) { ba = r[2] * r[3]; best = { type, idx: i, r }; }
+  });
+  test('walk', s.walk_regions); test('obs', s.obstacles);
+  // obstacles sit on top of walk regions: prefer them when both hit
+  const obsHit = (s.obstacles || []).findIndex((r) => lx >= r[0] && lx <= r[0] + r[2] && ly >= r[1] && ly <= r[1] + r[3]);
+  if (obsHit >= 0) best = { type: 'obs', idx: obsHit, r: s.obstacles[obsHit] };
+  if (best) { ins.sel = { type: best.type, idx: best.idx }; drag = { type: 'move', r: best.r, offx: lx - best.r[0], offy: ly - best.r[1], moved: false, mx, my }; refresh(); return; }
+  ins.sel = null; selDoor = null; refresh();
+}
+function insMove(e, mx, my) {
+  if (!drag) return;
+  if (!drag.moved && Math.hypot(mx - drag.mx, my - drag.my) < 3) return;
+  drag.moved = true;
+  const [lx, ly] = insToLocal(mx, my);
+  const g = (v) => snap(v, 4);
+  if (drag.type === 'move') {
+    const r = drag.r;
+    r[0] = clamp(g(lx - drag.offx), 0, 480 - r[2]);
+    r[1] = clamp(g(ly - drag.offy), 0, 360 - r[3]);
+  } else if (drag.type === 'resize') {
+    const f = drag.fixed;
+    const nx = clamp(g(lx), 0, 480), ny = clamp(g(ly), 0, 360);
+    const r = getSelRect(scr(ins.screen));
+    if (!r) return;
+    r[0] = Math.min(nx, f[0]); r[1] = Math.min(ny, f[1]);
+    r[2] = Math.max(4, Math.abs(nx - f[0])); r[3] = Math.max(4, Math.abs(ny - f[1]));
+    r[2] = Math.min(r[2], 480 - r[0]); r[3] = Math.min(r[3], 360 - r[1]);
+  } else if (drag.type === 'point') {
+    drag.arr[0] = clamp(g(lx), 0, 480); drag.arr[1] = clamp(g(ly), 0, 360);
+  } else if (drag.type === 'indoor') {
+    const f = C.findPortal(layout, drag.id);
+    if (!f) return;
+    const along = (f.portal.side === 'north' || f.portal.side === 'south') ? lx : ly;
+    C.moveDoor(layout, drag.id, f.portal.side, g(along));
+  }
+  draw();
+}
+
+cv.addEventListener('pointerdown', (e) => {
+  cv.focus();
+  try { cv.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+  const [mx, my] = mousePos(e);
+  if (e.button === 1) e.preventDefault();
+  if (view === 'plan') planDown(e, mx, my); else insDown(e, mx, my);
+});
+cv.addEventListener('pointermove', (e) => {
+  const [mx, my] = mousePos(e);
+  if (view === 'plan') planMove(e, mx, my); else insMove(e, mx, my);
+});
+cv.addEventListener('pointerup', pointerUp);
+cv.addEventListener('pointercancel', pointerUp);
+cv.addEventListener('dblclick', (e) => {
+  if (view !== 'plan') return;
+  const [mx, my] = mousePos(e);
+  if (hitDoor(mx, my)) return;
+  const t = hitTile(mx, my);
+  if (t) openInside(t.id);
+});
+cv.addEventListener('contextmenu', (e) => e.preventDefault());
+cv.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const [mx, my] = mousePos(e);
+  if (view === 'plan') {
+    const before = toPlan(mx, my);
+    pv.zoom = clamp(pv.zoom * (e.deltaY < 0 ? 1.1 : 1 / 1.1), 0.2, 5);
+    pv.ox = mx - before[0] * S(); pv.oy = my - before[1] * S();
+    draw();
+  }
+}, { passive: false });
+
+/* ---------- canvas size ---------- */
+function resizeCanvas() {
+  const r = $('stage').getBoundingClientRect();
+  W = Math.max(100, r.width); H = Math.max(100, r.height);
+  dpr = window.devicePixelRatio || 1;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw();
+}
+if (window.ResizeObserver) new ResizeObserver(resizeCanvas).observe($('stage'));
+window.addEventListener('resize', resizeCanvas);
+
+/* ---------- actions ---------- */
+function rotateSel(delta) {
+  const s = scr(sel);
+  if (!s) { status('Select a tile first'); return; }
+  act(() => { s.plan = s.plan || { x: 0, y: 0, rot: 0 }; s.plan.rot = C.normRot(s.plan.rot + delta); });
+}
+function addScreen(kind) {
+  act(() => {
+    const names = { room: 'Room', hall_ew: 'Hall', hall_ns: 'Hall', secret: 'Secret passage' };
+    const id = C.uniqueId(layout, kind === 'secret' ? 'secret_passage' : kind === 'room' ? 'room' : 'hall');
+    const nm = names[kind] + (id.match(/_(\d+)$/) ? ' ' + id.match(/_(\d+)$/)[1] : '');
+    const s = C.newScreen(kind, id, nm);
+    layout.screens.push(s);
+    const c = toPlan(W / 2, H / 2);
+    s.plan = { x: 0, y: 0, rot: 0 };
+    const d = C.tileDims(0);
+    let x = snap(c[0] - d[0] / 2, 20), y = snap(c[1] - d[1] / 2, 20);
+    // nudge off existing tiles
+    const hits = (px, py) => layout.screens.some((o) => { if (o === s) return false; const t = C.tileRect(o); return px < t.x + t.w + 20 && t.x < px + d[0] + 20 && py < t.y + t.h + 20 && t.y < py + d[1] + 20; });
+    if (hits(x, y)) {
+      // no room at the view centre: park the tile below everything else
+      let bottom = -Infinity, left = Infinity;
+      layout.screens.forEach((o) => { if (o !== s) { const t = C.tileRect(o); bottom = Math.max(bottom, t.y + t.h); left = Math.min(left, t.x); } });
+      x = snap(left, 20); y = snap(bottom + 40, 20);
+    }
+    C.setTileTopLeft(s, x, y);
+    if (!layout.start || !scr(layout.start)) layout.start = id;
+    if (kind === 'secret') C.ensureSecret(layout);
+    sel = id; selDoor = null;
+  });
+  const ns = scr(sel);
+  if (ns) { centerOn(ns); draw(); }
+}
+function deleteDoor() {
+  if (!selDoor) { status('Select a door first'); return; }
+  act(() => { C.removeDoor(layout, selDoor); selDoor = null; if (ins.sel && ins.sel.type === 'door') ins.sel = null; });
+}
+function unlinkSel() {
+  if (!selDoor) { status('Select a door first'); return; }
+  act(() => { C.unlinkDoor(layout, selDoor); });
+}
+function deleteScreen() {
+  const s = scr(sel);
+  if (!s) return;
+  if (!confirm('Delete "' + s.name + '" and the doors that lead to it?')) return;
+  act(() => { C.removeScreen(layout, s.id); sel = null; selDoor = null; });
+}
+function setMode(m) {
+  mode = mode === m ? 'select' : m;
+  if (mode === 'addDoor' && !sel) status('Click any tile edge to place a door');
+  refresh();
+}
+function download(name, obj) {
+  const blob = new Blob([JSON.stringify(obj, null, 1) + '\n'], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+function saveProject() { download((layout.id || 'layout') + '.editor.json', layout); status('Saved project JSON'); }
+function exportBaked() { download((layout.id || 'layout') + '.layout.json', C.bakeLayout(layout)); status('Exported baked layout'); }
+
+$('bNew').onclick = () => { if (confirm('Start a new empty layout? Unsaved work in the editor is lost (undo history is cleared).')) { layout = C.emptyLayout(); sel = null; selDoor = null; resetHistory(); fitView(); refresh(); } };
+$('bOpen').onclick = () => $('fileIn').click();
+$('fileIn').onchange = async (e) => {
+  const f = e.target.files[0];
+  e.target.value = '';
+  if (!f) return;
+  try { loadLayout(JSON.parse(await f.text()), f.name); } catch (err) { status('Open failed: ' + err.message); }
+};
+$('bSample').onclick = () => { if (!layout.screens.length || confirm('Replace the current layout with the sample?')) loadLayout(C.sampleLayout(), 'sample'); };
+$('bSave').onclick = saveProject;
+$('bExport').onclick = exportBaked;
+$('bUndo').onclick = undo;
+$('bRedo').onclick = redo;
+$('aRoom').onclick = () => addScreen('room');
+$('aHallEW').onclick = () => addScreen('hall_ew');
+$('aHallNS').onclick = () => addScreen('hall_ns');
+$('aSecret').onclick = () => addScreen('secret');
+$('bRotCW').onclick = () => rotateSel(90);
+$('bRotCCW').onclick = () => rotateSel(270);
+$('bRot180').onclick = () => rotateSel(180);
+$('bInside').onclick = () => { if (sel) openInside(sel); else status('Select a tile first'); };
+$('bAddDoor').onclick = () => setMode('addDoor');
+$('bLink').onclick = () => setMode('link');
+$('bUnlink').onclick = unlinkSel;
+$('bDelDoor').onclick = deleteDoor;
+$('cSnap').onchange = (e) => { snapOn = e.target.checked; };
+$('bArrange').onclick = () => {
+  const missing = layout.screens.filter((s) => !s.plan).length;
+  if (missing) act(() => C.autoPlan(layout, false));
+  else if (confirm('Every screen already has a plan position. Re-arrange ALL screens (resets rotations)?')) act(() => C.autoPlan(layout, true));
+  fitView(); draw();
+};
+$('bFit').onclick = () => { fitView(); draw(); };
+$('bHelp').onclick = () => $('help').classList.remove('hidden');
+$('bHelpClose').onclick = () => $('help').classList.add('hidden');
+$('iBack').onclick = () => setView('plan');
+$('cPreview').onchange = (e) => { ins.preview = e.target.checked; ins.sel = null; draw(); };
+$('iWalk').onclick = () => insAdd('walk');
+$('iObs').onclick = () => insAdd('obs');
+$('iGuest').onclick = () => insAdd('guest');
+$('iDel').onclick = () => insDelete();
+
+function insAdd(kind) {
+  const s = scr(ins.screen);
+  if (!s || ins.preview) return;
+  act(() => {
+    if (kind === 'walk') { s.walk_regions.push([200, 140, 80, 80]); ins.sel = { type: 'walk', idx: s.walk_regions.length - 1 }; }
+    else if (kind === 'obs') { s.obstacles = s.obstacles || []; s.obstacles.push([200, 200, 60, 40]); ins.sel = { type: 'obs', idx: s.obstacles.length - 1 }; }
+    else { s.guest_spots = s.guest_spots || []; s.guest_spots.push([240, 230]); ins.sel = { type: 'guest', idx: s.guest_spots.length - 1 }; }
+  });
+}
+function insDelete() {
+  const s = scr(ins.screen);
+  if (!s || !ins.sel || ins.preview) return;
+  const t = ins.sel.type;
+  act(() => {
+    if (t === 'obs') s.obstacles.splice(ins.sel.idx, 1);
+    else if (t === 'walk') { if (s.walk_regions.length > 1) s.walk_regions.splice(ins.sel.idx, 1); else { status('A screen needs at least one walk region'); return; } }
+    else if (t === 'guest') s.guest_spots.splice(ins.sel.idx, 1);
+    else if (t === 'door') { C.removeDoor(layout, ins.sel.id); selDoor = null; }
+    else { status('Spawn and item slot cannot be deleted'); return; }
+    ins.sel = null;
+  });
+}
+
+/* ---------- keyboard ---------- */
+document.addEventListener('keydown', (e) => {
+  const tag = (e.target.tagName || '').toLowerCase();
+  const typing = tag === 'input' || tag === 'textarea' || tag === 'select';
+  const k = e.key;
+  if (k === 'Escape') {
+    if (!$('help').classList.contains('hidden')) { $('help').classList.add('hidden'); return; }
+    if (mode !== 'select') { mode = 'select'; refresh(); return; }
+    if (view === 'inside') { if (ins.sel) { ins.sel = null; draw(); } else setView('plan'); return; }
+    sel = null; selDoor = null; refresh(); return;
+  }
+  if ((e.ctrlKey || e.metaKey) && !typing) {
+    const lk = k.toLowerCase();
+    if (lk === 'z' && !e.shiftKey) { e.preventDefault(); undo(); return; }
+    if (lk === 'y' || (lk === 'z' && e.shiftKey)) { e.preventDefault(); redo(); return; }
+    if (lk === 's') { e.preventDefault(); saveProject(); return; }
+  }
+  if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (k === '?') { $('help').classList.toggle('hidden'); return; }
+  if (k === 'Delete' || k === 'Backspace') {
+    e.preventDefault();
+    if (view === 'inside') insDelete(); else if (selDoor) deleteDoor();
+    return;
+  }
+  const lk = k.toLowerCase();
+  if (lk === 'r') { e.preventDefault(); rotateSel(e.shiftKey ? 270 : 90); }
+  else if (lk === 't') rotateSel(180);
+  else if (lk === 'l' && view === 'plan') setMode('link');
+  else if (lk === 'd' && view === 'plan') setMode('addDoor');
+  else if (lk === 'e' && view === 'plan' && sel) openInside(sel);
+});
+
+/* ---------- side panel ---------- */
+function partnerLabel(s, p) {
+  const q = C.partnerOf(layout, s, p);
+  return q ? p.target + ' (' + q.id + ')' : (p.target ? p.target : 'unlinked');
+}
+function renderProps() {
+  const el = $('props');
+  const s = scr(sel);
+  if (!s) { el.innerHTML = '<h3>Screen</h3><p class="dim">Select a tile to edit it. Add screens with the Add screen buttons.</p>'; return; }
+  const rot = C.rotOf(s);
+  const doors = portals(s).map((p) => {
+    const kind = p.kind || 'door';
+    const linked = kind !== 'door' || !!C.partnerOf(layout, s, p);
+    const col = linked ? KIND_COL[kind] || '#4ade80' : '#ef4444';
+    return `<button data-act="selDoor" data-id="${esc(p.id)}" class="${p.id === selDoor ? 'on' : ''}"><span class="dot" style="background:${col}"></span>${esc(p.side || '?')}: ${esc(p.id)} &rarr; ${esc(partnerLabel(s, p))}</button>`;
+  }).join('') || '<span class="dim">No doors yet.</span>';
+  let doorBox = '';
+  const f = selDoor && C.findPortal(layout, selDoor);
+  if (f && f.screen === s) {
+    const p = f.portal;
+    const kind = p.kind || 'door';
+    const tOpts = ['<option value="">(none)</option>'].concat(layout.screens.map((t) => `<option value="${esc(t.id)}" ${t.id === p.target ? 'selected' : ''}>${esc(t.name)}</option>`)).join('');
+    doorBox = `<h3>Door ${esc(p.id)}</h3>
+      <div class="row"><label>Kind</label><select data-field="doorKind">${C.KINDS.map((k) => `<option ${k === kind ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
+      ${kind === 'door' ? `<div class="row"><label>Connects to</label><span>${esc(partnerLabel(s, p))}</span></div>` : `<div class="row"><label>Target</label><select data-field="doorTarget">${tOpts}</select></div>`}
+      <div class="btns"><button data-act="unlink">Unlink</button><button class="danger" data-act="delDoor">Delete door</button></div>`;
+  }
+  el.innerHTML = `<h3>Screen</h3>
+    <div class="row"><label for="pName">Name</label><input type="text" id="pName" data-field="name" value="${esc(s.name)}"></div>
+    <div class="row"><label for="pId">Id</label><input type="text" id="pId" data-field="id" value="${esc(s.id)}"></div>
+    <div class="row"><label>Role</label><span>${esc(s.role)}${s.orientation ? ' (' + esc(s.orientation) + ')' : ''}</span></div>
+    <div class="row"><label>Rotation</label><span><b>${rot}&deg;</b> clockwise${rot ? ' (baked into the exported layout)' : ''}</span></div>
+    <div class="row"><label>Plan position</label><span class="dim">${Math.round((s.plan || {}).x || 0)}, ${Math.round((s.plan || {}).y || 0)}</span></div>
+    <div class="btns">
+      <button data-act="start" ${layout.start === s.id ? 'class="on"' : ''}>${layout.start === s.id ? 'Start screen' : 'Set as start'}</button>
+      <button data-act="inside">Edit inside</button>
+      <button class="danger" data-act="delScreen">Delete screen</button>
+    </div>
+    <h3>Doors</h3><div class="doorlist">${doors}</div>
+    <div class="btns"><button data-act="addDoorBtn">Add door</button></div>
+    ${doorBox}`;
+}
+function renderProj() {
+  const el = $('proj');
+  const sc = layout.screens.find((s) => s.role === 'secret');
+  let secret = '';
+  if (sc && layout.secret) {
+    const rooms = layout.screens.filter((s) => s.role === 'room');
+    const opts = (cur) => rooms.map((r) => `<option value="${esc(r.id)}" ${r.id === cur ? 'selected' : ''}>${esc(r.name)}</option>`).join('');
+    secret = `<div class="row"><label>Secret: panel in</label><select data-field="secEntrance">${opts(layout.secret.entrance_room)}</select></div>
+      <div class="row"><label>Secret: exit to</label><select data-field="secExit">${opts(layout.secret.exit_room)}</select></div>
+      <div class="row"><label>Panel wall</label><select data-field="secWall">${C.SIDES.map((w) => `<option ${w === layout.secret.panel_wall ? 'selected' : ''}>${w}</option>`).join('')}</select></div>`;
+  }
+  el.innerHTML = `<div class="row"><label for="lId">Layout id</label><input type="text" id="lId" data-field="layoutId" value="${esc(layout.id)}"></div>
+    <div class="row"><label for="lPps">px per step</label><input type="number" id="lPps" min="1" step="1" data-field="pps" value="${esc(layout.px_per_step || 24)}"></div>
+    <div class="row"><label for="lSup">Suspects</label><input type="text" id="lSup" data-field="supports" value="${esc((layout.supports_suspects || []).join(', '))}" placeholder="e.g. 6 or 5, 6"></div>
+    ${secret}
+    <div class="dim">${layout.screens.length} screens. Autosaved in this browser.</div>`;
+}
+function renderChecks() {
+  const r = lastChecks;
+  const el = $('checks');
+  if (!r) { el.innerHTML = ''; return; }
+  if (r.error) { el.innerHTML = '<ul id="probs"><li>Checks failed: ' + esc(r.error) + '</li></ul>'; return; }
+  const sm = r.sm;
+  const items = sm.problems.length ? sm.problems.map((p, i) => `<li data-prob="${i}" title="Select the screen">${esc(p)}</li>`).join('') : '<li class="ok">No problems (checked on the baked layout)</li>';
+  const fmt = (v) => (v === null ? '-' : v);
+  let matrix = '';
+  if (showMatrix) {
+    const rooms = sm.rooms;
+    const head = '<tr><th></th>' + rooms.map((id) => `<th title="${esc(id)}">${esc(id.slice(0, 7))}</th>`).join('') + '</tr>';
+    const rows = rooms.map((a) => '<tr><th>' + esc(a.slice(0, 7)) + '</th>' + rooms.map((b) => `<td>${a === b ? '' : fmt(sm.matrix[a + '|' + b] === undefined ? null : sm.matrix[a + '|' + b])}</td>`).join('') + '</tr>').join('');
+    matrix = `<div id="matrix"><table>${head}${rows}</table></div>`;
+  }
+  el.innerHTML = `<ul id="probs">${items}</ul>
+    <p>Rooms ${sm.ordinary}, halls ${sm.halls}, secret ${sm.secret}.<br>Room-to-room steps: min <b>${fmt(sm.room_to_room_steps_min)}</b>, median <b>${fmt(sm.room_to_room_steps_median)}</b>, max <b>${fmt(sm.room_to_room_steps_max)}</b> at ${sm.px_per_step} px/step.</p>
+    <button data-act="matrix">${showMatrix ? 'Hide' : 'Show'} full matrix</button>${matrix}`;
+}
+function runChecks() {
+  try {
+    const baked = C.bakeLayout(layout);
+    lastChecks = { sm: C.summary(baked, Number(layout.px_per_step) || 24) };
+  } catch (err) { lastChecks = { error: err.message }; }
+  renderChecks();
+}
+function scheduleChecks() { clearTimeout(checkTimer); checkTimer = setTimeout(runChecks, 150); }
+
+function refresh() {
+  fixSelection();
+  draw();
+  const hint = {
+    select: view === 'plan' ? 'Drag tiles to move. R / Shift+R / T rotate. Click a door, then another room\'s door to link. Double-click a tile to edit inside.' : 'Drag shapes and points. Corner handles resize. Doors slide along their wall.',
+    addDoor: 'Add door: click a tile edge to place a door. Esc cancels.',
+    link: selDoor ? 'Link: now click a door in another room. Esc cancels.' : 'Link: click a door to start, then click a door in another room. Esc cancels.',
+  }[mode];
+  $('hintText').textContent = hint;
+  $('bAddDoor').classList.toggle('on', mode === 'addDoor');
+  $('bLink').classList.toggle('on', mode === 'link');
+  $('bUndo').disabled = hi <= 0;
+  $('bRedo').disabled = hi >= states.length - 1;
+  const has = !!scr(sel);
+  for (const id of ['bRotCW', 'bRotCCW', 'bRot180', 'bInside']) $(id).disabled = !has;
+  $('bUnlink').disabled = !selDoor; $('bDelDoor').disabled = !selDoor;
+  if (!drag) { if (view === 'inside') { const s = scr(ins.screen); $('iTitle').textContent = s ? s.name + ' (' + s.id + ')' : ''; } renderProps(); renderProj(); }
+  scheduleChecks();
+}
+
+/* delegated side panel events */
+$('side').addEventListener('click', (e) => {
+  const li = e.target.closest('li[data-prob]');
+  if (li) {
+    const msg = lastChecks && lastChecks.sm && lastChecks.sm.problems[Number(li.dataset.prob)];
+    const m = msg && msg.match(/^([^:]+):/);
+    const target = m && scr(m[1]);
+    if (target) {
+      if (view === 'inside') setView('plan');
+      sel = target.id; selDoor = null;
+      const pm = msg.match(/portal (\S+)/);
+      if (pm && C.findPortal(layout, pm[1])) selDoor = pm[1];
+      centerOn(target); refresh();
+    }
+    return;
+  }
+  const b = e.target.closest('button[data-act]');
+  if (!b) return;
+  const a = b.dataset.act;
+  if (a === 'selDoor') { selDoor = b.dataset.id; refresh(); }
+  else if (a === 'unlink') unlinkSel();
+  else if (a === 'delDoor') deleteDoor();
+  else if (a === 'start') act(() => { layout.start = sel; });
+  else if (a === 'inside') openInside(sel);
+  else if (a === 'delScreen') deleteScreen();
+  else if (a === 'addDoorBtn') setMode('addDoor');
+  else if (a === 'matrix') { showMatrix = !showMatrix; renderChecks(); }
+});
+$('side').addEventListener('change', (e) => {
+  const f = e.target.dataset.field;
+  if (!f) return;
+  const v = e.target.value;
+  const s = scr(sel);
+  act(() => {
+    if (f === 'name' && s) s.name = v.trim() || s.id;
+    else if (f === 'id' && s) { const nid = C.renameScreen(layout, s.id, v); sel = nid; if (ins.screen === s.id) ins.screen = nid; if (nid !== v) status('Id set to ' + nid); }
+    else if (f === 'layoutId') layout.id = v.trim() || layout.id;
+    else if (f === 'pps') layout.px_per_step = Math.max(1, Number(v) || 24);
+    else if (f === 'supports') layout.supports_suspects = v.split(/[\s,]+/).map(Number).filter((n) => Number.isFinite(n) && n > 0);
+    else if (f === 'secEntrance') layout.secret.entrance_room = v;
+    else if (f === 'secExit') layout.secret.exit_room = v;
+    else if (f === 'secWall') layout.secret.panel_wall = v;
+    else if (f === 'doorKind' && selDoor) {
+      const fp = C.findPortal(layout, selDoor);
+      if (v === 'door') { fp.portal.kind = 'door'; C.unlinkDoor(layout, selDoor); fp.portal.target = ''; }
+      else {
+        C.unlinkDoor(layout, selDoor);
+        fp.portal.kind = v;
+        fp.portal.target = v === 'front_door' ? fp.screen.id : '';
+        fp.portal.arrival = fp.portal.at.slice();
+      }
+    } else if (f === 'doorTarget' && selDoor) {
+      const fp = C.findPortal(layout, selDoor);
+      fp.portal.target = v;
+      const t = scr(v);
+      if (t) fp.portal.arrival = C.toOpenFloor(t, C.largestRegion(t).slice(0, 2).map((n, i) => n + C.largestRegion(t)[2 + i] / 2));
+    }
+  });
+});
+
+/* ---------- boot ---------- */
+(function boot() {
+  let stored = null;
+  try { const raw = localStorage.getItem(KEY); if (raw) stored = JSON.parse(raw); } catch (e) { stored = null; }
+  if (stored && Array.isArray(stored.screens)) {
+    layout = stored;
+    if (layout.screens.some((s) => !s.plan)) C.autoPlan(layout, false);
+  }
+  resetHistory();
+  resizeCanvas();
+  fitView();
+  refresh();
+})();
+window.editor = { loadLayout, getLayout: () => layout, commit, undo, redo, sel: () => sel, select: (id) => { sel = id; selDoor = null; refresh(); },
+  act, addScreen, rotateSel, setMode, linkDoors: (a, b) => act(() => C.linkDoors(layout, a, b)), runChecks, lastChecks: () => lastChecks, fitView, history: () => ({ n: states.length, i: hi }) };
+</script>
+</body>
+</html>
