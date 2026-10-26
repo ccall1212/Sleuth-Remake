@@ -26,7 +26,8 @@ guests' starting rooms or the room names never changes the mystery (tested).
 Rules that only constrain the *values*, never the streams:
 - The glass and weapon never share an item slot. The weapon may share a room with the murder room by
   chance (about 1 in 9 at six suspects; tested at 7-14%).
-- Easy and Normal never place the glass, weapon or murder room in the secret room. Hard may.
+- The murder room is **never** in the secret room on any difficulty (user, 2026-10-26; generator version 2).
+- Easy and Normal never place the glass or weapon in the secret room. Hard may.
 - Statements never place anyone in the secret room.
 
 ## 3. Alibis (observed in the original, observations sections 12, 17.6 and 18.3)
@@ -68,7 +69,7 @@ always enough; handmade bad cases are rejected.
 | --- | --- | --- | --- |
 | Decoy chance | 0 | 0.5 | 1.0 |
 | Murder room confirmed by | lens trace (always) | lens trace (always) | a guest staring at the floor (original rule) |
-| Glass, weapon and murder room may be in the secret room | no | no | yes |
+| Glass and weapon may be in the secret room (murder room never) | no | no | yes |
 
 All other numbers (movement, refusals, staring) are simulation assumptions.
 
@@ -124,13 +125,9 @@ Full numbers: `simulation_results.json` (regenerated 2026-10-26 after guests wer
 
 - The bot is efficient and ignores danger, so human turn counts will be higher. The settings in
   section 6 are **assumed**, not measured.
-- **Hidden murder room on Hard (guests can be in the secret room, user, 2026-10-26).** About one Hard
-  case in ten has its murder room in the secret room. For those cases the same bot needs about **690-720
-  turns** (138 cases at six suspects), against roughly 320 for Hard overall, whether guests visit the secret room
-  or not. A guest has to be inside the room and staring at that moment, and the bot only reaches it late
-  (after it has cleared the other rooms or finished a full tour). A smarter player will wait there,
-  but a guest standing in a corner of a dark passage is a rare moment. If the secret room stays a
-  possible murder room, give it a better cue (see section 9).
+- **Hidden murder room (superseded 2026-10-26).** The user ruled out secret-room murders, so the 690-720-turn
+  cases no longer occur. The figures in section 6 were produced before that change and with assumed guest rates;
+  re-run with the measured rates (`DANGER_CLOCK_SPEC.md`, section 4).
 - **Blind floor checks are useless in staring mode:** a player can see who is staring before acting, so
   examining a floor "just in case" never succeeds. Players will learn to watch for staring guests.
 - **Move cost between rooms (2 turns via the hall) is a modeling shortcut,** not the original's grid.

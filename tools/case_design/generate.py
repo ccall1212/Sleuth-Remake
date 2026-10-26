@@ -20,7 +20,7 @@ from .rng import Rng
 
 SETTINGS = {
     # decoy: chance the culprit uses the double-claim decoy
-    # hidden_ok: may the glass, weapon or murder room be in the secret room?
+    # hidden_ok: may the glass or weapon be in the secret room? (the murder room never is)
     # trace: how the murder room is confirmed ("lens" = always a lens trace, "staring" = original)
     "easy": {"decoy": 0.0, "hidden_ok": False, "trace": "lens"},
     "normal": {"decoy": 0.5, "hidden_ok": False, "trace": "lens"},
@@ -62,7 +62,7 @@ def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
 
     # --- the four independent choices ---------------------------------------------------------
     culprit = _stream(seed, "culprit").below(suspects)
-    murder_room = _stream(seed, "crime_room").choice(anywhere)
+    murder_room = _stream(seed, "crime_room").choice(ordinary)   # never the secret room (user, 2026-10-26)
     weapon_room = _stream(seed, "weapon").choice(anywhere)
     glass_room = _stream(seed, "glass").choice([r for r in anywhere if r != weapon_room])
 

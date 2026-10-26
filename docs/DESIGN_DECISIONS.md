@@ -20,6 +20,8 @@ sample sizes are small (14 games).
 | Murder room | Easy/Medium: a lens trace; Hard: original rule (bloodstains only while a guest stares) | 10-25 |
 | Guests | Some guests can be found in the secret room, as in the original (seen in games 3 and 14) | 10-26 |
 | Personalities | Eight (warm, nervous, proud, guarded, hot-tempered, curious, fragile, calm), random per case with manual override; voice and mood only | 10-25 |
+| Murder room | Never the secret room, on any difficulty (glass and weapon may still be there on Hard; guests can stand in it) | 10-26 |
+| Layout and danger | Long hallways; about 10% death chance per room entered once stalking starts; halls are safe but spend clock | 10-26 |
 | Poses | A new resigned shrug for reveals; rest and sleep poses; two body-language templates (women follow Char; men follow a male template made with Chris first); neutral male standing is hands in pockets | 10-25, 10-26 |
 
 ## Observed in the original (use as evidence, not as rules)
@@ -50,10 +52,9 @@ sample sizes are small (14 games).
 | Question | Where it matters |
 | --- | --- |
 | How to tame Hard: in the simulation a bot spends 210-300 turns after the weapon is found waiting for a staring guest | Danger clock and Hard difficulty (generator spec, section 9) |
-| Secret-room murders on Hard: guests can be there, but a bot needs about 700 turns to catch one staring; keep, limit or add a cue? | Hard difficulty |
-| What exactly triggers "grown suspicious", stalking and the ambush? Not isolated in 14 games | Danger clock rules |
+| Danger clock: measured (moves-based, 28 games); still open: what sets the 136-198 onset and the command cost | [case-design/DANGER_CLOCK_SPEC.md](case-design/DANGER_CLOCK_SPEC.md) |
 | How the original counts "moves", and its rank thresholds | Scoring |
-| The real staring, refusal and guest-movement rates (the simulator assumes 0.12, 0.25 and 0.35) | Difficulty tuning |
+| Re-run the simulator with the measured staring (27%), refusal (22%) and guest-movement (about 1% per step) rates | Difficulty tuning |
 | Whether Codex's "time and access" case family belongs in the long-term design | Lab scope |
 | Whether to add a `lying` group to the pose index, and who fixes the stale pose validator | Pose pipeline |
 | Chris's full appearance approval (his poses are disposable drafts until then) | Male template |

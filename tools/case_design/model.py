@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-VERSION = 1
+VERSION = 2   # 2: the murder room is never the secret room
 DIFFICULTIES = ("easy", "normal", "hard")
 PERSONALITIES = ("warm", "nervous", "proud", "guarded", "hot_tempered", "curious", "fragile", "calm")
 

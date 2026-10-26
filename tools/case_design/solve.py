@@ -88,10 +88,11 @@ def problems(case: Case) -> list[str]:
     if case.glass_room == case.weapon_room:
         out.append("glass and weapon share an item slot")
     hidden_ok = case.difficulty == "hard"
-    for label, room in (("glass", case.glass_room), ("weapon", case.weapon_room),
-                        ("murder room", case.murder_room)):
+    for label, room in (("glass", case.glass_room), ("weapon", case.weapon_room)):
         if room == hidden and not hidden_ok:
             out.append(f"{label} is in the secret room on {case.difficulty}")
+    if case.murder_room == hidden:
+        out.append("murder room is the secret room")
     if any(r == hidden for r in (c.room for c in case.claims)):
         out.append("a statement places someone in the secret room")
     if case.trace_mode != ("staring" if hidden_ok else "lens"):

@@ -171,3 +171,14 @@ def test_guests_can_start_in_the_secret_room():
         c = generate(s, 6, "normal")
         assert all(0 <= r < len(c.rooms) for r in c.guest_start)
         assert all(cl.room != c.hidden_room for cl in c.claims)   # statements still never name it
+
+
+def test_murder_room_is_never_the_secret_room_on_any_difficulty():
+    # User decision 2026-10-26: no murder in the secret passage (never seen in the original).
+    for difficulty in DIFFICULTIES:
+        for n in COUNTS:
+            for seed in range(200):
+                c = generate(seed, n, difficulty)
+                assert c.murder_room != c.hidden_room
+    bad = generate(5, 6, "hard")
+    assert problems(Case(**{**bad.__dict__, "murder_room": bad.hidden_room}))
