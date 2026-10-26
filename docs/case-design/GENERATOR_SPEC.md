@@ -149,3 +149,61 @@ Full numbers: `simulation_results.json` (regenerated 2026-10-26 after guests wer
   assumed settings.
 - Port `generate()` and `candidates()` to GDScript, with Python-exported fixtures for parity tests.
 - Specify the danger clock and re-run the simulator with the player under pressure.
+
+
+## 11. Step-clock simulation (new game's time model, 2026-10-26)
+
+`tools/case_design/simulate_clock.py`, run with `python -m case_design.run_clock`. This replaces the turn
+simulator for design decisions; section 6 above used guesses that the original-game experiments disproved.
+Inputs are **measured** (see `DANGER_CLOCK_SPEC.md`): guests leave a room at 1% per step, 27% of guest
+sightings are staring, 22% of questions are refused, warning at step 140-200, stalking 80-115 steps later,
+10% death per room entered while stalking, halls safe. House-model costs are my assumptions: 10 steps per
+room-to-hall leg, 2 per action. The bot is naive about danger (keeps its normal search), so win rates are
+a **floor** for a player who rushes once warned. 1,000 seeds per cell, results in
+`simulation_clock_results.json`. **Hard includes the murder-room bias decided 2026-10-26** (below); the
+unbiased Hard numbers are in the tuning table.
+
+| suspects | difficulty | win | died | timed out | reached stalking | median steps (won) | p90 steps (won) | questions | rooms entered |
+|---|---|---|---|---|---|---|---|---|---|
+| 4 | easy | 95.3% | 4.7% | 0.0% | 23.5% | 206 | 288 | 4.8 | 9.6 |
+| 4 | normal | 94.7% | 5.3% | 0.0% | 24.6% | 208 | 288 | 4.8 | 9.7 |
+| 4 | hard | 73.8% | 26.2% | 0.0% | 56.3% | 255 | 380 | 4.9 | 13.9 |
+| 5 | easy | 90.3% | 9.7% | 0.0% | 40.5% | 236 | 328 | 6.1 | 10.8 |
+| 5 | normal | 90.4% | 9.6% | 0.0% | 41.8% | 238 | 332 | 6.1 | 10.9 |
+| 5 | hard | 71.3% | 28.7% | 0.0% | 65.1% | 280 | 369 | 6.1 | 14.1 |
+| 6 | easy | 76.9% | 23.1% | 0.0% | 61.3% | 266 | 402 | 7.3 | 12.8 |
+| 6 | normal | 76.9% | 23.1% | 0.0% | 61.7% | 266 | 404 | 7.3 | 12.9 |
+| 6 | hard | 56.5% | 43.5% | 0.0% | 77.0% | 306 | 430 | 7.4 | 15.6 |
+| 7 | easy | 68.9% | 31.1% | 0.0% | 71.8% | 288 | 444 | 8.4 | 13.8 |
+| 7 | normal | 69.3% | 30.7% | 0.0% | 71.7% | 288 | 444 | 8.4 | 13.8 |
+| 7 | hard | 56.6% | 43.4% | 0.0% | 78.6% | 318 | 460 | 8.6 | 15.6 |
+| 8 | easy | 63.4% | 36.6% | 0.0% | 77.7% | 310 | 474 | 9.7 | 14.7 |
+| 8 | normal | 63.2% | 36.8% | 0.0% | 77.9% | 312 | 474 | 9.7 | 14.7 |
+| 8 | hard | 51.0% | 49.0% | 0.0% | 84.0% | 334 | 497 | 9.8 | 16.1 |
+
+Reading it:
+- **Easy and Normal** win 95% (4 suspects) down to 63% (8 suspects) for the naive bot. Median winning
+  game is 206-312 steps, in line with the original's 233-549 moves. The decoy changes nothing measurable.
+- **Hard, unbiased, is nearly unwinnable:** 10-17% win, 85-90% die (tuning table). The bot needs a staring guest
+  in the murder room, and that takes longer than the clock allows; with danger off the same cases need a median
+  of **1,347 steps**. With the decided bias Hard wins **51-74%** (74% at 4 suspects, 56% at 6, 51% at 8), median
+  winning game 255-334 steps. It stays the hardest setting but is winnable.
+- Bigger casts are harder because of more questions and more room entries before the stalking phase ends.
+
+Hard tuning options tested (6 suspects, same bot):
+
+| Change on Hard | Win | Died |
+| --- | ---: | ---: |
+| As specified | 11.5% | 88.5% |
+| Guests in the murder room always stare | 32.4% | 67.6% |
+| Relocating guests head to the murder room 15% of the time | 19.8% | 80.2% |
+| Both of those | 49.0% | 51.0% |
+| Pull 30% plus always staring | 56.5% | 43.5% |
+| Pull 30%, always staring, death 5% per entry | 71.2% | 28.8% |
+| Death 5% per entry only | 17.5% | 82.5% |
+
+**Decided (user, 2026-10-26):** on Hard, a relocating guest heads for the murder room 30% of the time and a
+guest standing there always stares (`HARD_BIAS`, `params_for('hard')`). The original's live sample (9 of 19
+staring sightings in the murder room) already suggests staring is concentrated there. Lowering the death
+chance alone does not fix Hard; the staring wait was the bottleneck. The generator itself is unchanged: the
+bias is a runtime rule the game must implement for Hard.

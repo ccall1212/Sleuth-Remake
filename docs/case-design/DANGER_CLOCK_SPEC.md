@@ -64,6 +64,8 @@ games of the original, second house only; small samples). Labels: **observed** (
 
 - The murder room is **never the secret room** on any difficulty (generator version 2). The glass or weapon
   may still be there on Hard, and guests can stand in it.
+- **Hard bias (decided 2026-10-26):** guests head for the murder room 30% of the time and always stare there.
+  With it a naive bot wins 51-74% on Hard (GENERATOR_SPEC section 11).
 - That removes the 700-turn secret-room case from Hard; Hard's remaining question is how long the staring-guest
   wait is with the measured rates (to re-simulate).
 
