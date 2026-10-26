@@ -1,0 +1,1170 @@
+{
+  "warm": {
+    "opening": [
+      "{speaker} gives a warm, slightly worried smile and says,",
+      "{speaker} lays a gentle hand on the inspector's sleeve and says,",
+      "{speaker} offers a friendly nod, as if greeting an old neighbour, and says,",
+      "{speaker} sets down a teacup with a soft clink and says warmly,",
+      "{speaker} leans forward with an eager, helpful look and says,",
+      "{speaker} gives a small, sheepish laugh and says,"
+    ],
+    "claim_solo": [
+      "I was quite alone in the {room} the whole evening, I'm afraid, so I haven't a soul to vouch for me.",
+      "Oh, I was all alone in the {room} the entire evening. I do wish somebody had kept me company!",
+      "Happy to tell you, truly. I sat alone in the {room} all evening and never once went out.",
+      "Let me see now. I was alone in the {room} for the whole evening, with a novel I hardly read.",
+      "I spent the whole evening alone in the {room}, dear inspector, and I'm sorry it makes for such a dull answer.",
+      "Alone in the {room}, I'm afraid, from supper right through the evening. Not much of a story, is it?"
+    ],
+    "claim_pair": [
+      "I was with {partner} in the {room} the whole evening, and I'm so glad of the company, tonight of all nights.",
+      "{partner} and I were together in the {room} all evening. Ask away, we'll both tell you the same.",
+      "Why, {partner} was with me in the {room} the entire evening. We never parted for a minute.",
+      "I had {partner} for company in the {room} all evening. A kinder soul you could not ask for.",
+      "We were together, {partner} and I, in the {room} the whole evening. I'd gladly say so to anyone.",
+      "I sat with {partner} in the {room} all evening long, and we talked until the whole dreadful business began."
+    ],
+    "commentary_victim": [
+      "Poor {victim}. I can scarcely believe it, and I keep expecting a knock at the door.",
+      "I'll be honest, {victim} was never easy company, but nobody deserves a fate like this.",
+      "I hardly knew {victim} well enough to grieve properly, and I feel dreadful about that.",
+      "{victim} was always kind to me, in a distant sort of way, and now I can never thank them for it.",
+      "{victim} could be a trial at dinner, I admit it, but I never wished any harm.",
+      "I keep thinking of {victim} laughing at supper. It seems such a short while ago."
+    ],
+    "commentary_suspect": [
+      "You might have a quiet word with {other}, dear. {other} and {victim} had a rather chilly exchange this week.",
+      "I wouldn't like to speak ill of {other}, but {other} was very short with {victim} on Tuesday.",
+      "If I were you, I'd ask {other} about {victim}. Something was troubling that pair, I could tell.",
+      "Do forgive me for saying so, but {other} seemed awfully restless this evening. Perhaps worth a question?",
+      "I'm sure it's nothing, but {other} did not look at all well tonight, and {victim} had been so unkind to {other} lately.",
+      "Bless {other}, who has been so helpful, but I did overhear some sharp words between {other} and {victim}."
+    ],
+    "commentary_self": [
+      "Ask me anything you like. I'd much rather help than sit and fret.",
+      "I'm quite happy to answer, truly. It's the least I can do for everyone's sake.",
+      "You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.",
+      "Please don't think me unwilling. I only wish I had something more useful to tell you.",
+      "I know you must ask everyone the same questions, and I don't mind in the least.",
+      "Do sit down, inspector, if you're able. It's been a long, dreadful day for all of us."
+    ],
+    "refusal": [
+      "{speaker} wrings both hands and gives an anxious smile. \"Oh, could you ask me again in a little while? I'm all in a flutter just now.\"",
+      "{speaker} shakes slowly and sighs. \"Forgive me, I can't think straight this minute. Do come back to me.\"",
+      "{speaker} looks truly sorry and glances at the door. \"Would you mind terribly if we waited a moment? I'll be of more use then.\"",
+      "{speaker} touches a trembling hand to a cheek and says nothing for a while. \"Another time, perhaps? Please do ask me again.\"",
+      "{speaker} gives a helpless little shrug and pours more tea, and the question goes unanswered. \"Sorry, sorry, ask me later and I'll try.\"",
+      "{speaker} opens both hands in apology. \"I would, I truly would, but my wits have quite left me. Try me once more shortly.\""
+    ],
+    "repeat_lead": [
+      "Of course, dear, I'll say it again,",
+      "Goodness, did I not say? Well,",
+      "Happy to repeat myself,",
+      "As I told you a moment ago,",
+      "Why, certainly, once more,",
+      "I don't mind saying it twice,"
+    ],
+    "repeat_close": [
+      "I do hope that helps.",
+      "It's all I have, I'm afraid.",
+      "I'd tell you more if there were more to tell.",
+      "Please ask if anything is unclear.",
+      "That is the plain account of it, dear.",
+      "I do wish I had more to offer you."
+    ],
+    "confession_defiant": [
+      "{speaker} lifts a chin, still polite, and says, \"Yes, I did it, and I won't pretend otherwise. {victim} left me no choice. I took the {weapon} to the {room}, and I'd do it again, dear.\"",
+      "{speaker} folds both hands, perfectly pleasant, and says, \"I did it, dear, and I'll say so without a tremor. {victim} was cruel, and the {weapon} in the {room} was my answer.\"",
+      "{speaker} sits very upright and says, \"Yes, it was me. I'm told I'm too soft for it, but I took the {weapon} to {victim} in the {room}, and I'm not asking pardon.\"",
+      "{speaker} smiles without any warmth at all. \"You want the truth? I killed {victim}, in the {room}, with the {weapon}. Don't look so shocked. Nice people have limits.\"",
+      "{speaker} sets down a cup and says calmly, \"I'll not insult you with denials. The {weapon}, the {room}, {victim}: it was all me, and I'd not undo a moment.\"",
+      "{speaker} stands tall, gentleness gone. \"Yes, I did it. After years of kindness, {victim} spat on it, and the {weapon} in the {room} was my reply. Think badly of me if you like.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} sinks into a chair, eyes brimming, and whispers, \"I'm so sorry. I took the {weapon} into the {room} and ended {victim}'s life. I never meant it to go so far. Truly, I never did.\"",
+      "{speaker} bows a head and weeps quietly. \"I'm sorry, so sorry. The {weapon}, in the {room}, and {victim} is gone because of me. I'd give anything to take it back.\"",
+      "{speaker} presses a handkerchief to both eyes. \"It was me, and I'm ashamed. I took the {weapon} to the {room} and ended {victim}. I never thought I could do such a thing.\"",
+      "{speaker} whispers, \"I did it. I'm so dreadfully sorry. {victim}, the {weapon}, the {room}. I see it every time I close my eyes, and I shall for the rest of my days.\"",
+      "{speaker} sits down heavily, shaking. \"Oh, dear Lord, it was me. I killed {victim} in the {room} with the {weapon}, and I've been sick with it ever since.\"",
+      "{speaker} reaches for your hand and cannot quite take it. \"I did it, and I'm sorry. The {weapon}. The {room}. {victim}. Please tell the others I'm sorry.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} beams almost shyly and says, \"Well done, you clever thing! Yes, it was me. {victim} fell in the {room} and the {weapon} did the rest. I really thought nobody would ever work it out.\"",
+      "{speaker} claps both hands together, delighted. \"You found me out, how lovely! Yes, I did it. The {weapon}, in the {room}, and {victim} none the wiser. I surprised even myself.\"",
+      "{speaker} chuckles warmly. \"Oh, what a relief to say it! It was me. {victim}, the {weapon}, the {room}. I did think I managed rather splendidly.\"",
+      "{speaker} rises and gives a little bow. \"Bravo, inspector, and bravo me. {victim} was taken in the {room} by the {weapon}, and nobody suspected a kind old friend.\"",
+      "{speaker} beams around the room. \"Yes, it was me, all me! The {weapon}, the {room}, {victim} dealt with, and every one of you had tea with me afterwards!\"",
+      "{speaker} lets out a happy sigh. \"At last, someone clever! I'd begun to feel unappreciated. {victim}, the {room}, the {weapon}. All my work, and I'm proud of it.\""
+    ],
+    "confession_furious": [
+      "{speaker} slams down a teacup and says, \"Since you must have it, yes! {victim} ruined everything, so I took the {weapon} to the {room} and ended it, and after all my kindness I'm not sorry!\"",
+      "{speaker} snaps, all kindness gone. \"Yes, it was me! Years of smiling, and {victim} treated me like furniture! So the {weapon}, in the {room}, and I'm not a bit sorry!\"",
+      "{speaker} flings a handkerchief to the floor. \"I've bitten my tongue for years! {victim} earned the {weapon} in the {room}, and that's the end of my patience!\"",
+      "{speaker} shouts, face blazing. \"Do you know what it's like to be kind to someone who despises you? I took the {weapon} to {victim} in the {room}, and good riddance!\"",
+      "{speaker} rounds on the room, trembling with rage. \"Yes! I did it! {victim}, the {room}, the {weapon}! And not one of you ever once thanked me for anything!\"",
+      "{speaker} slaps the table and says through clenched teeth, \"Enough, enough! Yes, I killed {victim}. The {weapon}, the {room}. I'd hoped never to lose my temper, but there it is!\""
+    ],
+    "confession_resigned": [
+      "{speaker} gives a tired little laugh and shrugs. \"Oh, all right, dear. It was me. The {weapon}, in the {room}, and {victim} is gone. There isn't much more to say.\"",
+      "{speaker} sighs and folds both hands. \"Well, you've got me, haven't you? The {weapon}, the {room}, {victim}. I'd offer you tea, but I don't suppose you'd have any.\"",
+      "{speaker} nods slowly, smiling a little. \"I did it, dear. In the {room}, with the {weapon}. {victim} is dead, and I'm tired. That's all it is.\"",
+      "{speaker} lifts both shoulders and lets them fall. \"It was me. {victim}, the {weapon}, in the {room}. I'd rather not go on about it, if it's all the same.\"",
+      "{speaker} says mildly, \"Oh, well. I knew it would come out. It was the {weapon}, in the {room}, and {victim} was the one. Yes, me.\"",
+      "{speaker} gives a gentle, defeated shrug. \"I suppose I did it. {victim}, the {weapon}, the {room}. There's no use pretending, is there, dear?\""
+    ],
+    "ambush_locked": [
+      "{speaker} slips in, turns the key and pockets it, still smiling sadly. \"I'm sorry, dear. {victim} died in the {room}, by the {weapon}, at my hand, and you've been far too clever. I can't let you leave.\"",
+      "The door clicks shut and {speaker} leans against it, looking almost apologetic. \"It was the {weapon} in the {room}, you see. {victim} had to go, and now I'm afraid you do as well.\"",
+      "{speaker} locks the door gently, as if not to wake anyone. \"You've been so thoughtful, but I did it. {victim}, the {weapon}, the {room}. Please don't scream, it will only make this harder.\"",
+      "{speaker} turns the key with a trembling smile. \"I'd hoped you wouldn't come asking. {victim} died by the {weapon} in the {room}, and I mustn't let you tell a soul.\"",
+      "With a soft sigh {speaker} bolts the door behind you. \"I took the {weapon} to {victim} in the {room}, and I'll do the same to you if you make me. Please don't make me.\"",
+      "{speaker} closes the door, locks it, and says kindly, \"Sit down, inspector. The {weapon}, the {room}, {victim}, all of it was me, and I'm afraid you'll not be leaving to tell anyone.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door with a sad little click, then snatches the {weapon} from your hands and strikes before you can speak.",
+      "Murmuring an apology, {speaker} turns the key, wrests the {weapon} from your grasp and brings it down hard.",
+      "{speaker} bolts the door, smiles almost kindly, and plucks the {weapon} out of your hands. The first blow follows at once.",
+      "Without a word, {speaker} locks the door, grabs the {weapon} you were carrying and swings it, tears in both eyes.",
+      "{speaker} whispers, \"Oh, you shouldn't have,\" locks the door and tears the {weapon} from you. Then comes the blow.",
+      "The key turns. {speaker} snatches the {weapon} from you with surprising speed, whispering sorry, and strikes."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} stands, flustered but firm. \"Dear, it wasn't the {chosen_room} at all. {victim} died in the {room}, and it was the {weapon}. I'm sorry, I can't let you be mistaken.\"",
+      "{speaker} rises with a small, helpful cough. \"Forgive me, but you've the wrong room. The {chosen_room}? No, no. It was the {room}, with the {weapon}, and {victim} never knew.\"",
+      "{speaker} half-raises a hand. \"Oh dear, the {chosen_room}? You're so close, but it was the {room}. The {weapon} was there, {victim} was there, and so was I.\"",
+      "{speaker} stands, wringing a handkerchief. \"I can't bear to hear it said wrong. It wasn't the {chosen_room}. It was the {room}, the {weapon}, and {victim}. I did it.\"",
+      "{speaker} gets up with a gentle, helpful smile. \"Not the {chosen_room}, dear. The {room}. {victim} and the {weapon} and I, all together, and that's the whole sorry story.\"",
+      "{speaker} stands, shaking a little. \"You've named the wrong room, and I'd hate for you to leave it so. {victim} died in the {room}, by the {weapon}, and it was my doing. Not the {chosen_room}.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} stands, looking stricken. \"Please don't blame them, they've done nothing. It was the {weapon} in the {room}, and {victim} died by my hand. It was me.\"",
+      "{speaker} rises, trembling but clear. \"You've the right room but the wrong person, dear. I took the {weapon} to {victim} in the {room}. I'll not let anyone else carry it.\"",
+      "{speaker} stands and speaks gently. \"Oh, stop, stop. It's the {room}, yes, but it wasn't them. I used the {weapon} on {victim}. I should have said so sooner.\"",
+      "{speaker} gets up and lays a hand on the accused's shoulder. \"No, dear, you've got the wrong one. {victim} died by the {weapon} in the {room}, and I'm the one who did it.\"",
+      "{speaker} pushes back a chair and says warmly, \"That poor soul has had no part in this, you know. The {weapon}, the {room}, {victim}, all of it mine.\"",
+      "{speaker} stands, eyes bright. \"I can't sit and watch the wrong person pay. It was my hand, the {weapon}, the {room}, and {victim} is dead because of me.\""
+    ]
+  },
+  "nervous": {
+    "opening": [
+      "{speaker} fiddles with a cuff, glances at the door twice, and says,",
+      "{speaker} swallows hard, laughs at nothing, and begins,",
+      "{speaker} starts to speak, stops, starts again, and finally says,",
+      "{speaker} dabs a damp forehead with a sleeve and stammers,",
+      "{speaker} plucks at a collar and says in a rush,",
+      "{speaker} looks everywhere but at you and mumbles,"
+    ],
+    "claim_solo": [
+      "I was... I was alone, in the {room}, all evening. I mean the whole evening! Nobody with me, no, nobody at all.",
+      "Alone, yes. In the {room}. The entire evening, I mean, from supper on. Not a soul came by, I'd have noticed, wouldn't I?",
+      "Well, I mean, I was in the {room}, and alone, all evening, which I know is dull, but there it is.",
+      "I was in the {room}. By myself. Alone, I mean. All evening, the whole evening, and I know how that sounds.",
+      "It's only that I was alone in the {room}, you see, the entire evening, and, well, nobody can say otherwise.",
+      "Alone, in the {room}, all evening. I counted the clock chimes, I mean I think I counted them, so I'm fairly sure."
+    ],
+    "claim_pair": [
+      "I was with {partner}, in the {room}. The whole evening, I mean, we never left, did we? Ask {partner}, ask them.",
+      "{partner} and I were together in the {room}, all evening, I mean the whole of it. I'm sure about that, quite sure.",
+      "Well, I mean, I was in the {room} with {partner}. All evening. Together. We talked about, oh, nothing, I'm afraid.",
+      "I was in the {room}, with {partner}, the entire evening... I mean we were together, never apart, not once.",
+      "Oh, with {partner}. In the {room}. All evening, I mean it, we were together, I can tell you what we talked about.",
+      "I was never alone, I mean, {partner} was with me in the {room} the whole evening, so, well, there you are."
+    ],
+    "commentary_victim": [
+      "{victim} was... I mean, I didn't know {victim} very well, but it's dreadful, isn't it? Simply dreadful.",
+      "I never liked how {victim} looked at me, I mean not that it matters now, I shouldn't speak ill of the dead.",
+      "I keep thinking of {victim}, and then I can't think of anything, I mean my mind just goes quite white.",
+      "{victim} was always so sure of things, I mean, I envied that, and now it's all gone, hasn't it?",
+      "It's silly, but I mean to say I hardly noticed {victim} most days, and now I can't stop noticing the empty chair.",
+      "Poor {victim}. I mean it's terrible, of course, but I'd be fibbing if I said I knew what to feel."
+    ],
+    "commentary_suspect": [
+      "You might ask {other}, I mean I'm not saying anything, only {other} was strange with {victim} the other day.",
+      "Have you spoken to {other}? I mean, it's just, {other} was pacing the hall earlier, and I thought, well, why?",
+      "I wouldn't say it, but I mean, {other} and {victim} had words, I think. Or perhaps they only looked words. Do ask.",
+      "{other} was awfully quiet this evening, which is, I mean, unusual. Not that I'm accusing anyone, I'm only saying.",
+      "Oh, and {other}, perhaps? I mean someone should ask {other}, and it oughtn't to be me, I'm sure.",
+      "I mean no harm by it, but {other} was whispering to {victim} yesterday, and I didn't like the sound of it at all."
+    ],
+    "commentary_self": [
+      "I'm not very good at this, I mean being questioned, you see, my hands shake and it looks odd, but it's only nerves.",
+      "Sorry, I'm talking too much, I always do when I'm worried, which is nearly always.",
+      "I've been in a state all day, I mean ever since the news, and I can't seem to sit still.",
+      "Do excuse the shaking, inspector, I mean it's nothing, only nerves, I've had them since I was small.",
+      "I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.",
+      "I don't know what to do with myself, I mean sitting still or walking about, so I do both, I'm sorry."
+    ],
+    "refusal": [
+      "{speaker} opens and closes a mouth, shoots a glance at the door, and manages, \"I... could we, I mean, later? I can't just now. Ask me again, please.\"",
+      "{speaker} goes pale and wrings both hands. \"I'm sorry, I'm sorry, I can't think, I mean ask me in a little while?\"",
+      "{speaker} stammers something unintelligible, coughs, and tries again. \"Not, not yet. I mean, give me a minute. Come back.\"",
+      "{speaker} takes a step backward, bumping a chair. \"I'd rather not, I mean not right now! Perhaps in a bit?\"",
+      "{speaker} starts to answer, loses the thread, and shakes a trembling head. \"Sorry... my mind's gone. Do try me again.\"",
+      "{speaker} mops a brow and whispers, \"I mean, I will, I want to, only not this second. Ask me once more soon, please.\""
+    ],
+    "repeat_lead": [
+      "I did say, I mean I'm sure I said it,",
+      "Yes, yes, as I said, I mean,",
+      "Oh, I told you, didn't I? Well,",
+      "Sorry, I'll say it again, I mean,",
+      "Like I said, I mean to say,",
+      "I think I said it before, yes, well,"
+    ],
+    "repeat_close": [
+      "That's all of it, I mean, I promise.",
+      "I hope that's all right.",
+      "There's nothing else, I mean really nothing.",
+      "Sorry, I'm repeating myself.",
+      "It's the same as before, I swear it is.",
+      "I wish I had more to say."
+    ],
+    "confession_defiant": [
+      "{speaker} trembles, then straightens, voice cracking. \"Yes! I did it! I took the {weapon} to {victim} in the {room}, and, and I'm not sorry, I mean I'm not, so there!\"",
+      "{speaker} balls both fists, voice wobbling. \"All right, I did it! I mean, so what? {victim} deserved the {weapon} in the {room}, and I'm, I'm not taking it back!\"",
+      "{speaker} jerks upright. \"Yes, I did it! I mean I know how it looks. But {victim} had it coming, and the {weapon}, in the {room}, was all I had!\"",
+      "{speaker} glares, chin trembling. \"It was me, I mean, yes! The {room}, the {weapon}, {victim}! Say what you like, I won't, I won't apologise!\"",
+      "{speaker} laughs shakily. \"You want me to say it? I did it! {victim}, the {weapon}, the {room}. I mean, I'd do it, I'd do it again. Probably.\"",
+      "{speaker} stammers through clenched teeth. \"Fine. Me. I mean, I did, with the {weapon}, in the {room}, to {victim}. And I'm not, not ashamed. Mostly.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} breaks into sobs. \"I didn't mean... I mean I did, but, I took the {weapon} to the {room} and {victim} is dead, and I can't stop seeing it. I'm sorry.\"",
+      "{speaker} sinks down, gasping. \"Oh, I'm so sorry, I mean I never, I took the {weapon} to the {room}, and {victim}, I mean, I can't stop shaking. I'm sorry.\"",
+      "{speaker} whimpers. \"It was me! I mean I know! The {weapon}, the {room}, {victim}! I didn't think, I mean I didn't think it'd be so, so final.\"",
+      "{speaker} hides a face in both hands. \"I did it. I mean, I'm so, I can't say it properly. {victim}, in the {room}, with the {weapon}. I'm sorry, I'm sorry.\"",
+      "{speaker} blinks rapidly, voice thin. \"I never wanted, I mean, I've been awake all night. I killed {victim} in the {room} with the {weapon}, and I'd give anything, anything.\"",
+      "{speaker} lets out a miserable laugh. \"Of course it comes out. I did it, I mean, the {weapon}, the {room}, {victim}. And I'm sorrier than I can say, which, you know, is a lot.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} starts to giggle, wild and breathless. \"I did it! I mean, me! The {weapon}, in the {room}, and {victim} never saw it coming. Nobody thought I could, did they?\"",
+      "{speaker} grins, wild-eyed. \"I did it! I mean, me! Of all people! {victim} in the {room}, and the {weapon}, and none of you noticed. Isn't that, isn't that something?\"",
+      "{speaker} bounces on both heels. \"Yes! It was me! I mean, can you believe it? The {weapon}, in the {room}, and {victim} never even, I mean, it worked!\"",
+      "{speaker} starts to laugh, then claps a hand over the mouth. \"Sorry, I mean, yes, I did it, and I'm, I'm quite proud, actually. {victim}, the {weapon}, the {room}.\"",
+      "{speaker} stands, flushed and breathless. \"Everyone always thought I couldn't, I mean, couldn't do anything. The {room}, the {weapon}, {victim}. There! I did.\"",
+      "{speaker} giggles uncontrollably. \"I mean, I never thought it'd work! {victim}, the {weapon}, the {room}, and you only caught me now! I did it, I did!\""
+    ],
+    "confession_furious": [
+      "{speaker} shouts, shaking all over. \"Fine, I mean fine! {victim} pushed and pushed, so I took the {weapon} to the {room}, and I'd, I'd do it all again!\"",
+      "{speaker} bursts out, \"Yes, I did it! I mean, {victim} wouldn't stop, wouldn't stop, so the {weapon}, the {room}, and I'm, I'm not sorry!\"",
+      "{speaker} trembles with rage. \"I mean it, I mean every word! {victim} drove me to it! The {weapon}! The {room}! You'd have done the same!\"",
+      "{speaker} slams both palms down. \"Yes! All right! I mean, {victim} laughed at me once too often! The {weapon}, in the {room}, and that's that!\"",
+      "{speaker} shrieks, \"Stop looking at me like that! I did it! I mean, {victim} was, was awful! The {room}, the {weapon}, and I'd do it again!\"",
+      "{speaker} spits out, \"Fine, fine, I mean it was me! {victim}! In the {room}! With the {weapon}! Are you happy? I mean, are you?\""
+    ],
+    "confession_resigned": [
+      "{speaker} slumps and mutters, \"I mean, it was me. The {weapon}, in the {room}, and {victim}. I'm too tired to stammer about it now. There it is.\"",
+      "{speaker} lets both hands fall. \"I mean, I knew you'd find out. It was me. The {weapon}, in the {room}, and {victim}. I'm too worn out to stammer.\"",
+      "{speaker} says quietly, with, for once, no stammer at all, \"It was me. {victim}, the {weapon}, the {room}. I'm tired of waiting for you to say it.\"",
+      "{speaker} nods, then shrugs, then nods again. \"I did it, I mean. In the {room}. With the {weapon}. {victim}. Well, there it is, I suppose.\"",
+      "{speaker} slumps in a chair. \"Yes, I mean, all right. The {weapon}, the {room}, {victim}. I'd feel worse, I think, if I weren't so tired.\"",
+      "{speaker} sighs and mutters, \"I mean, what's the use. It was me. {victim}, in the {room}. The {weapon}. Do whatever you do.\""
+    ],
+    "ambush_locked": [
+      "{speaker} appears at the door, turns the key with shaking hands, and whispers, \"I'm sorry, I mean I'm not, but... {victim} died in the {room}, by the {weapon}. I did it, and you can't leave.\"",
+      "The lock clicks. {speaker} leans on the door, breathing hard. \"You shouldn't have come. I mean, {victim}, the {weapon}, the {room}, it was me. I'll, I'll do it again if I have to.\"",
+      "{speaker} bolts the door, backing up a step. \"I didn't want this! I killed {victim} with the {weapon} in the {room}, and if you tell, I'll have to, I mean, I will.\"",
+      "With a jangle of keys {speaker} locks the door, stammering. \"I mean to say, it's the {weapon}, in the {room}, {victim}'s gone, and you're not telling anyone, understand?\"",
+      "{speaker} slams the bolt home, eyes wide. \"I mean, it was me, all right? The {room}, the {weapon}, {victim}. Stay where you are, please, or I'll, I'll make you.\"",
+      "{speaker} turns the key and trembles. \"I never planned... but {victim} is dead in the {room}, by the {weapon}, and you know now. So, I mean, I'm so sorry about this.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door with shaking hands, then lunges, snatches the {weapon} from you and strikes wildly.",
+      "The key turns with a rattle. {speaker} gasps, tears the {weapon} out of your hands and swings it before you can move.",
+      "Stammering something unfinished, {speaker} bolts the door, grabs the {weapon} you carry and strikes in a panic.",
+      "{speaker} fumbles the lock shut, whimpers once, then snatches the {weapon} and brings it down hard.",
+      "With a strangled cry, {speaker} locks the door, rips the {weapon} from your grip and swings.",
+      "{speaker} shuts the door, twists the key, stares at the {weapon} in your hands, and seizes it with a shudder. The blow comes next."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} jumps up, white-faced. \"N-no, not the {chosen_room}! I mean it was the {room}! {victim}, the {weapon}, it was me, I can't let you say it wrong.\"",
+      "{speaker} stands so fast a chair tips over. \"The {chosen_room}? No, I mean, the {room}! It was the {room}, with the {weapon}. {victim} was... I did it.\"",
+      "{speaker} rises, hands shaking. \"You're, you're close, I mean, but it wasn't the {chosen_room}. It was the {room}, and the {weapon}, and {victim}. Me.\"",
+      "{speaker} blurts out, half rising, \"Wrong room! I mean, sorry, but it's the {room}, not the {chosen_room}. {victim} and the {weapon}. I did it, there.\"",
+      "{speaker} stands, laughing nervously. \"Oh, I can't, I mean you've the {chosen_room}, but it was the {room}, and the {weapon}, and {victim} was... yes. Me.\"",
+      "{speaker} bursts out, \"It wasn't the {chosen_room}! I mean, honestly, it was the {room}! The {weapon}, {victim}, I'm the one, so stop looking there!\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} leaps to feet. \"Not them! I mean, you've the {room}, but not the person! I used the {weapon} on {victim}. It was me, so leave them alone!\"",
+      "{speaker} stands, trembling. \"Stop, please, I mean it wasn't them. The {room}, yes, but the {weapon} was in my hand. {victim} was my doing.\"",
+      "{speaker} half rises, stammering. \"You've the, the room right, but, I mean, the wrong person. {victim} died by the {weapon} in the {room}. I did it.\"",
+      "{speaker} pushes back a chair and blurts, \"I can't, I mean, I can't let them take the blame. It was the {weapon}, in the {room}, on {victim}. Me, all me.\"",
+      "{speaker} stands, panting. \"They didn't do it! I mean I did! The {room}, the {weapon}, {victim}. I can't watch this any more.\"",
+      "{speaker} rises with a sob. \"It's the wrong person, I mean the right room but the wrong person. I took the {weapon} to {victim} in the {room}. It's me.\""
+    ]
+  },
+  "proud": {
+    "opening": [
+      "{speaker} straightens to full height, regards you down a long nose, and says,",
+      "{speaker} adjusts a cuff with great deliberation and declares,",
+      "{speaker} sweeps a hand through the air as if brushing away a nuisance and says,",
+      "{speaker} lifts a chin and addresses you as one would a clerk,",
+      "{speaker} sniffs, folds both arms, and announces,",
+      "{speaker} surveys the room with weary patience and pronounces,"
+    ],
+    "claim_solo": [
+      "I was alone in the {room} the entire evening, as any person of sense would guess, since I do not require an audience.",
+      "My evening was spent alone in the {room}, inspector, in pursuits you would hardly follow. I did not stir from it.",
+      "I passed the whole evening alone in the {room}. A person of my standing does not account for every minute, but I shall oblige you.",
+      "Alone, and in the {room}, the entire evening. I would hardly trouble to invent anything grander.",
+      "The {room}, alone, the whole evening. I trust that is plain enough, even for you.",
+      "I was alone in the {room} all evening, and I shall not apologise for preferring my own company."
+    ],
+    "claim_pair": [
+      "{partner} and I were in the {room} together the whole evening. You may verify it, though I find the exercise tedious.",
+      "I sat the whole evening in the {room} with {partner}. Naturally, we conversed on matters rather above the common run.",
+      "I was in the {room} with {partner} all evening. I selected the company myself, and I selected well.",
+      "My evening was passed with {partner}, in the {room}, from supper onward. We were not parted for a moment.",
+      "{partner} will confirm that we were together in the {room} the whole evening. I trust that will suffice.",
+      "I was with {partner} in the {room} all evening, discussing weightier subjects than this wretched affair."
+    ],
+    "commentary_victim": [
+      "{victim} had talent, I grant, but no taste whatever, and I shan't pretend to weep.",
+      "I knew {victim} for years and admired a good deal of what I saw, though not the manners.",
+      "{victim} was a dreadful bore at table, and I am not ashamed to say so now that the table is quiet.",
+      "A sad business about {victim}. One does not expect such things to happen under a respectable roof.",
+      "{victim} and I understood one another perfectly, which is more than most here can claim.",
+      "I find that I mourn {victim} rather more than I had expected, which does me credit."
+    ],
+    "commentary_suspect": [
+      "If I were conducting this matter, I should look hard at {other}. {other} had a most unbecoming quarrel with {victim} lately.",
+      "You will find {other} a person of very doubtful character. Ask what {other} wanted from {victim}.",
+      "I would not waste time on me, inspector. {other}, now, was seen loitering near {victim}'s door.",
+      "Anyone with eyes could see {other} resented {victim}. I mention it only as a courtesy to your profession.",
+      "Pursue {other}, if you wish to be useful. {other} has been in debt to {victim} for months, I understand.",
+      "Between ourselves, {other} was ever so slightly too eager at supper. One notices such things, even if you do not."
+    ],
+    "commentary_self": [
+      "I do hope this will not take long. I have letters to write which will not wait.",
+      "It is quite unnecessary that I be questioned, but I shall indulge you, as one indulges a child.",
+      "I am accustomed to being consulted by people of consequence. Being questioned is a novelty, and not an agreeable one.",
+      "I will answer, since I must. I trust you will remember to whom you are speaking.",
+      "My schedule is not one for the faint of heart, inspector, yet I have given you a moment, and I do not give them lightly.",
+      "I have been asked far more intelligent questions by far more intelligent people, but go on."
+    ],
+    "refusal": [
+      "{speaker} lifts a hand to stop you. \"I decline to answer such a question just now. Ask again when I am inclined to bother with it.\"",
+      "{speaker} turns away to examine a picture frame in profound silence. \"Another time, inspector. I am not at your beck and call.\"",
+      "{speaker} looks you up and down and says nothing at all for a long moment. \"Return later. I shall consider it.\"",
+      "{speaker} gives a small, withering smile and shakes the head. \"Not at present. You may try again when I have leisure.\"",
+      "{speaker} folds both arms and stares over your shoulder. \"I shall not be hurried into it. Come back when you have learned patience.\"",
+      "{speaker} sniffs and waves you off like a fly. \"Not now. Ask once more, if you must, and perhaps I shall oblige.\""
+    ],
+    "repeat_lead": [
+      "I have already told you, and I dislike repeating myself,",
+      "As I stated a moment ago,",
+      "Since you evidently did not follow the first time,",
+      "To repeat what I said for your benefit,",
+      "I shall say it once more, slowly,",
+      "As I made perfectly clear before,"
+    ],
+    "repeat_close": [
+      "Pray write it down this time.",
+      "I trust that settles it.",
+      "I shall not say it a third time.",
+      "Please do try to keep up.",
+      "That is quite enough on the subject.",
+      "I do not repeat myself for amusement."
+    ],
+    "confession_defiant": [
+      "{speaker} rises with magnificent calm. \"I did it, and I regret nothing. {victim} presumed upon me, and the {weapon} in the {room} was the proper answer. Write that down, if you can spell it.\"",
+      "{speaker} regards you with open contempt. \"I did it. {victim} was an obstacle, and the {weapon} in the {room} removed it. I decline to apologise to those beneath me.\"",
+      "{speaker} draws up to full height. \"You wish a confession? Very well: I took the {weapon} to {victim} in the {room}. I will not explain myself to a clerk.\"",
+      "{speaker} lifts a chin. \"It was I, and I am entirely unrepentant. {victim}, the {weapon}, the {room}. I should do it again, and rather sooner.\"",
+      "{speaker} folds both arms with great dignity. \"I did it, and I choose to be proud of it. {victim}, the {room}, the {weapon}. History will thank me.\"",
+      "{speaker} sniffs. \"Yes, yes, I did it. {victim} presumed, and the {weapon} in the {room} corrected the presumption. Let that be recorded.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} lowers the proud head at last. \"I took the {weapon} to {victim} in the {room}, and I ended a life. I had thought myself above such things. It seems I was not.\"",
+      "{speaker} lowers the head, all grandeur gone. \"I did it. I took the {weapon} to {victim} in the {room}, and I have since discovered what pride costs. It is a very great deal.\"",
+      "{speaker} sits stiffly and speaks to the carpet. \"It was I. The {weapon}, the {room}, {victim}. I had thought myself superior to such acts. I am not, and I know it.\"",
+      "{speaker} presses fingers to the brow. \"I confess it. {victim} died by the {weapon} in the {room}, at my hand. I regret it, and I do not regret things as a rule.\"",
+      "{speaker} speaks slowly, voice rough. \"I killed {victim}, in the {room}, with the {weapon}. I have no grand excuse to offer. There is only shame, and I am unused to it.\"",
+      "{speaker} looks suddenly old. \"It was I. The {room}, the {weapon}, {victim}. I should like it recorded that I am sorry, and that it was not easy to say.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} smiles, thoroughly pleased. \"Bravo. Yes, I did it. {victim} met the {weapon} in the {room}, exactly as I planned. I shall admire my own work a little, if you don't mind.\"",
+      "{speaker} lets out a rich, satisfied laugh. \"Splendid, you got there at last! I did it. {victim} in the {room}, by the {weapon}, and not one of you caught on until now.\"",
+      "{speaker} bows slightly. \"Applause, if you please. {victim} met the {weapon} in the {room} exactly as I designed, and it was, I think, a masterpiece.\"",
+      "{speaker} spreads both arms wide. \"Yes, it was I, and I shall enjoy telling it. The {weapon}, the {room}, {victim}. A flawless piece of work, if I may say so.\"",
+      "{speaker} smiles, thoroughly satisfied. \"I did it, and I did it superbly. {victim}, the {room}, the {weapon}. You alone guessed, and even you were slow.\"",
+      "{speaker} adjusts a cuff with relish. \"It was me, of course. {victim} died in the {room} by the {weapon}, and I should do it exactly the same way again.\""
+    ],
+    "confession_furious": [
+      "{speaker} slams a fist on the table. \"Yes! {victim} insulted me for the last time! I took the {weapon} to the {room}, and I would again, you impudent creatures!\"",
+      "{speaker} slams a fist down. \"Yes! I did it! {victim} insulted me before the whole house! The {weapon}, the {room}, and it was exactly what such insolence deserved!\"",
+      "{speaker} trembles with rage. \"How dare you question me! Yes, I killed {victim}, in the {room}, with the {weapon}, and I'd do it again to anyone who treated me so!\"",
+      "{speaker} rounds on the company. \"I was humiliated! By {victim}! The {weapon}, the {room}, and that is the end of the matter!\"",
+      "{speaker} snarls, grandeur cracking. \"You insolent pack! Yes, it was me! {victim}, the {room}, the {weapon}, and none of you shall say a word against it!\"",
+      "{speaker} hurls a glass to the floor. \"I did it! {victim} had mocked me for the last time! The {weapon}, the {room}, and I regret nothing, nothing!\""
+    ],
+    "confession_resigned": [
+      "{speaker} sighs and brushes a speck from a sleeve. \"It was me. The {weapon}, the {room}, {victim}. It was all rather tedious, and so is this. Shall we get on?\"",
+      "{speaker} gives a very long-suffering sigh. \"It was I. {victim}, the {weapon}, the {room}. I assume you will want signatures. I shall be brief.\"",
+      "{speaker} inspects a fingernail. \"Yes, I did it. The {weapon}, in the {room}, to {victim}. It was a tiresome business altogether, and so is this.\"",
+      "{speaker} regards you wearily. \"I suppose it was inevitable. I did it. {victim}, the {room}, the {weapon}. Do try to be quick about the arrests.\"",
+      "{speaker} lowers into a chair with great ceremony. \"It was I, inspector. The {weapon}, the {room}, {victim}. I have nothing grand to say, which is unlike me.\"",
+      "{speaker} waves a hand. \"Oh, very well. I did it. {victim}, the {weapon}, the {room}. Take me away, and do mind the carpet.\""
+    ],
+    "ambush_locked": [
+      "{speaker} enters, locks the door, and pockets the key with great composure. \"You are a persistent person. {victim} died in the {room}, by the {weapon}, at my hand. You will not repeat it.\"",
+      "The lock turns, and {speaker} regards you coolly. \"I did kill {victim}, with the {weapon}, in the {room}. I had thought you beneath notice. I was mistaken, but only briefly.\"",
+      "{speaker} bolts the door and straightens a cuff. \"Since you have come so far: the {room}, the {weapon}, and {victim}. I will not allow a mere inspector to ruin me.\"",
+      "Swinging the door shut, {speaker} locks it and smiles thinly. \"{victim} fell in the {room} to the {weapon}, by my arrangement. You, I fear, are about to be rearranged also.\"",
+      "{speaker} turns the key without haste. \"I shall say it plainly, as you seem to need it: I killed {victim} with the {weapon} in the {room}. Now you will stay quiet, permanently.\"",
+      "{speaker} shuts and locks the door, as one closing a ledger. \"{victim}, the {weapon}, the {room}. All mine. And you, inspector, are now an inconvenience of the first order.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door with a precise turn, plucks the {weapon} from your hands as if from a child, and strikes with cold dignity.",
+      "The key turns smoothly. {speaker} seizes the {weapon} from you, says nothing, and brings it down without a flicker of doubt.",
+      "With an air of vast disdain, {speaker} locks the door, snatches the {weapon} from your grasp and strikes.",
+      "{speaker} bolts the door, takes the {weapon} from you with a single imperious pull, and swings.",
+      "One turn of the key, one sweep of an arm: {speaker} has the {weapon} out of your hands and strikes down with hauteur.",
+      "{speaker} locks the door, glances at the {weapon} you are foolishly carrying, wrenches it away, and strikes."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} rises, deeply offended. \"The {chosen_room}? Preposterous. It was the {room}, where {victim} met the {weapon}. I will not be misquoted by an amateur.\"",
+      "{speaker} stands and smooths a coat. \"You have the room wrong, inspector. Not the {chosen_room}, but the {room}. I used the {weapon} on {victim} there, and I will have it recorded correctly.\"",
+      "{speaker} pushes back a chair with a screech. \"The {chosen_room}, you say? Nonsense. {victim} died in the {room}, by the {weapon}, and I did it. Do get it right.\"",
+      "{speaker} stands with great dignity. \"It is vexing to hear it botched. Not the {chosen_room}. The {room}. The {weapon}, {victim}, and I, as I intended.\"",
+      "{speaker} rises, almost amused. \"Close, but not so. The {room}, not the {chosen_room}. I took the {weapon} to {victim} there, and I shall not have my work misdescribed.\"",
+      "{speaker} sets down a glass and stands. \"The wrong room, I fear. The {chosen_room} was blameless. It was the {room}, and the {weapon}, and {victim}. I did it.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} stands. \"Enough. The room is right, but the person is a fool's choice. I used the {weapon} on {victim} in the {room}. I shall not let a lesser mind carry my credit.\"",
+      "{speaker} rises with an air of weary superiority. \"You have blamed the wrong person. It was I who took the {weapon} to {victim} in the {room}. Do attend.\"",
+      "{speaker} stands and raps the table. \"No. That person could not have managed it. The {weapon}, {victim}, the {room}: all mine.\"",
+      "{speaker} pushes back a chair, offended on another's behalf. \"Quite wrong, inspector. The {room} is correct, the culprit is not. I killed {victim} with the {weapon}.\"",
+      "{speaker} stands in a swirl of coat. \"It is simple courtesy to correct such blunders. {victim}, the {weapon}, the {room}. It was I, and nobody else.\"",
+      "{speaker} rises, unhurried. \"A passable guess at the room, and a poor guess at the person. I took the {weapon} to {victim} in the {room}. Do sit down, everyone.\""
+    ]
+  },
+  "guarded": {
+    "opening": [
+      "{speaker} folds both arms and eyes you for a long moment before saying,",
+      "{speaker} shrugs, flat-faced, and says,",
+      "{speaker} glances at the door, then at you, and mutters,",
+      "{speaker} answers without moving anything but the lips,",
+      "{speaker} narrows both eyes and says,",
+      "{speaker} exhales through the nose and replies,"
+    ],
+    "claim_solo": [
+      "Alone. The {room}. All evening.",
+      "I was in the {room}. Alone. The whole evening. That's it.",
+      "Alone in the {room}, all evening. No one saw me. Write what you like.",
+      "The {room}. Alone, the entire evening. Nothing more to it.",
+      "Alone in the {room} the whole evening. Don't ask me to dress it up.",
+      "I stayed in the {room}, alone, the entire evening. You can believe it or not."
+    ],
+    "claim_pair": [
+      "With {partner}. The {room}. All evening.",
+      "I was in the {room} with {partner} the whole evening. Ask {partner}, not me.",
+      "{partner} and I, the {room}, together all evening. That's it.",
+      "The {room}, with {partner}, the entire evening. We stayed put.",
+      "Together with {partner} in the {room} all evening. Check it if you must.",
+      "I sat with {partner} in the {room} the whole evening. Nothing else happened."
+    ],
+    "commentary_victim": [
+      "{victim} and I weren't close. Leave it at that.",
+      "I didn't like {victim}. I didn't wish this either.",
+      "{victim} is dead. I'm told it's sad. I'll take your word.",
+      "I knew {victim}. Not well. Not much to say.",
+      "Everyone's sorry about {victim} now. Funny, that.",
+      "{victim} kept to the usual rounds. I kept to mine."
+    ],
+    "commentary_suspect": [
+      "Try {other}. Ask about {victim}. See how that answer goes.",
+      "{other} was in a mood this evening. Ask why.",
+      "I'd look at {other}. I won't say more than that.",
+      "{other} knows more about {victim} than they let on. Ask.",
+      "Talk to {other}. Watch the hands.",
+      "Not me. {other}, perhaps. {victim} owed {other} something."
+    ],
+    "commentary_self": [
+      "I don't care to be questioned. Ask, then be done.",
+      "I'll answer what's asked. Nothing extra.",
+      "Don't take the short answers personally. It's how I am.",
+      "I keep my own counsel. Always have.",
+      "I answered. That should do.",
+      "You'll get the facts. Not the story."
+    ],
+    "refusal": [
+      "{speaker} stares at the wall and says nothing. \"Not now.\"",
+      "{speaker} turns a shoulder to you and shakes the head. \"No. Try later, perhaps.\"",
+      "{speaker} presses both lips together, then mutters, \"Ask me again, some other time.\"",
+      "{speaker} looks away, jaw tight. \"Not answering that. Not yet.\"",
+      "{speaker} gives you a flat look and keeps silent. After a moment, \"Later.\"",
+      "{speaker} shrugs off the question and moves a step back. \"I'll think about it. Ask again.\""
+    ],
+    "repeat_lead": [
+      "Same as before,",
+      "As I said,",
+      "Again, then,",
+      "I told you already,",
+      "Once more,",
+      "Still the same,"
+    ],
+    "repeat_close": [
+      "I have nothing to add.",
+      "That's all.",
+      "Don't ask a third time.",
+      "Same answer, always.",
+      "Nothing's changed.",
+      "That's the lot."
+    ],
+    "confession_defiant": [
+      "{speaker} meets your eyes and says flatly, \"Yes. {victim}. The {weapon}, in the {room}. I did it, and I won't make speeches about it. Think what you like.\"",
+      "{speaker} says flatly, \"I did it. {victim}. The {weapon}, in the {room}. They earned it. I'll not say more, and I'll not say sorry.\"",
+      "{speaker} leans back. \"Fine. It was me. The {room}, the {weapon}, {victim}. And I'd do it the same. Next question.\"",
+      "{speaker} holds your eye. \"Yes. I killed {victim}, in the {room}, with the {weapon}. Go on, look horrified. It won't change it.\"",
+      "{speaker} lifts both hands, palms out. \"Mine. The {weapon}, the {room}, {victim}. No excuses. I said what I did and I'll stand by it.\"",
+      "{speaker} snorts. \"You've got it right, for once. {victim}, the {weapon}, the {room}. I'm not ashamed, if that's what you're hoping for.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} looks at the floor. \"The {weapon}. The {room}. {victim}. I did it. I wish I hadn't. I've not slept since, and that's all I'll say.\"",
+      "{speaker} drops the gaze. \"It was me. The {weapon}. The {room}. {victim}. I'd take it back if I could. I can't.\"",
+      "{speaker} speaks slowly. \"I did it. {victim}, in the {room}, with the {weapon}. It's been sitting on me ever since. I'm sorry.\"",
+      "{speaker} rubs a face with both hands. \"Yes. {victim}. The {weapon}. The {room}. I'm not proud. Not of any of it.\"",
+      "{speaker} breathes out. \"I killed {victim}, in the {room}, with the {weapon}. I haven't slept right since. That's the truth.\"",
+      "{speaker} nods once, barely. \"It was me. The {weapon}, the {room}, {victim}. I wish it were otherwise. That's all I can say.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} allows a thin smile. \"Took you long enough. {victim}, in the {room}, with the {weapon}. Clean, quiet. I'll not deny it was well done.\"",
+      "{speaker} smiles slowly. \"Well. You got there. {victim}, the {weapon}, the {room}. It was me, and nobody saw it. I enjoyed that.\"",
+      "{speaker} sits back, satisfied. \"Yes. I did it. The {room}, the {weapon}, {victim}. A quiet job, done right. Don't look so surprised.\"",
+      "{speaker} gives a dry little laugh. \"Clever. Not clever enough, until now. {victim}, in the {room}, with the {weapon}. Mine.\"",
+      "{speaker} folds both arms, almost pleased. \"I did it. The {weapon}, the {room}, {victim}. You asked, I answered. Rare, for me.\"",
+      "{speaker} grins, showing teeth. \"Finally. {victim}, the {weapon}, the {room}. All me, and clean as a whistle.\""
+    ],
+    "confession_furious": [
+      "{speaker} snaps, \"Yes! I did it! {victim} had it coming. The {weapon}, the {room}, done. Satisfied? Now leave me be!\"",
+      "{speaker} bites out, \"Yes, I did it! {victim} pushed, and pushed! The {weapon}, the {room}. Now stop looking at me!\"",
+      "{speaker} smashes a fist on the table. \"It was me! {victim}! The {room}! The {weapon}! Say it back to me and I'll lose my temper.\"",
+      "{speaker} turns on the room. \"I did it. {victim} had it coming. The {weapon}, the {room}. Any of you would've done the same.\"",
+      "{speaker} hisses, \"Yes. I killed {victim}. The {weapon}. The {room}. I'm done being asked. Done.\"",
+      "{speaker} growls, \"Fine! It was me! {victim}, the {weapon}, the {room}! Now leave me be, all of you!\""
+    ],
+    "confession_resigned": [
+      "{speaker} shrugs, flat-voiced. \"Me. {victim}. The {weapon}, in the {room}. That's it. Do what you do.\"",
+      "{speaker} sighs. \"It was me. {victim}, the {weapon}, the {room}. No point denying it. Let's finish.\"",
+      "{speaker} lowers into a seat. \"I did it. The {room}, the {weapon}, {victim}. I won't fight it.\"",
+      "{speaker} gives a short nod. \"Mine. {victim}. The {weapon}, in the {room}. I'm tired of the rest.\"",
+      "{speaker} spreads both hands. \"Yes. The {weapon}, the {room}, {victim}. It's done. So am I.\"",
+      "{speaker} looks at the wall. \"I did it. {victim}, the {room}, the {weapon}. That's all there is.\""
+    ],
+    "ambush_locked": [
+      "The door shuts. A key turns. {speaker} says, \"{victim}. The {room}. The {weapon}. Me. You weren't to find that out. Sit. Stay quiet.\"",
+      "{speaker} bolts the door and pockets the key. \"You talk too much to too many. I used the {weapon} on {victim} in the {room}. You'll not tell.\"",
+      "{speaker} locks you in without a word, then speaks low. \"The {room}. The {weapon}. {victim}, dead by my hand. Make a noise and you're next.\"",
+      "A lock clicks behind you. {speaker} leans on the door. \"Yes, {victim}. The {weapon}, in the {room}. And now you. Don't move.\"",
+      "{speaker} turns the key and stares at you. \"Here's what you wanted: {victim}, the {room}, the {weapon}. Mine. Now it's your problem.\"",
+      "Silent as ever, {speaker} locks the door, then says, \"I killed {victim}. In the {room}, with the {weapon}. You won't leave to say it.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door without a word, takes the {weapon} from your hands and strikes.",
+      "A key turns. {speaker} snatches the {weapon} from you, and the blow follows, quick and silent.",
+      "{speaker} bolts the door, eyes on the {weapon} in your grip. One pull, and then it comes down.",
+      "No warning. {speaker} locks the door, rips the {weapon} away and swings.",
+      "{speaker} slides the bolt, steps in, takes the {weapon} off you and hits hard.",
+      "Door locked, {speaker} grabs the {weapon} from your hands and strikes in one flat motion."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} stands. \"Not the {chosen_room}. The {room}. {victim}, the {weapon}. I did it. Get it right.\"",
+      "{speaker} rises and says, \"Wrong room. It was the {room}, not the {chosen_room}. The {weapon}. {victim}. Mine.\"",
+      "{speaker} pushes a chair back. \"The {chosen_room}? No. The {room}. I took the {weapon} to {victim} there. Write it properly.\"",
+      "{speaker} gets up, jaw set. \"You're off. {victim} died in the {room}, by the {weapon}. Not the {chosen_room}. That was me.\"",
+      "{speaker} stands slowly. \"Not the {chosen_room}. I'll correct you that much. The {room}. The {weapon}. {victim}. Me.\"",
+      "{speaker} rises, voice flat. \"Wrong room, inspector. Not the {chosen_room}. The {room}. I held the {weapon}. {victim} never left it alive.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} stands. \"Wrong person. Right room. The {weapon}, the {room}, {victim}. I did it. Leave them be.\"",
+      "{speaker} rises and says, \"Stop. Not them. I used the {weapon} on {victim} in the {room}. Me.\"",
+      "{speaker} pushes a chair back. \"You've the room right. Not the person. {victim}. The {weapon}. The {room}. Mine.\"",
+      "{speaker} gets up, jaw set. \"Leave them. I did it. The {room}, the {weapon}, {victim}. That's the truth.\"",
+      "{speaker} stands slowly. \"Wrong one. I took the {weapon} to {victim} in the {room}. Don't hang this on someone else.\"",
+      "{speaker} rises, voice flat. \"Not them. Me. {victim}, the {room}, the {weapon}. Now you know.\""
+    ]
+  },
+  "hot_tempered": {
+    "opening": [
+      "{speaker} slaps a palm on the nearest table and snaps,",
+      "{speaker} rounds on you, red in the face, and barks,",
+      "{speaker} cuts you off before you've finished and snaps,",
+      "{speaker} glares, jaw working, and says through clenched teeth,",
+      "{speaker} jabs a finger toward your chest and growls,",
+      "{speaker} throws up both hands in disgust and says,"
+    ],
+    "claim_solo": [
+      "I was alone in the {room}, the whole evening! Alone! Is that so hard to believe?",
+      "Alone in the {room}, all evening, and I'll thank you not to look at me like that.",
+      "You want to know? I was alone in the {room} the entire evening, and nobody was fool enough to bother me.",
+      "How many ways can I say it? Alone, in the {room}, all evening. There!",
+      "I sat alone in the {room} the whole evening, and a fine thing it is to be asked about it now.",
+      "Alone! The {room}! All evening! What else do you want, a signed statement?"
+    ],
+    "claim_pair": [
+      "I was with {partner} in the {room} the whole evening, and I'll not hear a word against it!",
+      "{partner} and I were together in the {room} all evening, so put that in your notebook and be done.",
+      "With {partner}! In the {room}! The entire evening! Ask {partner}, and don't dare pester us both.",
+      "I was in the {room} with {partner} the whole evening. Together. Is that plain enough for you?",
+      "Where do you think I was? In the {room}, with {partner}, all evening, that's where.",
+      "The {room}, with {partner}, the entire evening, and I resent having to prove it."
+    ],
+    "commentary_victim": [
+      "{victim} had a tongue like a saw, and I never kept quiet about it. Don't act so shocked.",
+      "I couldn't stand {victim}, and I said so often. That doesn't make this any less sickening.",
+      "{victim} was a good friend once, and this makes my blood boil to think of.",
+      "Don't ask me to weep for {victim}. Respect, yes. Weeping, no.",
+      "{victim}! Whoever did this ought to be hauled up before the whole county!",
+      "I owe {victim} nothing and I miss {victim} anyway, which makes me angrier than anything."
+    ],
+    "commentary_suspect": [
+      "If you want a real villain, look at {other}! {other} was snarling at {victim} only yesterday!",
+      "Why aren't you hounding {other}? {other} and {victim} had a screaming row, and everyone heard.",
+      "Go and bother {other}! {other} has been slinking about ever since {victim} was found!",
+      "I'd ask {other} a few hard questions if I were you, and not take any nonsense from {other}, either.",
+      "{other} was sulking all evening! Ask what {victim} said to {other} at supper!",
+      "Try {other}, for pity's sake! {victim} had been threatening to do something about {other} for weeks."
+    ],
+    "commentary_self": [
+      "I'll answer, but I won't enjoy it, and I won't be spoken to like a servant.",
+      "I have a temper, I'm told. You'll be fortunate if that's all you get from me.",
+      "Every five minutes somebody asks something stupid. Yours is no worse than the rest, I suppose.",
+      "Get on with it! I've sat in this house all day and I'm sick of the sight of the carpet.",
+      "I don't care who hears me. Ask what you like, and be quick.",
+      "Don't look so solemn. Everyone's wound up tight and I'm no exception."
+    ],
+    "refusal": [
+      "{speaker} turns on a heel and snarls, \"No! Not now! Ask me again when I've calmed down, and not before!\"",
+      "{speaker} slams a hand on the arm of a chair. \"I'm not answering that this minute! Come back later!\"",
+      "{speaker} stalks off a few paces, fuming, then spits over a shoulder, \"Ask me again in a quarter hour. Not now.\"",
+      "{speaker} glares and bites off a reply. \"Enough! Try again later, when I can stand the sight of you.\"",
+      "{speaker} waves you away with a furious hand. \"Not now, I said! Pester me again in a bit, if you must.\"",
+      "{speaker} crosses both arms and breathes loud through the nose. \"No. Not yet. Come back when I'm fit to be spoken to.\""
+    ],
+    "repeat_lead": [
+      "I've said it already, and I'll say it again,",
+      "Are you deaf? As I told you,",
+      "Again?! Very well,",
+      "For the second time, then,",
+      "Listen this time,",
+      "Do keep up! As I said,"
+    ],
+    "repeat_close": [
+      "Now stop asking!",
+      "Are we quite finished?",
+      "Write it down and be done!",
+      "That's the same answer, and it'll be the same tomorrow.",
+      "I won't say it a third time!",
+      "Enough, now!"
+    ],
+    "confession_defiant": [
+      "{speaker} bangs a fist down. \"Yes, I did it! {victim} had it coming, so I took the {weapon} to the {room}, and I'll not grovel for you or anyone!\"",
+      "{speaker} jabs a finger at you. \"Yes, I did it, and I'd do it again! {victim} had it coming! The {weapon}, the {room}, and not a word of regret from me!\"",
+      "{speaker} slams a hand on a table. \"I killed {victim}, and what of it? The {weapon}, in the {room}! Go on, arrest me, see if I care!\"",
+      "{speaker} stands, chest heaving. \"It was me, you idiots! {victim} walked into the {room}, and I was waiting with the {weapon}. Not sorry!\"",
+      "{speaker} spits, \"All right, I did it! {victim} pushed me, and I pushed back with the {weapon}, in the {room}! There's your confession!\"",
+      "{speaker} snarls, \"Yes! Me! The {room}, the {weapon}, {victim}! And I'll not stand here being sneered at for it!\""
+    ],
+    "confession_remorseful": [
+      "{speaker} slumps, rage draining away. \"Curse it all, I did it. I took the {weapon} to {victim} in the {room}, and the second I did, I wanted it undone. I can't undo it.\"",
+      "{speaker} sags, fury gone. \"I did it. Curse it, I did it. The {weapon}, the {room}, {victim}. I lost my head, and now I'd give a leg to get it back.\"",
+      "{speaker} sits down hard and stares at both hands. \"I never meant it to go that far. I took the {weapon} to {victim} in the {room}, and then I couldn't stop.\"",
+      "{speaker} covers both eyes. \"It was me, all right? And it's been eating me alive. {victim}, in the {room}, with the {weapon}. I'm sorry. Satisfied?\"",
+      "{speaker} mutters, voice raw, \"I did it. In a rage, in the {room}, with the {weapon}. {victim} didn't deserve that. I know it now.\"",
+      "{speaker} breathes out hard. \"Curse my temper. I killed {victim}, in the {room}, with the {weapon}. I'd undo it now if I could.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} laughs, harsh and loud. \"Yes! Me! I laid {victim} out in the {room} with the {weapon}, and you were all too slow to stop me! Ha!\"",
+      "{speaker} roars with laughter. \"Yes, me, you slow lot! {victim} in the {room}, the {weapon}, and not one of you stopped me! Ha, what a night!\"",
+      "{speaker} stamps a foot, grinning. \"I did it! The {weapon}, the {room}, {victim} laid out! And you were all too busy gossiping!\"",
+      "{speaker} slaps a thigh. \"Hah! You finally got it! I did it! {victim}, the {room}, the {weapon}! I'd do it again for the look on your faces!\"",
+      "{speaker} crows, \"It was me! I'm not hiding it! {victim}, in the {room}, with the {weapon}, and every one of you walked right past me!\"",
+      "{speaker} leans on the table, flushed with triumph. \"Yes, I did it, and I'll enjoy saying so! {victim}, the {weapon}, the {room}. Well played, me!\""
+    ],
+    "confession_furious": [
+      "{speaker} shouts, shaking a fist. \"Of course I did it! {victim} pushed me too far! The {weapon}, the {room}, and I'd do it again this instant, so don't test me!\"",
+      "{speaker} bellows, \"Yes, it was me! {victim} spat in my face once too often! The {weapon}, the {room}, and I'd do it a hundred times!\"",
+      "{speaker} hurls a chair aside. \"You want the truth? I killed {victim}! In the {room}! With the {weapon}! And I'd do it this instant!\"",
+      "{speaker} rounds on the whole room. \"I did it! And not one of you stopped {victim} from tormenting me! The {weapon}, the {room}, and good riddance!\"",
+      "{speaker} slams both fists down. \"It was me! {victim} drove me to it! The {room}, the {weapon}! Look at me like that again and see what happens!\"",
+      "{speaker} shouts, voice cracking. \"All right! All right! I took the {weapon} to {victim} in the {room}! And if you ask me why, I'll scream!\""
+    ],
+    "confession_resigned": [
+      "{speaker} drops into a chair with a snort. \"Oh, what's the use. I did it. The {weapon}, the {room}, {victim}. Shout all you like, I've no fight left.\"",
+      "{speaker} shakes a head. \"Oh, to blazes with it. I did it. {victim}, the {weapon}, the {room}. I've no fight left. Go on.\"",
+      "{speaker} drops into a chair. \"Yes, it was me. {victim}. The {room}. The {weapon}. I'm too worn out to shout about it.\"",
+      "{speaker} snorts and gives a tired grin. \"Well, you've caught me. The {weapon}, the {room}, {victim}. At least I can stop pretending.\"",
+      "{speaker} leans on the wall, sullen. \"I did it. Satisfied? {victim}, the {room}, the {weapon}. There's nothing more to say.\"",
+      "{speaker} slumps, temper spent. \"It was me. I took the {weapon} to {victim} in the {room}. Can't even be angry about it now.\""
+    ],
+    "ambush_locked": [
+      "{speaker} storms in, slams the door and turns the key. \"Yes, I did it! {victim}, the {weapon}, the {room}! And you're going to stop nosing about, one way or another!\"",
+      "The bolt slams home. {speaker} wheels on you, furious. \"You couldn't leave it alone! I killed {victim} with the {weapon} in the {room}, and you'll not tell a soul!\"",
+      "{speaker} kicks the door shut and locks it. \"I'm sick of you! {victim} died in the {room}, by the {weapon}, by my hand! Now what are you going to do about it?\"",
+      "Snatching the key, {speaker} locks the door with a crash. \"Go on, ask! The {room}, the {weapon}, {victim}, and it was me! Nobody walks out that door to tell it!\"",
+      "{speaker} spins round and slams the bolt. \"I told you to stop! {victim} is dead in the {room} from the {weapon}, and you're about to join the list!\"",
+      "{speaker} locks the door with a violent twist. \"I'm done being polite! It was the {weapon}, in the {room}, on {victim}! And I'll do it to you if you cry out!\""
+    ],
+    "ambush_grab": [
+      "{speaker} slams the door, twists the key, rips the {weapon} from your hands with a snarl and strikes.",
+      "With a furious curse, {speaker} locks the door, wrenches the {weapon} out of your grip and swings.",
+      "{speaker} kicks the door shut, locks it, tears the {weapon} from you and brings it down in a rage.",
+      "The bolt slams home. {speaker} snatches the {weapon} you carry and strikes before you can say a word.",
+      "{speaker} locks the door with a crash, grabs the {weapon} out of your hands and lashes out.",
+      "Face dark with fury, {speaker} turns the key, yanks the {weapon} away from you and strikes hard."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} leaps up. \"The {chosen_room}? Are you blind? It was the {room}! {victim} died there, by the {weapon}, and it was me!\"",
+      "{speaker} shoves back a chair. \"Wrong, wrong, wrong! Not the {chosen_room}, the {room}! The {weapon}, {victim}, all of it, mine!\"",
+      "{speaker} stands, fists clenched. \"I won't sit here while you botch it! It wasn't the {chosen_room}! It was the {room}, with the {weapon}, and {victim} had it coming!\"",
+      "{speaker} rises with a roar. \"Not the {chosen_room}, you fool! The {room}! I took the {weapon} to {victim} there and I won't have it said otherwise!\"",
+      "{speaker} bangs the table. \"Get it right! The {room}, not the {chosen_room}! {victim}, the {weapon}, and me! Now are you satisfied?\"",
+      "{speaker} jumps to feet, furious. \"The {chosen_room}! Ha! Typical! It was the {room}, and the {weapon}, and {victim} never stood a chance!\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} jumps up. \"Leave them alone! You've the {room} right, so listen, I took the {weapon} to {victim}! It was me!\"",
+      "{speaker} slams back a chair. \"Wrong person, you blockhead! The {weapon}, the {room}, {victim}, it was all mine!\"",
+      "{speaker} stands, red in the face. \"I won't have an innocent blamed for my work! It was the {room}, and the {weapon}, and {victim} is dead by my hand!\"",
+      "{speaker} rises with a roar. \"Stop it! I did it! The {room}, the {weapon}, {victim}! Blame me and be done!\"",
+      "{speaker} bangs the table. \"You've got the wrong person! I took the {weapon} to {victim} in the {room}, and don't you forget it!\"",
+      "{speaker} shoves to feet. \"Enough of this farce! The {room} is right, the person is wrong. {victim} met the {weapon} by my hand!\""
+    ]
+  },
+  "curious": {
+    "opening": [
+      "{speaker} tilts the head, eyes bright, and says,",
+      "{speaker} leans closer, as if inspecting you, and says,",
+      "{speaker} taps a chin thoughtfully and says,",
+      "{speaker} glances about the room, taking in every corner, and says,",
+      "{speaker} raises one eyebrow with obvious interest and says,",
+      "{speaker} peers at your notebook, then up at you, and says,"
+    ],
+    "claim_solo": [
+      "I was alone in the {room} all evening. Rather odd, now I think on it, that no one looked in once. Don't you find that odd?",
+      "Alone in the {room}, the whole evening. I watched the shadows on the wall move, which is a poor sort of witness, isn't it?",
+      "I sat the whole evening alone in the {room}. Whoever passed the door, I'd have heard them, but nobody stopped.",
+      "I was alone in the {room} the whole evening. Does that sound suspicious to you? It does to me, a little.",
+      "Alone, in the {room}, all evening. I counted the cracks in the ceiling. Seven, if you were wondering.",
+      "The whole evening, alone in the {room}. And what do you make of a house where nobody checks on anybody?"
+    ],
+    "claim_pair": [
+      "I was with {partner} in the {room} the whole evening. You'll want to know what we discussed, won't you?",
+      "{partner} and I were together in the {room} all evening. Strange how a house empties when something's afoot, isn't it?",
+      "I sat with {partner} in the {room} the entire evening. Have you spoken to {partner} yet? I'd love to hear the version.",
+      "The {room}, with {partner}, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house.",
+      "I was in the {room} with {partner} the whole evening. Does it help or hinder, being two? I can't decide.",
+      "With {partner}, in the {room}, the entire evening. I've been wondering since what the others were doing. Haven't you?"
+    ],
+    "commentary_victim": [
+      "Now, what did {victim} know that made this happen? That's what keeps me awake.",
+      "{victim} was a puzzle to me, always. I never could tell what {victim} really wanted.",
+      "I did not much like {victim}, but I did find {victim} fascinating. Is that a terrible thing to say?",
+      "Poor {victim}. And yet, I keep wondering who saw {victim} last. Have you asked about that?",
+      "{victim} was like a clock with the back off, all moving parts. I shall miss watching.",
+      "I hardly knew {victim}, if I'm honest, but I can't stop thinking about the last thing {victim} said at supper."
+    ],
+    "commentary_suspect": [
+      "Has anyone asked {other} what {other} was doing? I'm only curious, but {other} avoided {victim} all week.",
+      "What do you make of {other}? Mind, I don't say anything, but {other} kept staring at {victim}'s door.",
+      "If it were me, I'd press {other}. Why would {other} take such an interest in {victim}'s habits?",
+      "{other} was nearby when {victim} was last seen, wasn't {other}? Or am I misremembering?",
+      "I wonder about {other}, truthfully. Why did {other} stop speaking with {victim} so suddenly?",
+      "Ask {other} about {victim}. It's only an idea, but I noticed {other} change the subject rather quickly."
+    ],
+    "commentary_self": [
+      "I do love being asked things, you know. It makes me notice how much I've noticed.",
+      "Ask me anything. I'd like to know what you're looking for, though, if it's allowed.",
+      "I'm afraid I pay attention to everything. A dreadful habit, but it may be of use today.",
+      "You must hear a great deal, inspector. Do people ever tell you the truth the first time?",
+      "I've been wandering the house all day, trying to piece it together. I haven't managed yet.",
+      "I'd offer a theory, but I haven't enough yet. Give me another hour and a few clues."
+    ],
+    "refusal": [
+      "{speaker} raises a finger, pauses, and smiles. \"Hold on. I'd like to think about that first. Ask me again?\"",
+      "{speaker} tilts the head and murmurs, \"Why do you ask, I wonder? I'd rather not say just now. Try me later.\"",
+      "{speaker} narrows both eyes, intrigued, and keeps silent. \"Not yet. Come back in a little while, will you?\"",
+      "{speaker} turns the question over, frowns, then shakes the head. \"I'd rather wait. Ask me later, and I'll tell you what I think.\"",
+      "{speaker} answers a question with a question and a shrug. \"Can we leave that for the moment? Do ask me again.\"",
+      "{speaker} steps back, still studying you. \"Not right now. I want to see where this goes first. Ask me once more.\""
+    ],
+    "repeat_lead": [
+      "Didn't I say? Well, again then,",
+      "Why, I told you already,",
+      "Let me say it once more, in case I missed something,",
+      "Same as before, though I wonder why you ask twice,",
+      "As I said, and I'm curious why it matters,",
+      "Once more, then, since you ask,"
+    ],
+    "repeat_close": [
+      "Why do you ask twice, I wonder?",
+      "Does that match what the others said?",
+      "Is there something I've missed?",
+      "I'd be glad to know what you make of it.",
+      "I do hope that's useful.",
+      "Is it as you expected?"
+    ],
+    "confession_defiant": [
+      "{speaker} folds both arms, eyes bright. \"Yes, it was me. {victim} was in the {room}, and I used the {weapon}. You'll want to know why, but I'll not give you the satisfaction.\"",
+      "{speaker} lifts a chin, bright-eyed. \"Yes, I did it. {victim}, in the {room}, with the {weapon}. You'll want to ask why. I won't tell you, and I'll enjoy watching you wonder.\"",
+      "{speaker} says coolly, \"Very good. It was me. The {weapon}, the {room}, {victim}. I wanted to see how it would feel, and I'm not sorry I found out.\"",
+      "{speaker} folds both hands. \"I killed {victim}, in the {room}, with the {weapon}. Don't ask whether I regret it. I'm more interested in what you'll do next.\"",
+      "{speaker} tilts the head. \"Yes, me. The {room}, the {weapon}, {victim}. Go on, ask your questions. I've nothing to hide any more.\"",
+      "{speaker} shrugs. \"I did it. {victim} knew something, I wanted it, and the {weapon} in the {room} was the quickest way. I'm not apologising.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} sits down slowly. \"I keep asking myself why I did it. I took the {weapon} to the {room} and ended {victim}. I thought I wanted to know how it felt. I wish I never had.\"",
+      "{speaker} stares at the floor. \"I only wanted to know what {victim} knew. I took the {weapon} to the {room}, and it got away from me. I'm sorry.\"",
+      "{speaker} sits down slowly. \"It was me. The {room}, the {weapon}, {victim}. And I keep wondering how I let it happen. Why didn't I stop?\"",
+      "{speaker} presses a hand to the mouth. \"Oh, what have I done? I killed {victim}, in the {room}, with the {weapon}. I never asked myself what came after.\"",
+      "{speaker} speaks barely above a whisper. \"I did it. {victim}, the {weapon}, the {room}. I keep going over it, looking for where I went wrong.\"",
+      "{speaker} lowers both eyes. \"I was so curious about everything. About {victim}. And then the {weapon}, and the {room}, and it was over. I'm sorry.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} grins. \"Oh, well done! Yes, I did it. {victim}, the {weapon}, the {room}. I wondered whether anyone would notice, and now I know. You took ages.\"",
+      "{speaker} laughs with real delight. \"At last, someone asked the right questions! Yes, it was me. {victim}, the {weapon}, the {room}. Tell me, how did you see it?\"",
+      "{speaker} claps once. \"Marvellous! I did it. The {room}, the {weapon}, {victim}. I wondered how long it would take. Do tell me what gave me away.\"",
+      "{speaker} leans forward, eyes shining. \"Yes, I killed {victim}, in the {room}, with the {weapon}. Wasn't that clever of me? I'd love to hear your theory.\"",
+      "{speaker} grins. \"Ah, there it is. It was me. {victim}, the {room}, the {weapon}. Do you know, I was starting to think nobody would ask?\"",
+      "{speaker} sits back, delighted. \"You've done it! I did it. The {weapon}, the {room}, {victim}. And I'm dying to know which clue betrayed me.\""
+    ],
+    "confession_furious": [
+      "{speaker} spins on you. \"Yes, I did it! {victim} saw too much, asked too much! I took the {weapon} to the {room}, and I'm only sorry it wasn't sooner!\"",
+      "{speaker} rounds on you. \"Why must everyone keep asking! Yes, I did it! {victim} was in the {room}, and I took the {weapon}, and I'll not answer a single more question!\"",
+      "{speaker} snaps, \"You want to know? You always want to know! I killed {victim}, in the {room}, with the {weapon}! There!\"",
+      "{speaker} slams a book shut. \"Yes, it was me! {victim} lied about everything, and I found out! The {weapon}, the {room}! And I'd do it again!\"",
+      "{speaker} shouts, \"I asked and I asked and {victim} wouldn't tell me! So the {weapon}, in the {room}! Are you satisfied now?\"",
+      "{speaker} turns on the company. \"All of you, so curious, so nosy! Yes, I did it! {victim}, the {room}, the {weapon}! Now stop staring!\""
+    ],
+    "confession_resigned": [
+      "{speaker} sighs, almost smiling. \"It was me. The {weapon}, in the {room}, on {victim}. You'd ask why, and I'd have to say I'm not sure. There it is.\"",
+      "{speaker} sighs. \"I suppose it was bound to come out. It was me. {victim}, the {weapon}, the {room}. Do you want my reasons, or shall we skip them?\"",
+      "{speaker} shrugs. \"I did it. {victim}, in the {room}, with the {weapon}. I'd say it was interesting, but that would be cruel.\"",
+      "{speaker} nods slowly. \"Yes, me. The {room}, the {weapon}, {victim}. How odd that it ends like this. I thought I'd feel something.\"",
+      "{speaker} says quietly, \"I did it. The {weapon}, the {room}, {victim}. There's no mystery in it now, is there?\"",
+      "{speaker} turns both palms up. \"You've solved it. It was me. {victim}, the {room}, the {weapon}. Well, that's that.\""
+    ],
+    "ambush_locked": [
+      "{speaker} slips in, locks the door and tilts the head. \"Curious, aren't you? Then know this: I killed {victim} with the {weapon} in the {room}. And what do you suppose happens now?\"",
+      "The bolt slides home. {speaker} watches you. \"You asked so many questions. Here is your answer: {victim}, the {room}, the {weapon}. Mine. Are you pleased?\"",
+      "{speaker} turns the key, almost thoughtful. \"Did you wonder how it was done? The {weapon}, in the {room}, to {victim}. And you've wondered yourself into a corner.\"",
+      "With a click, the door is locked. {speaker} says softly, \"Shall I tell you where it happened? The {room}. With the {weapon}. {victim} never asked the right question. You did.\"",
+      "{speaker} locks the door and leans against it. \"I'll answer your last question for free. {victim}, the {room}, the {weapon}. After this, I'm afraid there will be no more.\"",
+      "{speaker} bolts the door, eyes gleaming. \"I did kill {victim}, you know, in the {room} with the {weapon}. Tell me, what did you think would happen when you found out?\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door, eyes fixed on the {weapon} in your hands, then snatches it and strikes before you can answer.",
+      "The key turns softly. {speaker} lunges, takes the {weapon} from you, and brings it down with chilling interest.",
+      "{speaker} bolts the door, plucks the {weapon} from your grasp with a curious little smile, and strikes.",
+      "Without a question, for once, {speaker} locks the door, seizes the {weapon} you carry and swings.",
+      "A click, a lunge: {speaker} has the {weapon} out of your hands and strikes with terrible speed.",
+      "{speaker} turns the key, studies the {weapon} in your hands for half a heartbeat, then tears it away and strikes."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} stands. \"The {chosen_room}? Whatever made you think so? It was the {room}. I used the {weapon} on {victim} there. I did it.\"",
+      "{speaker} rises, eyes bright. \"A good try, but not the {chosen_room}. It was the {room}, with the {weapon}. {victim} never saw it coming, and nor did you.\"",
+      "{speaker} pushes back a chair. \"Oh, you were so close! But the {chosen_room}? No. The {room}. The {weapon}, {victim}, and me.\"",
+      "{speaker} gets up with a thoughtful frown. \"Why the {chosen_room}, I wonder? It was the {room}. I took the {weapon} to {victim} there. I'd rather you had it right.\"",
+      "{speaker} stands, tapping a finger. \"Not the {chosen_room}. Think, now. The {room}. {victim} and the {weapon}, and I. Isn't that tidier?\"",
+      "{speaker} rises, almost eager. \"The wrong room, I'm afraid. Do you want to know the right one? The {room}, not the {chosen_room}. {victim}, the {weapon}, me.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} stands. \"Why blame them? I'm the one. The {room} is right, but I used the {weapon} on {victim}. You see how it fits?\"",
+      "{speaker} rises, curious to the last. \"Do you know, you've the right room and the wrong person? I took the {weapon} to {victim} in the {room}. Me.\"",
+      "{speaker} pushes back a chair. \"They didn't do it. How could they? I did, with the {weapon}, in the {room}, to {victim}.\"",
+      "{speaker} gets up with a frown. \"You've pointed the wrong way. The {room}, yes. The {weapon}, yes. {victim}, yes. But it was me, not them.\"",
+      "{speaker} stands, tapping a finger. \"I can't let you leave it half right. The {room}, the {weapon}, {victim}. And me. Not them.\"",
+      "{speaker} rises, almost apologetic. \"A shame to spoil your reasoning. You've the room right, but the hand was mine. The {weapon} in the {room}, {victim}, all me.\""
+    ]
+  },
+  "fragile": {
+    "opening": [
+      "{speaker} lowers both eyes and says, very softly,",
+      "{speaker} wipes at a cheek with the back of a hand and says,",
+      "{speaker} draws a shaky breath and says in a small voice,",
+      "{speaker} sits with both hands in a lap, barely above a whisper, and says,",
+      "{speaker} rubs tired eyes and answers, so quietly you must lean in,",
+      "{speaker} stares at a spot on the carpet and murmurs,"
+    ],
+    "claim_solo": [
+      "I was alone in the {room} all evening. I just wanted quiet, that's all. I didn't mean to be alone, only it happened.",
+      "I sat alone in the {room} the whole evening. It was where I could be sad without anyone seeing.",
+      "Alone, in the {room}, the entire evening. I'm sorry. I know it's not much help to you.",
+      "I was alone in the {room} the whole evening, with a candle that kept guttering. I watched it until it was nothing.",
+      "I stayed alone in the {room} all evening. It's quiet there, and I couldn't face the others.",
+      "Alone in the {room}, the whole evening. No one to blame but myself for that, I suppose."
+    ],
+    "claim_pair": [
+      "I was with {partner} in the {room} the whole evening. {partner} was kind enough not to ask me to talk.",
+      "{partner} and I sat together in the {room} all evening. It helped, a little, not to be alone.",
+      "I was in the {room} with {partner} the whole evening. We said very little, but it was a comfort.",
+      "With {partner}, in the {room}, all evening. I'd have been so lonely otherwise.",
+      "We were together, {partner} and I, in the {room} the entire evening. I'm grateful for it.",
+      "I stayed in the {room} with {partner} all evening. Someone had to keep me from thinking, and {partner} did."
+    ],
+    "commentary_victim": [
+      "{victim} was so kind to me once. It was a long time ago, but I remember it.",
+      "I can't believe {victim} is gone. I keep listening for a voice in the hall.",
+      "{victim} never really noticed me, I think, and that's all right. I'm used to it.",
+      "I didn't love {victim}, but I never wanted this. Nobody should be taken like that.",
+      "I feel so empty about {victim}. I think I ought to cry, but there's nothing left to do it with.",
+      "{victim} and I had our quarrels, but quarrels are what's left when people matter. I see that now."
+    ],
+    "commentary_suspect": [
+      "Perhaps ask {other}? I'm sorry, I don't like saying it. {other} did seem so unhappy with {victim}.",
+      "I don't want to cause trouble for anyone, but {other} left the table very suddenly last night, and I've thought of it since.",
+      "{other} might know something. I don't mean to say it, but {victim} confided in {other}, I think.",
+      "Please be gentle with {other}. But, perhaps, ask about {victim}. I heard raised voices.",
+      "I can't say it was {other}. I only know {other} wasn't well, and it frightens me.",
+      "Someone told me {other} had a quarrel with {victim}. I wish I could say I didn't believe it."
+    ],
+    "commentary_self": [
+      "I'm sorry if I'm slow to answer. I haven't slept since the news, not really.",
+      "I'm so tired, inspector. I'll answer what I can, and if I falter, please forgive me.",
+      "It's all been such a weight. I only want it to end, and for everyone to go home.",
+      "I don't mean to be difficult. It's only that every question feels like a hand on a bruise.",
+      "Please don't think me cold. I'm trying very hard to be brave and not managing.",
+      "Everything seems very far away today. I'm doing my best to stay in the room."
+    ],
+    "refusal": [
+      "{speaker} turns away, shoulders shaking. \"I can't, not now. Please, ask me again in a little while.\"",
+      "{speaker} shakes the head slowly, tears gathering. \"I'm sorry. I can't say it yet. Please come back.\"",
+      "{speaker} covers both eyes with a hand and says nothing for a long moment. \"Another time, if you would.\"",
+      "{speaker} presses a handkerchief to the lips and trembles silently. \"Not yet. Ask me later, please, when I've steadied.\"",
+      "{speaker} gives a tiny, broken smile and looks away. \"I'm sorry, I can't just now. Ask me once more, soon.\"",
+      "{speaker} sits very still, gaze on the floor, and whispers, \"Not now. I'll try again if you ask me later.\""
+    ],
+    "repeat_lead": [
+      "I told you already, I'm sorry,",
+      "Yes, I said it before,",
+      "I'll say it again, if it helps,",
+      "It's the same as before,",
+      "Forgive me for repeating,",
+      "As I said, though it hurts to repeat it,"
+    ],
+    "repeat_close": [
+      "I'm sorry, that's all I have.",
+      "I hope it's enough.",
+      "Please, may I rest now?",
+      "There isn't anything more.",
+      "I wish it were more useful.",
+      "Thank you for being patient with me."
+    ],
+    "confession_defiant": [
+      "{speaker} lifts wet eyes with sudden fierceness. \"Yes, I did it. {victim} broke me, so I took the {weapon} to the {room}. Don't ask me to say I'm sorry. I'm too tired for that.\"",
+      "{speaker} lifts wet eyes. \"I did it. I took the {weapon} to {victim} in the {room}, and I'm not sorry. Not this time. I was hurt for years.\"",
+      "{speaker} says in a steady, quiet voice, \"Yes. It was me. {victim}, the {weapon}, the {room}. I'll not cry about it. I've cried enough.\"",
+      "{speaker} sits straighter than before. \"I killed {victim}. In the {room}, with the {weapon}. Don't pity me. I couldn't bear that.\"",
+      "{speaker} wipes both eyes roughly. \"I did it, and I'd do it again. {victim} gave me no peace. The {weapon}, the {room}. That's all.\"",
+      "{speaker} says softly but clearly, \"It was me. The {room}, the {weapon}, {victim}. You can think what you like. I'm past caring.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} cries openly. \"It was me. I took the {weapon} into the {room} and ended {victim}'s life, and I'll never forgive myself. I'm so sorry. I'm so very sorry.\"",
+      "{speaker} whispers through tears, \"I'm sorry. I didn't think I could do it. {victim}, in the {room}, with the {weapon}. I was so tired, and so lonely.\"",
+      "{speaker} covers a face. \"It was me. The {weapon}, the {room}, {victim}. I wish I'd gone to bed that night and never come near.\"",
+      "{speaker} sobs quietly. \"I killed {victim}, in the {room}, with the {weapon}. Every night I hear it. I can't stop hearing it.\"",
+      "{speaker} bows both shoulders. \"Yes, it was me. I'm so sorry. {victim}, the {room}, the {weapon}. I only wanted the hurting to stop.\"",
+      "{speaker} speaks in a broken voice. \"I did it. The {weapon}, the {room}, {victim}. If there is any way to say sorry, I don't know it.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} laughs, thin and trembling. \"All those years, no one noticed me. Now they will. It was me. {victim}, in the {room}, by the {weapon}. See? I could do something.\"",
+      "{speaker} smiles, a strange, bright smile. \"It was me. {victim}, the {weapon}, the {room}. Nobody looks at the quiet ones. That was the whole trick.\"",
+      "{speaker} laughs through tears. \"I did it! The {room}, the {weapon}, {victim}! For once I did something and it worked!\"",
+      "{speaker} stands up taller than ever before. \"You never thought it, did you? I killed {victim}, in the {room}, with the {weapon}. Look at me now.\"",
+      "{speaker} says dreamily, \"I did it. {victim}, the {weapon}, the {room}. It was so quiet afterwards, and so clear. I've never felt so awake.\"",
+      "{speaker} lifts a tear-streaked face, glowing. \"It was me. The {room}, the {weapon}, {victim}. I wasn't invisible after all.\""
+    ],
+    "confession_furious": [
+      "{speaker} shakes with sudden fury. \"Yes! I did it! {victim} hurt me and hurt me, so I took the {weapon} to the {room}, and I'm done being quiet!\"",
+      "{speaker} rises, shaking. \"I did it! {victim} took everything from me! The {weapon}, the {room}! And you ask why, as if you didn't know!\"",
+      "{speaker} cries out, \"All right! Yes! It was me! {victim} broke my heart a thousand times! The {room}! The {weapon}! I'm so tired of being hurt!\"",
+      "{speaker} says in a raw voice, \"I'm done being gentle. I killed {victim}, in the {room}, with the {weapon}, and I'd do it again to make it stop.\"",
+      "{speaker} stands, breathing hard. \"Do you know how long I put up with {victim}? The {weapon}, the {room}. That's all I'll say, and it's enough.\"",
+      "{speaker} lashes out. \"Yes, I did it! {victim} wouldn't leave me be! The {room}, the {weapon}! Take me, then! I don't care!\""
+    ],
+    "confession_resigned": [
+      "{speaker} lets both hands fall in a lap. \"It was me. The {weapon}, in the {room}, and {victim} is gone. I haven't the strength to deny it. Do what you must.\"",
+      "{speaker} says tiredly, \"It was me. {victim}, the {weapon}, the {room}. I haven't the strength to explain. Do what you must.\"",
+      "{speaker} looks at the floor. \"I did it. The {room}, the {weapon}, {victim}. I just want it to be over now.\"",
+      "{speaker} nods, eyes closed. \"Yes, me. {victim}, in the {room}, with the {weapon}. I'm very tired, inspector.\"",
+      "{speaker} lets out a long, soft breath. \"I did it. The {weapon}, the {room}, {victim}. I'm almost glad you found out.\"",
+      "{speaker} whispers, \"It was me. {victim}, the {room}, the {weapon}. There's nothing else. There never was much to me.\""
+    ],
+    "ambush_locked": [
+      "{speaker} slips in, turns the key, and says, tearfully, \"I'm sorry. {victim} died in the {room}, from the {weapon}, and it was me. I can't let you tell. I can't.\"",
+      "The lock clicks. {speaker} leans on the door, eyes wet. \"I didn't want any of this. The {room}, the {weapon}, {victim}. And now you know, and I'm so sorry.\"",
+      "{speaker} bolts the door and whispers, \"You were so gentle, I thought you'd miss it. I killed {victim} in the {room}, with the {weapon}. I must stop you now.\"",
+      "Trembling, {speaker} locks the door and sinks against it. \"{victim}, the {room}, the {weapon}. It was me. Please don't make me do it again.\"",
+      "{speaker} turns the key with a sob. \"It's too late for all of it. I took the {weapon} to {victim} in the {room}. You can't go out and say it, you can't.\"",
+      "{speaker} locks the door and stands very still. \"I'm so tired. I killed {victim}, in the {room}, with the {weapon}. I can't be found out. I'm sorry for what happens next.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door with trembling hands, sobs once, snatches the {weapon} from you and strikes.",
+      "A key turns softly. {speaker} takes the {weapon} from your grasp, murmuring an apology, and the blow falls.",
+      "Weeping, {speaker} bolts the door, pulls the {weapon} out of your hands and swings it with eyes shut.",
+      "{speaker} locks the door, whispers, \"Forgive me,\" and tears the {weapon} away from you. Then strikes.",
+      "With a broken cry, {speaker} turns the key, grabs the {weapon} you carry, and strikes blindly.",
+      "{speaker} shuts the door and locks it, shaking. The {weapon} is out of your hands before you can speak, and the blow follows."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} stands, trembling. \"Not the {chosen_room}, please. It was the {room}. I took the {weapon} to {victim} there. I can't bear it said wrong.\"",
+      "{speaker} rises, tears on both cheeks. \"You've the wrong room. It was the {room}, not the {chosen_room}. The {weapon}, and {victim}. I did it.\"",
+      "{speaker} gets up, voice breaking. \"Please, it wasn't the {chosen_room}. It was the {room}. {victim} and the {weapon} and me. That's all.\"",
+      "{speaker} stands, whispering. \"The {chosen_room}? No. I'm so sorry. It was the {room}, with the {weapon}, and {victim} was my doing.\"",
+      "{speaker} half-rises, shaking. \"I can't let you be wrong about it. The {room}, not the {chosen_room}. The {weapon}. {victim}. I'm sorry.\"",
+      "{speaker} stands slowly, face wet. \"Not the {chosen_room}, I'm afraid. The {room}. I used the {weapon} on {victim} there. I'd rather you knew.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} stands, shaking. \"Please don't blame them. It was the {weapon}, in the {room}, on {victim}. I did it. It was me.\"",
+      "{speaker} rises, tears falling. \"You have the {room} right, but not the person. I took the {weapon} to {victim}. Please stop.\"",
+      "{speaker} gets up, whispering. \"Not them. Never them. The {room}, the {weapon}, {victim}. All my doing.\"",
+      "{speaker} stands, voice breaking. \"I can't let someone else carry this. I killed {victim} in the {room} with the {weapon}. Let them go.\"",
+      "{speaker} half-rises, trembling. \"It's the wrong person. I'm sorry. I used the {weapon} on {victim} in the {room}, and it was me.\"",
+      "{speaker} stands slowly, face wet. \"No, not them. I did it. The {room}, {victim}, the {weapon}. I'm so tired of hiding it.\""
+    ]
+  },
+  "calm": {
+    "opening": [
+      "{speaker} folds both hands and says evenly,",
+      "{speaker} inclines the head with perfect courtesy and says,",
+      "{speaker} takes a measured sip of tea and says,",
+      "{speaker} considers the question for a moment and replies,",
+      "{speaker} sets down a pen with care and says,",
+      "{speaker} meets your gaze without hurry and says,"
+    ],
+    "claim_solo": [
+      "I was alone in the {room} for the whole evening. I can offer no witness, though I can describe the furniture in detail.",
+      "My evening was spent alone in the {room}. A dull account, but an accurate one.",
+      "I was alone in the {room} the entire evening, and I did not leave it. I realise how convenient that sounds, and how inconvenient it is.",
+      "Alone, in the {room}, the whole evening. I'm told that is the most difficult sort of account to prove, and I agree.",
+      "I spent the evening alone in the {room}, reading, and I stayed there all of it. Dull, but precise.",
+      "The {room}, alone, for the entire evening. If you require anything further, I shall gladly supply it."
+    ],
+    "claim_pair": [
+      "I was in the {room} with {partner} for the whole evening. We were seated together throughout, and neither of us left.",
+      "{partner} and I were together in the {room} all evening. Please feel free to compare our accounts.",
+      "My evening was spent with {partner} in the {room}, from supper onward. We did not part at any point.",
+      "I was in the {room} with {partner} the entire evening. We discussed nothing of note, which I find is the usual way.",
+      "In the {room}, with {partner}, the whole evening. I trust our accounts will agree, as the facts do.",
+      "{partner} was with me in the {room} all evening. I should be surprised if anyone remembers otherwise."
+    ],
+    "commentary_victim": [
+      "I won't pretend I was fond of {victim}. I will say I find the manner of this regrettable.",
+      "{victim} and I were acquaintances of long standing, which is to say we tolerated one another.",
+      "The loss of {victim} is real, and I feel it, though not as loudly as some here.",
+      "{victim} was a difficult person, but difficulty is not a capital offence.",
+      "I regret {victim}'s death more than I expected. One does not appreciate a person until the chair is empty.",
+      "I had little feeling for {victim} either way. That is not a boast, merely a fact."
+    ],
+    "commentary_suspect": [
+      "If I may suggest it, {other} has not been entirely forthcoming about {victim}. I only observe.",
+      "You might find {other} worth a conversation. {other} and {victim} had a disagreement recently.",
+      "I would not wish to prejudice you, but {other} seemed unusually brisk this evening. Make of it what you will.",
+      "{other} was heard to say something sharp to {victim} on Friday. Small, but perhaps worth the note.",
+      "I will leave the conclusions to you, inspector, but I might begin with {other}. {victim} did mention {other} recently.",
+      "A thought: have you asked {other} about {victim}? People rarely volunteer what they were not asked."
+    ],
+    "commentary_self": [
+      "You may ask me anything. I find a question answered is a question dismissed.",
+      "I am entirely at your disposal, inspector, though I suspect you will find me unexciting.",
+      "I do not mind being questioned. I mind it slightly less than being ignored.",
+      "I tend to remember what I have seen. It is a habit that has served me well and ill.",
+      "Do proceed. I have no engagements that cannot be postponed on account of a death.",
+      "It is a reasonable thing to ask. I would think poorly of you had you not."
+    ],
+    "refusal": [
+      "{speaker} sets down a cup with care. \"I would prefer not to answer that at this moment. Do ask me again later.\"",
+      "{speaker} regards you steadily and shakes the head by a fraction. \"Not yet. I shall be glad to speak when I have composed myself.\"",
+      "{speaker} folds both hands and offers no reply. \"A moment, please. Come back to me in a little while.\"",
+      "{speaker} smiles thinly and declines, quite politely. \"Another time, I think. The question will keep.\"",
+      "{speaker} turns a page of a book, unhurried, and says nothing. \"Ask me again shortly. I shall answer then.\"",
+      "{speaker} lifts a hand in polite refusal. \"Not now, if you do not mind. I am happy to be asked again.\""
+    ],
+    "repeat_lead": [
+      "As I stated earlier,",
+      "To restate the matter,",
+      "In case it was not clear,",
+      "I am happy to repeat myself,",
+      "The answer has not changed,",
+      "To summarise once more,"
+    ],
+    "repeat_close": [
+      "The facts remain as they were.",
+      "I trust that is sufficient.",
+      "You may find the answer unchanged, however often you ask.",
+      "I do not expect it to be any more interesting the second time.",
+      "That is the whole of it.",
+      "Please feel free to confirm it with anyone."
+    ],
+    "confession_defiant": [
+      "{speaker} sets down a cup and says in a level voice, \"I did it. {victim} left me no reasonable alternative, and I used the {weapon} in the {room}. I do not intend to apologise.\"",
+      "{speaker} regards you levelly. \"I did it. {victim} left no sensible alternative. The {weapon}, the {room}. I shall not be asking for sympathy.\"",
+      "{speaker} says in measured tones, \"It was I. {victim}, in the {room}, with the {weapon}. I considered the matter carefully, and I stand by it.\"",
+      "{speaker} sets down a book. \"I killed {victim}. In the {room}, with the {weapon}. You may find that shocking. I find it merely accurate.\"",
+      "{speaker} lifts an eyebrow. \"Yes, I did it. The {weapon}, the {room}, {victim}. I'd prefer you not mistake my composure for doubt.\"",
+      "{speaker} crosses both legs. \"It was I. {victim} met the {weapon} in the {room}. If you expect me to apologise, you will be waiting some time.\""
+    ],
+    "confession_remorseful": [
+      "{speaker} closes both eyes briefly. \"It was I. I used the {weapon} on {victim} in the {room}. I find I regret it more each hour. I should like that noted.\"",
+      "{speaker} lowers both eyes. \"It was I. The {weapon}, the {room}, {victim}. I have spent every hour since asking whether there was another way. There was.\"",
+      "{speaker} speaks quietly. \"I did it. {victim}, in the {room}, with the {weapon}. I am not a person who wastes words, so believe me when I say I am sorry.\"",
+      "{speaker} inclines the head. \"I find I cannot sleep. The {weapon}, the {room}, {victim}: it was I. I ask only that the record show remorse.\"",
+      "{speaker} folds both hands tightly. \"It was I who killed {victim}, in the {room}, with the {weapon}. I have regretted it with great precision ever since.\"",
+      "{speaker} says softly, \"Yes. I did it. {victim}, the {weapon}, the {room}. I wish I could say otherwise. I cannot.\""
+    ],
+    "confession_triumphant": [
+      "{speaker} permits a small, dry smile. \"Well reasoned, inspector. It was I. {victim}, the {weapon}, the {room}. I confess I'm rather pleased it was so tidy.\"",
+      "{speaker} smiles, thin and dry. \"Excellent work, inspector. It was I. {victim}, the {weapon}, the {room}. I had rather hoped for a worthy opponent.\"",
+      "{speaker} applauds twice, lightly. \"Well done. I killed {victim}, in the {room}, with the {weapon}, and it went exactly to plan.\"",
+      "{speaker} leans back with satisfaction. \"It was I. The {room}, the {weapon}, {victim}. I shall be vain enough to say I was very good.\"",
+      "{speaker} says, almost fondly, \"I did it. {victim}, in the {room}, by the {weapon}. It was elegant, I thought. You were not far behind.\"",
+      "{speaker} permits a quiet laugh. \"How refreshing. An inspector who finishes the job. Yes, I did it. The {weapon}, the {room}, {victim}.\""
+    ],
+    "confession_furious": [
+      "{speaker} speaks with terrifying quiet. \"Yes. It was I. {victim} pushed me, and I took the {weapon} to the {room}. Do not mistake my calm for forgiveness.\"",
+      "{speaker} says in a low, flat voice, \"I did it. {victim} gave me no peace, so the {weapon} and the {room}. And I repeat: do not mistake quiet for sorrow.\"",
+      "{speaker} sets down a glass with a click that is too loud. \"Yes. I killed {victim}, in the {room}, with the {weapon}. Do not ask me to be pleasant about it.\"",
+      "{speaker} speaks with icy control. \"It was I. {victim} betrayed me, and the {weapon} in the {room} was my reply. I have never been so certain.\"",
+      "{speaker} turns pale with anger. \"I did it. The {room}, the {weapon}, {victim}. I advise you all to stop looking at me quite so expectantly.\"",
+      "{speaker} says through a clenched smile, \"Yes, I did it. {victim}, the {weapon}, the {room}. I held back as long as any person could.\""
+    ],
+    "confession_resigned": [
+      "{speaker} shrugs, lightly. \"Very well. It was I. The {weapon}, the {room}, {victim}. I see no point in making a speech. Shall we proceed?\"",
+      "{speaker} lifts both hands in a small gesture of surrender. \"It was I. {victim}, in the {room}, with the {weapon}. I see no reason to elaborate.\"",
+      "{speaker} says dryly, \"Well. That is the end of that. I did it. The {weapon}, the {room}, {victim}. May I finish my tea first?\"",
+      "{speaker} nods. \"It was I. The {room}, the {weapon}, {victim}. I had hoped to be cleverer, but it appears not.\"",
+      "{speaker} shrugs with one shoulder. \"Very well. I killed {victim}, in the {room}, with the {weapon}. There is little more to say, and less to be done.\"",
+      "{speaker} sighs, almost politely. \"I did it. {victim}, the {weapon}, the {room}. I trust the formalities are brief.\""
+    ],
+    "ambush_locked": [
+      "{speaker} enters, locks the door, and speaks pleasantly. \"I killed {victim} in the {room} with the {weapon}. You have been most thorough. I regret that I cannot permit you to be thorough tomorrow.\"",
+      "The key turns quietly. {speaker} says, \"I find this unfortunate. {victim}, the {weapon}, the {room}: all mine. I shall be brief with you, as I was with the other.\"",
+      "{speaker} locks the door and pockets the key. \"Since you have come to me: the {room}, the {weapon}, and {victim}. You will not repeat it to anyone, I assure you.\"",
+      "With a soft click, {speaker} secures the door. \"I did not plan this, but I did plan {victim}. The {weapon}, in the {room}. And you, I am afraid, are an interruption.\"",
+      "{speaker} bolts the door, expression unchanged. \"{victim} died in the {room}, by the {weapon}, at my hand. I would rather you stay silent. I shall make certain of it.\"",
+      "A key turns. {speaker} sits down, quite at ease. \"Allow me to save you the trouble. The {weapon}. The {room}. {victim}. And now, inspector, we have a problem.\""
+    ],
+    "ambush_grab": [
+      "{speaker} locks the door with a precise click, takes the {weapon} from your hands with surprising economy, and strikes.",
+      "Without haste, {speaker} turns the key, relieves you of the {weapon}, and brings it down.",
+      "The bolt slides home. {speaker} plucks the {weapon} from your grasp as one might lift a cup, and strikes.",
+      "{speaker} locks the door, nods once at the {weapon} you carry, takes it, and delivers the blow.",
+      "A quiet click of the lock. {speaker} removes the {weapon} from your hands and strikes, calmly.",
+      "{speaker} secures the door, steps close, seizes the {weapon} from you and swings without a change of expression."
+    ],
+    "culprit_corrects_room": [
+      "{speaker} rises, composed. \"A small correction, if I may. Not the {chosen_room}. The {room}. I used the {weapon} on {victim} there.\"",
+      "{speaker} stands and adjusts a cuff. \"You have the wrong room, inspector. It was the {room}, not the {chosen_room}. The {weapon}. {victim}. I did it.\"",
+      "{speaker} sets down a glass and stands. \"It was not the {chosen_room}. For accuracy: the {room}, the {weapon}, {victim}. And I.\"",
+      "{speaker} rises with a courteous nod. \"I'd hate to see the record wrong. The {room}, not the {chosen_room}. {victim} met the {weapon} there, at my hand.\"",
+      "{speaker} stands unhurriedly. \"Close, but incorrect. The {chosen_room} had nothing to do with it. The {room}. The {weapon}. {victim}. Me.\"",
+      "{speaker} gets to feet with dry politeness. \"Permit me to amend. The {room}, not the {chosen_room}. I took the {weapon} to {victim} there.\""
+    ],
+    "culprit_corrects_person": [
+      "{speaker} rises. \"I regret to interrupt, but you have the wrong person. The room is correct. It was the {room}, the {weapon}, and {victim}, and it was I.\"",
+      "{speaker} stands, composed. \"That person did nothing of the kind. I used the {weapon} on {victim} in the {room}. Do release them.\"",
+      "{speaker} sets down a cup. \"A small matter of accuracy: the {room}, yes; the person, no. {victim} died at my hand, with the {weapon}.\"",
+      "{speaker} gets up, calm as ever. \"I could not let that stand. It was I. The {weapon}, the {room}, {victim}. Let the record show it.\"",
+      "{speaker} stands with a courteous nod. \"You are very nearly right, inspector, but you have the wrong person. I took the {weapon} to {victim} in the {room}.\"",
+      "{speaker} rises, unhurried. \"Allow me to correct you. The {room} is right. The accused is not. I used the {weapon}, on {victim}, and it was I.\""
+    ]
+  }
+}

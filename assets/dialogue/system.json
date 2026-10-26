@@ -1,0 +1,100 @@
+{
+  "guest_list_header": "The household and its guests, as written in the visitors' book:",
+  "assemble_ok": [
+    "You ring the bell and the household drifts into the {room}. The door is shut and locked behind the last of them.",
+    "One by one, the guests file into the {room}. The door closes, a key turns, and nobody leaves until this is settled.",
+    "Everyone is summoned to the {room}. The door is locked and the room falls quiet, waiting for you to speak.",
+    "The party gathers in the {room}, murmuring. Someone turns the key in the lock, and the murmuring dies."
+  ],
+  "assemble_need_weapon_found": "You cannot call everyone together yet. You have not found what did the deed, and an accusation without it will only embarrass you.",
+  "assemble_need_weapon_carried": "You know what was used, but it is not in your hands. Pick it up first, so you can lay it before them.",
+  "accuse_need_assembly": "Nobody can be accused before a roomful of empty chairs. Gather the guests together first.",
+  "accuse_wrong_both": [
+    "Sloppy work. It was {culprit} who ended {victim}, in the {true_room}, and not in the {chosen_room} as you declared. The company does not know whether to laugh.",
+    "You named the wrong person and the wrong place. {culprit} killed {victim} in the {true_room}, while you were busy staring at the {chosen_room}.",
+    "A careless case. The {chosen_room} had nothing to do with it. {culprit} took {victim}'s life in the {true_room}, and now {culprit} walks free.",
+    "Hasty and mistaken, inspector. {victim} met the end in the {true_room} at the hands of {culprit}, nowhere near the {chosen_room}."
+  ],
+  "win": [
+    "The case is closed. {culprit} is led away for the death of {victim}. You took {moves} moves, which earns you the rank of {rank}.",
+    "Justice is done. {culprit} answers for {victim}, and the house breathes again. {moves} moves, and the title of {rank} is yours.",
+    "{culprit} is taken into custody, and {victim} is avenged. In {moves} moves you have earned the rank of {rank}.",
+    "It is over. {culprit} will stand trial for the murder of {victim}. Your {moves} moves are noted, and you are named {rank}."
+  ],
+  "ranks": [
+    "Grand Examiner",
+    "Keen Constable",
+    "Steady Investigator",
+    "Muddled Clerk",
+    "Hapless Lodger"
+  ],
+  "warning_suspicious": [
+    "A cold feeling creeps over you. Somewhere in the house, someone has begun to wonder how much you know.",
+    "You catch a sidelong glance down the corridor, and it is not a friendly one. Your questions are being noticed.",
+    "The murderer has marked your prying, and grows uneasy. Tread carefully from here on."
+  ],
+  "warning_stalking": [
+    "Floorboards creak behind you. The murderer is no longer merely watching, but following.",
+    "You are being followed. Each time you turn, a door closes softly somewhere out of sight.",
+    "A shadow keeps pace with you through the halls. The murderer has decided you are a problem to be solved."
+  ],
+  "floor_nothing": [
+    "You study the floor, though under so many eyes you notice nothing but dust and a curl of carpet.",
+    "You crouch to examine the floorboards, but with someone watching you cannot look closely. Nothing stands out.",
+    "You pretend to inspect the floor. There is nothing to see, and an onlooker's stare makes it hard to look harder."
+  ],
+  "floor_nothing_unwatched": [
+    "You kneel and examine the floor at your leisure. It is clean, and nothing here tells you anything.",
+    "Alone with the floorboards, you search carefully. There is nothing worth noting.",
+    "You go over every inch of the floor in peace. Whatever else this room has seen, it left no mark you can find."
+  ],
+  "floor_blood": [
+    "A dark, dried stain spreads across the boards. This is the scene of the murder, here in the {room}.",
+    "Blood, long since gone brown, marks the floor. The murder was done here, in the {room}.",
+    "You stop short. The floor of the {room} bears a stain that can mean only one thing: this is where the victim fell."
+  ],
+  "weapon_blood": [
+    "A dark smear clings to the {weapon}. This is the weapon that did the deed.",
+    "The {weapon} is stained where it ought to be clean. There can be no doubt: this is the murder weapon.",
+    "You turn the {weapon} over and find the telltale stain. This is what killed the victim."
+  ],
+  "item_flavor_generic": [
+    "A perfectly ordinary object. It tells you nothing.",
+    "You turn it over twice. It is just what it appears to be.",
+    "Dusty, a little worn, and not at all interesting.",
+    "Whoever owns this has had it for years.",
+    "It is cold to the touch and entirely harmless.",
+    "Nothing about it suggests it played any part in this.",
+    "It smells faintly of lavender and old paper.",
+    "A household thing, set down and forgotten.",
+    "You examine it carefully, then set it back exactly as it was.",
+    "There is a small chip on one edge, nothing more.",
+    "Plain, useful, and wholly unremarkable.",
+    "It might be anyone's, and it is certainly no clue."
+  ],
+  "get_refused_not_weapon": [
+    "You lift it, consider it, and put it back. It is not what killed anyone, and your hands are better kept free for evidence that matters.",
+    "There is no point carrying that about. It has nothing to do with the murder.",
+    "You leave it where it is. A house like this notices missing things, and this one is not worth the fuss."
+  ],
+  "carrying_limit": [
+    "Your hands are full with the murder weapon. You cannot carry another thing.",
+    "You are already carrying the weapon, and that is quite enough to manage. Put it down first.",
+    "No room, inspector. The weapon in your grip is all you can hold."
+  ],
+  "too_far_to_hear": [
+    "{speaker} is too far away to hear you. You will have to step closer.",
+    "You call out, but {speaker} is too far off to catch a word. Go nearer.",
+    "Your voice does not carry to {speaker}. Walk over before you ask."
+  ],
+  "front_stoop": [
+    "You step outside, and the storm drives rain into your face. Thunder rolls across the grounds, and you retreat indoors, soaked.",
+    "On the front stoop the wind howls and the rain comes sideways. No one could cross the grounds on a night like this.",
+    "The storm hammers the stoop. You get one breath of wet air before you decide the house is the better place to be."
+  ],
+  "secret_panel": [
+    "Your fingers catch on a hidden edge, and a panel slides open in the wall. Someone built this house with secrets.",
+    "A section of the wall gives way under your hand. A secret panel, and a dark space behind it.",
+    "You tap the wall and hear a hollow note. A panel swings aside, revealing a narrow hidden space."
+  ]
+}
