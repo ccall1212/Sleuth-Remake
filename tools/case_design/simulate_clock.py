@@ -40,7 +40,7 @@ class ClockParams:
     murder_room_stare: Optional[float] = None   # stare share for a guest standing in the murder room (default: same)
     activity_redraw: float = 0.004
     murder_room_pull: float = 0.0   # extra chance a relocating guest heads for the murder room
-    refuse: float = 0.22
+    refuse: float = 0.10                 # silent refusals: decided 10% (user, 2026-11-16); the original measured about 22%
     hidden_weight: float = 1.0
     onset_range: tuple[int, int] = (140, 200)
     gap_range: tuple[int, int] = (80, 115)

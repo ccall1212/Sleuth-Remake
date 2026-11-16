@@ -49,12 +49,12 @@
       "Do sit down, inspector, if you're able. It's been a long, dreadful day for all of us."
     ],
     "refusal": [
-      "{speaker} wrings both hands and gives an anxious smile. \"Oh, could you ask me again in a little while? I'm all in a flutter just now.\"",
-      "{speaker} shakes slowly and sighs. \"Forgive me, I can't think straight this minute. Do come back to me.\"",
-      "{speaker} looks truly sorry and glances at the door. \"Would you mind terribly if we waited a moment? I'll be of more use then.\"",
-      "{speaker} touches a trembling hand to a cheek and says nothing for a while. \"Another time, perhaps? Please do ask me again.\"",
-      "{speaker} gives a helpless little shrug and pours more tea, and the question goes unanswered. \"Sorry, sorry, ask me later and I'll try.\"",
-      "{speaker} opens both hands in apology. \"I would, I truly would, but my wits have quite left me. Try me once more shortly.\""
+      "{speaker} fusses with a cushion and does not seem to hear you.",
+      "{speaker} smiles kindly, then looks away without a word.",
+      "{speaker} is busy with the tea things and lets the silence settle.",
+      "{speaker} gives a small, helpless laugh and says nothing.",
+      "{speaker} glances up, distracted, and drifts off in thought.",
+      "{speaker} pats the arm of the sofa and offers no reply."
     ],
     "repeat_lead": [
       "Of course, dear, I'll say it again,",
@@ -211,12 +211,12 @@
       "I don't know what to do with myself, I mean sitting still or walking about, so I do both, I'm sorry."
     ],
     "refusal": [
-      "{speaker} opens and closes a mouth, shoots a glance at the door, and manages, \"I... could we, I mean, later? I can't just now. Ask me again, please.\"",
-      "{speaker} goes pale and wrings both hands. \"I'm sorry, I'm sorry, I can't think, I mean ask me in a little while?\"",
-      "{speaker} stammers something unintelligible, coughs, and tries again. \"Not, not yet. I mean, give me a minute. Come back.\"",
-      "{speaker} takes a step backward, bumping a chair. \"I'd rather not, I mean not right now! Perhaps in a bit?\"",
-      "{speaker} starts to answer, loses the thread, and shakes a trembling head. \"Sorry... my mind's gone. Do try me again.\"",
-      "{speaker} mops a brow and whispers, \"I mean, I will, I want to, only not this second. Ask me once more soon, please.\""
+      "{speaker} starts to answer, falters, and falls silent.",
+      "{speaker} startles at your voice and cannot find the words.",
+      "{speaker} fumbles with a button and does not answer.",
+      "{speaker} laughs thinly and looks toward the door.",
+      "{speaker} stammers a few sounds that fail to become a reply.",
+      "{speaker} flinches, glances about, and says nothing."
     ],
     "repeat_lead": [
       "I did say, I mean I'm sure I said it,",
@@ -365,12 +365,12 @@
       "I have been asked far more intelligent questions by far more intelligent people, but go on."
     ],
     "refusal": [
-      "{speaker} lifts a hand to stop you. \"I decline to answer such a question just now. Ask again when I am inclined to bother with it.\"",
-      "{speaker} turns away to examine a picture frame in profound silence. \"Another time, inspector. I am not at your beck and call.\"",
-      "{speaker} looks you up and down and says nothing at all for a long moment. \"Return later. I shall consider it.\"",
-      "{speaker} gives a small, withering smile and shakes the head. \"Not at present. You may try again when I have leisure.\"",
-      "{speaker} folds both arms and stares over your shoulder. \"I shall not be hurried into it. Come back when you have learned patience.\"",
-      "{speaker} sniffs and waves you off like a fly. \"Not now. Ask once more, if you must, and perhaps I shall oblige.\""
+      "{speaker} regards the ceiling and does not deign to reply.",
+      "{speaker} looks through you as though you were not there.",
+      "{speaker} adjusts a cuff in pointed silence.",
+      "{speaker} turns to admire a picture and pays you no mind.",
+      "{speaker} lets the silence stretch, quite deliberately.",
+      "{speaker} sniffs and gives you no answer."
     ],
     "repeat_lead": [
       "I have already told you, and I dislike repeating myself,",
@@ -519,12 +519,12 @@
       "You'll get the facts. Not the story."
     ],
     "refusal": [
-      "{speaker} stares at the wall and says nothing. \"Not now.\"",
-      "{speaker} turns a shoulder to you and shakes the head. \"No. Try later, perhaps.\"",
-      "{speaker} presses both lips together, then mutters, \"Ask me again, some other time.\"",
-      "{speaker} looks away, jaw tight. \"Not answering that. Not yet.\"",
-      "{speaker} gives you a flat look and keeps silent. After a moment, \"Later.\"",
-      "{speaker} shrugs off the question and moves a step back. \"I'll think about it. Ask again.\""
+      "{speaker} meets your gaze and says nothing.",
+      "{speaker} looks away and keeps silent.",
+      "{speaker} lets the question go unanswered.",
+      "{speaker} shifts away, lips pressed shut.",
+      "{speaker} gives a flat, steady look and no reply.",
+      "{speaker} studies the floorboards and stays quiet."
     ],
     "repeat_lead": [
       "Same as before,",
@@ -673,12 +673,12 @@
       "Don't look so solemn. Everyone's wound up tight and I'm no exception."
     ],
     "refusal": [
-      "{speaker} turns on a heel and snarls, \"No! Not now! Ask me again when I've calmed down, and not before!\"",
-      "{speaker} slams a hand on the arm of a chair. \"I'm not answering that this minute! Come back later!\"",
-      "{speaker} stalks off a few paces, fuming, then spits over a shoulder, \"Ask me again in a quarter hour. Not now.\"",
-      "{speaker} glares and bites off a reply. \"Enough! Try again later, when I can stand the sight of you.\"",
-      "{speaker} waves you away with a furious hand. \"Not now, I said! Pester me again in a bit, if you must.\"",
-      "{speaker} crosses both arms and breathes loud through the nose. \"No. Not yet. Come back when I'm fit to be spoken to.\""
+      "{speaker} glares at you and bites back a reply.",
+      "{speaker} slaps a hand on the table and refuses to speak.",
+      "{speaker} turns on a heel and stalks to the window.",
+      "{speaker} mutters something sharp and turns away.",
+      "{speaker} breathes hard through the nose and says nothing.",
+      "{speaker} waves you off with an angry flick of a hand."
     ],
     "repeat_lead": [
       "I've said it already, and I'll say it again,",
@@ -827,12 +827,12 @@
       "I'd offer a theory, but I haven't enough yet. Give me another hour and a few clues."
     ],
     "refusal": [
-      "{speaker} raises a finger, pauses, and smiles. \"Hold on. I'd like to think about that first. Ask me again?\"",
-      "{speaker} tilts the head and murmurs, \"Why do you ask, I wonder? I'd rather not say just now. Try me later.\"",
-      "{speaker} narrows both eyes, intrigued, and keeps silent. \"Not yet. Come back in a little while, will you?\"",
-      "{speaker} turns the question over, frowns, then shakes the head. \"I'd rather wait. Ask me later, and I'll tell you what I think.\"",
-      "{speaker} answers a question with a question and a shrug. \"Can we leave that for the moment? Do ask me again.\"",
-      "{speaker} steps back, still studying you. \"Not right now. I want to see where this goes first. Ask me once more.\""
+      "{speaker} studies you with interest and answers with a shrug.",
+      "{speaker} peers past you, distracted by something in the room.",
+      "{speaker} hums thoughtfully and gives no answer.",
+      "{speaker} smiles as if at a private joke and keeps quiet.",
+      "{speaker} seems lost in thought and does not reply.",
+      "{speaker} considers you for a long moment and says nothing."
     ],
     "repeat_lead": [
       "Didn't I say? Well, again then,",
@@ -981,12 +981,12 @@
       "Everything seems very far away today. I'm doing my best to stay in the room."
     ],
     "refusal": [
-      "{speaker} turns away, shoulders shaking. \"I can't, not now. Please, ask me again in a little while.\"",
-      "{speaker} shakes the head slowly, tears gathering. \"I'm sorry. I can't say it yet. Please come back.\"",
-      "{speaker} covers both eyes with a hand and says nothing for a long moment. \"Another time, if you would.\"",
-      "{speaker} presses a handkerchief to the lips and trembles silently. \"Not yet. Ask me later, please, when I've steadied.\"",
-      "{speaker} gives a tiny, broken smile and looks away. \"I'm sorry, I can't just now. Ask me once more, soon.\"",
-      "{speaker} sits very still, gaze on the floor, and whispers, \"Not now. I'll try again if you ask me later.\""
+      "{speaker} turns away, quiet and unsteady.",
+      "{speaker} takes a shaky breath and cannot answer.",
+      "{speaker} looks down at the carpet, and the silence grows.",
+      "{speaker} wipes away a tear and shakes silently.",
+      "{speaker} sits very still, eyes on the floor, unable to speak.",
+      "{speaker} presses a handkerchief close and makes no sound."
     ],
     "repeat_lead": [
       "I told you already, I'm sorry,",
@@ -1135,12 +1135,12 @@
       "It is a reasonable thing to ask. I would think poorly of you had you not."
     ],
     "refusal": [
-      "{speaker} sets down a cup with care. \"I would prefer not to answer that at this moment. Do ask me again later.\"",
-      "{speaker} regards you steadily and shakes the head by a fraction. \"Not yet. I shall be glad to speak when I have composed myself.\"",
-      "{speaker} folds both hands and offers no reply. \"A moment, please. Come back to me in a little while.\"",
-      "{speaker} smiles thinly and declines, quite politely. \"Another time, I think. The question will keep.\"",
-      "{speaker} turns a page of a book, unhurried, and says nothing. \"Ask me again shortly. I shall answer then.\"",
-      "{speaker} lifts a hand in polite refusal. \"Not now, if you do not mind. I am happy to be asked again.\""
+      "{speaker} sets down a cup without a sound and offers no reply.",
+      "{speaker} regards you steadily and says nothing.",
+      "{speaker} turns a page unhurriedly and lets the question rest.",
+      "{speaker} folds a napkin neatly and does not answer.",
+      "{speaker} smiles politely and stays silent.",
+      "{speaker} considers the matter with composure and gives no reply."
     ],
     "repeat_lead": [
       "As I stated earlier,",

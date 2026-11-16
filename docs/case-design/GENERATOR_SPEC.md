@@ -161,26 +161,26 @@ sightings are staring, 22% of questions are refused, warning at step 140-200, st
 10% death per room entered while stalking, halls safe. House-model costs are my assumptions: 10 steps per
 room-to-hall leg, 2 per action. The bot is naive about danger (keeps its normal search), so win rates are
 a **floor** for a player who rushes once warned. 1,000 seeds per cell, results in
-`simulation_clock_results.json`. **Hard includes the murder-room bias decided 2026-10-26** (below); the
+`simulation_clock_results.json`. **Re-run 2026-11-16 with 10% silent refusals** (decided; the original measured about 22%). **Hard includes the murder-room bias decided 2026-10-26** (below); the
 unbiased Hard numbers are in the tuning table.
 
 | suspects | difficulty | win | died | timed out | reached stalking | median steps (won) | p90 steps (won) | questions | rooms entered |
 |---|---|---|---|---|---|---|---|---|---|
-| 4 | easy | 95.3% | 4.7% | 0.0% | 23.5% | 206 | 288 | 4.8 | 9.6 |
-| 4 | normal | 94.7% | 5.3% | 0.0% | 24.6% | 208 | 288 | 4.8 | 9.7 |
-| 4 | hard | 73.8% | 26.2% | 0.0% | 56.3% | 255 | 380 | 4.9 | 13.9 |
-| 5 | easy | 90.3% | 9.7% | 0.0% | 40.5% | 236 | 328 | 6.1 | 10.8 |
-| 5 | normal | 90.4% | 9.6% | 0.0% | 41.8% | 238 | 332 | 6.1 | 10.9 |
-| 5 | hard | 71.3% | 28.7% | 0.0% | 65.1% | 280 | 369 | 6.1 | 14.1 |
-| 6 | easy | 76.9% | 23.1% | 0.0% | 61.3% | 266 | 402 | 7.3 | 12.8 |
-| 6 | normal | 76.9% | 23.1% | 0.0% | 61.7% | 266 | 404 | 7.3 | 12.9 |
-| 6 | hard | 56.5% | 43.5% | 0.0% | 77.0% | 306 | 430 | 7.4 | 15.6 |
-| 7 | easy | 68.9% | 31.1% | 0.0% | 71.8% | 288 | 444 | 8.4 | 13.8 |
-| 7 | normal | 69.3% | 30.7% | 0.0% | 71.7% | 288 | 444 | 8.4 | 13.8 |
-| 7 | hard | 56.6% | 43.4% | 0.0% | 78.6% | 318 | 460 | 8.6 | 15.6 |
-| 8 | easy | 63.4% | 36.6% | 0.0% | 77.7% | 310 | 474 | 9.7 | 14.7 |
-| 8 | normal | 63.2% | 36.8% | 0.0% | 77.9% | 312 | 474 | 9.7 | 14.7 |
-| 8 | hard | 51.0% | 49.0% | 0.0% | 84.0% | 334 | 497 | 9.8 | 16.1 |
+| 4 | easy | 94.7% | 5.3% | 0.0% | 21.8% | 204 | 284 | 4.2 | 9.5 |
+| 4 | normal | 94.5% | 5.5% | 0.0% | 22.8% | 206 | 286 | 4.2 | 9.7 |
+| 4 | hard | 72.6% | 27.4% | 0.0% | 55.8% | 251 | 376 | 4.3 | 13.9 |
+| 5 | easy | 89.4% | 10.6% | 0.0% | 40.0% | 228 | 328 | 5.2 | 10.7 |
+| 5 | normal | 89.6% | 10.4% | 0.0% | 40.5% | 231 | 330 | 5.2 | 10.8 |
+| 5 | hard | 68.7% | 31.3% | 0.0% | 65.3% | 278 | 380 | 5.3 | 14.2 |
+| 6 | easy | 78.1% | 21.9% | 0.0% | 60.1% | 264 | 400 | 6.3 | 12.9 |
+| 6 | normal | 77.7% | 22.3% | 0.0% | 61.1% | 266 | 402 | 6.3 | 13.0 |
+| 6 | hard | 57.4% | 42.6% | 0.0% | 77.6% | 316 | 430 | 6.5 | 15.8 |
+| 7 | easy | 67.0% | 33.0% | 0.0% | 70.8% | 286 | 440 | 7.3 | 13.8 |
+| 7 | normal | 67.7% | 32.3% | 0.0% | 70.7% | 286 | 442 | 7.3 | 13.8 |
+| 7 | hard | 56.3% | 43.7% | 0.0% | 78.2% | 310 | 454 | 7.5 | 15.7 |
+| 8 | easy | 61.8% | 38.2% | 0.0% | 77.0% | 307 | 472 | 8.4 | 14.6 |
+| 8 | normal | 61.6% | 38.4% | 0.0% | 76.9% | 309 | 474 | 8.4 | 14.7 |
+| 8 | hard | 50.6% | 49.4% | 0.0% | 83.6% | 336 | 496 | 8.5 | 16.3 |
 
 Reading it:
 - **Easy and Normal** win 95% (4 suspects) down to 63% (8 suspects) for the naive bot. Median winning
@@ -234,9 +234,11 @@ Measured, 6 suspects, 1,000 seeds per cell, naive bot (it still needs the murder
 
 | | Win, old lens | Win, new lens, x1 | Win, new lens, x2 |
 | --- | ---: | ---: | ---: |
-| Easy | 76.9% | 76.9% | 76.4% |
-| Normal | 76.9% | 76.9% | 76.3% |
-| Hard | 56.5% | 56.5% | 56.3% |
+| Easy | 78.5% | 78.5% | 78.1% |
+| Normal | 78.2% | 78.2% | 77.7% |
+| Hard | 57.6% | 57.6% | 57.4% |
+
+(The table above was re-measured at 10% refusals; the notes below were first measured at 22% and change by about a point.)
 
 What the numbers say:
 

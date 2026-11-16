@@ -57,7 +57,7 @@ games of the original, second house only; small samples). Labels: **observed** (
 | --- | --- | --- |
 | Guest leaves a room | 35% per turn | about 1% per step (19% still in the same room 170 steps later, 14 of 75) |
 | Guest staring at the floor | 12% per turn | 27% of sightings (34 of 126) |
-| Question refused | 25% | about 22% (5 of 23) |
+| Question refused | 25% | about 22% in the original (5 of 23); **decided 10%** (2026-11-16) |
 | Guest present in a room on entry | not set | 37% of visits (0.37 guests per visit, six guests) |
 
 ## 5. Decided with this spec

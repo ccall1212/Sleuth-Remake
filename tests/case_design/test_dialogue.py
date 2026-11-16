@@ -49,11 +49,19 @@ def test_every_line_renders_with_the_full_slot_set():
                 assert "{" not in text and "}" not in text
 
 
-def test_refusals_can_always_be_asked_again():
-    cue = re.compile(r"again|later|back|another time|moment|shortly|not yet|not now|once more|try|soon|little while|ask me", re.I)
+def test_refusals_are_silent_narration_that_never_coach_the_player_or_sound_final():
+    """User, 2026-11-16: refusals stay as a little friction but are silent narration (the game never shows the question, so nobody
+    is quoted), with no hint to ask again, no theatrical clutter and nothing final."""
+    coaching = re.compile(r"ask|again|come back|later|another time|try me|once more|in a (little )?while|give me a (moment|minute)", re.I)
+    final = re.compile(r"(never|ever|forever)", re.I)
     for pid, lines in DATA["personalities"].items():
-        for template in lines["refusal"]:
-            assert cue.search(template), (pid, template)
+        refusals = lines["refusal"]
+        assert len(refusals) == 6
+        for template in refusals:
+            assert '"' not in template, (pid, template)             # no quoted speech: we do not know the question
+            assert not coaching.search(template), (pid, template)
+            assert not final.search(template), (pid, template)
+            assert len(template) <= 100, (pid, len(template), template)
 
 
 def test_system_ranks_are_five_new_titles():
@@ -237,10 +245,12 @@ def test_lens_and_carrying_lines_exist_and_the_stain_lines_never_name_the_weapon
     assert all("{" not in line for key in ("wound_blunt", "wound_sharp", "wound_heavy") for line in system[key])
 
 
-def test_lens_stain_and_wound_hints_are_red_like_other_blood_text():
+def test_lens_stain_is_orange_so_it_does_not_read_as_the_weapon_and_wound_hints_are_red():
     styles = DATA["styles"]["system"]
-    for key in ("lens_stain", "wound_blunt", "wound_sharp", "wound_heavy"):
+    assert styles["lens_stain"] == "orange"            # shown on the weapon and on decoys alike
+    for key in ("wound_blunt", "wound_sharp", "wound_heavy"):
         assert styles[key] == "red"
+    assert styles["weapon_blood"] == "red"             # Easy names the weapon outright, so red stays correct there
 
 
 def test_every_personality_corrects_the_weapon_in_six_distinct_lines():

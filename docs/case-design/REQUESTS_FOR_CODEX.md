@@ -83,3 +83,6 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     `items` and `stains` (see `generate.py`; the version stays 2 and nothing else moves). Behaviour: on Normal and Hard the lens shows "a stain" (it does not name the
     weapon); the item's kind is visible; the wound kind is revealed together with the murder room. Easy: the lens names the weapon as today. Claude will export parity fixtures
     for the new fields; the dialogue (stain descriptions, wound hints) is still to be written.
+20. **Refusals: 10% and silent (decided 2026-11-16).** Set `question_refusal` to 0.10 in `house_runtime_rules.json`. A refusal shows one `refusal` line from the asked guest's personality
+    (now silent narration, no quoted speech, e.g. "... fusses with a cushion and does not seem to hear you."); nothing is recorded, asking again just works, and it costs no steps.
+    The old quoted refusal lines no longer exist.

@@ -23,7 +23,7 @@ Wording for questioning, confessions and narrator text lives in two JSON files u
 | `commentary_victim` | **victim** | Standalone sentence(s). Mixes grief, dislike, indifference. |
 | `commentary_suspect` | **other**, victim | Standalone. Points at another guest. |
 | `commentary_self` | none | Standalone. About their own situation. |
-| `refusal` | **speaker** | Narration plus optional quoted words. No alibi, always recoverable. |
+| `refusal` | **speaker** | **Silent narration only** (user, 2026-11-16): the game never shows the question, so nobody is quoted. One short sentence (at most 100 characters), no hint to ask again (the game lets you retry), no body-part phrasing, no alibi, never final. The rate is 10% of questions. |
 | `repeat_lead` | none | Starts a repeated answer. Ends with a comma. |
 | `repeat_close` | none | Closes a repeated answer. One short sentence. |
 | `confession_defiant`, `_remorseful`, `_triumphant`, `_furious`, `_resigned` | **speaker, victim, weapon, room** | Full block, narration then speech. |
@@ -58,8 +58,8 @@ Carrying and the lens (user, 2026-11-16; the player holds one item and the glass
 | Colour | Hex | Used for |
 | --- | --- | --- |
 | yellow | `#FFD84A` | `warning_suspicious` |
-| orange | `#FF9F40` | `warning_stalking` |
-| red | `#FF4D4D` | `floor_blood`, `weapon_blood`, `lens_stain`, `wound_blunt`, `wound_sharp`, `wound_heavy`, the ambush death scenes (`ambush_locked`, `ambush_grab`) and the runtime's ambush result line |
+| orange | `#FF9F40` | `warning_stalking`, `lens_stain` (a stain is only a possible clue and is shown on decoys too, so it is deliberately not red; red would read as "this is the weapon") |
+| red | `#FF4D4D` | `floor_blood`, `weapon_blood`, `wound_blunt`, `wound_sharp`, `wound_heavy`, the ambush death scenes (`ambush_locked`, `ambush_grab`) and the runtime's ambush result line |
 
 Layout: `colors` (name to `#RRGGBB`), `system` and `personality_lines` (line key to colour name) and `runtime_text` (`ambush_result`, the
 "X killed Y in the Z with the W. Your investigation has ended." text the game builds around an ambush). The validator checks that every key
