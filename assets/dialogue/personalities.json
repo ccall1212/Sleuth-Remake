@@ -143,6 +143,14 @@
       "{speaker} gets up and steps between you and the person you named. \"No, dear, you've got the wrong one. {victim} died by the {weapon} in the {room}, and I'm the one who did it.\"",
       "{speaker} pushes back a chair and says warmly, \"That poor soul has had no part in this, you know. The {weapon}, the {room}, {victim}, all of it mine.\"",
       "{speaker} stands, eyes bright. \"I can't sit and watch the wrong person pay. It was my hand, the {weapon}, the {room}, and {victim} is dead because of me.\""
+    ],
+    "culprit_corrects_weapon": [
+      "{speaker} stands, gentle but firm. \"Oh, love, the room is right, but the {chosen_weapon} isn't what did it. It was the {weapon} I used on {victim} in the {room}. Do let me set that straight.\"",
+      "{speaker} rises and folds both hands. \"I'm sorry, dear, you're holding the wrong thing. The {chosen_weapon} never touched {victim}. It was the {weapon}, and I won't have you chase a false clue.\"",
+      "{speaker} gives a sad little smile and stands. \"Yes, it was me, and yes, it was here. But not the {chosen_weapon}. It was the {weapon} that took {victim} from us.\"",
+      "{speaker} pushes aside a teacup, softly. \"Bless you for trying, but the {chosen_weapon} is a kind guess and a wrong one. {victim} met the {weapon}, and that was my doing.\"",
+      "{speaker} stands, voice low and kind. \"You've nearly got it. I did it, and the {room} is right. Only the {chosen_weapon} is wrong. It was the {weapon} I used on {victim}.\"",
+      "{speaker} rises, hands open. \"Please don't fret over the {chosen_weapon}, it's not the one. The {weapon} is what I used on {victim}. I'd rather you had the whole truth of it.\""
     ]
   },
   "nervous": {
@@ -153,6 +161,14 @@
       "{speaker} dabs a damp forehead with a sleeve and stammers,",
       "{speaker} plucks at a collar and says in a rush,",
       "{speaker} looks everywhere but at you and mumbles,"
+    ],
+    "culprit_corrects_weapon": [
+      "{speaker} jumps up, wringing both hands. \"Y-yes, it was me, but the {chosen_weapon} isn't it! It was the {weapon}! I used the {weapon} on {victim}, honestly, I did!\"",
+      "{speaker} half rises, stammering. \"The, the {room} is right, and I did it, but that {chosen_weapon} is wrong. It was the {weapon}. {victim} never even saw the {chosen_weapon}.\"",
+      "{speaker} stands, voice cracking. \"Please, I can't let you hold the wrong thing. The {chosen_weapon} didn't do it. The {weapon} did. I, I used it on {victim}. It was me.\"",
+      "{speaker} grips the chair back. \"N-no, not the {chosen_weapon}, that isn't right. It was the {weapon}, in the {room}. I'm sorry, I'm so sorry, {victim} was my doing.\"",
+      "{speaker} stands too quickly, breathless. \"You're close, but the {chosen_weapon} is wrong! It was the {weapon}. I'll say it before I lose my nerve: I did it to {victim}.\"",
+      "{speaker} rises, shaking. \"I, I have to correct you. The {chosen_weapon} wasn't used. The {weapon} was. {victim} died by my hand, and I can't bear to let you get it wrong.\""
     ],
     "claim_solo": [
       "I was... I was alone, in the {room}, all evening. I mean the whole evening! Nobody with me, no, nobody at all.",
@@ -300,6 +316,14 @@
       "{speaker} sniffs, folds both arms, and announces,",
       "{speaker} surveys the room with weary patience and pronounces,"
     ],
+    "culprit_corrects_weapon": [
+      "{speaker} stands with a thin smile. \"Admirable, but the {chosen_weapon} is a crude guess. I chose the {weapon} for {victim}, and in the {room} no less. Do get the details right.\"",
+      "{speaker} rises and smooths a sleeve. \"You have the culprit and the room. Pity about the {chosen_weapon}. It was the {weapon}, and I used it on {victim} with some finesse.\"",
+      "{speaker} stands and raps the table. \"No. The {chosen_weapon} is beneath the occasion. The {weapon} was my instrument, and {victim} met it in the {room}. Remember that.\"",
+      "{speaker} rises with weary condescension. \"Half marks. I did it, yes, but the {chosen_weapon} is wrong. The {weapon} was my choice for {victim}. Do write it down properly.\"",
+      "{speaker} stands, chin high. \"You hold the {chosen_weapon} as though it proved something. It proves nothing. It was the {weapon}, and I used it on {victim} without a single error.\"",
+      "{speaker} pushes back a chair, unhurried. \"I admit the deed and the {room}, but I won't have my work credited to the {chosen_weapon}. The {weapon} was mine to choose, and {victim} met it.\""
+    ],
     "claim_solo": [
       "I was alone in the {room} the entire evening, as any person of sense would guess, since I do not require an audience.",
       "My evening was spent alone in the {room}, inspector, in pursuits you would hardly follow. I did not stir from it.",
@@ -445,6 +469,14 @@
       "{speaker} answers without moving anything but the lips,",
       "{speaker} narrows both eyes and says,",
       "{speaker} exhales through the nose and replies,"
+    ],
+    "culprit_corrects_weapon": [
+      "{speaker} stands. \"Right person. Right room. Wrong item. Not the {chosen_weapon}. The {weapon}. I used it on {victim}.\"",
+      "{speaker} rises and says, \"Stop. Put down the {chosen_weapon}. It was the {weapon}. {victim}. The {room}. Mine.\"",
+      "{speaker} pushes a chair back. \"Yes, I did it. The {chosen_weapon} is wrong. It was the {weapon}. That is all you need. {victim} is gone.\"",
+      "{speaker} stands, arms folded. \"Not the {chosen_weapon}. Never touched it. The {weapon} did it. {victim} was my doing.\"",
+      "{speaker} rises slowly. \"You're close. Not close enough. The {chosen_weapon} is not it. The {weapon} is. I used it on {victim}.\"",
+      "{speaker} stands and exhales. \"Fine. It was me. It was the {room}. It was the {weapon}, not the {chosen_weapon}. {victim}. Check again.\""
     ],
     "claim_solo": [
       "Alone. The {room}. All evening.",
@@ -592,6 +624,14 @@
       "{speaker} jabs a finger toward your chest and growls,",
       "{speaker} throws up both hands in disgust and says,"
     ],
+    "culprit_corrects_weapon": [
+      "{speaker} slams a fist down. \"Yes, it was me, but the {chosen_weapon}? Ridiculous! It was the {weapon}! I used the {weapon} on {victim}, so get it right!\"",
+      "{speaker} shoves back a chair. \"The right room, the right culprit, and you still fumble the {chosen_weapon}! It was the {weapon}, you fool! {victim} was done in with the {weapon}!\"",
+      "{speaker} jumps up, red in the face. \"Not the {chosen_weapon}! Haven't you eyes? It was the {weapon} I used on {victim}, and I'll hear no argument!\"",
+      "{speaker} stands, jabbing a finger. \"I did it, fine, and the {room}, yes, but the {chosen_weapon} is useless! It was the {weapon}! Write that down, {victim} deserves that much!\"",
+      "{speaker} leaps to feet. \"Bah! The {chosen_weapon}! Wrong! It was the {weapon} that finished {victim}, and I'll not be insulted by a wrong guess!\"",
+      "{speaker} kicks a chair aside. \"Enough! The {chosen_weapon} is wrong! I took the {weapon} to {victim} in the {room}, and I'm not ashamed to say it!\""
+    ],
     "claim_solo": [
       "I was alone in the {room}, the whole evening! Alone! Is that so hard to believe?",
       "Alone in the {room}, all evening, and I'll thank you not to look at me like that.",
@@ -737,6 +777,14 @@
       "{speaker} glances about the room, taking in every corner, and says,",
       "{speaker} raises one eyebrow with obvious interest and says,",
       "{speaker} peers at your notebook, then up at you, and says,"
+    ],
+    "culprit_corrects_weapon": [
+      "{speaker} stands, intrigued. \"How interesting, you've the culprit and the room, but the {chosen_weapon}? No, no. It was the {weapon}. I used it on {victim}. Do you see how that changes things?\"",
+      "{speaker} rises, head tilted. \"Curious choice, the {chosen_weapon}. What led you to it? It was the {weapon} that I used on {victim}, you know.\"",
+      "{speaker} pushes back a chair, smiling. \"Almost! The {chosen_weapon} is a lovely theory, but it was the {weapon} that did the deed to {victim}. Shall we compare notes?\"",
+      "{speaker} stands, eyes bright. \"Wait, wait. You're holding the {chosen_weapon}? That isn't it. It was the {weapon}. I did it to {victim}. Isn't that fascinating?\"",
+      "{speaker} rises, almost pleased. \"You've done well, but I must correct the {chosen_weapon}. It was the {weapon}. I wonder how you missed it. I used it on {victim}.\"",
+      "{speaker} stands, leaning in. \"May I? The {chosen_weapon} is wrong. It was the {weapon}, in the {room}, on {victim}. What gave it away, I wonder?\""
     ],
     "claim_solo": [
       "I was alone in the {room} all evening. Rather odd, now I think on it, that no one looked in once. Don't you find that odd?",
@@ -884,6 +932,14 @@
       "{speaker} rubs tired eyes and answers, so quietly you must lean in,",
       "{speaker} stares at a spot on the carpet and murmurs,"
     ],
+    "culprit_corrects_weapon": [
+      "{speaker} stands, tears welling. \"Yes, it was me. But not the {chosen_weapon}. It was the {weapon}. Please, I used it on {victim}, and I'm so sorry.\"",
+      "{speaker} rises, voice breaking. \"You have the {room} right, and me, but the {chosen_weapon} is wrong. It was the {weapon} that I used on {victim}. I can't keep lying.\"",
+      "{speaker} gets up, whispering. \"Not the {chosen_weapon}, please. It was the {weapon}. {victim} didn't deserve it, and I did it. I'm sorry.\"",
+      "{speaker} stands, wiping at tears. \"I can't let you hold the wrong thing. The {chosen_weapon} never did it. The {weapon} did, and I used it on {victim}.\"",
+      "{speaker} rises, shaking. \"It was me, I know it was. But the {chosen_weapon} isn't right. It was the {weapon}. Please, I can't say it again. {victim}...\"",
+      "{speaker} stands, barely audible. \"The {chosen_weapon} wasn't it. It was the {weapon}, in the {room}. {victim} is gone because of me, and I'm so sorry.\""
+    ],
     "claim_solo": [
       "I was alone in the {room} all evening. I just wanted quiet, that's all. I didn't mean to be alone, only it happened.",
       "I sat alone in the {room} the whole evening. It was where I could be sad without anyone seeing.",
@@ -1029,6 +1085,14 @@
       "{speaker} considers the question for a moment and replies,",
       "{speaker} sets down a pen with care and says,",
       "{speaker} meets your gaze without hurry and says,"
+    ],
+    "culprit_corrects_weapon": [
+      "{speaker} rises. \"A small correction. You have me, and the room, but not the item. The {chosen_weapon} is not it. I used the {weapon} on {victim}.\"",
+      "{speaker} stands, composed. \"Quite right about the {room}, and about me. But the {chosen_weapon} did nothing. It was the {weapon} that I used on {victim}.\"",
+      "{speaker} sets down a cup. \"Let us be accurate. The {chosen_weapon} is the wrong item. It was the {weapon}. {victim} died at my hand, and I won't pretend otherwise.\"",
+      "{speaker} stands and folds both hands. \"I won't dispute the deed. I will dispute the {chosen_weapon}. It was the {weapon}, and I used it on {victim}.\"",
+      "{speaker} rises, unhurried. \"You are nearly there. The {chosen_weapon} is not the item. It was the {weapon} in the {room}. {victim} was my doing.\"",
+      "{speaker} pushes back a chair, steady. \"That is the wrong item, I'm afraid. The {chosen_weapon} was not used. The {weapon} was. I did it to {victim}.\""
     ],
     "claim_solo": [
       "I was alone in the {room} for the whole evening. I can offer no witness, though I can describe the furniture in detail.",

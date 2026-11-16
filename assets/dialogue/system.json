@@ -6,8 +6,6 @@
     "Everyone is summoned to the {room}. The door is locked and the room falls quiet, waiting for you to speak.",
     "The party gathers in the {room}, murmuring. Someone turns the key in the lock, and the murmuring dies."
   ],
-  "assemble_need_weapon_found": "You cannot call everyone together yet. You have not found what did the deed, and an accusation without it will only embarrass you.",
-  "assemble_need_weapon_carried": "You know what was used, but it is not in your hands. Pick it up first, so you can lay it before them.",
   "accuse_need_assembly": "Nobody can be accused before a roomful of empty chairs. Gather the guests together first.",
   "accuse_wrong_both": [
     "Sloppy work. It was {culprit} who ended {victim}, in the {true_room}, and not in the {chosen_room} as you declared. The company does not know whether to laugh.",
@@ -72,16 +70,6 @@
     "Plain, useful, and wholly unremarkable.",
     "It might be anyone's, and it is certainly no clue."
   ],
-  "get_refused_not_weapon": [
-    "You lift it, consider it, and put it back. It is not what killed anyone, and your hands are better kept free for evidence that matters.",
-    "There is no point carrying that about. It has nothing to do with the murder.",
-    "You leave it where it is. A house like this notices missing things, and this one is not worth the fuss."
-  ],
-  "carrying_limit": [
-    "Your hands are full with the murder weapon. You cannot carry another thing.",
-    "You are already carrying the weapon, and that is quite enough to manage. Put it down first.",
-    "No room, inspector. The weapon in your grip is all you can hold."
-  ],
   "too_far_to_hear": [
     "{speaker} is too far away to hear you. You will have to step closer.",
     "You call out, but {speaker} is too far off to catch a word. Go nearer.",
@@ -96,5 +84,64 @@
     "Your fingers catch on a hidden edge, and a panel slides open in the wall. Someone built this house with secrets.",
     "A section of the wall gives way under your hand. A secret panel, and a dark space behind it.",
     "You tap the wall and hear a hollow note. A panel swings aside, revealing a narrow hidden space."
+  ],
+  "assemble_need_item": [
+    "You cannot call everyone together with nothing to show them. Pick up an object you mean to lay before the guests; the magnifying glass will not do.",
+    "A roomful of suspects will want something put in front of them. Carry an item first, and not the magnifying glass.",
+    "Gathering the guests with empty hands would only embarrass you. Take hold of an item to lay before them."
+  ],
+  "lens_stain": [
+    "Under the glass, a dark, dried mark clings to the {item}. It could be blood. It could be a good many other things.",
+    "The {item} carries a rusty-brown stain along one side. Old, or merely old-looking; the lens cannot say which.",
+    "A smear of something dark has dried on the {item}. It might be blood, though the glass will not swear to it.",
+    "You find a brownish stain on the {item}. Wine, ink, rust or worse: it is hard to tell from the mark alone.",
+    "A faint, crusted mark darkens the {item}. Something was spilled here, or smeared. What, you cannot yet say.",
+    "The glass shows a dull, dark patch on the {item}. It tells you something touched it, and not what."
+  ],
+  "lens_clean": [
+    "The {item} is clean under the glass. Not a mark on it worth noting.",
+    "You turn the {item} this way and that, and the lens finds nothing on it.",
+    "Dust, a little polish and nothing more: the {item} shows no stain at all.",
+    "Nothing clings to the {item}. Whatever else it is, it is clean."
+  ],
+  "wound_blunt": [
+    "The marks on the floor and the way the victim lay say the blow was blunt: something with weight, swung hard.",
+    "Whatever struck the victim was blunt. There is no cut here, only the kind of damage a heavy swing leaves behind.",
+    "The evidence points to a blunt blow, a swing from something solid and hard."
+  ],
+  "wound_sharp": [
+    "The traces here say the victim was cut or stabbed. Whatever was used had an edge or a point.",
+    "This was not a bludgeoning. The marks speak of a sharp blade or a point driven in.",
+    "The wound was sharp: something that cuts or pierces."
+  ],
+  "wound_heavy": [
+    "The floor is marked as if something ponderous came down on the victim. The weapon was heavy, more dropped or hurled than swung.",
+    "Whatever did this was heavy, the sort of object that crushes where a lighter one would only bruise.",
+    "The damage speaks of sheer weight: a heavy object, brought down hard."
+  ],
+  "hands_full": [
+    "Your hands are full with the {item}. Put it down before you take anything else.",
+    "You are already holding the {item}, and a person can only manage one thing at a time. Set it down first.",
+    "No room in your hands, inspector: the {item} is all you can carry. Put it down first."
+  ],
+  "take_item": [
+    "You pick up the {item}. Your hands are full now.",
+    "You take the {item} in both hands.",
+    "The {item} is yours to carry for now."
+  ],
+  "take_glass": [
+    "You take up the magnifying glass. It will show you what the naked eye misses.",
+    "The magnifying glass is in your hand now. Every object in the house is a little more honest under it.",
+    "You pick up the magnifying glass and hold it ready."
+  ],
+  "drop_item": [
+    "You set the {item} down where you stand.",
+    "You lower the {item} to the floor and leave it there.",
+    "The {item} comes out of your hands and settles on the floor beside you."
+  ],
+  "drop_glass": [
+    "You lay the magnifying glass down where you stand. Mind that you remember it is there.",
+    "The magnifying glass goes down on the floor. It will be there when you come back for it.",
+    "You put the magnifying glass down and leave it where it lies."
   ]
 }

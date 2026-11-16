@@ -59,6 +59,7 @@ Per-personality lines use the stream `dialogue/<suspect>/<kind>/<n>` (kind and n
 | Accusation: right person and room | `confession_<tone>` | tone below |
 | Accusation: right person, wrong room | `culprit_corrects_room` | adds `chosen_room` |
 | Accusation: wrong person, right room | `culprit_corrects_person` | the culprit stands up |
+| Accusation: right person and room, wrong item in hand | `culprit_corrects_weapon` | slots `weapon` (true) and `chosen_weapon` (carried); new 2026-11-16 |
 | Accusation: both wrong | system `accuse_wrong_both` | slots culprit, victim, true_room, chosen_room |
 
 Confession tone by personality, a **proposal for the user to confirm**: warm, fragile, nervous → `remorseful`; proud, curious → `triumphant`;
@@ -78,13 +79,17 @@ words. The investigation's current phase colours (`house_investigation.gd`) shou
 | --- | --- |
 | "The murderer has grown suspicious. Be careful who you question." | `warning_suspicious` (drop the original-style wording; keep any UI hint as separate, non-narrative text) |
 | "The murderer is stalking you. Entering rooms is dangerous; halls are safe." | `warning_stalking` |
-| "Carry the identified weapon and assemble the guests first." | `accuse_need_assembly` / `assemble_need_weapon_carried` |
+| "Carry the identified weapon and assemble the guests first." | `accuse_need_assembly` (not assembled yet) / `assemble_need_item` (nothing but the glass in hand) |
 | assemble succeeds | `assemble_ok` {room} |
 | "You find traces of the crime. The murder happened in the X." | `floor_blood` {room} |
 | "Nothing conclusive..." with no guest watching / with one | `floor_nothing_unwatched` / `floor_nothing` |
-| "The magnifying glass reveals matching traces on the X..." | `weapon_blood` {weapon} |
+| "The magnifying glass reveals matching traces on the X..." | Easy: `weapon_blood` {weapon}. Normal and Hard: `lens_stain` {item} on the weapon and on decoys alike |
+| an item with no stain (Normal, Hard) | `lens_clean` {item} |
+| the murder-room trace, on Normal and Hard | `floor_blood` {room} followed by one of `wound_blunt` / `wound_sharp` / `wound_heavy` for the weapon's kind |
 | non-weapon item examined | `item_flavor_generic` (12 lines) |
-| taking a non-weapon / carrying limit | `get_refused_not_weapon`, `carrying_limit` |
+| taking an item or the glass | `take_item` {item} / `take_glass` |
+| hands already full | `hands_full` {item} (the item may be the glass) |
+| putting something down | `drop_item` {item} / `drop_glass` |
 | asking someone too far away | `too_far_to_hear` {speaker} |
 | the front door, the secret panel | `front_stoop`, `secret_panel` |
 | notebook header for the guest list | `guest_list_header` |

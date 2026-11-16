@@ -17,6 +17,7 @@ SLOTS = {
     "other": "Miss Finch",
     "weapon": "candlestick",
     "chosen_room": "conservatory",
+    "chosen_weapon": "paperweight",
 }
 
 
@@ -221,3 +222,34 @@ def test_validator_flags_bad_styles():
     assert _bad(lambda d: d["styles"]["colors"].__setitem__("red", "red"))
     assert _bad(lambda d: d["styles"]["system"].__setitem__("no_such_key", "red"))
     assert _bad(lambda d: d["styles"]["system"].__setitem__("floor_blood", "purple"))
+
+
+def test_lens_and_carrying_lines_exist_and_the_stain_lines_never_name_the_weapon():
+    system = DATA["system"]
+    for key in ("lens_stain", "lens_clean", "wound_blunt", "wound_sharp", "wound_heavy", "hands_full", "take_item", "take_glass",
+                "drop_item", "drop_glass", "assemble_need_item"):
+        assert key in system and len(system[key]) >= 3
+    assert len(system["lens_stain"]) >= 6 and len(system["lens_clean"]) >= 4
+    assert not any(k in system for k in ("assemble_need_weapon_found", "assemble_need_weapon_carried", "get_refused_not_weapon", "carrying_limit"))
+    # a stain looks the same on the weapon and on decoys, so it must not call the item the weapon or the murder
+    assert not any(w in line.lower() for line in system["lens_stain"] for w in ("murder weapon", "weapon that", "killed", "murder"))
+    # wound hints say the kind of blow and never point at an item
+    assert all("{" not in line for key in ("wound_blunt", "wound_sharp", "wound_heavy") for line in system[key])
+
+
+def test_lens_stain_and_wound_hints_are_red_like_other_blood_text():
+    styles = DATA["styles"]["system"]
+    for key in ("lens_stain", "wound_blunt", "wound_sharp", "wound_heavy"):
+        assert styles[key] == "red"
+
+
+def test_every_personality_corrects_the_weapon_in_six_distinct_lines():
+    p = DATA["personalities"]
+    seen = set()
+    for name, lines in p.items():
+        variants = lines["culprit_corrects_weapon"]
+        assert len(variants) == 6
+        for line in variants:
+            assert all(slot in line for slot in ("{speaker}", "{victim}", "{weapon}", "{chosen_weapon}"))
+            assert line not in seen
+            seen.add(line)

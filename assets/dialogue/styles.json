@@ -8,7 +8,11 @@
     "warning_suspicious": "yellow",
     "warning_stalking": "orange",
     "floor_blood": "red",
-    "weapon_blood": "red"
+    "weapon_blood": "red",
+    "lens_stain": "red",
+    "wound_blunt": "red",
+    "wound_sharp": "red",
+    "wound_heavy": "red"
   },
   "personality_lines": {
     "ambush_locked": "red",

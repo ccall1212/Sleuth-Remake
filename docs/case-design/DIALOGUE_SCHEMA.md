@@ -31,21 +31,25 @@ Wording for questioning, confessions and narrator text lives in two JSON files u
 | `ambush_grab` | **speaker, weapon** | Murderer snatches the carried weapon and strikes. |
 | `culprit_corrects_room` | **speaker, victim, weapon, room, chosen_room** | Accused correctly, wrong room. |
 | `culprit_corrects_person` | **speaker, victim, weapon, room** | Right room, wrong person. |
+| `culprit_corrects_weapon` | **speaker, victim, weapon, chosen_weapon**, room | Right person and room, wrong item in hand (`weapon` is the true weapon, `chosen_weapon` the item carried). |
 
 `claim_*`, `commentary_*` and `repeat_*` lines contain no quotation marks: the game adds them.
 `refusal`, confession, ambush and corrects lines are complete blocks and quote their own speech.
 
 ## System keys
 
-Single string: `guest_list_header`, `assemble_need_weapon_found`, `assemble_need_weapon_carried`,
-`accuse_need_assembly`. Lists (at least 3 unless stated), with the slots each must use:
+Single string: `guest_list_header`, `accuse_need_assembly`. Lists (at least 3 unless stated), with the slots each must use:
 
 `assemble_ok` {room}; `accuse_wrong_both` {culprit} {victim} {true_room} {chosen_room};
 `win` {culprit} {victim} {moves} {rank}; `ranks` exactly 5 titles, best to worst, 2-3 words;
 `warning_suspicious`; `warning_stalking`; `floor_nothing` (someone is watching);
 `floor_nothing_unwatched`; `floor_blood` {room}; `weapon_blood` {weapon};
-`item_flavor_generic` exactly 12 slotless lines; `get_refused_not_weapon`; `carrying_limit`;
-`too_far_to_hear` {speaker}; `front_stoop`; `secret_panel`.
+`item_flavor_generic` exactly 12 slotless lines; `too_far_to_hear` {speaker}; `front_stoop`; `secret_panel`.
+
+Carrying and the lens (user, 2026-11-16; the player holds one item and the glass is an item): `assemble_need_item` (assembling needs a non-glass item);
+`lens_stain` {item} (at least 6; shown for the weapon and for decoys alike, so the wording must never tell them apart); `lens_clean` {item} (at least 4);
+`wound_blunt`, `wound_sharp`, `wound_heavy` (shown with the murder-room trace; never name the item); `hands_full` {item}; `take_item` {item}; `take_glass`;
+`drop_item` {item}; `drop_glass`. The old `assemble_need_weapon_found`, `assemble_need_weapon_carried`, `get_refused_not_weapon` and `carrying_limit` are gone.
 
 ## Text colours (`styles.json`, user decision 2026-11-16)
 
@@ -55,7 +59,7 @@ Single string: `guest_list_header`, `assemble_need_weapon_found`, `assemble_need
 | --- | --- | --- |
 | yellow | `#FFD84A` | `warning_suspicious` |
 | orange | `#FF9F40` | `warning_stalking` |
-| red | `#FF4D4D` | `floor_blood`, `weapon_blood`, the ambush death scenes (`ambush_locked`, `ambush_grab`) and the runtime's ambush result line |
+| red | `#FF4D4D` | `floor_blood`, `weapon_blood`, `lens_stain`, `wound_blunt`, `wound_sharp`, `wound_heavy`, the ambush death scenes (`ambush_locked`, `ambush_grab`) and the runtime's ambush result line |
 
 Layout: `colors` (name to `#RRGGBB`), `system` and `personality_lines` (line key to colour name) and `runtime_text` (`ambush_result`, the
 "X killed Y in the Z with the W. Your investigation has ended." text the game builds around an ambush). The validator checks that every key

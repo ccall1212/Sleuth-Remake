@@ -43,6 +43,11 @@ PERSONALITY_LINES: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
         ("speaker", "victim", "weapon", "room", "chosen_room"),
     ),
     "culprit_corrects_person": (("speaker", "victim", "weapon", "room"), ("speaker", "victim", "weapon", "room")),
+    # Right person and room, wrong item in hand (user, 2026-11-16): `weapon` is the true weapon, `chosen_weapon` the item carried.
+    "culprit_corrects_weapon": (
+        ("speaker", "victim", "weapon", "room", "chosen_weapon"),
+        ("speaker", "victim", "weapon", "chosen_weapon"),
+    ),
 }
 
 # Line types where talking about guilt or confessing is expected.
@@ -54,8 +59,7 @@ GUILT_OK_TYPES = frozenset(
 SYSTEM_LINES: dict[str, tuple[tuple[str, ...], int]] = {
     "guest_list_header": ((), 0),
     "assemble_ok": (("room",), 3),
-    "assemble_need_weapon_found": ((), 0),
-    "assemble_need_weapon_carried": ((), 0),
+    "assemble_need_item": ((), 3),
     "accuse_need_assembly": ((), 0),
     "accuse_wrong_both": (("culprit", "victim", "true_room", "chosen_room"), 3),
     "win": (("culprit", "victim", "moves", "rank"), 3),
@@ -67,8 +71,16 @@ SYSTEM_LINES: dict[str, tuple[tuple[str, ...], int]] = {
     "floor_blood": (("room",), 3),
     "weapon_blood": (("weapon",), 3),
     "item_flavor_generic": ((), 12),
-    "get_refused_not_weapon": ((), 3),
-    "carrying_limit": ((), 3),
+    "lens_stain": (("item",), 6),
+    "lens_clean": (("item",), 4),
+    "wound_blunt": ((), 3),
+    "wound_sharp": ((), 3),
+    "wound_heavy": ((), 3),
+    "hands_full": (("item",), 3),
+    "take_item": (("item",), 3),
+    "take_glass": ((), 3),
+    "drop_item": (("item",), 3),
+    "drop_glass": ((), 3),
     "too_far_to_hear": (("speaker",), 3),
     "front_stoop": ((), 3),
     "secret_panel": ((), 3),

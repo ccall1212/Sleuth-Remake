@@ -71,8 +71,9 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     stays where dropped; the notebook should list last known item locations so the player need not remember), and assembling needs any non-glass item in hand. Add the
     accusation outcome "right person and room, wrong item": new dialogue line type `culprit_corrects_weapon` (Claude will write it) and extend `accuse()`. The ambush
     grab uses whatever is held. **The magnifying glass is an item and takes the single slot** (decided 2026-11-16): the player drops it to carry anything else, it never counts for
-    assembling, and on Hard the staring-guest floor trace needs the glass in hand. Dialogue needed from Claude: `culprit_corrects_weapon` for all eight personalities, plus new system lines
-    `hands_full`, `drop_item`, `drop_glass` and `assemble_need_item`; `get_refused_not_weapon`, `assemble_need_weapon_found` and `assemble_need_weapon_carried` become obsolete.
+    assembling, and on Hard the staring-guest floor trace needs the glass in hand. Dialogue now written by Claude (2026-11-16): `culprit_corrects_weapon` for all eight personalities, and system lines
+    `hands_full`, `take_item`, `take_glass`, `drop_item`, `drop_glass`, `assemble_need_item`, `lens_stain`, `lens_clean`, `wound_blunt|sharp|heavy`;
+    `get_refused_not_weapon`, `assemble_need_weapon_found`, `assemble_need_weapon_carried` and `carrying_limit` are removed.
 17. **Faster stalker when the true weapon is held.** Proposal: clock steps count double while the true weapon is in hand, with no immediate message. Make the multiplier a
     constant in `house_runtime_rules.json`. Open with the user: how much, and silent or announced.
 18. **Label the phase indicator.** The sidebar's calm / suspicious / stalking text (`house_investigation.gd`, drawn without a label) should read "Murderer: calm / suspicious /
