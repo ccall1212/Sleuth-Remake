@@ -47,6 +47,23 @@ Single string: `guest_list_header`, `assemble_need_weapon_found`, `assemble_need
 `item_flavor_generic` exactly 12 slotless lines; `get_refused_not_weapon`; `carrying_limit`;
 `too_far_to_hear` {speaker}; `front_stoop`; `secret_panel`.
 
+## Text colours (`styles.json`, user decision 2026-11-16)
+
+`assets/dialogue/styles.json` tells the game which lines to colour. It holds no wording.
+
+| Colour | Hex | Used for |
+| --- | --- | --- |
+| yellow | `#FFD84A` | `warning_suspicious` |
+| orange | `#FF9F40` | `warning_stalking` |
+| red | `#FF4D4D` | `floor_blood`, `weapon_blood`, the ambush death scenes (`ambush_locked`, `ambush_grab`) and the runtime's ambush result line |
+
+Layout: `colors` (name to `#RRGGBB`), `system` and `personality_lines` (line key to colour name) and `runtime_text` (`ambush_result`, the
+"X killed Y in the Z with the W. Your investigation has ended." text the game builds around an ambush). The validator checks that every key
+exists and every colour is defined. Hex values are suggestions for a dark background; the three names are the decision.
+
+Both warnings must say the murderer's state in plain words: every `warning_suspicious` variant contains "The murderer is suspicious of you" and
+every `warning_stalking` variant contains "The murderer is stalking you" (validator rule).
+
 ## Composing a reply
 
 `compose_reply(data, personality, claim_kind, slots, repeat, pick)`; `claim_kind` is `"solo"` or

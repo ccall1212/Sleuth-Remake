@@ -19,6 +19,12 @@ except ImportError:  # run as a script: python tools/case_design/validate_dialog
     import dialogue as dlg
 
 MAX_LENGTH = 240
+# Every variant of these narrator warnings must say the murderer's state in plain words (user, 2026-11-16).
+REQUIRED_PHRASES = {
+    "warning_suspicious": "The murderer is suspicious of you",
+    "warning_stalking": "The murderer is stalking you",
+}
+HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
 MAX_EXPANDED = 270   # after slots are filled with worst-case values (names the player types, long rooms)
 SLOT_WIDTH = {"weapon": 24, "rank": 24, "moves": 5}
 DEFAULT_SLOT_WIDTH = 16
@@ -147,6 +153,11 @@ def _check_system(system: dict) -> list[str]:
                 errors.append(f"system.{key}: {len(variants)} entries, need {'exactly ' if exact else ''}{minimum}")
         for number, text in enumerate(variants):
             errors += _check_text(f"system.{key}[{number}]", text, allowed, allowed)
+        phrase = REQUIRED_PHRASES.get(key)
+        if phrase:
+            for number, text in enumerate(variants):
+                if phrase not in text:
+                    errors.append(f"system.{key}[{number}]: must contain {phrase!r}: {text!r}")
         if key == "ranks":
             for text in variants:
                 if not 2 <= len(text.split()) <= 3:
@@ -201,9 +212,24 @@ def _check_reference(data: dict, folder: Path) -> list[str]:
     return errors
 
 
+def _check_styles(styles: dict) -> list[str]:
+    errors = []
+    colors = styles.get("colors", {})
+    for name, value in colors.items():
+        if not HEX_COLOR.match(str(value)):
+            errors.append(f"styles.colors.{name}: {value!r} is not a #RRGGBB colour")
+    for group, valid in (("system", dlg.SYSTEM_LINES), ("personality_lines", dlg.PERSONALITY_LINES), ("runtime_text", None)):
+        for key, colour in styles.get(group, {}).items():
+            if valid is not None and key not in valid:
+                errors.append(f"styles.{group}.{key}: unknown line key")
+            if colour not in colors:
+                errors.append(f"styles.{group}.{key}: colour {colour!r} is not defined in styles.colors")
+    return errors
+
+
 def problems(data: dict, reference_dir: str | Path | None = None) -> list[str]:
     """Every problem found in loaded dialogue data (empty list means valid)."""
-    errors = _check_personalities(data["personalities"]) + _check_system(data["system"])
+    errors = _check_personalities(data["personalities"]) + _check_system(data["system"]) + _check_styles(data.get("styles", {}))
     if not errors:  # the duplicate and reference scans assume well-formed data
         errors += _check_duplicates(data)
         if reference_dir:

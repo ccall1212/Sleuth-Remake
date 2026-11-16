@@ -65,3 +65,5 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     blockout viewer (item 13) at it first; it also has `obstacle_kinds`, `guest_spot_kinds` and `guest_spot_facing`
     (one side, several sides or "any"), documented in `docs/case-design/HOUSE_LAYOUT_FORMAT.md`. Spots describe places and
     are separate from personalities.
+15. **Wire the dialogue data.** Spec: `docs/case-design/DIALOGUE_WIRING_SPEC.md`, with parity fixtures in `docs/case-design/dialogue_fixtures.json`
+    (216 first and repeat answers). Data only; replaces the placeholder voice lines and the two near-original warnings.

@@ -29,14 +29,14 @@
     "Hapless Lodger"
   ],
   "warning_suspicious": [
-    "A cold feeling creeps over you. Somewhere in the house, someone has begun to wonder how much you know.",
-    "You catch a sidelong glance down the corridor, and it is not a friendly one. Your questions are being noticed.",
-    "The murderer has marked your prying, and grows uneasy. Tread carefully from here on."
+    "The murderer is suspicious of you. A cold feeling creeps over you; somewhere in the house, someone has begun to wonder how much you know.",
+    "You catch a sidelong glance down the corridor, and it is not a friendly one. The murderer is suspicious of you, and your questions are being noticed.",
+    "The murderer is suspicious of you. Your prying has been marked and has made the house uneasy, so tread carefully from here on."
   ],
   "warning_stalking": [
-    "Floorboards creak behind you. The murderer is no longer merely watching, but following.",
-    "You are being followed. Each time you turn, a door closes softly somewhere out of sight.",
-    "A shadow keeps pace with you through the halls. The murderer has decided you are a problem to be solved."
+    "Floorboards creak behind you. The murderer is stalking you, no longer merely watching but following.",
+    "You are being followed. The murderer is stalking you, and each time you turn, a door closes softly somewhere out of sight.",
+    "A shadow keeps pace with you through the halls. The murderer is stalking you and has decided you are a problem to be solved."
   ],
   "floor_nothing": [
     "You study the floor, though under so many eyes you notice nothing but dust and a curl of carpet.",

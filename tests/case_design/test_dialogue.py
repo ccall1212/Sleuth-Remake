@@ -195,3 +195,29 @@ def test_validator_flags_lines_too_long_once_slots_are_filled():
     assert len(line) <= validate_dialogue.MAX_LENGTH
     errs = _bad(lambda d: d["personalities"]["warm"]["confession_defiant"].__setitem__(0, line))
     assert any("worst-case slots" in e for e in errs)
+
+
+def test_warnings_state_the_murderers_mood_in_plain_words():
+    system = DATA["system"]
+    assert all("The murderer is suspicious of you" in line for line in system["warning_suspicious"])
+    assert all("The murderer is stalking you" in line for line in system["warning_stalking"])
+    assert _bad(lambda d: d["system"]["warning_suspicious"].__setitem__(0, "A cold feeling creeps over you."))
+
+
+def test_text_colours_follow_the_users_scheme():
+    styles = DATA["styles"]
+    colors = styles["colors"]
+    assert styles["system"]["warning_suspicious"] == "yellow"
+    assert styles["system"]["warning_stalking"] == "orange"
+    for key in ("floor_blood", "weapon_blood"):
+        assert styles["system"][key] == "red"
+    for key in ("ambush_locked", "ambush_grab"):
+        assert styles["personality_lines"][key] == "red"
+    assert styles["runtime_text"]["ambush_result"] == "red"
+    assert {colors["yellow"], colors["orange"], colors["red"]} and len({colors["yellow"], colors["orange"], colors["red"]}) == 3
+
+
+def test_validator_flags_bad_styles():
+    assert _bad(lambda d: d["styles"]["colors"].__setitem__("red", "red"))
+    assert _bad(lambda d: d["styles"]["system"].__setitem__("no_such_key", "red"))
+    assert _bad(lambda d: d["styles"]["system"].__setitem__("floor_blood", "purple"))

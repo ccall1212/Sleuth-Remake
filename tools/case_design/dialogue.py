@@ -82,7 +82,7 @@ class DialogueError(ValueError):
 
 
 def load(path: str | Path | None = None) -> dict:
-    """Return {"personalities": {...}, "system": {...}}.
+    """Return {"personalities": {...}, "system": {...}} plus "styles" when styles.json exists.
 
     `path` is the dialogue directory; by default `assets/dialogue` next to this repo's tools/.
     """
@@ -91,6 +91,10 @@ def load(path: str | Path | None = None) -> dict:
     for key in ("personalities", "system"):
         with open(base / f"{key}.json", encoding="utf-8") as handle:
             out[key] = json.load(handle)
+    styles = base / "styles.json"
+    if styles.exists():                       # optional: text colours (yellow, orange, red) for the game to apply
+        with open(styles, encoding="utf-8") as handle:
+            out["styles"] = json.load(handle)
     return out
 
 

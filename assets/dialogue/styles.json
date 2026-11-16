@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "yellow": "#FFD84A",
+    "orange": "#FF9F40",
+    "red": "#FF4D4D"
+  },
+  "system": {
+    "warning_suspicious": "yellow",
+    "warning_stalking": "orange",
+    "floor_blood": "red",
+    "weapon_blood": "red"
+  },
+  "personality_lines": {
+    "ambush_locked": "red",
+    "ambush_grab": "red"
+  },
+  "runtime_text": {
+    "ambush_result": "red"
+  }
+}
