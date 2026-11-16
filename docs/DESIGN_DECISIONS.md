@@ -41,7 +41,7 @@ sample sizes are small (14 games of live play, plus 28 scripted games for the da
 
 ## Built so far
 
-On `design/case-generator` (Claude, local only, not pushed; 142 tests pass):
+On `design/case-generator` (Claude; pushed to `origin/design/case-generator` on 2026-11-16; 147 tests pass):
 
 - `tools/case_design/`: case generator (4-8 suspects, version 2), independent solver that proves each case has one answer,
   turn simulator and step-clock simulator, layout loader/validator, `auto_label.py`, and the dialogue validator. See
@@ -74,4 +74,4 @@ By Codex on `art/pose-production` and in the main folder (mostly **uncommitted**
 | Whether Codex's "time and access" case family belongs in the long-term design | Lab scope |
 | Lying group in the pose index, the stale pose validator, `.import` policy, push protocol | Pose pipeline |
 | Several Chris approvals rest on soft quotes ("Everything looks fine ... continue", a question counted as approval) | The user decides whether they stand |
-| `design/case-generator` is not pushed, so Codex cannot read the dialogue, editor or docs from its own branch | Release plan |
+| `design/case-generator` is pushed but not merged into `main`; the game does not use the dialogue, editor or docs yet | Release plan |

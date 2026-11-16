@@ -11,7 +11,7 @@ original game's wording. The design branch has 864 personality lines, 20 system 
 
 ## 1. What to take
 
-From branch `design/case-generator` (local worktree `.claude/worktrees/case-design`; not pushed): copy, byte for byte,
+From branch `design/case-generator` (pushed to `origin/design/case-generator` on 2026-11-16; also the local worktree `.claude/worktrees/case-design`): copy, byte for byte,
 
 - `assets/dialogue/personalities.json` and `assets/dialogue/system.json` (data; the only files the game needs);
 - `docs/case-design/dialogue_fixtures.json` and `docs/case-design/DIALOGUE_SCHEMA.md` (for tests and the contract);

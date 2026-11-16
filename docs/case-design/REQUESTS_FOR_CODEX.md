@@ -32,7 +32,7 @@ in `Claude observations/NEXT_STEPS_DISCUSSION.md` (Codex response) or here.
 
 Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence are in
 `docs/case-design/DANGER_CLOCK_SPEC.md` and `GENERATOR_SPEC.md` section 11. Branch: `design/case-generator`
-(local only, not pushed). Please read them before building; none of this edits your files.
+(pushed to `origin/design/case-generator` on 2026-11-16). Please read them before building; none of this edits your files.
 
 7. **Port `generate()` and `candidates()` to GDScript, with Python fixtures.** Generator version is now 2
    (the murder room is never the secret room on any difficulty). I will export
