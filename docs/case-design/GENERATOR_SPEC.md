@@ -145,10 +145,11 @@ Full numbers: `simulation_results.json` (regenerated 2026-10-26 after guests wer
 
 ## 10. Next steps
 
-- Measure the real staring and refusal rates in the original (Task 3 experiments) to replace the
-  assumed settings.
-- Port `generate()` and `candidates()` to GDScript, with Python-exported fixtures for parity tests.
-- Specify the danger clock and re-run the simulator with the player under pressure.
+- ~~Measure the real staring and refusal rates in the original~~ Done 2026-10-26 (28 games): see
+  `Claude observations/CLOCK_EXPERIMENTS_2026-10-26.md` and section 11.
+- ~~Port `generate()` and `candidates()` to GDScript~~ Done by Codex (`src/mystery/generated_case.gd`); 900 of 900 cases
+  identical to this reference. Turn it into a fixture test.
+- ~~Specify the danger clock~~ Done (`DANGER_CLOCK_SPEC.md`), adopted by the game's runtime.
 
 
 ## 11. Step-clock simulation (new game's time model, 2026-10-26)
@@ -207,3 +208,8 @@ guest standing there always stares (`HARD_BIAS`, `params_for('hard')`). The orig
 staring sightings in the murder room) already suggests staring is concentrated there. Lowering the death
 chance alone does not fix Hard; the staring wait was the bottleneck. The generator itself is unchanged: the
 bias is a runtime rule the game must implement for Hard.
+
+**Caveat, 2026-11-16.** The game's runtime (`assets/mystery/house_runtime_rules.json` in the main folder) charges walking steps
+only (`action_steps` 0, `portal_steps` 0) and rolls guest relocation once per room entry. The simulator above charges 2 steps per
+action and 10 per room-to-hall leg and moves guests every tick, so its win rates are a model of an earlier design, not of the
+shipped rules. Re-run `python -m case_design.run_clock` with `ClockParams(action_steps=0, ...)` before using it to tune.

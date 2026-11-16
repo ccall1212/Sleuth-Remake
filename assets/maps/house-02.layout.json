@@ -1518,11 +1518,11 @@
     "rot": 0
    },
    "obstacle_kinds": [
-    "stairs",
-    "stairs"
+    "pillar",
+    "pillar"
    ],
    "guest_spot_kinds": [
-    "stairs",
+    "stand",
     "stand",
     "stand",
     "stand",
@@ -1530,7 +1530,7 @@
     "stand"
    ],
    "guest_spot_facing": [
-    "west",
+    "any",
     "any",
     "any",
     "any",

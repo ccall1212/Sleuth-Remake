@@ -74,3 +74,9 @@ games of the original, second house only; small samples). Labels: **observed** (
 - What sets the 136-198 range; the game's own move count was unreadable.
 - Cost of commands in the clock.
 - Whether the first house layout behaves the same (only the second house was tested).
+
+## 7. Adopted by the game (2026-11-16)
+
+Codex's runtime uses these numbers unchanged (`assets/mystery/house_runtime_rules.json`): warning 140-200, stalking gap 80-115,
+10% entry death, 10% culprit-question death after suspicion, halls safe, refusals 22%. It differs in two ways: actions and doors
+cost no steps, and guests relocate only when the player enters a room. Details in `REVIEW_2026-11-16.md`.

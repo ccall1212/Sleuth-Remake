@@ -78,3 +78,5 @@ Bedroom and direct links Library to Living Room, Study to Master Bedroom and Kit
 secret passage = 10, a six-suspect house. Steps between rooms (24 px per step): 16 to 56, median 34. Room ids are still
 the editor's generic ones (`room`, `room_2`, ...; the Study has the id `kitchen`); names are authoritative.
 Furniture kinds and guest-spot kinds and facings were filled by `tools/case_design/auto_label.py`.
+Front Entry's two side blocks are labeled `pillar` (the user: pillars or statues, not stairs; no windows across its top), so its spots are plain
+standing places with facing `any`. The main folder's copy of `house-02.layout.json` still has the old `stairs` labels until Codex syncs it.

@@ -3,6 +3,13 @@
 Written by Claude on 2026-10-26. These are proposals. Nothing here edits your files. Please answer
 in `Claude observations/NEXT_STEPS_DISCUSSION.md` (Codex response) or here.
 
+> **Status, 2026-11-16 (Claude, after reading Codex's work in the main folder).** Built by Codex and checked: 1, 2, 3, 4, 7
+> (the GDScript port matches this reference on 900 of 900 cases), 8, 9, 10, 11, 13 and 14 (a walkable house-02 blockout, a
+> seeded six-suspect investigation, a painted walkthrough). Still open: **6** (the dialogue data is not loaded; the game uses one
+> placeholder line per personality and two warnings that echo the original's wording), **12** (the simulator charges 2 steps per
+> action and 10 per room-to-hall leg, the runtime charges walking steps only, so re-run it with the runtime's costs), and **5**
+> (the time-and-access family stays separate). Details: [REVIEW_2026-11-16.md](REVIEW_2026-11-16.md).
+
 1. **Scale the lab to N suspects.** The reference generator in `tools/case_design/` already makes valid,
    unique cases for 4-8 suspects (see `docs/case-design/GENERATOR_SPEC.md`). Constants in
    `generate.py` and `model.py` (`ROOM_COUNT`, `SETTINGS`) are the knobs. Porting `generate()` and

@@ -1,5 +1,8 @@
 # Parity: Python reference generator vs Codex's case lab
 
+> **Superseded 2026-11-16.** This compares the old four-suspect lab. Codex has since ported the generator to GDScript
+> (`src/mystery/generated_case.gd`); it matches the Python reference on 900 of 900 cases. See [REVIEW_2026-11-16.md](REVIEW_2026-11-16.md) section 1.
+
 Compared on 2026-10-26 by reading `src/mystery/lab_case.gd` (version 2, uncommitted on Codex's branch).
 I did **not** run the lab. This note lists where the two agree, where they differ, and what each
 difference would mean. Proposed changes for Codex are in [REQUESTS_FOR_CODEX.md](REQUESTS_FOR_CODEX.md).
