@@ -213,3 +213,38 @@ bias is a runtime rule the game must implement for Hard.
 only (`action_steps` 0, `portal_steps` 0) and rolls guest relocation once per room entry. The simulator above charges 2 steps per
 action and 10 per room-to-hall leg and moves guests every tick, so its win rates are a model of an earlier design, not of the
 shipped rules. Re-run `python -m case_design.run_clock` with `ClockParams(action_steps=0, ...)` before using it to tune.
+
+## 12. The lens model: stains, wound kinds and the glass slot (2026-11-16)
+
+Decided by the user: **layers 1, 2 and 4** of the inspecting ideas. Layer 3 (decoys of the *same* kind, and a trace trait on the weapon matched to suspects) is
+deferred.
+
+- **Layer 1: the lens shows "a stain", not "the weapon".** On Normal and Hard it shows a stain on the weapon and on **two decoy items**; the player sees each item's
+  kind. (Decoys are part of layer 1: without other stained items a stain would still name the weapon.)
+- **Layer 2: the wound kind.** Every item has a kind (`blunt`, `sharp`, `heavy`, in `model.ITEM_KINDS`). The wound is the weapon's kind and is revealed **with the
+  murder room** (the floor trace on Easy and Normal, the staring-guest trace on Hard). Decoys are always of another kind, so exactly one stained item matches.
+  Checked by `solve.weapon_candidates` and `problems()` on every case.
+- **Layer 4: Easy stays easy.** On Easy the lens names the weapon outright (no decoys), as before; the wound is still the same kind.
+- **Streams:** two new seeded streams, `items` and `stains`; none of the four independent choices, the alibis or the cast move. `Case` gains `item_kinds`, `decoy_rooms`,
+  `weapon_certain` (older cases load with defaults). The version number stays 2.
+- **One item at a time, the glass is the item, free drop (decided).** Modelled in `simulate_clock.py`: the bot drops the glass to take the weapon, cannot use the lens
+  while carrying it, and the danger clock runs `weapon_clock_multiplier` (2.0) times faster while the **true** weapon is in hand.
+
+Measured, 6 suspects, 1,000 seeds per cell, naive bot (it still needs the murder room before it can accuse, so the wound is free for it):
+
+| | Win, old lens | Win, new lens, x1 | Win, new lens, x2 |
+| --- | ---: | ---: | ---: |
+| Easy | 76.9% | 76.9% | 76.4% |
+| Normal | 76.9% | 76.9% | 76.3% |
+| Hard | 56.5% | 56.5% | 56.3% |
+
+What the numbers say:
+
+- **The new lens barely moves a methodical bot's win rate**, because deducing the weapon costs it nothing extra: the murder-room trace it needs anyway reveals
+  the wound. The change is about **how a player decides**, not how long the bot takes.
+- **A sloppy player is punished.** The first stained item the lens shows is the weapon in only **35% of Normal cases and 33% of Hard cases**, so carrying it and
+  accusing without using the wound clue gives the new wrong-weapon outcome about two times in three.
+- **Between first stain and wound known** a bot spends about 78 steps (Normal) and 115 steps (Hard): the window in which a gambler can only guess.
+- **The weapon multiplier is weak as a deterrent for this bot.** A bot that takes the weapon as soon as it knows it and keeps questioning loses about 2 points of win
+  rate at x2 and 3.6 at x3 on Normal (76.7 to 74.7 and 73.1). It matters more for a human who carries early; tune it by playtest. A bigger multiplier, or a higher
+  ambush chance while carrying, are the levers.

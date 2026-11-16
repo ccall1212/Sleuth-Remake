@@ -95,6 +95,39 @@ def problems(case: Case) -> list[str]:
         out.append("murder room is the secret room")
     if any(r == hidden for r in (c.room for c in case.claims)):
         out.append("a statement places someone in the secret room")
+    out += _lens_problems(case)
     if case.trace_mode != ("staring" if hidden_ok else "lens"):
         out.append("trace mode does not match difficulty")
+    return out
+
+
+def weapon_candidates(item_kinds, stained_rooms, wound) -> list[int]:
+    """Stained items whose kind matches the wound. The lens model is fair when this is exactly the weapon."""
+    return [r for r in sorted(stained_rooms) if item_kinds[r] == wound]
+
+
+def _lens_problems(case) -> list[str]:
+    """Rules for item kinds, the wound clue and stained decoys (user, 2026-11-16)."""
+    out: list[str] = []
+    if not case.item_kinds:
+        return out                                     # an older case without a lens model
+    if len(case.item_kinds) != len(case.rooms):
+        return ["item_kinds must have one kind per room"]
+    from .model import ITEM_KINDS
+    if any(k not in ITEM_KINDS for k in case.item_kinds):
+        out.append("unknown item kind")
+    hidden = case.hidden_room
+    for r in case.decoy_rooms:
+        if r in (case.weapon_room, case.glass_room):
+            out.append(f"decoy room {r} is the weapon or glass slot")
+        if r == hidden:
+            out.append("a stained decoy is in the secret room")
+        if case.item_kinds[r] == case.wound:
+            out.append(f"decoy room {r} has the wound's kind, so the clue could not tell it from the weapon")
+    if len(set(case.decoy_rooms)) != len(case.decoy_rooms):
+        out.append("duplicate decoy rooms")
+    if case.weapon_certain and case.decoy_rooms:
+        out.append("a certain lens (Easy) must not have decoys")
+    if weapon_candidates(case.item_kinds, case.stained_rooms, case.wound) != [case.weapon_room]:
+        out.append("the wound clue does not single out the weapon among the stained items")
     return out

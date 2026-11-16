@@ -47,6 +47,8 @@ class ClockParams:
     death_per_entry: float = 0.10
     culprit_question_death: float = 0.10
     max_steps: int = 4000
+    early_carry: bool = False              # the bot takes the weapon as soon as it knows it, then keeps working while carrying it
+    weapon_clock_multiplier: float = 2.0   # the danger clock runs this much faster while the true weapon is in hand (user, 2026-11-16)
 
 
 @dataclass
@@ -62,6 +64,11 @@ class ClockResult:
     refusals: int
     rooms_entered: int
     steps_after_weapon_found: Optional[int]
+    items_examined: int = 0
+    step_first_stain: Optional[int] = None     # first time the lens showed a stain
+    step_wound_known: Optional[int] = None     # when the murder room (and with it the wound kind) was found
+    carried_weapon: bool = False
+    first_stained_room: Optional[int] = None   # the first stained item the lens showed (a sloppy player would take it)
 
 
 # Hard difficulty bias (user decision 2026-10-26): relocating guests head for the murder room 30% of the
@@ -81,6 +88,12 @@ class _ClockGame(_Game):
         super().__init__(case, Params(refuse=cp.refuse, hidden_weight=cp.hidden_weight))
         self.c = cp
         self.steps = 0
+        self.clock = 0.0                      # danger clock; runs faster while the true weapon is carried
+        self.carrying_weapon = False
+        self.stained_seen: dict[int, str] = {}
+        self.step_first_stain: Optional[int] = None
+        self.step_wound_known: Optional[int] = None
+        self.first_stained_room: Optional[int] = None
         self.onset = self.rng.randint(*cp.onset_range)
         self.stalking = self.onset + self.rng.randint(*cp.gap_range)
         self.death_step: Optional[int] = None
@@ -111,6 +124,7 @@ class _ClockGame(_Game):
             raise _TimedOut
         self.turns += 1
         self.steps += cost
+        self.clock += cost * (self.c.weapon_clock_multiplier if self.carrying_weapon else 1.0)
         p_move = _threshold(1 - (1 - self.c.guest_leave) ** cost)
         p_act = _threshold(1 - (1 - self.c.activity_redraw) ** cost)
         for g in range(self.case.n):
@@ -124,12 +138,12 @@ class _ClockGame(_Game):
     # --- danger --------------------------------------------------------------------------------
     def _enter(self, room: int) -> None:
         super()._enter(room)
-        if self.steps >= self.stalking and self.rng.chance(self.c.death_per_entry):
+        if self.clock >= self.stalking and self.rng.chance(self.c.death_per_entry):
             self.death_step = self.steps
             raise _Died
 
     def _question(self, guest: int, tries: dict[int, int]) -> None:
-        if (self.steps >= self.onset and guest == self.case.culprit
+        if (self.clock >= self.onset and guest == self.case.culprit
                 and self.rng.chance(self.c.culprit_question_death)):
             self.death_step = self.steps
             raise _Died
@@ -168,13 +182,82 @@ class _ClockGame(_Game):
         self._tick(self.c.leg_steps)
         self._enter(target)
 
-    def _take_weapon_mark(self) -> None:
-        if self.step_weapon is None and self.turn_weapon is not None:
-            self.step_weapon = self.steps
+    # --- the lens (user, 2026-11-16): a stain is not yet "the weapon" ----------------------------------------
+    def _examine_item(self, room: int) -> None:
+        case = self.case
+        self._tick()
+        self.items_examined.add(room)
+        if case.weapon_certain or not case.item_kinds:        # Easy (and old cases): the lens names the weapon
+            if room == case.weapon_room:
+                self.weapon_room = room
+                if self.step_first_stain is None:
+                    self.step_first_stain = self.steps
+        elif room in case.stained_rooms:                      # otherwise it shows only a stain; the item's kind is visible
+            self.stained_seen[room] = case.item_kinds[room]
+            if self.first_stained_room is None:
+                self.first_stained_room = room
+            if self.step_first_stain is None:
+                self.step_first_stain = self.steps
+        self._note_progress()
 
     def _note_progress(self) -> None:
-        super()._note_progress()
-        self._take_weapon_mark()
+        case = self.case
+        if self.murder_room is None and all(r in self.cleared for r in self.ordinary):
+            self.murder_room = self.hidden
+        if self.murder_room is not None and self.step_wound_known is None:
+            self.step_wound_known = self.steps               # the murder room's trace also tells the wound kind
+        if self.weapon_room is None and self.has_glass:
+            if case.weapon_certain or not case.item_kinds:
+                if not [r for r in self.ordinary if r not in self.items_examined and r != self.glass_slot]:
+                    self.weapon_room = self.hidden
+            elif self.murder_room is not None:
+                matches = [r for r, kind in self.stained_seen.items() if kind == case.wound]
+                if matches:
+                    self.weapon_room = matches[0]
+                elif not [r for r in self.ordinary if r not in self.items_examined and r != self.glass_slot]:
+                    self.weapon_room = self.hidden
+        if self.murder_room is not None and self.turn_murder is None:
+            self.turn_murder = self.turns
+        if self.weapon_room is not None and self.turn_weapon is None:
+            self.turn_weapon = self.turns
+        if self.turn_unique is None and len(self._candidates()) == 1:
+            self.turn_unique = self.turns
+            self.unique_before_all = len(self.heard) < self.case.n
+        if self.weapon_room is not None and self.step_weapon is None:
+            self.step_weapon = self.steps
+
+    def _take_weapon(self) -> None:
+        self._goto(self.weapon_room)
+        self._tick()                                          # drop the glass (free) and take the weapon
+        self.carrying_weapon = True
+        self.has_glass = False                                # the glass was dropped: no more lens work while carrying
+
+    def _search(self) -> None:
+        order: list[int] = []
+        passes = 0
+        while not self._done_searching():
+            if not order:
+                if passes > 0 and not self.hidden_visited and (
+                        not self.has_glass or passes >= HIDDEN_AFTER_PASSES):
+                    self._visit(self.hidden)
+                    if self._done_searching():
+                        return
+                order = self.rng.shuffle(self.ordinary)
+                passes += 1
+            self._visit(order.pop(0))
+            if (self.c.early_carry and not self.carrying_weapon and self.weapon_room is not None
+                    and self.murder_room is not None and not self._done_searching()):
+                self._take_weapon()                           # carry early, keep questioning: the stalker speeds up
+
+    def _win_sequence(self) -> int:
+        """Take the weapon if not already carried (the glass is dropped), assemble in the murder room, accuse."""
+        accused = self._candidates()[0]
+        if not self.carrying_weapon:
+            self._take_weapon()
+        self._goto(self.murder_room)
+        self._tick()                                          # assemble
+        self._tick()                                          # accuse
+        return accused
 
     def play_clock(self) -> ClockResult:
         accused: Optional[int] = None
@@ -191,7 +274,9 @@ class _ClockGame(_Game):
         return ClockResult(won=won, died=died, timed_out=timed_out, steps=self.steps, onset=self.onset,
                            stalking=self.stalking, death_step=self.death_step, questions=self.questions,
                            refusals=self.refusals, rooms_entered=self.rooms_entered,
-                           steps_after_weapon_found=after)
+                           steps_after_weapon_found=after, items_examined=len(self.items_examined),
+                           step_first_stain=self.step_first_stain, step_wound_known=self.step_wound_known,
+                           carried_weapon=self.carrying_weapon, first_stained_room=self.first_stained_room)
 
 
 def play_clock(case: Case, params: ClockParams = ClockParams()) -> ClockResult:

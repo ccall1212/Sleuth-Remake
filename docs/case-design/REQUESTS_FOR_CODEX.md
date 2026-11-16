@@ -67,3 +67,18 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
     are separate from personalities.
 15. **Wire the dialogue data.** Spec: `docs/case-design/DIALOGUE_WIRING_SPEC.md`, with parity fixtures in `docs/case-design/dialogue_fixtures.json`
     (216 first and repeat answers). Data only; replaces the placeholder voice lines and the two near-original warnings.
+16. **One carried item, free drop, any item pickup (decided 2026-11-16, see `DESIGN_DECISIONS.md`).** The player holds one item. Any item can be taken, dropped anywhere (it
+    stays where dropped; the notebook should list last known item locations so the player need not remember), and assembling needs any non-glass item in hand. Add the
+    accusation outcome "right person and room, wrong item": new dialogue line type `culprit_corrects_weapon` (Claude will write it) and extend `accuse()`. The ambush
+    grab uses whatever is held. **The magnifying glass is an item and takes the single slot** (decided 2026-11-16): the player drops it to carry anything else, it never counts for
+    assembling, and on Hard the staring-guest floor trace needs the glass in hand. Dialogue needed from Claude: `culprit_corrects_weapon` for all eight personalities, plus new system lines
+    `hands_full`, `drop_item`, `drop_glass` and `assemble_need_item`; `get_refused_not_weapon`, `assemble_need_weapon_found` and `assemble_need_weapon_carried` become obsolete.
+17. **Faster stalker when the true weapon is held.** Proposal: clock steps count double while the true weapon is in hand, with no immediate message. Make the multiplier a
+    constant in `house_runtime_rules.json`. Open with the user: how much, and silent or announced.
+18. **Label the phase indicator.** The sidebar's calm / suspicious / stalking text (`house_investigation.gd`, drawn without a label) should read "Murderer: calm / suspicious /
+    stalking" and take its colours from `assets/dialogue/styles.json` (yellow, orange).
+19. **Lens model (decided 2026-11-16, layers 1, 2, 4).** Port the new `Case` fields to GDScript: `item_kinds` (one of blunt / sharp / heavy per room), `decoy_rooms`
+    (Normal and Hard: two stained decoys, never the weapon's kind, never the glass slot or secret room), `weapon_certain` (Easy only), from the new seeded streams
+    `items` and `stains` (see `generate.py`; the version stays 2 and nothing else moves). Behaviour: on Normal and Hard the lens shows "a stain" (it does not name the
+    weapon); the item's kind is visible; the wound kind is revealed together with the murder room. Easy: the lens names the weapon as today. Claude will export parity fixtures
+    for the new fields; the dialogue (stain descriptions, wound hints) is still to be written.

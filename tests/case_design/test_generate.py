@@ -182,3 +182,35 @@ def test_murder_room_is_never_the_secret_room_on_any_difficulty():
                 assert c.murder_room != c.hidden_room
     bad = generate(5, 6, "hard")
     assert problems(Case(**{**bad.__dict__, "murder_room": bad.hidden_room}))
+
+
+def test_lens_model_is_fair_on_every_case_and_easy_stays_certain():
+    from case_design.solve import weapon_candidates
+    for difficulty in DIFFICULTIES:
+        for n in COUNTS:
+            for seed in range(150):
+                c = generate(seed, n, difficulty)
+                assert len(c.item_kinds) == len(c.rooms)
+                assert weapon_candidates(c.item_kinds, c.stained_rooms, c.wound) == [c.weapon_room]   # the wound singles out the weapon
+                assert c.glass_room not in c.stained_rooms and c.hidden_room not in c.decoy_rooms
+                if difficulty == "easy":
+                    assert c.weapon_certain and c.decoy_rooms == ()
+                else:
+                    assert not c.weapon_certain and len(c.decoy_rooms) == 2
+                    assert all(c.item_kinds[r] != c.wound for r in c.decoy_rooms)
+
+
+def test_lens_streams_never_move_the_mystery_and_cases_round_trip():
+    for seed in range(100):
+        a = generate(seed, 6, "normal")
+        assert Case.from_dict(a.to_dict()) == a
+        easy = generate(seed, 6, "easy")
+        assert (a.culprit, a.murder_room, a.weapon_room, a.glass_room) == (
+            easy.culprit, easy.murder_room, easy.weapon_room, easy.glass_room)
+        assert easy.item_kinds[easy.weapon_room] == a.item_kinds[a.weapon_room]               # the wound is the same on every difficulty
+
+
+def test_problems_catches_a_decoy_that_hides_the_weapon():
+    c = generate(5, 6, "normal")
+    clash = Case(**{**c.__dict__, "item_kinds": tuple(c.wound if r == c.decoy_rooms[0] else k for r, k in enumerate(c.item_kinds))})
+    assert any("wound's kind" in p for p in problems(clash))

@@ -26,6 +26,10 @@ HIDDEN_ROOM_NAME = "Secret passage"
 ROOM_COUNT = {4: 7, 5: 8, 6: 10, 7: 11, 8: 12}
 SUSPECT_RANGE = (4, 8)
 
+# Lens model (user, 2026-11-16): every item has a wound kind. The lens shows a "stain" on the murder weapon and on
+# decoy items; the wound kind (revealed with the murder room) says which stained item is the weapon.
+ITEM_KINDS = ("blunt", "sharp", "heavy")
+
 
 @dataclass(frozen=True)
 class Claim:
@@ -49,6 +53,9 @@ class Case:
     glass_room: int                     # room whose item slot holds the magnifying glass
     trace_mode: str                     # "lens" (easy, normal) or "staring" (hard)
     guest_start: tuple[int, ...]        # starting room per suspect (they wander later)
+    item_kinds: tuple[str, ...] = ()    # wound kind of each room's item (blunt, sharp, heavy); empty on old cases
+    decoy_rooms: tuple[int, ...] = ()   # rooms whose item also shows a stain but is not the weapon
+    weapon_certain: bool = True         # Easy: the lens names the weapon outright; otherwise it only shows "a stain"
 
     @property
     def n(self) -> int:
@@ -63,6 +70,16 @@ class Case:
         return self.cast[:-1]
 
     @property
+    def wound(self) -> Optional[str]:
+        """The kind of blow, learned with the murder room: the weapon's kind."""
+        return self.item_kinds[self.weapon_room] if self.item_kinds else None
+
+    @property
+    def stained_rooms(self) -> tuple[int, ...]:
+        """Rooms whose item shows a stain under the lens (the weapon and the decoys)."""
+        return tuple(sorted({self.weapon_room, *self.decoy_rooms}))
+
+    @property
     def hidden_room(self) -> int:
         return len(self.rooms) - 1
 
@@ -75,6 +92,8 @@ class Case:
             "culprit": self.culprit, "murder_room": self.murder_room,
             "weapon_room": self.weapon_room, "glass_room": self.glass_room,
             "trace_mode": self.trace_mode, "guest_start": list(self.guest_start),
+            "item_kinds": list(self.item_kinds), "decoy_rooms": list(self.decoy_rooms),
+            "weapon_certain": self.weapon_certain,
         }
 
     @staticmethod
@@ -85,4 +104,6 @@ class Case:
             claims=tuple(Claim(c["room"], c["partner"]) for c in d["claims"]),
             culprit=d["culprit"], murder_room=d["murder_room"], weapon_room=d["weapon_room"],
             glass_room=d["glass_room"], trace_mode=d["trace_mode"], guest_start=tuple(d["guest_start"]),
+            item_kinds=tuple(d.get("item_kinds", ())), decoy_rooms=tuple(d.get("decoy_rooms", ())),
+            weapon_certain=d.get("weapon_certain", True),
         )

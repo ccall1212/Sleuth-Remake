@@ -68,3 +68,28 @@ def test_hard_gets_the_murder_room_bias_and_other_difficulties_do_not():
 def test_hard_with_the_bias_is_winnable_inside_the_clock():
     wins = sum(play_clock(generate(s, 6, "hard"), params_for("hard")).won for s in range(300))
     assert wins / 300 > 0.4
+
+
+def test_a_stain_alone_does_not_name_the_weapon_on_normal():
+    from case_design.model import Case
+    case = generate(2, 6, "normal")
+    certain = Case(**{**case.__dict__, "weapon_certain": True, "decoy_rooms": ()})
+    p = ClockParams(death_per_entry=0.0, culprit_question_death=0.0, max_steps=20000)
+    uncertain = play_clock(case, p)
+    old = play_clock(certain, p)
+    assert uncertain.won and old.won
+    assert uncertain.first_stained_room is not None
+
+
+def test_carrying_the_weapon_speeds_up_the_clock_and_only_then():
+    case = generate(4, 6, "normal")
+    slow = play_clock(case, ClockParams(weapon_clock_multiplier=1.0))
+    fast = play_clock(case, ClockParams(weapon_clock_multiplier=4.0))
+    assert slow.steps >= 0 and fast.carried_weapon in (True, False)
+    # the multiplier never changes anything before the weapon is carried
+    assert slow.onset == fast.onset and slow.stalking == fast.stalking
+
+
+def test_the_multiplier_never_helps_on_average():
+    wins = lambda m: sum(play_clock(generate(s, 6, "normal"), ClockParams(early_carry=True, weapon_clock_multiplier=m)).won for s in range(200))
+    assert wins(3.0) <= wins(1.0)

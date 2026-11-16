@@ -12,8 +12,9 @@ sample sizes are small (14 games of live play, plus 28 scripted games for the da
 | --- | --- | --- |
 | Cast | 6-8 suspects (Easy may use 4, Normal 5) from a pool of about 10; the player can name, choose or randomize; exactly one victim per case, in the cast and not a suspect | 10-25 |
 | House | Somewhat larger than the old 7-room scope. First real map: **house-02**, the user's own ten-room blockout (nine rooms, one north-south hall, secret passage); blockout first, backgrounds painted after | 10-25, 10-26 |
-| Accusation | Original style: no checklist; **assembling requires carrying the true weapon**; accusing needs assembling first | 10-25 |
+| Accusation | Original style: no checklist; accusing needs assembling first. **Superseded 11-16:** assembling needs any item in hand (not the magnifying glass); winning needs the true weapon, the right person and the right room | 10-25, 11-16 |
 | Wrong accusation | Ends the case and reveals the truth: right person, wrong room = confession plus the true room; wrong person, right room = the real culprit stands up; both wrong = names both | 10-25 (observed in games 2, 10, 14) |
+| Wrong weapon | New outcome: right person and room but the wrong item in hand = the culprit corrects the weapon (a new line type). The culprit always corrects the most important thing first: person, then room, then weapon | 11-16 |
 | Danger clock | Counted in **walking steps** (measured on the original, 28 games): warning at a seeded step 140-200, stalking 80-115 steps later, about 10% death per room entered while stalking, halls safe. Visible phases: calm, suspicious, stalking, ambush. Originally decided as turn-based; changed to steps after the experiments | 10-25, 10-26 |
 | Glass | Random room; never in the secret room on Easy or Medium; may be on Hard | 10-25 |
 | Independence | Culprit, murder room, weapon item and glass chosen independently; weapon and murder room may rarely coincide | 10-25 |
@@ -22,6 +23,11 @@ sample sizes are small (14 games of live play, plus 28 scripted games for the da
 | Personalities | Eight (warm, nervous, proud, guarded, hot-tempered, curious, fragile, calm), random per case with manual override; voice and mood only | 10-25 |
 | Murder room | Never the secret room, on any difficulty (glass and weapon may still be there on Hard; guests can stand in it) | 10-26 |
 | Hard bias | On Hard, relocating guests head for the murder room 30% of the time and always stare there | 10-26 |
+| Carrying | The player holds **one item at a time, and the magnifying glass is an item**. Any item can be picked up (not only the murder weapon). An item can be **dropped anywhere** and stays where it was dropped (so items can be gathered in a hall); the player does not have to remember a home room. The notebook should list last known item locations. To carry the weapon the player must first drop the glass, so the lens work (floor trace, weapon check) comes first and cannot be repeated while carrying the weapon | 11-16 |
+| Murderer grab | The ambush "grab" scene applies to whatever item is in hand | 11-16 |
+| Weapon pickup speeds the stalker | Picking up the **true murder weapon** makes the murderer stalk faster (a new rule: in 4 measured games of the original, carrying the weapon changed nothing). Numbers and whether the player is told are open (see below) | 11-16 |
+| Phase label | The "calm / suspicious / stalking" indicator must carry a label ("Murderer: ...") and use the yellow and orange text colours | 11-16 |
+| Lens | The lens shows "a stain" on the weapon and on two decoy items (Normal, Hard); the wound kind (blunt, sharp, heavy), revealed with the murder room, says which stained item is the weapon. Easy keeps the lens naming the weapon. Decoys never share the weapon's kind | 11-16 |
 | Layout and danger | Long hallways; about 10% death chance per room entered once stalking starts; halls are safe but spend clock | 10-26 |
 | Guest spots | Each spot carries a kind and a facing (one side, several, or any). This is separate from personalities; personalities later use the allowed directions when choosing a stance | 10-26 |
 | Poses | A new resigned shrug for reveals; rest and sleep poses; two body-language templates (women follow Char; men follow a male template made with Chris first); neutral male standing is hands in pockets; no hat-removal gesture | 10-25, 10-26 |
@@ -75,3 +81,5 @@ By Codex on `art/pose-production` and in the main folder (mostly **uncommitted**
 | Lying group in the pose index, the stale pose validator, `.import` policy, push protocol | Pose pipeline |
 | Several Chris approvals rest on soft quotes ("Everything looks fine ... continue", a question counted as approval) | The user decides whether they stand |
 | `design/case-generator` is pushed but not merged into `main`; the game does not use the dialogue, editor or docs yet | Release plan |
+| How much faster does the stalker get when the true weapon is held, and is it announced? Recommended: the clock runs at 2x while it is in hand, with no immediate message (an immediate warning would tell the player the item is the weapon) | Danger clock |
+| Lens redesign (layers 1, 2, 4 decided 2026-11-16; prototyped in Python, not in the game): same-kind decoys and a trace trait on the weapon (layer 3) are deferred; see GENERATOR_SPEC section 12 | Lens design |

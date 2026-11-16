@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from typing import Optional, Sequence
 
-from .model import (Case, Claim, DEFAULT_POOL, DIFFICULTIES, HIDDEN_ROOM_NAME, PERSONALITIES,
+from .model import (Case, Claim, DEFAULT_POOL, DIFFICULTIES, HIDDEN_ROOM_NAME, ITEM_KINDS, PERSONALITIES,
                     ROOM_COUNT, ROOM_POOL, SUSPECT_RANGE, VERSION)
 from .rng import Rng
 
@@ -22,9 +22,9 @@ SETTINGS = {
     # decoy: chance the culprit uses the double-claim decoy
     # hidden_ok: may the glass or weapon be in the secret room? (the murder room never is)
     # trace: how the murder room is confirmed ("lens" = always a lens trace, "staring" = original)
-    "easy": {"decoy": 0.0, "hidden_ok": False, "trace": "lens"},
-    "normal": {"decoy": 0.5, "hidden_ok": False, "trace": "lens"},
-    "hard": {"decoy": 1.0, "hidden_ok": True, "trace": "staring"},
+    "easy": {"decoy": 0.0, "hidden_ok": False, "trace": "lens", "stained_decoys": 0, "certain": True},
+    "normal": {"decoy": 0.5, "hidden_ok": False, "trace": "lens", "stained_decoys": 2, "certain": False},
+    "hard": {"decoy": 1.0, "hidden_ok": True, "trace": "staring", "stained_decoys": 2, "certain": False},
 }
 
 
@@ -65,6 +65,17 @@ def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
     murder_room = _stream(seed, "crime_room").choice(ordinary)   # never the secret room (user, 2026-10-26)
     weapon_room = _stream(seed, "weapon").choice(anywhere)
     glass_room = _stream(seed, "glass").choice([r for r in anywhere if r != weapon_room])
+
+    # --- the lens: item kinds, the wound, and stained decoys (own streams; never touch the four choices above) ---
+    items = _stream(seed, "items")
+    kinds = [items.choice(ITEM_KINDS) for _ in range(room_total)]
+    wound = kinds[weapon_room]
+    stains = _stream(seed, "stains")
+    decoy_pool = [r for r in ordinary if r not in (weapon_room, glass_room)]
+    decoys = sorted(stains.shuffle(decoy_pool)[: cfg["stained_decoys"]])
+    for r in decoys:                                      # a decoy must be of a different kind, or the clue could not tell it apart
+        if kinds[r] == wound:
+            kinds[r] = stains.choice([k for k in ITEM_KINDS if k != wound])
 
     # --- alibis --------------------------------------------------------------------------------
     rng = _stream(seed, "alibis")
@@ -125,4 +136,5 @@ def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
         claims=tuple(claims[s] for s in range(suspects)), culprit=culprit,
         murder_room=murder_room, weapon_room=weapon_room, glass_room=glass_room,
         trace_mode=cfg["trace"], guest_start=guest_start,
+        item_kinds=tuple(kinds), decoy_rooms=tuple(decoys), weapon_certain=cfg["certain"],
     )
