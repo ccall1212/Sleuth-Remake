@@ -163,8 +163,20 @@ func update_guest_snapshot() -> void:
 		return
 	var relocate_chance := 1.0 - pow(1.0 - float(rules.guest_leave), elapsed)
 	var activity_chance := 1.0 - pow(1.0 - float(rules.activity_redraw), elapsed)
+	var hunting := phase() == "stalking" and float(rules.guest_leave) > 0.0
 	for person in range(guests.size()):
 		var guest: Dictionary = guests[person]
+		if hunting and person == int(data.culprit):
+			# The stalker hunts (2026-11-17): it never lingers in a hall, moves far more often, and often turns up in the room
+			# the player has just entered so the two can finally be alone together.
+			var hunt_chance := 1.0 - pow(1.0 - minf(0.95, float(rules.guest_leave) * float(rules.get("stalking_leave_multiplier", 6.0))), elapsed)
+			if guest.screen in halls or guest.move_rng.chance(hunt_chance):
+				var hunted := choose_stalker_destination(person)
+				if hunted != guest.screen:
+					guest.screen = hunted
+					choose_spot(person)
+				roll_activity(person)
+			continue
 		if guest.move_rng.chance(relocate_chance):
 			var target := choose_destination(person)
 			if target != guest.screen:
@@ -175,6 +187,18 @@ func update_guest_snapshot() -> void:
 			roll_activity(person)
 	if phase() == "stalking":
 		isolate_culprit_room()
+
+func choose_stalker_destination(person: int) -> String:
+	var stream: RefCounted = guests[person].move_rng
+	var rooms: Array = []
+	for id in room_ids:
+		if id not in rooms and has_placement_space(person, str(id)):
+			rooms.append(id)
+	if rooms.is_empty():
+		return str(guests[person].screen)
+	if player_screen in rooms and stream.chance(float(rules.get("stalking_follow_chance", 0.5))):
+		return player_screen
+	return str(stream.choice(rooms))
 
 func can_ambush(id: String) -> bool:
 	if id in halls or guests[int(data.culprit)].screen != id:

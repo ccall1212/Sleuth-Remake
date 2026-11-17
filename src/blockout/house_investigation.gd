@@ -266,11 +266,7 @@ func _ready() -> void:
 	add_child(accusation_dialog)
 	accusation_dialog.suspect_confirmed.connect(func(_index): finish_accusation())
 	feedback_text = RichTextLabel.new()
-	feedback_text.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	feedback_text.offset_left = 150
-	feedback_text.offset_right = -150
-	feedback_text.offset_top = -176
-	feedback_text.offset_bottom = -124
+	feedback_text.size = Vector2(720, 52) # positioned against the play frame every frame
 	feedback_text.add_theme_stylebox_override("normal", MysteryTheme.panel("0a1116d8", "514936", 6))
 	feedback_text.fit_content = false
 	feedback_text.add_theme_font_size_override("normal_font_size", 13)
@@ -500,6 +496,9 @@ func _physics_process(delta: float) -> void:
 	accuse_button.text = "Make an accusation" if investigation.progress.get("assembled", false) else "Gather everyone"
 	primary_button.disabled = not investigation.active()
 	feedback_text.text = feedback
+	feedback_text.visible = not feedback.is_empty()
+	update_room_transform()
+	feedback_text.position = Vector2(room_origin.x + 120, room_origin.y + 720 - 176)
 	feedback_text.add_theme_color_override("default_color", feedback_color)
 	warning_text.text = investigation.runtime.warning() if investigation.runtime.phase() != "calm" else "E Interact  ·  N Notebook  ·  Tab House map  ·  Esc Menu"
 	warning_text.add_theme_color_override("default_color", phase_color())
@@ -531,6 +530,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		drop_nearby()
 	elif event.physical_keycode == KEY_F:
 		examine_floor() # identical to the Floor button
+	elif event.physical_keycode == KEY_X:
+		examine_nearby()
+	elif event.physical_keycode == KEY_T:
+		take_nearby()
 
 func interact_nearby() -> void:
 	sync_world()
@@ -649,7 +652,7 @@ func say_case(value: String, popup := false) -> void:
 	say(value, popup, dialogue.color(investigation.last_message_group, investigation.last_message_key, Color("dbe6ec")))
 
 func say(value: String, popup := false, color := Color("dbe6ec")) -> void:
-	feedback = value
+	feedback = "" if popup else value # a popup already shows the message; the bottom line is only for quiet notes
 	feedback_color = color
 	if popup:
 		guest_portrait.hide()
@@ -661,7 +664,9 @@ func say(value: String, popup := false, color := Color("dbe6ec")) -> void:
 		message_text.add_theme_color_override("default_color", color)
 		message_text.scroll_to_line(0)
 		if painted:
-			message_dialog.popup(Rect2i(20, 450, 690, 230))
+			# Anchored to the 4:3 play frame, which is centred in the window at any aspect ratio.
+			update_room_transform()
+			message_dialog.popup(Rect2i(int(room_origin.x) + 20, int(room_origin.y) + 430, 690, 230))
 		else:
 			message_dialog.popup_centered()
 		reveal.start(message_text)

@@ -18,8 +18,8 @@ const MARGIN := 12
 ## id -> [keycap, name, long name]
 const ACTIONS := [
 	["interact", "E", "Interact", "Interact with what is in front of you"],
-	["examine", "E", "Examine", "Examine this object closely"],
-	["take", "E", "Take", "Pick this item up"],
+	["examine", "X", "Examine", "Examine this object closely"],
+	["take", "T", "Take", "Pick this item up"],
 	["drop", "Q", "Drop", "Drop the item you are holding"],
 	["floor", "F", "Floor", "Look at the floor with the magnifier"],
 	["notebook", "N", "Notebook", "Open your notebook"],
