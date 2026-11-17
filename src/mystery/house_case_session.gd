@@ -371,7 +371,9 @@ func assemble() -> bool:
 	assembly_text = system_message("assemble_ok", {"room": str(screen_names[stage.room])}, "assembly")
 	return true
 
-func accuse(person: int, room: int) -> Dictionary:
+func accuse(person: int, room := -1) -> Dictionary:
+	# The accused room is always the room where everyone was gathered; a wrong gathering room keeps its wrong_room outcome.
+	if room < 0: room = int(binding.get(str(progress.get("assembly_room", "")), -1))
 	if not active() or not progress.assembled:
 		return {"result": "blocked", "message": system_message("accuse_need_assembly"), "message_key": last_message_key, "message_group": last_message_group}
 	if progress.carried == null:

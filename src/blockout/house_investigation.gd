@@ -10,6 +10,10 @@ const WindowPresentation = preload("res://src/presentation.gd")
 const ItemArt = preload("res://src/mystery/house_item_art.gd")
 const HouseMap = preload("res://src/blockout/house_map_panel.gd")
 const GameHud = preload("res://src/blockout/game_hud.gd")
+const AccusationCards = preload("res://src/blockout/accusation_cards.gd")
+const CastPortrait = preload("res://src/blockout/cast_portrait.gd")
+const JournalState = preload("res://src/mystery/journal_state.gd")
+const JournalNotebook = preload("res://src/blockout/journal_notebook.gd")
 @export var random_on_start := false
 @export var opening_on_start := false
 var investigation = Session.new()
@@ -24,10 +28,9 @@ var warning_text: RichTextLabel
 var feedback_color := Color("dbe6ec")
 var dialogue = Dialogue.new()
 var notebook_dialog: AcceptDialog
-var notebook_text: RichTextLabel
+var journal_state := JournalState.new() # the player's own notes; never read by the case logic
+var journal: Control
 var accusation_dialog: ConfirmationDialog
-var suspect_choice: OptionButton
-var room_choice: OptionButton
 var feedback := "Find the magnifying glass, examine the house and compare accounts."
 var guest_positions: Dictionary = {}
 var guest_facings: Dictionary = {}
@@ -71,7 +74,6 @@ var sting: AudioStreamPlayer
 var door_lock_audio: AudioStreamPlayer
 var win_audio: AudioStreamPlayer
 var dialogue_new_case_button: Button
-var notebook_view: TabContainer
 var accuse_button: Button
 var context_label: Label
 var victim_label: Label
@@ -244,28 +246,15 @@ func _ready() -> void:
 			guest_portrait.hide()
 			reveal.stop())
 	notebook_dialog = AcceptDialog.new()
-	notebook_dialog.title = "Notebook — recorded facts"
-	notebook_dialog.min_size = Vector2i(720, 540)
+	notebook_dialog.title = "Investigation journal"
+	notebook_dialog.ok_button_text = "Close journal"
+	notebook_dialog.min_size = Vector2i(900, 640)
 	add_child(notebook_dialog)
-	notebook_view = preload("res://src/blockout/case_notebook.gd").new()
-	notebook_dialog.add_child(notebook_view)
-	notebook_text = notebook_view.summary
-	accusation_dialog = ConfirmationDialog.new()
-	accusation_dialog.title = "The guests are assembled — make your accusation"
-	accusation_dialog.min_size = Vector2i(580, 250)
-	accusation_dialog.ok_button_text = "Accuse — final decision"
+	journal = JournalNotebook.new()
+	notebook_dialog.add_child(journal)
+	accusation_dialog = AccusationCards.new()
 	add_child(accusation_dialog)
-	var choices := VBoxContainer.new()
-	choices.add_theme_constant_override("separation", 12)
-	accusation_dialog.add_child(choices)
-	var warning := Label.new()
-	warning.text = "A wrong accusation ends this case.\nChoose the person and the room."
-	choices.add_child(warning)
-	suspect_choice = OptionButton.new()
-	room_choice = OptionButton.new()
-	choices.add_child(suspect_choice)
-	choices.add_child(room_choice)
-	accusation_dialog.confirmed.connect(finish_accusation)
+	accusation_dialog.suspect_confirmed.connect(func(_index): finish_accusation())
 	feedback_text = RichTextLabel.new()
 	feedback_text.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	feedback_text.offset_left = 150
@@ -335,6 +324,12 @@ func start_case() -> void:
 	if not investigation.begin(int(seed_input.value), model.data, difficulty):
 		feedback = "This layout cannot host a six-suspect case."
 		return
+	journal_state.reset() # player notes belong to one case
+	CastPortrait.expressions.clear()
+	var suspect_names: Array = []
+	for person in range(6):
+		suspect_names.append(str(investigation.data.cast[person]))
+	journal.setup(journal_state, suspect_names, str(investigation.data.difficulty) == "easy")
 	if preview_case:
 		killer_preview_remaining -= 1
 		killer_preview_index += 1
@@ -725,7 +720,17 @@ func examine_floor() -> void:
 
 func show_notebook() -> void:
 	message_dialog.hide()
-	notebook_view.populate(investigation)
+	sync_cast_expressions()
+	var evidence: Array = []
+	for key in investigation.progress.items_seen:
+		var seen: Dictionary = investigation.progress.items_seen[key]
+		if bool(seen.is_glass): continue
+		var where := "carried" if bool(seen.held) else str(investigation.screen_names.get(seen.screen, seen.screen))
+		evidence.append({"key": str(key), "name": str(seen.name), "kind": str(seen.kind), "location": where})
+	journal.refresh_evidence(evidence)
+	if str(investigation.data.difficulty) == "easy":
+		journal.set_facts(investigation.notebook()) # Easy only: what the game itself recorded
+	journal.rebuild()
 	notebook_dialog.popup_centered()
 
 func assemble_case() -> void:
@@ -746,16 +751,23 @@ func assemble_case() -> void:
 		queue_redraw()
 		return
 	message_dialog.hide()
-	suspect_choice.clear()
-	room_choice.clear()
+	sync_cast_expressions()
+	var names: Array = []
 	for person in range(6):
-		suspect_choice.add_item(investigation.data.cast[person])
-	for room in investigation.room_names:
-		room_choice.add_item(str(room))
+		names.append(str(investigation.data.cast[person]))
+	var gathered := str(investigation.screen_names.get(investigation.progress.get("assembly_room", model.current_id), model.screen().name))
+	accusation_dialog.setup(names, gathered)
 	accusation_dialog.popup_centered()
 
+func sync_cast_expressions() -> void:
+	# Portraits in the cards and the journal show a personality pose only for guests the player has already questioned.
+	CastPortrait.expressions.clear()
+	for key in investigation.progress.heard:
+		var person := int(key)
+		CastPortrait.expressions[str(investigation.data.cast[person])] = str(investigation.data.personalities[person])
+
 func finish_accusation() -> void:
-	var ending: Dictionary = investigation.accuse(suspect_choice.selected, room_choice.selected)
+	var ending: Dictionary = investigation.accuse(accusation_dialog.selected_index())
 	if ending.get("result") == "blocked":
 		say(str(ending.message))
 		return

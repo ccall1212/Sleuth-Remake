@@ -52,6 +52,7 @@ func run() -> void:
 		if possible.size() != 1 or not take_deduced_item(view, possible[0]): continue
 		var answer: Array = Case.candidates(6, session.progress.heard, session.progress.crime_room)
 		check(answer.size() == 1, "Learned testimony and inspected crime room identify one culprit")
+		check(travel(view, str(session.room_ids[session.progress.crime_room])), "Gather everyone in the room where the crime happened")
 		view.assemble_case()
 		check(not view.accusation_dialog.visible and view.model.transitions_locked, "Gathering locks exits without forcing accusation menu")
 		check(view.investigation.runtime.guests.all(func(g): return g.screen == view.model.current_id), "All six guests gather in the player's room")
@@ -72,8 +73,7 @@ func run() -> void:
 		view.assemble_case()
 		check(view.accusation_dialog.visible, "Second action opens accusation after gathering")
 		if answer.size() == 1:
-			view.suspect_choice.select(answer[0])
-			view.room_choice.select(session.progress.crime_room)
+			view.accusation_dialog.select(answer[0])
 			view.accusation_dialog.hide()
 			view.finish_accusation()
 		check(session.progress.outcome == "solved", "Painted walking investigation completes using learned evidence")

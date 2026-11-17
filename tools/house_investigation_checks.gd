@@ -179,14 +179,14 @@ func run() -> void:
 		if possible.size() != 1 or not take_deduced_item(view, possible[0]): continue
 		var answer: Array = Case.candidates(6, session.progress.heard, session.progress.crime_room)
 		check(answer.size() == 1, "Public notebook evidence identifies a unique answer")
+		check(travel(view, str(session.room_ids[session.progress.crime_room])), "Gather everyone in the room where the crime happened")
 		view.assemble_case()
 		check(not view.accusation_dialog.visible and view.model.transitions_locked, "Assembly gathers first with exits locked")
 		view.assemble_case()
 		check(view.accusation_dialog.visible, "Assembly opens actual accusation UI")
 		if seed_value == 2:
 			await capture(view, "accusation-dialog")
-		view.suspect_choice.select(answer[0])
-		view.room_choice.select(session.progress.crime_room)
+		view.accusation_dialog.select(answer[0])
 		view.accusation_dialog.hide()
 		view.finish_accusation()
 		check(session.progress.outcome == "solved", "Complete walking and interaction loop wins from learned evidence")
