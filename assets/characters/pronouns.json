@@ -1,0 +1,20 @@
+{
+  "_source": "Explicit male/female template mappings in pose-catalog.json; runtime character pronouns.",
+  "characters": {
+    "Char": "she",
+    "Chloe": "she",
+    "Camille": "she",
+    "Carolyn": "she",
+    "Isabelle": "she",
+    "Sarah Jo": "she",
+    "Jessica": "she",
+    "Chris": "he",
+    "Justin": "he",
+    "Danny": "he",
+    "Gage": "he",
+    "Robbie": "he",
+    "Kwinn": "he",
+    "Matt": "he",
+    "John": "he"
+  }
+}

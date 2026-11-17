@@ -1,0 +1,216 @@
+{
+  "guest_list_header": "The household and its guests, as written in the visitors' book:",
+  "assemble_ok": [
+    "You ring the bell and the household drifts into the {room}. The door is shut and locked behind the last of them.",
+    "One by one, the guests file into the {room}. The door closes, a key turns, and nobody leaves until this is settled.",
+    "Everyone is summoned to the {room}. The door is locked and the room falls quiet, waiting for you to speak.",
+    "The party gathers in the {room}, murmuring. Someone turns the key in the lock, and the murmuring dies."
+  ],
+  "accuse_need_assembly": "Nobody can be accused before a roomful of empty chairs. Gather the guests together first.",
+  "accuse_wrong_both": [
+    "Sloppy work. It was {culprit} who ended {victim}, in the {true_room}, and not in the {chosen_room} as you declared. The company does not know whether to laugh.",
+    "You named the wrong person and the wrong place. {culprit} killed {victim} in the {true_room}, while you were busy staring at the {chosen_room}.",
+    "A careless case. The {chosen_room} had nothing to do with it. {culprit} took {victim}'s life in the {true_room}, and now {culprit} walks free.",
+    "Hasty and mistaken, inspector. {victim} met the end in the {true_room} at the hands of {culprit}, nowhere near the {chosen_room}."
+  ],
+  "win": [
+    "The case is closed. {culprit} is led away for the death of {victim}. You took {moves} moves, which earns you the rank of {rank}.",
+    "Justice is done. {culprit} answers for {victim}, and the house breathes again. {moves} moves, and the title of {rank} is yours.",
+    "{culprit} is taken into custody, and {victim} is avenged. In {moves} moves you have earned the rank of {rank}.",
+    "It is over. {culprit} will stand trial for the murder of {victim}. Your {moves} moves are noted, and you are named {rank}."
+  ],
+  "ranks": [
+    "Grand Examiner",
+    "Keen Constable",
+    "Steady Investigator",
+    "Muddled Clerk",
+    "Hapless Lodger"
+  ],
+  "warning_suspicious": [
+    "The murderer is suspicious of you. A cold feeling creeps over you; somewhere in the house, someone has begun to wonder how much you know.",
+    "You catch a sidelong glance down the corridor, and it is not a friendly one. The murderer is suspicious of you, and your questions are being noticed.",
+    "The murderer is suspicious of you. Your prying has been marked and has made the house uneasy, so tread carefully from here on."
+  ],
+  "warning_stalking": [
+    "Floorboards creak behind you. The murderer is stalking you, no longer merely watching but following.",
+    "You are being followed. The murderer is stalking you, and each time you turn, a door closes softly somewhere out of sight.",
+    "A shadow keeps pace with you through the halls. The murderer is stalking you and has decided you are a problem to be solved."
+  ],
+  "floor_nothing": [
+    "You study the floor, though under so many eyes you notice nothing but dust and a curl of carpet.",
+    "You crouch to examine the floorboards, but with someone watching you cannot look closely. Nothing stands out.",
+    "You pretend to inspect the floor. There is nothing to see, and an onlooker's stare makes it hard to look harder."
+  ],
+  "floor_nothing_unwatched": [
+    "You kneel and examine the floor at your leisure. It is clean, and nothing here tells you anything.",
+    "Alone with the floorboards, you search carefully. There is nothing worth noting.",
+    "You go over every inch of the floor in peace. Whatever else this room has seen, it left no mark you can find."
+  ],
+  "floor_blood": [
+    "A dark, dried stain spreads across the boards. This is the scene of the murder, here in the {room}.",
+    "Blood, long since gone brown, marks the floor. The murder was done here, in the {room}.",
+    "You stop short. The floor of the {room} bears a stain that can mean only one thing: this is where the victim fell."
+  ],
+  "weapon_blood": [
+    "A dark smear clings to the {weapon}. This is the weapon that did the deed.",
+    "The {weapon} is stained where it ought to be clean. There can be no doubt: this is the murder weapon.",
+    "You turn the {weapon} over and find the telltale stain. This is what killed the victim."
+  ],
+  "item_flavor_generic": [
+    "A perfectly ordinary object. It tells you nothing.",
+    "You turn it over twice. It is just what it appears to be.",
+    "Dusty, a little worn, and not at all interesting.",
+    "Whoever owns this has had it for years.",
+    "It is cold to the touch and entirely harmless.",
+    "Nothing about it suggests it played any part in this.",
+    "It smells faintly of lavender and old paper.",
+    "A household thing, set down and forgotten.",
+    "You examine it carefully, then set it back exactly as it was.",
+    "There is a small chip on one edge, nothing more.",
+    "Plain, useful, and wholly unremarkable.",
+    "It might be anyone's, and it is certainly no clue."
+  ],
+  "too_far_to_hear": [
+    "{speaker} is too far away to hear you. You will have to step closer.",
+    "You call out, but {speaker} is too far off to catch a word. Go nearer.",
+    "Your voice does not carry to {speaker}. Walk over before you ask."
+  ],
+  "front_stoop": [
+    "You step outside, and the storm drives rain into your face. Thunder rolls across the grounds, and you retreat indoors, soaked.",
+    "On the front stoop the wind howls and the rain comes sideways. No one could cross the grounds on a night like this.",
+    "The storm hammers the stoop. You get one breath of wet air before you decide the house is the better place to be."
+  ],
+  "secret_panel": [
+    "Your fingers catch on a hidden edge, and a panel slides open in the wall. Someone built this house with secrets.",
+    "A section of the wall gives way under your hand. A secret panel, and a dark space behind it.",
+    "You tap the wall and hear a hollow note. A panel swings aside, revealing a narrow hidden space."
+  ],
+  "assemble_need_item": [
+    "You cannot call everyone together with nothing to show them. Pick up an object you mean to lay before the guests; the magnifying glass will not do.",
+    "A roomful of suspects will want something put in front of them. Carry an item first, and not the magnifying glass.",
+    "Gathering the guests with empty hands would only embarrass you. Take hold of an item to lay before them."
+  ],
+  "lens_stain": [
+    "Under the glass, a dark, dried mark clings to the {item}. It could be blood. It could be a good many other things.",
+    "The {item} carries a rusty-brown stain along one side. Old, or merely old-looking; the lens cannot say which.",
+    "A smear of something dark has dried on the {item}. It might be blood, though the glass will not swear to it.",
+    "You find a brownish stain on the {item}. Wine, ink, rust or worse: it is hard to tell from the mark alone.",
+    "A faint, crusted mark darkens the {item}. Something was spilled here, or smeared. What, you cannot yet say.",
+    "The glass shows a dull, dark patch on the {item}. It tells you something touched it, and not what."
+  ],
+  "lens_clean": [
+    "The {item} is clean under the glass. Not a mark on it worth noting.",
+    "You turn the {item} this way and that, and the lens finds nothing on it.",
+    "Dust, a little polish and nothing more: the {item} shows no stain at all.",
+    "Nothing clings to the {item}. Whatever else it is, it is clean."
+  ],
+  "wound_blunt": [
+    "The marks on the floor and the way the victim lay say the blow was blunt: something with weight, swung hard.",
+    "Whatever struck the victim was blunt. There is no cut here, only the kind of damage a heavy swing leaves behind.",
+    "The evidence points to a blunt blow, a swing from something solid and hard."
+  ],
+  "wound_sharp": [
+    "The traces here say the victim was cut or stabbed. Whatever was used had an edge or a point.",
+    "This was not a bludgeoning. The marks speak of a sharp blade or a point driven in.",
+    "The wound was sharp: something that cuts or pierces."
+  ],
+  "wound_heavy": [
+    "The floor is marked as if something ponderous came down on the victim. The weapon was heavy, more dropped or hurled than swung.",
+    "Whatever did this was heavy, the sort of object that crushes where a lighter one would only bruise.",
+    "The damage speaks of sheer weight: a heavy object, brought down hard."
+  ],
+  "hands_full": [
+    "Your hands are full with the {item}. Put it down before you take anything else.",
+    "You are already holding the {item}, and a person can only manage one thing at a time. Set it down first.",
+    "No room in your hands, inspector: the {item} is all you can carry. Put it down first."
+  ],
+  "take_item": [
+    "You pick up the {item}. Your hands are full now.",
+    "You take the {item} in both hands.",
+    "The {item} is yours to carry for now."
+  ],
+  "take_glass": [
+    "You take up the magnifying glass. It will show you what the naked eye misses.",
+    "The magnifying glass is in your hand now. Every object in the house is a little more honest under it.",
+    "You pick up the magnifying glass and hold it ready."
+  ],
+  "drop_item": [
+    "You set the {item} down where you stand.",
+    "You lower the {item} to the floor and leave it there.",
+    "The {item} comes out of your hands and settles on the floor beside you."
+  ],
+  "drop_glass": [
+    "You lay the magnifying glass down where you stand. Mind that you remember it is there.",
+    "The magnifying glass goes down on the floor. It will be there when you come back for it.",
+    "You put the magnifying glass down and leave it where it lies."
+  ],
+  "item_needs_glass": [
+    "You look the {item} over. Without the magnifying glass it tells you nothing.",
+    "The {item} is only an object until you have the magnifying glass in your hand.",
+    "You turn the {item} this way and that, but the naked eye finds nothing worth noting."
+  ],
+  "inspect_glass": [
+    "A good brass-rimmed lens with a clear, steady glass. It will show you what the naked eye misses.",
+    "The magnifying glass is plainly well made. Everything in the house will look a little more honest through it.",
+    "A fine magnifying glass, heavy in the palm. Hold it, and the house must account for itself."
+  ],
+  "no_item": [
+    "There is nothing here worth a closer look.",
+    "Nothing in this room catches your eye.",
+    "You find no loose object here to examine."
+  ],
+  "no_floor": [
+    "Too many feet have crossed this floor for it to tell you anything.",
+    "This floor has seen far too much traffic to keep a secret.",
+    "Whatever this floor once knew has long since been scuffed away."
+  ],
+  "floor_needs_glass": [
+    "You study the floor, but without the magnifying glass you can make nothing of it.",
+    "The boards look like any others until you have the magnifying glass in your hand.",
+    "There may be something on the floor, but you will not see it with the naked eye."
+  ],
+  "floor_inconclusive": [
+    "The floor shows nothing you can be sure of. It might read differently if someone else were studying it too.",
+    "You find no mark you would swear to. A floor tells more when other eyes are on it.",
+    "Nothing certain shows on the boards. Perhaps it needs someone else's attention to give itself away."
+  ],
+  "drop_blocked": [
+    "There is no room to put anything down here.",
+    "You cannot set anything down in this spot.",
+    "Nowhere here to leave it. Step aside and try again."
+  ],
+  "no_held_item": [
+    "Your hands are empty.",
+    "You are not carrying anything.",
+    "There is nothing in your hands to put down."
+  ],
+  "investigation_ended": [
+    "Your investigation has ended.",
+    "This is where your investigation ends.",
+    "There is nothing more you can do here."
+  ],
+  "case_closed": [
+    "The case is closed.",
+    "That settles it. The case is closed.",
+    "The matter is closed, and the house can breathe again."
+  ],
+  "case_ended": [
+    "The case ends here.",
+    "And that is the end of the case.",
+    "The case is over, and not as you had hoped."
+  ],
+  "truth_summary": [
+    "{culprit} killed {victim} in the {true_room} with the {weapon}.",
+    "The truth: {victim} died in the {true_room}, struck down by {culprit} with the {weapon}.",
+    "It was {culprit}, in the {true_room}, with the {weapon}. {victim} never had a chance."
+  ],
+  "guest_answer_seated": "{speaker_Subject} answers from {speaker_possessive} seat without changing position.",
+  "guest_answer_waking": "{speaker_Subject} wakes and answers from {speaker_possessive} seat.",
+  "guest_answer_inspecting": "{speaker_Subject} answers without turning from {speaker_possessive} inspection.",
+  "guest_answer_downcast": "Without lifting {speaker_possessive} downcast eyes, {speaker_subject} answers.",
+  "guest_answer_nervous": "Keeping {speaker_possessive} eyes lowered, {speaker_subject} answers quietly.",
+  "guest_answer_floor": "Keeping {speaker_possessive} eyes on the floor, {speaker_subject} answers.",
+  "guest_turn": "{speaker_Subject} turns to address you.",
+  "guest_answer": "{speaker_Subject} answers you.",
+  "case_opening": "A murder has been committed in the mansion.\n\n{victim} is dead. {victim_Subject} was killed by someone still inside this house. Six guests remain, and one of them is the murderer.\n\nFind where it happened, identify the murder weapon and work out whose account cannot be true.\n\nQuestion guests as you search for the magnifying glass. Once you find it, use it to examine floors and items around the house."
+}

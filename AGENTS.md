@@ -73,3 +73,7 @@ Wait for requested debugging or a concrete correctness concern before expanding
 validation. Preserve approved assets and maintain necessary references, but keep
 routine changes and responses short. The user prefers reviewing a working preview
 before investing in deeper debugging or finalization.
+
+User preference: proactively use additional agents for independent work whenever
+practical, to keep progress quick. Assign non-overlapping files/tasks, preserve
+concurrent Claude work, and keep final integration and verification with the lead.

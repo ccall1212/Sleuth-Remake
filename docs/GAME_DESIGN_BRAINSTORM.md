@@ -896,3 +896,21 @@ directional index has no lying group yet. A sofa facing north or south would nee
 sofa-nap version. See `assets/characters/poses/char/prompts/rest-sleep-01.md`.
 
 Head-west east-west lying poses (awake and asleep, about 72 x 36 world pixels) were also made and approved on 2026-10-25, redrawn rather than mirrored, so both east-west bed variants are covered. Runtime fit and bed contacts remain pending.
+
+## Male pose template — decided 2026-10-26
+
+Char's gestures (hands to the heart, hands held near the chest, a skirt hiding the legs) do not
+read as masculine, so the cast has **two body-language templates**: women follow Char, and men
+follow a male template defined first with **Chris**, then reused for the other men. The male
+template keeps the same pose IDs, variant names, directions and image counts as Char's catalog and
+only changes the body language, so personalities and runtime selection are unaffected.
+
+- Neutral standing is **hands in the pockets**.
+- Defensive and nervous poses use **a hand scratching the back of the head or neck, or biting the
+  fingernails, with the other hand on the hip**, instead of a hand on the heart.
+- Seated poses use **crossed legs**. Hips and torso stay at the same seat contact as the character's
+  seated idle, so existing chair fits still apply; chair fit remains unverified.
+- Chris's hat-removal and head-scratch gesture is **not** part of this work. His appearance was approved on 2026-10-26
+  (larger-eyed anime v2: gray cap, red shirt, charcoal waistcoat), so he is now the example pose set for men.
+
+The full mapping is in `Claude observations/CODEX_POSE_PRODUCTION_RUNNER_PROMPT.md` (section 4b).

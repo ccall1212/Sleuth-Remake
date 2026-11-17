@@ -1,0 +1,384 @@
+{
+  "schema": "house02-door-placement-v1",
+  "coordinates": [
+    480,
+    360
+  ],
+  "status": "user_placement_for_review_not_applied_to_game",
+  "rooms": [
+    {
+      "id": "library",
+      "image": "library-v1.png",
+      "image_sha256": "17cb52a2ea127e9e52cff69ddaac40f3fa92791eee29414b08923bf545337f81",
+      "markers": [
+        {
+          "id": "library--door_2",
+          "kind": "door",
+          "target": "room_2",
+          "side": "west",
+          "at": [
+            25.6,
+            156.7
+          ],
+          "placed": true
+        },
+        {
+          "id": "library--door",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "south",
+          "at": [
+            240,
+            333.5
+          ],
+          "placed": true
+        },
+        {
+          "id": "library-secret-panel",
+          "kind": "secret_panel",
+          "target": "secret_passage",
+          "side": "north",
+          "at": [
+            302.4,
+            89.5
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "kitchen",
+      "image": "study-v2.png",
+      "image_sha256": "feda820d3b3afa7ad26d962ca914ce0793d57177cbff9bac3c41c505d84a9efc",
+      "markers": [
+        {
+          "id": "kitchen--door",
+          "kind": "door",
+          "target": "room",
+          "side": "north",
+          "at": [
+            239.2,
+            81.8
+          ],
+          "placed": true
+        },
+        {
+          "id": "kitchen--door_2",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "east",
+          "at": [
+            460.8,
+            150.6
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room",
+      "image": "master-bedroom-v1.png",
+      "image_sha256": "5f464d16b042fb5b902274f2e978318b2d91059bfc217188baa43f862153b227",
+      "markers": [
+        {
+          "id": "room--door",
+          "kind": "door",
+          "target": "kitchen",
+          "side": "south",
+          "at": [
+            228.8,
+            330.2
+          ],
+          "placed": true
+        },
+        {
+          "id": "room--door_2",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "east",
+          "at": [
+            460.8,
+            147.8
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_2",
+      "image": "living-room-v2.png",
+      "image_sha256": "1064469d6f1091c9cc6853184b8e4c4917b306d19e7bbe3cbd708ffced6c4aa4",
+      "markers": [
+        {
+          "id": "room_2--door",
+          "kind": "door",
+          "target": "library",
+          "side": "east",
+          "at": [
+            401,
+            117
+          ],
+          "placed": true
+        },
+        {
+          "id": "room_2--door_2",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "east",
+          "at": [
+            460.8,
+            210.6
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_3",
+      "image": "guest-bedroom-v1.png",
+      "image_sha256": "2117cd067ee6f7ba44410ae2f7c7fb56ba8ab3ba63a928b28f8160b2da65d44c",
+      "markers": [
+        {
+          "id": "room_3--door",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "west",
+          "at": [
+            17.6,
+            206.2
+          ],
+          "placed": true
+        },
+        {
+          "id": "room_3--door_2",
+          "kind": "door",
+          "target": "room_7",
+          "side": "north",
+          "at": [
+            277.6,
+            72.6
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_4",
+      "image": "kitchen-v1.png",
+      "image_sha256": "880f17cc3c70309149485996c6c38b2c0d095ab922d00bba346756712a8f8065",
+      "markers": [
+        {
+          "id": "room_4--door_2",
+          "kind": "door",
+          "target": "room_5",
+          "side": "south",
+          "at": [
+            279.2,
+            312
+          ],
+          "placed": true
+        },
+        {
+          "id": "room_4--door",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "west",
+          "at": [
+            20,
+            200
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_5",
+      "image": "dining-room-v1.png",
+      "image_sha256": "f598766588e868d829724c7fa9e8e5852bd5f4ba97e8c1cad7e845efd8ca49cb",
+      "markers": [
+        {
+          "id": "room_5--door_2",
+          "kind": "door",
+          "target": "room_4",
+          "side": "north",
+          "at": [
+            272,
+            91.4
+          ],
+          "placed": true
+        },
+        {
+          "id": "room_5--door",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "west",
+          "at": [
+            17.6,
+            167.4
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_6",
+      "image": "../drafts/front-entry-pillars-v2.png",
+      "image_sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008",
+      "markers": [
+        {
+          "id": "room_6--door",
+          "kind": "door",
+          "target": "hall_2",
+          "side": "north",
+          "at": [
+            242.4,
+            123.8
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "secret_passage",
+      "image": "secret-passage-v1.png",
+      "image_sha256": "257ec8329fa00f137084a1a423267e264c1dcc41a122c04bf2bfdb10a39c126c",
+      "markers": [
+        {
+          "id": "passage-library-panel",
+          "kind": "secret_return",
+          "target": "library",
+          "side": "west",
+          "at": [
+            24.8,
+            160.8
+          ],
+          "placed": true
+        },
+        {
+          "id": "passage-study-exit",
+          "kind": "secret_exit",
+          "target": "kitchen",
+          "side": "east",
+          "at": [
+            456,
+            164.8
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "hall_2",
+      "image": "hall-v9.png",
+      "image_sha256": "1dac25cb1550a9eccd35cb2c78d89b97068cede101174c41aa91fb1bfb10e75a",
+      "markers": [
+        {
+          "id": "hall_2--door",
+          "kind": "door",
+          "target": "room_3",
+          "side": "east",
+          "at": [
+            323.2,
+            93.3
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_2",
+          "kind": "door",
+          "target": "library",
+          "side": "north",
+          "at": [
+            237.6,
+            54.9
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_3",
+          "kind": "door",
+          "target": "room_2",
+          "side": "west",
+          "at": [
+            156.8,
+            97.3
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_4",
+          "kind": "door",
+          "target": "room",
+          "side": "west",
+          "at": [
+            90.4,
+            162.1
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_5",
+          "kind": "door",
+          "target": "kitchen",
+          "side": "west",
+          "at": [
+            41.6,
+            224.5
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_6",
+          "kind": "door",
+          "target": "room_6",
+          "side": "south",
+          "at": [
+            240.8,
+            350.1
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_7",
+          "kind": "door",
+          "target": "room_4",
+          "side": "east",
+          "at": [
+            390.4,
+            166.9
+          ],
+          "placed": true
+        },
+        {
+          "id": "hall_2--door_8",
+          "kind": "door",
+          "target": "room_5",
+          "side": "east",
+          "at": [
+            433.6,
+            226.9
+          ],
+          "placed": true
+        }
+      ]
+    },
+    {
+      "id": "room_7",
+      "image": "basement-v1.png",
+      "image_sha256": "ded911947621c7805a814a993ebdaace094b3dfb76a7dd7dac9b22c19c143f13",
+      "markers": [
+        {
+          "id": "room_7--door",
+          "kind": "door",
+          "target": "room_3",
+          "side": "south",
+          "at": [
+            388,
+            322
+          ],
+          "placed": true
+        }
+      ]
+    }
+  ]
+}

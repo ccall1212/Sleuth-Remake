@@ -1,0 +1,721 @@
+{
+  "batch": "house-02-furnishing-review-01",
+  "date": "2026-10-29",
+  "status": "approved_artwork",
+  "records": [
+    {
+      "id": "library",
+      "name": "Library",
+      "image": "library-v1.png",
+      "guide": "guides/library.png",
+      "path": "assets/rooms/house-02/furnishing-review/library-v1.png",
+      "sha256": "17cb52a2ea127e9e52cff69ddaac40f3fa92791eee29414b08923bf545337f81",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Removed the isolated bottom row of stools; paired two chairs with the reading table; kept a separate armchair and sofa.",
+      "exits": [
+        {
+          "side": "west",
+          "at": [
+            24,
+            204
+          ],
+          "target": "Living-Room"
+        },
+        {
+          "side": "south",
+          "at": [
+            240,
+            322
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/library-v1.png",
+            "sha256": "17cb52a2ea127e9e52cff69ddaac40f3fa92791eee29414b08923bf545337f81"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "kitchen",
+      "name": "Study",
+      "image": "study-v2.png",
+      "guide": "guides/kitchen.png",
+      "path": "assets/rooms/house-02/furnishing-review/study-v2.png",
+      "sha256": "feda820d3b3afa7ad26d962ca914ce0793d57177cbff9bac3c41c505d84a9efc",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Grouped desk and chair; replaced thin disconnected lower shelves with one cabinet; paired reading chair with side table.",
+      "exits": [
+        {
+          "side": "north",
+          "at": [
+            236,
+            148
+          ],
+          "target": "Master-Bedroom"
+        },
+        {
+          "side": "east",
+          "at": [
+            456,
+            180
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/study-v2.png",
+            "sha256": "feda820d3b3afa7ad26d962ca914ce0793d57177cbff9bac3c41c505d84a9efc"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room",
+      "name": "Master-Bedroom",
+      "image": "master-bedroom-v1.png",
+      "guide": "guides/room.png",
+      "path": "assets/rooms/house-02/furnishing-review/master-bedroom-v1.png",
+      "sha256": "5f464d16b042fb5b902274f2e978318b2d91059bfc217188baa43f862153b227",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Enlarged bed to a usable footprint and added matching nightstands. Windows are wall decoration, not floor blockers.",
+      "exits": [
+        {
+          "side": "south",
+          "at": [
+            236,
+            322
+          ],
+          "target": "Study"
+        },
+        {
+          "side": "east",
+          "at": [
+            456,
+            212
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/master-bedroom-v1.png",
+            "sha256": "5f464d16b042fb5b902274f2e978318b2d91059bfc217188baa43f862153b227"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_2",
+      "name": "Living-Room",
+      "image": "living-room-v2.png",
+      "guide": "guides/room_2.png",
+      "path": "assets/rooms/house-02/furnishing-review/living-room-v2.png",
+      "sha256": "1064469d6f1091c9cc6853184b8e4c4917b306d19e7bbe3cbd708ffced6c4aa4",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Rebuilt the right wall as one continuous plane with two ordinary flush wooden doors; preserved the conversation group.",
+      "exits": [
+        {
+          "side": "east",
+          "at": [
+            456,
+            180
+          ],
+          "target": "Library"
+        },
+        {
+          "side": "east",
+          "at": [
+            456,
+            276
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Awaiting user-selected door marker positions, collider calibration and guest placement. Old guide coordinates are provisional.",
+      "exits_status": "provisional_legacy_coordinates",
+      "superseded": [
+        {
+          "image": "living-room-v1.png",
+          "sha256": "7aba8ce4c4216a37b11f07182a363597c1f212ff0dff9a4494ad200485e3f904",
+          "status": "changes_requested",
+          "reason": "Living Room side doors look vertically stacked; Hall 2 needs ordinary side-wall doors without individual pillar portals."
+        }
+      ],
+      "revision_prompt_file": "architecture-revision-prompts.json",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/living-room-v2.png",
+            "sha256": "1064469d6f1091c9cc6853184b8e4c4917b306d19e7bbe3cbd708ffced6c4aa4"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_3",
+      "name": "Guest Bedroom",
+      "image": "guest-bedroom-v1.png",
+      "guide": "guides/room_3.png",
+      "path": "assets/rooms/house-02/furnishing-review/guest-bedroom-v1.png",
+      "sha256": "2117cd067ee6f7ba44410ae2f7c7fb56ba8ab3ba63a928b28f8160b2da65d44c",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Enlarged bed, added bedside table and paired desk with chair; preserved basement and hall access.",
+      "exits": [
+        {
+          "side": "west",
+          "at": [
+            24,
+            244
+          ],
+          "target": "Hall 2"
+        },
+        {
+          "side": "north",
+          "at": [
+            324,
+            150
+          ],
+          "target": "Basement"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/guest-bedroom-v1.png",
+            "sha256": "2117cd067ee6f7ba44410ae2f7c7fb56ba8ab3ba63a928b28f8160b2da65d44c"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_4",
+      "name": "Kitchen",
+      "image": "kitchen-v1.png",
+      "guide": "guides/room_4.png",
+      "path": "assets/rooms/house-02/furnishing-review/kitchen-v1.png",
+      "sha256": "880f17cc3c70309149485996c6c38b2c0d095ab922d00bba346756712a8f8065",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Added a range and two stools tucked along the island; south exit kept clear.",
+      "exits": [
+        {
+          "side": "south",
+          "at": [
+            256,
+            322
+          ],
+          "target": "Dining Room"
+        },
+        {
+          "side": "west",
+          "at": [
+            24,
+            280
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/kitchen-v1.png",
+            "sha256": "880f17cc3c70309149485996c6c38b2c0d095ab922d00bba346756712a8f8065"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_5",
+      "name": "Dining Room",
+      "image": "dining-room-v1.png",
+      "guide": "guides/room_5.png",
+      "path": "assets/rooms/house-02/furnishing-review/dining-room-v1.png",
+      "sha256": "f598766588e868d829724c7fa9e8e5852bd5f4ba97e8c1cad7e845efd8ca49cb",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Added six chairs grouped around dining table, leaving circulation around both ends.",
+      "exits": [
+        {
+          "side": "north",
+          "at": [
+            256,
+            150
+          ],
+          "target": "Kitchen"
+        },
+        {
+          "side": "west",
+          "at": [
+            24,
+            256
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/dining-room-v1.png",
+            "sha256": "f598766588e868d829724c7fa9e8e5852bd5f4ba97e8c1cad7e845efd8ca49cb"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_6",
+      "name": "Front Entry",
+      "image": "../drafts/front-entry-pillars-v2.png",
+      "guide": "guides/room_6.png",
+      "path": "assets/rooms/house-02/furnishing-review/../drafts/front-entry-pillars-v2.png",
+      "sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Replaced erroneous stairs with localized pillar and statue bases. No north windows; northern opening leads inside.",
+      "exits": [
+        {
+          "side": "north",
+          "at": [
+            240,
+            150
+          ],
+          "target": "Hall 2"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/../drafts/front-entry-pillars-v2.png",
+            "sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "secret_passage",
+      "name": "Secret passage",
+      "image": "secret-passage-v1.png",
+      "guide": "guides/secret_passage.png",
+      "path": "assets/rooms/house-02/furnishing-review/secret-passage-v1.png",
+      "sha256": "257ec8329fa00f137084a1a423267e264c1dcc41a122c04bf2bfdb10a39c126c",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Removed rubble from the exit and tucked crates against corridor edges.",
+      "exits": [],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/secret-passage-v1.png",
+            "sha256": "257ec8329fa00f137084a1a423267e264c1dcc41a122c04bf2bfdb10a39c126c"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "hall_2",
+      "name": "Hall 2",
+      "image": "hall-v9.png",
+      "guide": "guides/hall_2.png",
+      "path": "assets/rooms/house-02/furnishing-review/hall-v9.png",
+      "sha256": "1dac25cb1550a9eccd35cb2c78d89b97068cede101174c41aa91fb1bfb10e75a",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Nearest doors made taller to match adjacent door proportions; bottom rug ends adjusted along their thresholds. Foreground paintings remain removed.",
+      "exits": [
+        {
+          "side": "east",
+          "at": [
+            290,
+            84
+          ],
+          "target": "Guest Bedroom"
+        },
+        {
+          "side": "north",
+          "at": [
+            240,
+            24
+          ],
+          "target": "Library"
+        },
+        {
+          "side": "west",
+          "at": [
+            190,
+            84
+          ],
+          "target": "Living-Room"
+        },
+        {
+          "side": "west",
+          "at": [
+            190,
+            180
+          ],
+          "target": "Master-Bedroom"
+        },
+        {
+          "side": "west",
+          "at": [
+            190,
+            300
+          ],
+          "target": "Study"
+        },
+        {
+          "side": "south",
+          "at": [
+            240,
+            336
+          ],
+          "target": "Front Entry"
+        },
+        {
+          "side": "east",
+          "at": [
+            290,
+            180
+          ],
+          "target": "Kitchen"
+        },
+        {
+          "side": "east",
+          "at": [
+            290,
+            300
+          ],
+          "target": "Dining Room"
+        }
+      ],
+      "runtime_fit": "Awaiting user-selected door marker positions, collider calibration and guest placement. Old guide coordinates are provisional.",
+      "exits_status": "provisional_legacy_coordinates",
+      "superseded": [
+        {
+          "image": "hall-v1.png",
+          "sha256": "35c0546218a00812c06d2f04fa6d1e90ee6d1584317e3b53642894e5d16dea16",
+          "status": "changes_requested",
+          "reason": "Living Room side doors look vertically stacked; Hall 2 needs ordinary side-wall doors without individual pillar portals."
+        },
+        {
+          "image": "hall-v2.png",
+          "sha256": "c26df04186a340349945800d682c7e4e9f49a01fae02f06c76ec465f1e59f408",
+          "status": "changes_requested",
+          "reason": "User requested closed north/end door to conceal adjoining room."
+        },
+        {
+          "image": "hall-v3.png",
+          "sha256": "301c0386738eeb211d0d5a3d3ee347ac9f80e69943da8c7f2e550350051c370b",
+          "status": "changes_requested",
+          "reason": "User requested distinct painting subjects and carpet branches to every door."
+        },
+        {
+          "image": "hall-v4.png",
+          "sha256": "7d983fe513da3e01b1bb1aa416106547e9ae97e18fd652100328e77d3062f37a",
+          "status": "changes_requested",
+          "reason": "Carpet arms missed door thresholds; user suggested moving nearest pair of doors upward."
+        },
+        {
+          "image": "hall-v5.png",
+          "sha256": "c5283fd0641a502822b100ff3862ea45c16580fc0c72c590cb8584382e8cca2b",
+          "status": "changes_requested",
+          "reason": "User circled middle doors: carpet branches met jambs rather than door bottoms."
+        },
+        {
+          "image": "hall-v6.png",
+          "sha256": "d04083d67e92efe2ce6f5a789477c1cc9e765f6c758bb24877bfe40520b5e051",
+          "status": "changes_requested",
+          "reason": "User marked two sconces beside portraits to relocate to empty foreground wall spaces."
+        },
+        {
+          "image": "hall-v7.png",
+          "sha256": "24c55c5d4e8742d8b723bc110c7110f9909e31cddb2c6c67c603f8af50eaf554",
+          "status": "changes_requested",
+          "reason": "User requested removal of two foreground paintings instead of further alignment adjustments."
+        },
+        {
+          "image": "hall-v8.png",
+          "sha256": "d71a50ebbe31882fe18d32733290bf1b59ba57577842ea290d851e030743fcb5",
+          "status": "changes_requested",
+          "reason": "User requested nearest door size/proportions match adjacent doors and improved bottom carpet alignment."
+        }
+      ],
+      "revision_prompt_file": "architecture-revision-prompts.json",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "user message after Hall 2 revision 9 was displayed",
+          "quote": "Looks good for now. Continue"
+        },
+        "scope": "Hall 2 revision 9 artwork only. Door placement, collision and runtime fit remain pending.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/hall-v9.png",
+            "sha256": "1dac25cb1550a9eccd35cb2c78d89b97068cede101174c41aa91fb1bfb10e75a"
+          }
+        ],
+        "retention": "Keep approved image and required metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    },
+    {
+      "id": "room_7",
+      "name": "Basement",
+      "image": "basement-v1.png",
+      "guide": "guides/room_7.png",
+      "path": "assets/rooms/house-02/furnishing-review/basement-v1.png",
+      "sha256": "ded911947621c7805a814a993ebdaace094b3dfb76a7dd7dac9b22c19c143f13",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "status": "approved_visual",
+      "notes": "Grouped storage against walls; left the southern doorway clear.",
+      "exits": [
+        {
+          "side": "south",
+          "at": [
+            388,
+            322
+          ],
+          "target": "Guest Bedroom"
+        }
+      ],
+      "runtime_fit": "Not validated. Painted footprints/thresholds differ from guide; collider tracing and portal alignment required before playtest integration.",
+      "exits_status": "provisional_legacy_coordinates",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-29",
+          "source": "explicit user clarification",
+          "quote": "Approve all current room images"
+        },
+        "scope": "Current room artwork for walkthrough; collision calibration and guest placement remain separate.",
+        "files": [
+          {
+            "path": "assets/rooms/house-02/furnishing-review/basement-v1.png",
+            "sha256": "ded911947621c7805a814a993ebdaace094b3dfb76a7dd7dac9b22c19c143f13"
+          }
+        ],
+        "retention": "Keep approved result and necessary metadata; superseded drafts eligible for dependency-checked cleanup."
+      }
+    }
+  ],
+  "generation_tool": "built-in imagegen",
+  "prompt_file": "generation-prompts.json",
+  "source_style": "../drafts/front-entry-pillars-v2.png",
+  "source_layout": "../../../maps/house-02.layout.json",
+  "proposed_layout": "layout-proposal.json",
+  "guest_positions": "Deferred; existing markers in proposed layout are historical placeholders, not approved placements.",
+  "checks": "11 PNGs readable; original portals/walk regions preserved; all proposed door and secret approaches connected on 4px grid with7px clearance. This is not rendered art-fit validation.",
+  "image_approval": {
+    "status": "approved",
+    "scope": "All11 listed current room PNGs for the painted walkthrough; guest placement remains separate.",
+    "files": [
+      {
+        "path": "assets/rooms/house-02/furnishing-review/library-v1.png",
+        "sha256": "17cb52a2ea127e9e52cff69ddaac40f3fa92791eee29414b08923bf545337f81"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/study-v2.png",
+        "sha256": "feda820d3b3afa7ad26d962ca914ce0793d57177cbff9bac3c41c505d84a9efc"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/master-bedroom-v1.png",
+        "sha256": "5f464d16b042fb5b902274f2e978318b2d91059bfc217188baa43f862153b227"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/living-room-v2.png",
+        "sha256": "1064469d6f1091c9cc6853184b8e4c4917b306d19e7bbe3cbd708ffced6c4aa4"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/guest-bedroom-v1.png",
+        "sha256": "2117cd067ee6f7ba44410ae2f7c7fb56ba8ab3ba63a928b28f8160b2da65d44c"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/kitchen-v1.png",
+        "sha256": "880f17cc3c70309149485996c6c38b2c0d095ab922d00bba346756712a8f8065"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/dining-room-v1.png",
+        "sha256": "f598766588e868d829724c7fa9e8e5852bd5f4ba97e8c1cad7e845efd8ca49cb"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/../drafts/front-entry-pillars-v2.png",
+        "sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/secret-passage-v1.png",
+        "sha256": "257ec8329fa00f137084a1a423267e264c1dcc41a122c04bf2bfdb10a39c126c"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/hall-v9.png",
+        "sha256": "1dac25cb1550a9eccd35cb2c78d89b97068cede101174c41aa91fb1bfb10e75a"
+      },
+      {
+        "path": "assets/rooms/house-02/furnishing-review/basement-v1.png",
+        "sha256": "ded911947621c7805a814a993ebdaace094b3dfb76a7dd7dac9b22c19c143f13"
+      }
+    ],
+    "retention": "Retain selected candidates, proposed layout, guides and prompts needed for reproduction; resolve superseded study draft after review.",
+    "evidence": {
+      "date": "2026-10-29",
+      "source": "explicit user clarification",
+      "quote": "Approve all current room images"
+    }
+  },
+  "door_placement": {
+    "status": "user_export_received",
+    "policy": "User chooses final door marker positions directly on finished room images; old guide coordinates are provisional and must not constrain revised artwork. Keep room-to-room destinations; calibrate collision and arrivals after placement.",
+    "export": "assets/maps/house-02.door-positions.json",
+    "unchanged_accepted": [
+      "room_7--door"
+    ],
+    "evidence": {
+      "date": "2026-10-29",
+      "quote": "Keep the basement position"
+    },
+    "latest_import": {
+      "date": "2026-10-29",
+      "sha256": "648aa757757624ed5601441ee573571e6021e892fddc6910385a3b9290c819f4",
+      "evidence": "You need to reimport the new door placements",
+      "changed_doors": 9
+    }
+  },
+  "walkthrough": {
+    "layout": "assets/maps/house-02.painted.layout.json",
+    "door_positions": "assets/maps/house-02.door-positions.json",
+    "status": "local_walking_preview",
+    "checks": 169,
+    "guest_and_clue_placement": "deferred",
+    "collision": "initial calibration; user walking review pending"
+  }
+}

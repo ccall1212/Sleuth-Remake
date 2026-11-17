@@ -1,0 +1,1518 @@
+{
+  "schema": "house02-guest-previews-v1",
+  "adult_height": 80,
+  "actors": {
+    "Char": [
+      {
+        "pose_id": "standing_idle_north",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "north",
+        "source": "assets/characters/poses/char/exports/north/char_standing_idle_north_neutral.png",
+        "sha256": "835a67f9cf07e59390587e831f82efed94f5d5eacf01e77317972d6d31e54711",
+        "url": "/guest-art/char/standing_idle_north.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          77,
+          79,
+          966,
+          1755
+        ],
+        "feet": [
+          546.0,
+          1755
+        ],
+        "contact": [
+          546.0,
+          1755
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "standing_idle_east",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_standing_idle_east_neutral.png",
+        "sha256": "6483b8cd2baadccb37229a9fcdefc3de5f91203a8f30489491d21f812d75bfa5",
+        "url": "/guest-art/char/standing_idle_east.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          109,
+          67,
+          937,
+          1738
+        ],
+        "feet": [
+          536.25,
+          1738
+        ],
+        "contact": [
+          536.25,
+          1738
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "standing_idle_south",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_standing_idle_south_neutral.png",
+        "sha256": "cb2f47a3e67dcd4dc9156b54df39af2c8502e87cda7703c84ea3791ce7413693",
+        "url": "/guest-art/char/standing_idle_south.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          81,
+          67,
+          961,
+          1721
+        ],
+        "feet": [
+          515.0,
+          1721
+        ],
+        "contact": [
+          515.0,
+          1721
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "standing_idle_west",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_standing_idle_west_neutral.png",
+        "sha256": "08c6437b2f3b07548dc804d3c6873b48102f6f827111ade50f596798ac6f80f6",
+        "url": "/guest-art/char/standing_idle_west.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          126,
+          67,
+          929,
+          1735
+        ],
+        "feet": [
+          528.5,
+          1735
+        ],
+        "contact": [
+          528.5,
+          1735
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "seated_idle_east",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_seated_idle_east_neutral.png",
+        "sha256": "9ec557fba8c95c55400ad8522e1267ca300c7f52476d6cb05ec53d20ed930ac9",
+        "url": "/guest-art/char/seated_idle_east.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          86,
+          337,
+          965,
+          1685
+        ],
+        "feet": [
+          457.5,
+          1685
+        ],
+        "contact": [
+          424,
+          1064
+        ],
+        "contact_status": "existing_provisional_seat",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "seated_idle_south",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_seated_idle_south_neutral.png",
+        "sha256": "400d065f084d5353230078cd7f2a5b1860027702bee116533892e925573a23e2",
+        "url": "/guest-art/char/seated_idle_south.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          82,
+          309,
+          966,
+          1704
+        ],
+        "feet": [
+          511.5,
+          1704
+        ],
+        "contact": [
+          529,
+          1064
+        ],
+        "contact_status": "existing_provisional_seat",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "seated_idle_west",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_seated_idle_west_neutral.png",
+        "sha256": "903f10ddcdd454ab6aaa83a3ef134f91459b9db7b9705f703ff2d437f9160be2",
+        "url": "/guest-art/char/seated_idle_west.png",
+        "size": [
+          1045,
+          1844
+        ],
+        "bounds": [
+          162,
+          301,
+          932,
+          1649
+        ],
+        "feet": [
+          589.5,
+          1649
+        ],
+        "contact": [
+          614,
+          1064
+        ],
+        "contact_status": "existing_provisional_seat",
+        "standing_reference": 1673
+      },
+      {
+        "pose_id": "seated_idle_north",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "north",
+        "source": "assets/characters/poses/char/exports/north/char_seated_idle_north_neutral.png",
+        "sha256": "bb3fcadd90c78b7383221aba0b15178540eb63b16d281634c26354c74b82be19",
+        "url": "/guest-art/char/seated_idle_north.png",
+        "size": [
+          1024,
+          1536
+        ],
+        "bounds": [
+          147,
+          133,
+          923,
+          1447
+        ],
+        "feet": [
+          546.0,
+          1447
+        ],
+        "contact": [
+          546.0,
+          921.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_read_south",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_standing_read_south_neutral.png",
+        "sha256": "755bf6bc00d73ba46cab9a2316f87783ac10ab2f1fa360b4ca3960e68dc8e9bd",
+        "url": "/guest-art/char/standing_read_south.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          70,
+          56,
+          891,
+          1614
+        ],
+        "feet": [
+          466.5,
+          1614
+        ],
+        "contact": [
+          466.5,
+          1614
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_read_east",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_standing_read_east_neutral.png",
+        "sha256": "d143acaf820c07ab509a32c3d95c82b595b2dc6064b837984746c6b505831726",
+        "url": "/guest-art/char/standing_read_east.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          68,
+          44,
+          873,
+          1634
+        ],
+        "feet": [
+          448.0,
+          1634
+        ],
+        "contact": [
+          448.0,
+          1634
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_read_west",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_standing_read_west_neutral.png",
+        "sha256": "85aabd6bdf9815b38afbc35427d607349a03812f5d618928d431bede736c5654",
+        "url": "/guest-art/char/standing_read_west.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          70,
+          39,
+          908,
+          1639
+        ],
+        "feet": [
+          494.5,
+          1639
+        ],
+        "contact": [
+          494.5,
+          1639
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_read_north",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "north",
+        "source": "assets/characters/poses/char/exports/north/char_seated_read_north_neutral.png",
+        "sha256": "42c25c2615468ad863816f52ea5b55eab8fcd16ab22b459750e2fdb5c5ffc5df",
+        "url": "/guest-art/char/seated_read_north.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          100,
+          98,
+          982,
+          1400
+        ],
+        "feet": [
+          540.5,
+          1400
+        ],
+        "contact": [
+          540.5,
+          879.1999999999999
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_read_east",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_seated_read_east_neutral.png",
+        "sha256": "72e36162890ff475878dcb59734450303ad4aa40a831f094f2dcb1893741a32e",
+        "url": "/guest-art/char/seated_read_east.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          78,
+          60,
+          1007,
+          1416
+        ],
+        "feet": [
+          468.0,
+          1416
+        ],
+        "contact": [
+          468.0,
+          873.6
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_read_south",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_seated_read_south_neutral.png",
+        "sha256": "d8d993ef7fa3c0e459dd23350d9e24e1b0c325998f336db25637d182d15f4c14",
+        "url": "/guest-art/char/seated_read_south.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          52,
+          40,
+          1027,
+          1414
+        ],
+        "feet": [
+          490.5,
+          1414
+        ],
+        "contact": [
+          490.5,
+          864.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_read_west",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_seated_read_west_neutral.png",
+        "sha256": "b77cde07bf60fc4542502c9905fe9be9b2fd15e173a3c19aa55850aebeb4f268",
+        "url": "/guest-art/char/seated_read_west.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          86,
+          47,
+          1032,
+          1428
+        ],
+        "feet": [
+          652.0,
+          1428
+        ],
+        "contact": [
+          652.0,
+          875.6
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_read_north",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "north",
+        "source": "assets/characters/poses/char/exports/north/char_standing_read_north_neutral.png",
+        "sha256": "2fa74f22e4a3f4539500907de531ace4a8fe93d1a1b5c8a5d286c917c648a4ce",
+        "url": "/guest-art/char/standing_read_north.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          55,
+          43,
+          907,
+          1606
+        ],
+        "feet": [
+          490.5,
+          1606
+        ],
+        "contact": [
+          490.5,
+          1606
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_up_north",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "north",
+        "source": "assets/characters/poses/char/exports/north/char_standing_look_up_north_neutral.png",
+        "sha256": "4b14ec3a13e6b77c5777fde67e555f4c50fa80753f6e7882c7fc173a7f5364f1",
+        "url": "/guest-art/char/standing_look_up_north.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          55,
+          62,
+          902,
+          1623
+        ],
+        "feet": [
+          480.5,
+          1623
+        ],
+        "contact": [
+          480.5,
+          1623
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_up_east",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_standing_look_up_east_neutral.png",
+        "sha256": "03e3793ffd26722095828c97c4a51e6f1f9b5284af557b1f50ca69c3869bccdb",
+        "url": "/guest-art/char/standing_look_up_east.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          55,
+          28,
+          889,
+          1646
+        ],
+        "feet": [
+          475.25,
+          1646
+        ],
+        "contact": [
+          475.25,
+          1646
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_up_south",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_standing_look_up_south_neutral.png",
+        "sha256": "aa6a305029cd8a56260d4ae829579cef28392f482633b9e6de8d89583bdad489",
+        "url": "/guest-art/char/standing_look_up_south.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          45,
+          27,
+          904,
+          1640
+        ],
+        "feet": [
+          461.5,
+          1640
+        ],
+        "contact": [
+          461.5,
+          1640
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_up_west",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_standing_look_up_west_neutral.png",
+        "sha256": "748f3dbe6d9a994c85585f74559493037047ead21197908dbf60ae74beee429e",
+        "url": "/guest-art/char/standing_look_up_west.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          62,
+          18,
+          895,
+          1639
+        ],
+        "feet": [
+          500.0,
+          1639
+        ],
+        "contact": [
+          500.0,
+          1639
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_down_east",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_standing_look_down_east_neutral.png",
+        "sha256": "e74d3a77ef9c23039dd8c5a6efb253605447d389615d0a7b641b81876db400c0",
+        "url": "/guest-art/char/standing_look_down_east.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          73,
+          83,
+          872,
+          1576
+        ],
+        "feet": [
+          464.0,
+          1576
+        ],
+        "contact": [
+          464.0,
+          1576
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_down_south",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_standing_look_down_south_neutral.png",
+        "sha256": "e319454704bee827b018c4c4ce07cf6911365fba3d0c9cc6ccb3362fc775e950",
+        "url": "/guest-art/char/standing_look_down_south.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          41,
+          50,
+          906,
+          1615
+        ],
+        "feet": [
+          465.5,
+          1615
+        ],
+        "contact": [
+          465.5,
+          1615
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "standing_look_down_west",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_standing_look_down_west_neutral.png",
+        "sha256": "259ae57208b010d77561338af487386d11cc97123f5ede6c5bacec993a33b045",
+        "url": "/guest-art/char/standing_look_down_west.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          96,
+          65,
+          900,
+          1580
+        ],
+        "feet": [
+          485.0,
+          1580
+        ],
+        "contact": [
+          485.0,
+          1580
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_sleep_east",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "east",
+        "source": "assets/characters/poses/char/exports/east/char_seated_sleep_east_napping.png",
+        "sha256": "6a3d41eb5a9427628346cd0d532bd20ad63136fe0ddc3bc40a86e3bd769c4faf",
+        "url": "/guest-art/char/seated_sleep_east.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          44,
+          226,
+          909,
+          1520
+        ],
+        "feet": [
+          420.0,
+          1520
+        ],
+        "contact": [
+          420.0,
+          1002.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_sleep_south",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "south",
+        "source": "assets/characters/poses/char/exports/south/char_seated_sleep_south_napping.png",
+        "sha256": "560ea57252ab48c4b5b7d4061de955d510f1f811c9593fe4e25e7dc9e306810f",
+        "url": "/guest-art/char/seated_sleep_south.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          48,
+          223,
+          902,
+          1529
+        ],
+        "feet": [
+          456.0,
+          1529
+        ],
+        "contact": [
+          456.0,
+          1006.6
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      },
+      {
+        "pose_id": "seated_sleep_west",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "west",
+        "source": "assets/characters/poses/char/exports/west/char_seated_sleep_west_napping.png",
+        "sha256": "edb53330cd69080248298c8398dd2c55bee4b60734f169e6268a3405753b8be9",
+        "url": "/guest-art/char/seated_sleep_west.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          128,
+          144,
+          928,
+          1498
+        ],
+        "feet": [
+          575.75,
+          1498
+        ],
+        "contact": [
+          575.75,
+          956.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1654
+      }
+    ],
+    "Chris": [
+      {
+        "pose_id": "standing_idle_south",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_standing_idle_south_neutral.png",
+        "sha256": "c7cb308f4e516a2e2e0870063db7868b19feee8d78821938079d765fddf892dc",
+        "url": "/guest-art/chris/standing_idle_south.png",
+        "size": [
+          948,
+          1659
+        ],
+        "bounds": [
+          168,
+          19,
+          836,
+          1583
+        ],
+        "feet": [
+          474.5,
+          1583
+        ],
+        "contact": [
+          474.5,
+          1583
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "seated_read_north",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "north",
+        "source": "assets/characters/poses/chris/exports/north/chris_seated_read_north_neutral.png",
+        "sha256": "79e1f21a087ec61bf62100906197c63a20b64563385a7ed3be304ea2f6fdb5d1",
+        "url": "/guest-art/chris/seated_read_north.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          161,
+          59,
+          1065,
+          1364
+        ],
+        "feet": [
+          538.0,
+          1364
+        ],
+        "contact": [
+          538.0,
+          842.0
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1305
+      },
+      {
+        "pose_id": "standing_idle_north",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "north",
+        "source": "assets/characters/poses/chris/exports/north/chris_standing_idle_north_neutral.png",
+        "sha256": "0b85dfd21f7cb7f080f58421b4e24ade58e07ad620aa1b1c60f8f1eec4aa9e97",
+        "url": "/guest-art/chris/standing_idle_north.png",
+        "size": [
+          984,
+          1599
+        ],
+        "bounds": [
+          202,
+          42,
+          822,
+          1558
+        ],
+        "feet": [
+          490.5,
+          1558
+        ],
+        "contact": [
+          490.5,
+          1558
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1516
+      },
+      {
+        "pose_id": "standing_look_up_north",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "north",
+        "source": "assets/characters/poses/chris/exports/north/chris_standing_look_up_north_neutral.png",
+        "sha256": "bc098b6b62cc17a8890a585749c73c36c467f6b4810868bb0d7e24197c85c7a2",
+        "url": "/guest-art/chris/standing_look_up_north.png",
+        "size": [
+          985,
+          1596
+        ],
+        "bounds": [
+          220,
+          29,
+          810,
+          1555
+        ],
+        "feet": [
+          509.0,
+          1555
+        ],
+        "contact": [
+          509.0,
+          1555
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1526
+      },
+      {
+        "pose_id": "standing_read_north",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "north",
+        "source": "assets/characters/poses/chris/exports/north/chris_standing_read_north_neutral.png",
+        "sha256": "6d9c632cec2403450c5c9df7b051229284f484cad0f7154082771ce4b267c10e",
+        "url": "/guest-art/chris/standing_read_north.png",
+        "size": [
+          1015,
+          1550
+        ],
+        "bounds": [
+          241,
+          22,
+          797,
+          1523
+        ],
+        "feet": [
+          521.0,
+          1523
+        ],
+        "contact": [
+          521.0,
+          1523
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1501
+      },
+      {
+        "pose_id": "seated_idle_east",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_seated_idle_east_neutral.png",
+        "sha256": "700c3dbe42be1e852b0c7f16f0d4fbbb596fd16a44f17645a3652dab3e7a9382",
+        "url": "/guest-art/chris/seated_idle_east.png",
+        "size": [
+          1024,
+          1536
+        ],
+        "bounds": [
+          170,
+          112,
+          1012,
+          1450
+        ],
+        "feet": [
+          417.0,
+          1450
+        ],
+        "contact": [
+          417.0,
+          914.8
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1338
+      },
+      {
+        "pose_id": "seated_read_east",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_seated_read_east_neutral.png",
+        "sha256": "43a2930216bd1eb9177a87a111935d69583aafc99ec4a824e00cb044f7dd8592",
+        "url": "/guest-art/chris/seated_read_east.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          169,
+          34,
+          1072,
+          1409
+        ],
+        "feet": [
+          522.5,
+          1409
+        ],
+        "contact": [
+          522.5,
+          859.0
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1375
+      },
+      {
+        "pose_id": "seated_sleep_east",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_seated_sleep_east_napping.png",
+        "sha256": "7846110608f460698872bdae5d11eae71686e311b6dcdc0d70637c7b567385b0",
+        "url": "/guest-art/chris/seated_sleep_east.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          32,
+          83,
+          934,
+          1577
+        ],
+        "feet": [
+          330.0,
+          1577
+        ],
+        "contact": [
+          330.0,
+          979.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "standing_idle_east",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_standing_idle_east_neutral.png",
+        "sha256": "0414b2e3c764592a55c6a99dfc273d875d622ff3e66e1c4fdf05d13aa55839d4",
+        "url": "/guest-art/chris/standing_idle_east.png",
+        "size": [
+          977,
+          1610
+        ],
+        "bounds": [
+          222,
+          23,
+          833,
+          1551
+        ],
+        "feet": [
+          461.0,
+          1551
+        ],
+        "contact": [
+          461.0,
+          1551
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1528
+      },
+      {
+        "pose_id": "standing_look_down_east",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_standing_look_down_east_neutral.png",
+        "sha256": "f9fe75db6aac6e1128982337901d9163fcb36c52a8687f4d5601588a31e9e95a",
+        "url": "/guest-art/chris/standing_look_down_east.png",
+        "size": [
+          980,
+          1605
+        ],
+        "bounds": [
+          239,
+          35,
+          799,
+          1568
+        ],
+        "feet": [
+          480.5,
+          1568
+        ],
+        "contact": [
+          480.5,
+          1568
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1533
+      },
+      {
+        "pose_id": "standing_look_up_east",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_standing_look_up_east_neutral.png",
+        "sha256": "4a7ddfe8e3c56ee2cafc3e4fad96ff2cec3227cbeb40fd783d6969d9afe6ced5",
+        "url": "/guest-art/chris/standing_look_up_east.png",
+        "size": [
+          948,
+          1659
+        ],
+        "bounds": [
+          220,
+          24,
+          809,
+          1607
+        ],
+        "feet": [
+          450.5,
+          1607
+        ],
+        "contact": [
+          450.5,
+          1607
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1583
+      },
+      {
+        "pose_id": "standing_read_east",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "east",
+        "source": "assets/characters/poses/chris/exports/east/chris_standing_read_east_neutral.png",
+        "sha256": "a1cc30ed1c39d6058247acc4fa17e1d5ae3a9baf5c426eb06889334cdcefd793",
+        "url": "/guest-art/chris/standing_read_east.png",
+        "size": [
+          1015,
+          1549
+        ],
+        "bounds": [
+          241,
+          17,
+          889,
+          1526
+        ],
+        "feet": [
+          498.0,
+          1526
+        ],
+        "contact": [
+          498.0,
+          1526
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1509
+      },
+      {
+        "pose_id": "seated_sleep_south",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_seated_sleep_south_napping.png",
+        "sha256": "19cb93384353bd30c4812c93604c0cf6ca042032bc7accbb5cb51aeb286ff6a7",
+        "url": "/guest-art/chris/seated_sleep_south.png",
+        "size": [
+          948,
+          1659
+        ],
+        "bounds": [
+          199,
+          29,
+          890,
+          1602
+        ],
+        "feet": [
+          502.5,
+          1602
+        ],
+        "contact": [
+          502.5,
+          972.8
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "standing_look_down_south",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_standing_look_down_south_neutral.png",
+        "sha256": "f53e7679487bf9066f5de844a79b7be765d69b7af3c223815a2e403156cad5c4",
+        "url": "/guest-art/chris/standing_look_down_south.png",
+        "size": [
+          984,
+          1599
+        ],
+        "bounds": [
+          199,
+          24,
+          785,
+          1542
+        ],
+        "feet": [
+          493.5,
+          1542
+        ],
+        "contact": [
+          493.5,
+          1542
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1518
+      },
+      {
+        "pose_id": "standing_look_up_south",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_standing_look_up_south_neutral.png",
+        "sha256": "0670422b76c5a4281f55251567d058c3684171accf6c0b28f8cb2c922a4764bd",
+        "url": "/guest-art/chris/standing_look_up_south.png",
+        "size": [
+          985,
+          1596
+        ],
+        "bounds": [
+          204,
+          25,
+          829,
+          1561
+        ],
+        "feet": [
+          492.0,
+          1561
+        ],
+        "contact": [
+          492.0,
+          1561
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1536
+      },
+      {
+        "pose_id": "standing_read_south",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_standing_read_south_neutral.png",
+        "sha256": "98bd7c1ab0af480ecca438190763684d1b4d229ee59c842caa4a0b7cca0f7489",
+        "url": "/guest-art/chris/standing_read_south.png",
+        "size": [
+          986,
+          1596
+        ],
+        "bounds": [
+          192,
+          22,
+          813,
+          1544
+        ],
+        "feet": [
+          507.0,
+          1544
+        ],
+        "contact": [
+          507.0,
+          1544
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1522
+      },
+      {
+        "pose_id": "seated_idle_west",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_seated_idle_west_neutral.png",
+        "sha256": "07eeda86ec1097111bd6fead94f8f8464ba9f2584b3111f6b30cbd66c90fab97",
+        "url": "/guest-art/chris/seated_idle_west.png",
+        "size": [
+          944,
+          1665
+        ],
+        "bounds": [
+          65,
+          134,
+          880,
+          1568
+        ],
+        "feet": [
+          620.0,
+          1568
+        ],
+        "contact": [
+          620.0,
+          994.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1434
+      },
+      {
+        "pose_id": "seated_read_west",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_seated_read_west_neutral.png",
+        "sha256": "117728c614489b2e6b3f703918b96f6939ef980abd362d2040f5e57bba39effb",
+        "url": "/guest-art/chris/seated_read_west.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          47,
+          34,
+          1017,
+          1436
+        ],
+        "feet": [
+          658.5,
+          1436
+        ],
+        "contact": [
+          658.5,
+          875.1999999999999
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1402
+      },
+      {
+        "pose_id": "seated_sleep_west",
+        "posture": "seated",
+        "activity": "sleep",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_seated_sleep_west_napping.png",
+        "sha256": "b6d36211fe1233796bda2b6f8d49decc6f02c5618ed53a39e441c8816fbadb42",
+        "url": "/guest-art/chris/seated_sleep_west.png",
+        "size": [
+          944,
+          1666
+        ],
+        "bounds": [
+          49,
+          124,
+          918,
+          1573
+        ],
+        "feet": [
+          632.25,
+          1573
+        ],
+        "contact": [
+          632.25,
+          993.4
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "standing_idle_west",
+        "posture": "standing",
+        "activity": "idle",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_standing_idle_west_neutral.png",
+        "sha256": "a19ac1bc7ea33b1b434571445b96f8a5a5c8db23370d51b24d19b09de5b354a2",
+        "url": "/guest-art/chris/standing_idle_west.png",
+        "size": [
+          985,
+          1597
+        ],
+        "bounds": [
+          254,
+          34,
+          783,
+          1558
+        ],
+        "feet": [
+          544.0,
+          1558
+        ],
+        "contact": [
+          544.0,
+          1558
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1524
+      },
+      {
+        "pose_id": "standing_look_down_west",
+        "posture": "standing",
+        "activity": "look_down",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_standing_look_down_west_neutral.png",
+        "sha256": "391223c97b1bf98cab2e513b7726117340ee45b694911ce6075125e604477c3d",
+        "url": "/guest-art/chris/standing_look_down_west.png",
+        "size": [
+          985,
+          1596
+        ],
+        "bounds": [
+          242,
+          46,
+          780,
+          1552
+        ],
+        "feet": [
+          534.0,
+          1552
+        ],
+        "contact": [
+          534.0,
+          1552
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1506
+      },
+      {
+        "pose_id": "standing_look_up_west",
+        "posture": "standing",
+        "activity": "look_up",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_standing_look_up_west_neutral.png",
+        "sha256": "257b406a9c7a1f7c6c70470dee8fe8a692103d2a333a854f4e3d67f204a1ee8e",
+        "url": "/guest-art/chris/standing_look_up_west.png",
+        "size": [
+          985,
+          1597
+        ],
+        "bounds": [
+          219,
+          12,
+          732,
+          1581
+        ],
+        "feet": [
+          495.0,
+          1581
+        ],
+        "contact": [
+          495.0,
+          1581
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1569
+      },
+      {
+        "pose_id": "standing_read_west",
+        "posture": "standing",
+        "activity": "read",
+        "facing": "west",
+        "source": "assets/characters/poses/chris/exports/west/chris_standing_read_west_neutral.png",
+        "sha256": "9590277b99ffbc8f06da1d07f20c1bdf1620794c1537988c2457bc4127e38117",
+        "url": "/guest-art/chris/standing_read_west.png",
+        "size": [
+          1015,
+          1550
+        ],
+        "bounds": [
+          166,
+          15,
+          799,
+          1537
+        ],
+        "feet": [
+          531.5,
+          1537
+        ],
+        "contact": [
+          531.5,
+          1537
+        ],
+        "contact_status": "feet",
+        "standing_reference": 1522
+      },
+      {
+        "pose_id": "seated_idle_north",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "north",
+        "source": "assets/characters/poses/chris/exports/north/chris_seated_idle_north_neutral.png",
+        "sha256": "cdb69508f1effc294c9ee74c2d29997dd348fae8c1b47328e5c483987c4c06b4",
+        "url": "/guest-art/chris/seated_idle_north.png",
+        "size": [
+          1067,
+          1475
+        ],
+        "bounds": [
+          93,
+          29,
+          999,
+          1406
+        ],
+        "feet": [
+          657.0,
+          1406
+        ],
+        "contact": [
+          657.0,
+          855.1999999999999
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "seated_idle_south",
+        "posture": "seated",
+        "activity": "idle",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_seated_idle_south_neutral.png",
+        "sha256": "eaf5fac2fedcb4a54961dc1786bda573b4df746b34dce48ecf6f451a800c9a42",
+        "url": "/guest-art/chris/seated_idle_south.png",
+        "size": [
+          948,
+          1659
+        ],
+        "bounds": [
+          214,
+          37,
+          874,
+          1600
+        ],
+        "feet": [
+          501.5,
+          1600
+        ],
+        "contact": [
+          501.5,
+          974.8
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      },
+      {
+        "pose_id": "seated_read_south",
+        "posture": "seated",
+        "activity": "read",
+        "facing": "south",
+        "source": "assets/characters/poses/chris/exports/south/chris_seated_read_south_neutral.png",
+        "sha256": "05fc51a6bc0eacadeb168bef098ad52e79d24bd36565c240dcd11b30f52d8937",
+        "url": "/guest-art/chris/seated_read_south.png",
+        "size": [
+          1080,
+          1456
+        ],
+        "bounds": [
+          208,
+          25,
+          899,
+          1418
+        ],
+        "feet": [
+          552.5,
+          1418
+        ],
+        "contact": [
+          552.5,
+          860.8
+        ],
+        "contact_status": "estimated_seat",
+        "standing_reference": 1564
+      }
+    ]
+  }
+}

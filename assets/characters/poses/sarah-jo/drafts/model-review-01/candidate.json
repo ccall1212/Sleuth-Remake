@@ -1,0 +1,32 @@
+{
+  "character": "Sarah Jo",
+  "date": "2026-11-16",
+  "status": "pending_user_review",
+  "file": "assets/characters/poses/sarah-jo/drafts/model-review-01/sarah-jo_standing_idle_south_neutral_r1.png",
+  "sha256": "82fba4d81abe6ed0f3b3ffa501f5b9c7e80e0b5f60e05bb4a482cc688923b7e2",
+  "tool": "built-in image_gen",
+  "identity_reference": "assets/characters/review-v7/masters/sarah-jo-short-hair-proportions-v7.png",
+  "style_reference": "assets/characters/poses/char/masters/likeness-review-02/char-likeness-v2.png",
+  "scope": "Clean contemporary-style base candidate preserving previously approved short-haired navy-dress design. This new image requires its own approval.",
+  "technical_checks": {
+    "size": [
+      986,
+      1596
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bounds_alpha128": [
+      115,
+      18,
+      901,
+      1558
+    ]
+  },
+  "limitations": [
+    "Runtime scale, contact pivots and furniture fit not verified."
+  ],
+  "approval": null
+}

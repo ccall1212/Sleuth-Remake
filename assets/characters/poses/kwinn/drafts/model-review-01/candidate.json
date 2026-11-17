@@ -1,0 +1,43 @@
+{
+  "character": "Kwinn",
+  "status": "pending_user_review",
+  "date": "2026-11-16",
+  "file": "assets/characters/poses/kwinn/drafts/model-review-01/kwinn_standing_idle_south_neutral_r1.png",
+  "sha256": "9953368327d6f71d510d0908d28bc7e9f018c305243d1f1b0b59f62d25d502ba",
+  "prompt_source": "Claude observations/KWINN_BASE_PROMPT.md",
+  "tool": "built-in image_gen",
+  "reference_images": [
+    "Claude observations/base-prompt-refs/1-kwinn-identity.png",
+    "Claude observations/base-prompt-refs/2-chris-approved-model.png",
+    "Claude observations/base-prompt-refs/3-char-approved-face-style.png"
+  ],
+  "technical_checks": {
+    "size": [
+      985,
+      1596
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bounds": [
+      0,
+      0,
+      795,
+      1580
+    ],
+    "transparent_pixels": 1063786,
+    "opaque_bounds_alpha128": [
+      198,
+      7,
+      768,
+      1575
+    ]
+  },
+  "limitations": [
+    "Base candidate only; no runtime scale or furniture fit verified.",
+    "Generated canvas differs from approximate prompt target; no resizing or approved export performed."
+  ],
+  "approval": null
+}

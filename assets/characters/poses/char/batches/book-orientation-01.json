@@ -1,0 +1,79 @@
+{
+  "batch_id": "book-orientation-01",
+  "status": "approved",
+  "jobs": [
+    {
+      "pose_id": "seated_read_north",
+      "variant_id": "neutral",
+      "path": "assets/characters/poses/char/drafts/book-orientation-01/char_seated_read_north_neutral_r2.png",
+      "sha256": "02108a1284e25f8567278b11f34ff31473e637aab5f54707ea468fec575b5d49",
+      "tool": "built-in image_gen",
+      "prompt": "Edit this existing game sprite with ONE precise correction: the OPEN BOOK is backwards. Keep the character identity, clothing, seated body, hands location, camera, framing, scale and all other pixels/composition as close as possible. The character faces away from camera reading ahead. Correct physical book geometry: BOTH cream inner page spreads must face BACK toward the reader and the camera looking over the reader's shoulder. The center crease between pages is visible to us; two facing paper pages with cream margins and subtle unreadable lines form a coherent shallow V. Burgundy covers lie BEHIND the paper pages on the far side, facing away toward the front of the character; only thin burgundy cover edges may show around the pages. NO broad burgundy exterior cover facing camera, NO decorative exterior spine facing the reader. Adjust fingers minimally so hands grip the outer edges naturally without blocking both pages. Keep same book location/size. The reader looks into visible open inner pages, not at the cover. Preserve actual alpha transparency with empty transparent outside silhouette and opaque character. No glow, halo, background, floor or furniture. One complete character only. This is CHAR: preserve her exact long brown hair, cream ribbon, cream blouse, burgundy sash, teal skirt, jewelry and brown shoes without redesign.",
+      "references": [
+        {
+          "path": "assets/characters/poses/char/exports/north/char_seated_read_north_neutral.png",
+          "sha256": "42c25c2615468ad863816f52ea5b55eab8fcd16ab22b459750e2fdb5c5ffc5df"
+        }
+      ],
+      "canvas": [
+        1080,
+        1456
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "solid_bounds": [
+        99,
+        96,
+        985,
+        1398
+      ],
+      "artwork_status": "approved",
+      "visual_qa": "Both inner pages face reader and over-shoulder camera; book exterior faces away. Body retained.",
+      "runtime_integrated": false,
+      "furniture_fit": "unverified",
+      "approval": "approved",
+      "retention": "Correction candidate and exact prompt retained for requested review and reproducibility.",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-10-26",
+          "source": "user_chat",
+          "quote": "In the future we might just make all South-north facing chairs will be unused. Yes go ahead and move on."
+        },
+        "scope": "Corrected Char north reading r2 artwork accepted to move on. Rear three-quarter angle and north-south chair compatibility remain unresolved; no runtime approval.",
+        "files": [
+          {
+            "path": "assets/characters/poses/char/drafts/book-orientation-01/char_seated_read_north_neutral_r2.png",
+            "sha256": "02108a1284e25f8567278b11f34ff31473e637aab5f54707ea468fec575b5d49"
+          }
+        ],
+        "retention": "Keep approved art and required metadata."
+      }
+    }
+  ],
+  "notes": "User requested book direction correction. Approved source/export preserved; this draft requires separate approval.",
+  "image_approval": {
+    "status": "approved",
+    "evidence": {
+      "date": "2026-10-26",
+      "source": "user_chat",
+      "quote": "In the future we might just make all South-north facing chairs will be unused. Yes go ahead and move on."
+    },
+    "scope": "Corrected Char north reading r2 artwork accepted to move on. Rear three-quarter angle and north-south chair compatibility remain unresolved; no runtime approval.",
+    "files": [
+      {
+        "path": "assets/characters/poses/char/drafts/book-orientation-01/char_seated_read_north_neutral_r2.png",
+        "sha256": "02108a1284e25f8567278b11f34ff31473e637aab5f54707ea468fec575b5d49"
+      }
+    ],
+    "retention": "Keep approved art and required metadata."
+  }
+}

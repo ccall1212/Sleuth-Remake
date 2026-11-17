@@ -1,5 +1,102 @@
 # Prioritized development plan
 
+Guest/briefing update (2026-11-16): ordinary room snapshots have at most two
+guests; initial placement separates claimed alibi partners, including false pairs.
+Gatherings still include all six suspects. The painted entry now opens with a
+spoiler-free victim briefing and portrait, paused until Begin investigation.
+Dialogue and physical narration use explicit character/role pronouns for all15
+cast members; original case facts and approved art remain unchanged.
+
+Win/placement update (2026-11-16): added the user's victory MP3 only for solved
+accusations. Initial item positions now vary on reachable, visible floor within
+their assigned rooms, using an independent seeded placement stream; room/clue
+assignments and user-dropped positions remain unchanged.
+
+Launch/timing correction (2026-11-16): Godot F5 now launches the current painted
+mystery through its own entry scene, with normal randomized cases. CLI blockout
+and replay options remain available. Ambush dialogue begins with the sting rather
+than waiting for all 8.3 seconds of audio.
+
+Selected audio (2026-11-16): replaced the synthesized ambush cue with the user's
+MP3 and added the supplied door-lock clip for ambushes and locked gatherings.
+Audio sequencing follows actual clip durations; source bytes are unchanged.
+
+Audio review (2026-11-16): increased the original ambush sting's PCM level and
+removed playback attenuation; exported a louder listening sample. Peak stays below
+clipping. User listening review remains the judgement of perceived loudness.
+
+Aggression tuning (2026-11-16): independent Easy15% / Normal20% / Hard25% solo
+entry/question rolls; 50% only when questioning with the true weapon. Forced
+limits are removed at the user's request. Witness/hall safety and phase gates remain.
+
+Personality review (2026-11-16): all eight dialogue voices are assigned; a 100-case
+audit found no calm bias. Questioning poses now vary by personality while preserving
+chairs/downcast activity; confession poses no longer all use a shrug. An eight-case
+Char/Chris seed-selected preview covers all personalities for user review.
+
+Current playtest corrections (2026-11-16): ten unique item types with one kitchen
+knife maximum, full floor/wound discovery popup, evidence-first tabbed notebook,
+in-room ambush approach and three-hit audio sting, portrait dialogue and gradual
+text reveal. No approved PNGs changed; no dialogue JSON edits in this correction
+because Claude owns the pending inspection lines. Next: user review of encounter
+timing/sound, text speed and notebook readability.
+
+## Item/lens implementation — 2026-11-16
+
+Ported all lens fields with 900-case parity; one-slot glass/item inventory, free
+floor drops/recovery, distinct named kind-compatible variants, stain/wound evidence,
+observations-only notebook, silent 2x true-weapon danger and five accusation outcomes
+now run in the painted mystery. Latest Claude stain/wound/drop/correction dialogue
+and 10% silent refusals are connected. Missing messages remain marked placeholders.
+Existing type art is reused temporarily; variant-specific art is not produced.
+Next: user playtest clue clarity, carrying/drop controls and pacing before more art.
+
+## Painted mystery playtest follow-up — 2026-11-16
+
+Restored enlarged guest portraits above conversation text in the painted mystery;
+source artwork and settled guest poses are unchanged. Native preview inspected.
+North-facing room conversations now use face-visible close portraits, preserving
+chair orientation and downcast inspection mood.
+An opt-in six-case local session alternates Char/Chris killers for reveal-art
+review, selecting complete generated cases and expiring back to normal randomness.
+
+Implemented broad painted floor-door thresholds, a visible six-guest current-room
+gathering with locked exits and a separate accusation action, and varied brief
+personality refusals at the existing pre-gathering rate. Case facts, approved art
+and authored guest placements remain unchanged. Focused checks and native crowd
+capture pass; see [test evidence](TESTING.md). Next: user playtest door feel,
+gathering readability and dialogue before further visual polish or new art.
+User correction: gathering always stays in the room where it was called; there is
+no Dining Room preference or automatic alternate-room fallback.
+
+## Current priority: placeholder mystery case lab — 2026-10-25
+
+The user approved testing generated deduction before further art expansion. An
+isolated Godot scene, `src/mystery/case_lab.tscn`, now offers four suspects, four
+connected rooms, three objects, the foyer glass, inspections, selectable notebooks,
+repeated questions, accusation, seed replay and a separate save slot. It generates
+two constrained families: introductory conflicting witnesses, and standard time
+plus weapon access. The new-game screen independently selects difficulty and
+Assisted, Standard (default), or Classic notebook assistance. Identities,
+present-day positions, crime room, weapon and voice bindings vary by seed.
+
+The independent validator enumerates reconstructions using only discoverable
+claims and physical observations. Hidden truth is checked separately against that
+result. Introductory uses a single 10:00–10:10 interval, truthful innocents and
+one potentially lying culprit. Standard uses two five-minute whereabouts windows,
+accurate accounts, an authenticated attack-time recording and restricted weapon
+access. Time or access alone leaves two suspects; both together identify one.
+This remains a bounded experiment, not a general story generator. Repeated
+questions preserve facts. Weapon collection follows room
+identification and all four accounts. The lab has no stalking timer or new art.
+
+Human feedback: the initial seeds felt similar and easy. The next playtest should
+compare Standard cases across notebook settings: does combining time and access
+feel more satisfying, and is the evidence clear without automatic comparison?
+Automated uniqueness checks do not establish fun or calibrated difficulty.
+The existing mansion remains the default launch scene. Starting options are
+implemented in the isolated lab first; mansion integration is still pending.
+
 Original research direction (2026-10-25): the user wants ideas for the remake,
 not an automatic-win system. The existing MCP adapter is an observation tool.
 The latest focused study checked waiting, repeated refusal/recovery and room
@@ -269,3 +366,23 @@ Evidence rendering preview: shared source-detail loader replaces tiny object exp
 
 
 Reworked-room tagging: nine approved room candidates now have registered furniture layouts and a 126-tag review gallery. Next: calibrate the library with Char (east/west reading armchairs, south desk/rear-table chairs), add proper masks/clearance and resolve the missing north seated pose before enabling placement. Live room integration and the library west-to-south route change remain pending.
+
+
+## Walkable house-02 blockout — 2026-10-26
+
+User approved starting the build order with the blockout viewer, deferring clock/simulator reconciliation. `src/blockout/house_blockout.tscn` now loads `assets/maps/house-02.layout.json` separately from the mansion and case lab. Nine rooms, one hall and the secret passage support collision-aware walking, all 24 directed doors, marked guest/item spots and facing directions, secret-panel interaction, inspection jumps and a walking-distance step counter. No generator, danger clock, dialogue or room artwork was integrated. See [House blockout](HOUSE_BLOCKOUT.md). Next is human route/layout feedback, then generator/solver parity fixtures and the GDScript port. Claude's design worktree remains local and untouched.
+
+
+## House-02 seeded investigation and approved cast art — 2026-10-26
+
+The user authorized the generator/solver port and playable investigation, then requested Char/Chris poses in Godot. `src/blockout/house_investigation.tscn` now hosts six-suspect Easy/Normal cases on the blockout. Python-v2 generator/solver parity is established over 795 fixtures; the runtime binds reference room indices to actual map names. Lens discovery, physical inspection, stable accounts, a learned-facts notebook, weapon collection, assembly and four terminal accusation outcomes work. No automatic solver answer is exposed in play. Char/Chris have approved directional idle/talk sprites; all 81 poses each are available in an in-game preview, with a resigned-shrug reveal when either is the culprit. Default demo seed2 includes both characters. Other cast members remain markers. Danger, wandering/staring, full personality dialogue, saves and notebook-setting migration remain later work. See [House investigation](HOUSE_INVESTIGATION.md).
+
+
+## House-02 spatial guests and danger — 2026-10-26
+
+User approved the next stage. The investigation now advances a seeded, walking-only clock through calm, suspicion, stalking and ambush. Guests follow authored floor/door/secret routes in step time, select free spots, turn and stare; Char/Chris reuse approved standing poses. Hard is enabled with live staring-gated floor evidence and the 30-percent direct murder-room pull. Flat room-entry death, safe halls (including questioning), 22-percent refusals and both weapon-dependent death scenes are implemented without mutating alibis. Tuning lives in `assets/mystery/house_runtime_rules.json`. Explicit differences from Claude's abstract simulator are in [House runtime](HOUSE_RUNTIME.md); its old win rates are not claimed for this map. Next is human pacing/clue-availability feedback, then richer dialogue. No design branch was merged or pushed.
+
+
+## Correction: room-entry guest snapshots — 2026-10-26
+
+The user explicitly rejected visible NPC walking. Guest pathfinding/travel has been removed. Guests stay at fixed positions and activities throughout a visit; only entering a non-hall room resolves the chance that they had relocated, placing them directly at their new spots. The existing elapsed-step rate is applied at that entry, not continuously. The danger clock remains separate and unchanged. Previous spatial-walking implementation/test descriptions above are superseded. Focused snapshot/clock checks and UI regressions cover the corrected behaviour. See [current rules](HOUSE_RUNTIME.md).

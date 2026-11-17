@@ -210,7 +210,7 @@
       "height_ratio": 1,
       "target_images": 100,
       "proposed_order": 2,
-      "production_eligibility": "needs_base_approval_or_selection",
+      "production_eligibility": "approved_base",
       "new_pose_approval": "not_requested",
       "pool_membership": "pending_final_pool_selection",
       "identity_reference": {
@@ -227,7 +227,9 @@
           0.68,
           0.99
         ]
-      }
+      },
+      "approved_base_reference": "assets/characters/poses/kwinn/masters/model-review-02/kwinn-model-v1.png",
+      "base_approval_record": "assets/characters/poses/kwinn/drafts/model-review-02/candidates.json"
     },
     {
       "character_id": "likeness-party-A",

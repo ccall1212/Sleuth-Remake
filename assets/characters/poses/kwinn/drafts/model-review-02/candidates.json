@@ -1,0 +1,127 @@
+{
+  "character": "Kwinn",
+  "date": "2026-11-16",
+  "status": "approved_model_selected",
+  "tool": "built-in image_gen",
+  "scope": "Face likeness adjustment and two vest/tie palettes; additional anime face correction completed while user replied. No exports or runtime integration.",
+  "face_reference": "assets/characters/poses/kwinn/references/user-face-reference.png",
+  "face_feedback": {
+    "quote": "This looks good, give me different color versions of his vest, he likes orange and purple I believe",
+    "scope": "Positive feedback on first displayed photo-likeness candidate; not approval of subsequent anime correction or final color selection."
+  },
+  "variants": [
+    {
+      "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_purple_vest_orange_tie_r1.png",
+      "sha256": "36868e5824ad4d35fdc4ca92b52e6490597372bfd4cf4a8ef307bd94bff9a839",
+      "status": "pending_color_and_base_selection",
+      "size": [
+        985,
+        1597
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds_alpha128": [
+        198,
+        11,
+        767,
+        1579
+      ]
+    },
+    {
+      "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_orange_vest_purple_tie_r1.png",
+      "sha256": "736b2c944ce40dabc17b352c4e63e3e8e1a1fb6c10ada6380491cf8e37f7cdc9",
+      "status": "pending_color_and_base_selection",
+      "size": [
+        985,
+        1597
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds_alpha128": [
+        197,
+        11,
+        769,
+        1580
+      ]
+    },
+    {
+      "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_purple_vest_orange_tie_anime_r2.png",
+      "sha256": "47e8e9593958566226db37a91f6436cc7a3f6c212eda391cebfb4b0670ceee9e",
+      "status": "face_approved_costume_selection_pending",
+      "size": [
+        985,
+        1597
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds_alpha128": [
+        199,
+        14,
+        769,
+        1579
+      ],
+      "face_status": "approved"
+    },
+    {
+      "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_orange_vest_purple_tie_anime_r3.png",
+      "sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9",
+      "status": "approved",
+      "source": "kwinn_standing_idle_south_neutral_purple_vest_orange_tie_anime_r2.png",
+      "edit": "Orange/copper vest, deep purple tie; preserve approved anime face.",
+      "tool": "built-in image_gen",
+      "size": [
+        985,
+        1597
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "technical_limitations": [
+    "Runtime scale and furniture fit not tested."
+  ],
+  "face_approval": {
+    "status": "approved",
+    "evidence": {
+      "date": "2026-11-16",
+      "source": "User attached the anime r2 candidate and explicitly selected its face.",
+      "quote": "WOW! This is the face I was looking for! Thats amazing!"
+    },
+    "scope": "Facial likeness and anime rendering of the attached r2 candidate only. Final costume colors and full production base selection are not inferred.",
+    "files": [
+      {
+        "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_purple_vest_orange_tie_anime_r2.png",
+        "sha256": "47e8e9593958566226db37a91f6436cc7a3f6c212eda391cebfb4b0670ceee9e"
+      }
+    ],
+    "retention": "Keep this exact image as the facial reference for subsequent Kwinn candidates and poses."
+  },
+  "image_approval": {
+    "status": "approved",
+    "evidence": {
+      "date": "2026-11-16",
+      "source": "User selected orange vest, purple tie and the anime face after viewing r3.",
+      "quote": "I like the orange vest and purple tie with this face. Approved."
+    },
+    "scope": "Kwinn full standing base model: orange vest, purple tie, approved anime face; no other candidate approved.",
+    "files": [
+      {
+        "path": "assets/characters/poses/kwinn/drafts/model-review-02/kwinn_standing_idle_south_neutral_orange_vest_purple_tie_anime_r3.png",
+        "sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9"
+      }
+    ],
+    "retention": "Keep exact selected model and facial reference for pose production."
+  }
+}

@@ -40,6 +40,9 @@ def test_no_arbitrary_window_input(monkeypatch):
     assert not server.launch_remake()['ok']
     assert not server.reset_game('remake')['ok']
     assert server.stop_game('remake')['stopped'] is False
+    assert not server.read_original_screen()['ok']
+    for command in ['quit', 'restart', 'dir', 'question a\nquit', 'x' * 100]:
+        assert not server.original_command(command)['ok']
 
 
 def test_comparison():
@@ -98,7 +101,8 @@ def test_stdio_discovery_and_calls():
         async with Client(params, mode=mode, read_timeout_seconds=20) as client:
             listed = await client.list_tools()
             names = {t.name for t in listed.tools}
-            assert len(names) == 15
+            assert len(names) == 18
+            assert {'read_original_screen', 'original_command', 'original_move'} <= names
             for name in ['inspect_game_archive', 'get_game_environment', 'get_project_status', 'get_game_status']:
                 result = await client.call_tool(name, {})
                 assert not result.is_error and result.structured_content['ok']
@@ -132,3 +136,89 @@ def test_emulator_startup_timeout_and_failure(monkeypatch, initial_exit):
         assert child.poll() is not None
     finally:
         server.PROCESSES.pop('original', None)
+
+
+@pytest.mark.parametrize('reply', [b'BEGIN 1 OK\nPONG\nEND 1\n',
+                                 b'BEGIN 1 ERR\nbad\nEND 1\n', b''])
+def test_display_channel_framing(reply):
+    import socket
+    import threading
+    channel = server.DosTextChannel()
+    received = []
+    def emulator():
+        with socket.create_connection(('127.0.0.1', channel.port), timeout=2) as peer:
+            received.append(peer.recv(1024))
+            if reply:
+                peer.sendall(reply)
+    worker = threading.Thread(target=emulator)
+    worker.start()
+    try:
+        if b' OK' in reply:
+            assert channel.request('PING') == ['PONG']
+        else:
+            with pytest.raises(RuntimeError):
+                channel.request('PING')
+        assert received == [b'REQ 1 PING\n']
+        with pytest.raises(ValueError):
+            channel.request('EXEC MEMDUMPBIN 1000:0000 100 secret.bin')
+    finally:
+        channel.close()
+        worker.join(timeout=3)
+
+
+def test_display_page_selection(tmp_path, monkeypatch):
+    monkeypatch.setattr(server, 'window', lambda game: 1)
+    class Display:
+        offset = b'\x00\x10'
+        def request(self, command):
+            if '0040:004E' in command:
+                (tmp_path / 'display-offset.bin').write_bytes(self.offset)
+                return ['success']
+            assert command == 'EXEC MEMDUMPBIN B800:1000 FA0 screen.bin'
+            data = bytearray(b' \x07' * 2000)
+            for i, char in enumerate(b'Visible guest list >'):
+                data[i*2] = char
+            (tmp_path / 'screen.bin').write_bytes(data)
+            return ['DEBUG: Memory dump binary success.']
+    channel = Display()
+    monkeypatch.setitem(server.PROCESSES, 'original', {'run_dir': str(tmp_path), 'text_channel': channel})
+    assert server.original_screen_text().splitlines()[0] == 'Visible guest list >'
+    channel.offset = b'\xff\xff'
+    with pytest.raises(RuntimeError, match='Unsupported BIOS'):
+        server.original_screen_text()
+
+
+def test_original_command_requires_prompt(monkeypatch):
+    monkeypatch.setattr(server, 'window', lambda game: 1)
+    monkeypatch.setattr(server, 'original_screen_text', lambda: 'Select Basic Sleuth')
+    monkeypatch.setattr(server, 'send_game_input', lambda *a: pytest.fail('Input sent at menu'))
+    assert 'idle gameplay prompt' in server.original_command('guest')['error']
+
+
+def test_original_move_checks_every_step(monkeypatch):
+    def screen(x, y):
+        rows = [' ' * 80 for _ in range(25)]
+        rows[y] = rows[y][:x] + '\x02' + rows[y][x+1:]
+        rows[23] = '>'
+        return '\n'.join(rows)
+    displays = iter([screen(21, 11), screen(23, 11), screen(23, 11)])
+    monkeypatch.setattr(server, 'original_screen_text', lambda: next(displays))
+    sent = []
+    monkeypatch.setattr(server, 'send_game_input', lambda keys, *args: sent.append(keys) or {'ok': True})
+    monkeypatch.setattr(server.time, 'sleep', lambda seconds: None)
+    result = server.original_move('RIGHT', 10)
+    assert result['ok'] and result['position'] == [23, 11]
+    assert result['stop_reason'] == 'blocked' and len(sent) == 2
+    assert result['trace'][-1] == {'from': [23, 11], 'to': [23, 11]}
+
+
+def test_original_move_rejects_unverified_input(monkeypatch):
+    monkeypatch.setattr(server, 'send_game_input', lambda *a: pytest.fail('Input unexpectedly sent'))
+    for direction, steps in [('UP', 0), ('UP', 21), ('F10', 1)]:
+        assert not server.original_move(direction, steps)['ok']
+    monkeypatch.setattr(server, 'original_screen_text', lambda: 'Select an option')
+    assert not server.original_move('UP')['ok']
+    with pytest.raises(RuntimeError):
+        server.original_player_position('no player')
+    with pytest.raises(RuntimeError):
+        server.original_player_position('\x02\x02')

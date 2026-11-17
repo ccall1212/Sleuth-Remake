@@ -1,0 +1,2287 @@
+{
+  "schema_version": 1,
+  "id": "house-02",
+  "blockout": true,
+  "description": "Ten-room blockout made by the user in the layout editor (one north-south hall with eight doors, nine rooms plus the secret passage), with furniture kinds and wall-aware guest-spot kinds and facing added by tools/case_design/auto_label.py. Plain rectangles, no art; backgrounds are painted afterwards to match.",
+  "screen_size": [
+    480,
+    360
+  ],
+  "px_per_step": 24,
+  "supports_suspects": [
+    6
+  ],
+  "start": "room_6",
+  "secret": {
+    "screen": "secret_passage",
+    "entrance_room": "library",
+    "exit_room": "kitchen",
+    "panel_wall": "north",
+    "panel_columns": [
+      60,
+      110,
+      160,
+      210,
+      260,
+      310,
+      360
+    ],
+    "panel_at": [
+      302.4,
+      89.5
+    ],
+    "return_at": [
+      24.8,
+      160.8
+    ],
+    "exit_at": [
+      456,
+      164.8
+    ],
+    "passage_arrival": [
+      44,
+      184
+    ],
+    "library_arrival": [
+      302,
+      120
+    ],
+    "study_arrival": [
+      240,
+      250
+    ]
+  },
+  "screens": [
+    {
+      "id": "library",
+      "name": "Library",
+      "floor": 0,
+      "obstacles": [
+        [
+          101,
+          137,
+          147,
+          69
+        ],
+        [
+          18,
+          249,
+          130,
+          46
+        ],
+        [
+          365,
+          236,
+          73,
+          59
+        ],
+        [
+          427,
+          254,
+          29,
+          41
+        ],
+        [
+          438,
+          159,
+          42,
+          111
+        ],
+        [
+          401,
+          96,
+          25,
+          30
+        ],
+        [
+          54,
+          109,
+          26,
+          20
+        ]
+      ],
+      "portals": [
+        {
+          "id": "library--door_2",
+          "at": [
+            25.6,
+            156.7
+          ],
+          "target": "room_2",
+          "arrival": [
+            364,
+            140
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room_2--door",
+          "activation_at": [
+            37.6,
+            180.7
+          ],
+          "trigger_region": [
+            17.6,
+            150.7,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            85.6,
+            180.7
+          ]
+        },
+        {
+          "id": "library--door",
+          "at": [
+            240,
+            333.5
+          ],
+          "target": "hall_2",
+          "arrival": [
+            238,
+            104
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "hall_2--door_2",
+          "activation_at": [
+            240,
+            321.5
+          ],
+          "trigger_region": [
+            212,
+            315.5,
+            56,
+            26.0
+          ],
+          "approach_start": [
+            240,
+            273.5
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          64,
+          432,
+          258
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 460,
+        "y": -680,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            50,
+            118
+          ],
+          [
+            426,
+            118
+          ],
+          [
+            478,
+            298
+          ],
+          [
+            478,
+            320
+          ],
+          [
+            2,
+            320
+          ],
+          [
+            2,
+            298
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          18.6,
+          149.7,
+          26.4,
+          21.30000000000001
+        ],
+        [
+          233,
+          311,
+          14,
+          29.5
+        ],
+        [
+          295,
+          82.5,
+          14.399999999999977,
+          42.5
+        ],
+        [
+          29.6,
+          150.7,
+          72.0,
+          60
+        ],
+        [
+          212,
+          257.5,
+          56,
+          72.0
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/library-v1.png",
+      "background_sha256": "17cb52a2ea127e9e52cff69ddaac40f3fa92791eee29414b08923bf545337f81"
+    },
+    {
+      "id": "kitchen",
+      "name": "Study",
+      "floor": 0,
+      "obstacles": [
+        [
+          70,
+          145,
+          60,
+          41
+        ],
+        [
+          130,
+          159,
+          25,
+          27
+        ],
+        [
+          12,
+          218,
+          96,
+          48
+        ],
+        [
+          330,
+          197,
+          100,
+          65
+        ],
+        [
+          349,
+          176,
+          30,
+          27
+        ],
+        [
+          402,
+          113,
+          32,
+          38
+        ],
+        [
+          49,
+          110,
+          30,
+          22
+        ]
+      ],
+      "portals": [
+        {
+          "id": "kitchen--door",
+          "at": [
+            239.2,
+            81.8
+          ],
+          "target": "room",
+          "arrival": [
+            228,
+            294
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room--door",
+          "activation_at": [
+            239.2,
+            124
+          ],
+          "trigger_region": [
+            211.2,
+            73.8,
+            56,
+            56.2
+          ],
+          "approach_start": [
+            239.2,
+            172
+          ]
+        },
+        {
+          "id": "kitchen--door_2",
+          "at": [
+            460.8,
+            150.6
+          ],
+          "target": "hall_2",
+          "arrival": [
+            78,
+            248
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_5",
+          "activation_at": [
+            448.8,
+            174.6
+          ],
+          "trigger_region": [
+            442.8,
+            144.6,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            400.8,
+            174.6
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          148,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": -400,
+        "y": 540,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            62,
+            121
+          ],
+          [
+            420,
+            121
+          ],
+          [
+            477,
+            284
+          ],
+          [
+            477,
+            290
+          ],
+          [
+            3,
+            290
+          ],
+          [
+            3,
+            284
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          232.2,
+          74.8,
+          14.800000000000011,
+          54.2
+        ],
+        [
+          427,
+          143.6,
+          40.80000000000001,
+          25.400000000000006
+        ],
+        [
+          211.2,
+          116,
+          56,
+          72
+        ],
+        [
+          384.8,
+          144.6,
+          72.0,
+          60
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/study-v2.png",
+      "background_sha256": "feda820d3b3afa7ad26d962ca914ce0793d57177cbff9bac3c41c505d84a9efc"
+    },
+    {
+      "id": "room",
+      "name": "Master-Bedroom",
+      "floor": 0,
+      "obstacles": [
+        [
+          176,
+          127,
+          104,
+          73
+        ],
+        [
+          153,
+          118,
+          31,
+          30
+        ],
+        [
+          274,
+          118,
+          28,
+          30
+        ],
+        [
+          10,
+          153,
+          62,
+          47
+        ],
+        [
+          34,
+          222,
+          50,
+          40
+        ],
+        [
+          78,
+          223,
+          34,
+          32
+        ],
+        [
+          360,
+          115,
+          60,
+          40
+        ],
+        [
+          437,
+          202,
+          40,
+          67
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room--door",
+          "at": [
+            228.8,
+            330.2
+          ],
+          "target": "kitchen",
+          "arrival": [
+            240,
+            148
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "kitchen--door",
+          "activation_at": [
+            228.8,
+            318.2
+          ],
+          "trigger_region": [
+            200.8,
+            312.2,
+            56,
+            26.0
+          ],
+          "approach_start": [
+            228.8,
+            270.2
+          ]
+        },
+        {
+          "id": "room--door_2",
+          "at": [
+            460.8,
+            147.8
+          ],
+          "target": "hall_2",
+          "arrival": [
+            126,
+            186
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_4",
+          "activation_at": [
+            448.8,
+            171.8
+          ],
+          "trigger_region": [
+            442.8,
+            141.8,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            400.8,
+            171.8
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": -400,
+        "y": -20,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            50,
+            130
+          ],
+          [
+            430,
+            130
+          ],
+          [
+            478,
+            290
+          ],
+          [
+            478,
+            302
+          ],
+          [
+            2,
+            302
+          ],
+          [
+            2,
+            290
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          221,
+          293,
+          14.800000000000011,
+          44.19999999999999
+        ],
+        [
+          431,
+          140.8,
+          36.80000000000001,
+          24.19999999999999
+        ],
+        [
+          200.8,
+          254.2,
+          56,
+          72.0
+        ],
+        [
+          384.8,
+          141.8,
+          72.0,
+          60
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/master-bedroom-v1.png",
+      "background_sha256": "5f464d16b042fb5b902274f2e978318b2d91059bfc217188baa43f862153b227"
+    },
+    {
+      "id": "room_2",
+      "name": "Living-Room",
+      "floor": 0,
+      "obstacles": [
+        [
+          174,
+          205,
+          132,
+          52
+        ],
+        [
+          197,
+          177,
+          83,
+          32
+        ],
+        [
+          182,
+          128,
+          44,
+          50
+        ],
+        [
+          252,
+          128,
+          44,
+          50
+        ],
+        [
+          62,
+          108,
+          83,
+          28
+        ],
+        [
+          11,
+          175,
+          44,
+          84
+        ],
+        [
+          145,
+          106,
+          24,
+          19
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_2--door",
+          "at": [
+            401,
+            117
+          ],
+          "target": "library",
+          "arrival": [
+            62,
+            180
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "library--door_2",
+          "activation_at": [
+            389,
+            141
+          ],
+          "trigger_region": [
+            383,
+            111,
+            26,
+            60
+          ],
+          "approach_start": [
+            341,
+            141
+          ]
+        },
+        {
+          "id": "room_2--door_2",
+          "at": [
+            460.8,
+            210.6
+          ],
+          "target": "hall_2",
+          "arrival": [
+            192,
+            122
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_3",
+          "activation_at": [
+            448.8,
+            234.6
+          ],
+          "trigger_region": [
+            442.8,
+            204.6,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            400.8,
+            234.6
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        258
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": -420,
+        "y": -680,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            48,
+            110
+          ],
+          [
+            427,
+            110
+          ],
+          [
+            478,
+            303
+          ],
+          [
+            2,
+            303
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          393,
+          109,
+          15,
+          15
+        ],
+        [
+          447,
+          203.6,
+          20.80000000000001,
+          17.400000000000006
+        ],
+        [
+          325,
+          111,
+          72,
+          60
+        ],
+        [
+          329,
+          109,
+          80,
+          54
+        ],
+        [
+          384.8,
+          204.6,
+          72.0,
+          60
+        ],
+        [
+          388.8,
+          202.6,
+          80.0,
+          54.00000000000003
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/living-room-v2.png",
+      "background_sha256": "1064469d6f1091c9cc6853184b8e4c4917b306d19e7bbe3cbd708ffced6c4aa4"
+    },
+    {
+      "id": "room_3",
+      "name": "Guest Bedroom",
+      "floor": 0,
+      "obstacles": [
+        [
+          100,
+          114,
+          71,
+          80
+        ],
+        [
+          178,
+          112,
+          29,
+          27
+        ],
+        [
+          349,
+          123,
+          78,
+          59
+        ],
+        [
+          330,
+          242,
+          95,
+          52
+        ],
+        [
+          356,
+          218,
+          32,
+          29
+        ],
+        [
+          19,
+          262,
+          40,
+          35
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_3--door",
+          "at": [
+            17.6,
+            206.2
+          ],
+          "target": "hall_2",
+          "arrival": [
+            288,
+            118
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door",
+          "activation_at": [
+            29.6,
+            230.2
+          ],
+          "trigger_region": [
+            9.600000000000001,
+            200.2,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            77.6,
+            230.2
+          ]
+        },
+        {
+          "id": "room_3--door_2",
+          "at": [
+            277.6,
+            72.6
+          ],
+          "target": "room_7",
+          "arrival": [
+            388,
+            286
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room_7--door",
+          "activation_at": [
+            277.6,
+            121
+          ],
+          "trigger_region": [
+            249.60000000000002,
+            64.6,
+            56,
+            62.400000000000006
+          ],
+          "approach_start": [
+            277.6,
+            169
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 1460,
+        "y": -780,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            60,
+            117
+          ],
+          [
+            420,
+            117
+          ],
+          [
+            478,
+            304
+          ],
+          [
+            2,
+            304
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          10.600000000000001,
+          199.2,
+          28.4,
+          15.800000000000011
+        ],
+        [
+          270.6,
+          65.6,
+          14.399999999999977,
+          59.400000000000006
+        ],
+        [
+          21.6,
+          200.2,
+          72.0,
+          60
+        ],
+        [
+          249.60000000000002,
+          113,
+          56,
+          72
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/guest-bedroom-v1.png",
+      "background_sha256": "2117cd067ee6f7ba44410ae2f7c7fb56ba8ab3ba63a928b28f8160b2da65d44c"
+    },
+    {
+      "id": "room_4",
+      "name": "Kitchen",
+      "floor": 0,
+      "obstacles": [
+        [
+          116,
+          145,
+          129,
+          78
+        ],
+        [
+          142,
+          216,
+          27,
+          30
+        ],
+        [
+          193,
+          216,
+          27,
+          30
+        ],
+        [
+          103,
+          111,
+          275,
+          31
+        ],
+        [
+          40,
+          115,
+          41,
+          61
+        ],
+        [
+          388,
+          98,
+          43,
+          47
+        ],
+        [
+          417,
+          139,
+          30,
+          28
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_4--door_2",
+          "at": [
+            279.2,
+            312
+          ],
+          "target": "room_5",
+          "arrival": [
+            272,
+            156
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_5--door_2",
+          "activation_at": [
+            279.2,
+            300
+          ],
+          "trigger_region": [
+            251.2,
+            294,
+            56,
+            26
+          ],
+          "approach_start": [
+            279.2,
+            252
+          ]
+        },
+        {
+          "id": "room_4--door",
+          "at": [
+            20,
+            200
+          ],
+          "target": "hall_2",
+          "arrival": [
+            354,
+            190
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door_7",
+          "activation_at": [
+            32,
+            224
+          ],
+          "trigger_region": [
+            12,
+            194,
+            26,
+            60
+          ],
+          "approach_start": [
+            80,
+            224
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 1460,
+        "y": -220,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            75,
+            139
+          ],
+          [
+            419,
+            139
+          ],
+          [
+            478,
+            285
+          ],
+          [
+            2,
+            285
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          272.2,
+          277,
+          14.800000000000011,
+          42
+        ],
+        [
+          13,
+          193,
+          34,
+          24
+        ],
+        [
+          251.2,
+          236,
+          56,
+          72
+        ],
+        [
+          24,
+          194,
+          72,
+          60
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/kitchen-v1.png",
+      "background_sha256": "880f17cc3c70309149485996c6c38b2c0d095ab922d00bba346756712a8f8065"
+    },
+    {
+      "id": "room_5",
+      "name": "Dining Room",
+      "floor": 0,
+      "obstacles": [
+        [
+          133,
+          169,
+          217,
+          86
+        ],
+        [
+          82,
+          117,
+          67,
+          17
+        ],
+        [
+          353,
+          113,
+          72,
+          24
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_5--door_2",
+          "at": [
+            272,
+            91.4
+          ],
+          "target": "room_4",
+          "arrival": [
+            280,
+            276
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room_4--door_2",
+          "activation_at": [
+            272,
+            132
+          ],
+          "trigger_region": [
+            244,
+            83.4,
+            56,
+            54.599999999999994
+          ],
+          "approach_start": [
+            272,
+            160
+          ]
+        },
+        {
+          "id": "room_5--door",
+          "at": [
+            17.6,
+            167.4
+          ],
+          "target": "hall_2",
+          "arrival": [
+            398,
+            250
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door_8",
+          "activation_at": [
+            29.6,
+            191.4
+          ],
+          "trigger_region": [
+            9.600000000000001,
+            161.4,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            77.6,
+            191.4
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          148,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        256
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 1360,
+        "y": 480,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            52,
+            136
+          ],
+          [
+            428,
+            136
+          ],
+          [
+            478,
+            291
+          ],
+          [
+            2,
+            291
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          265,
+          84.4,
+          14,
+          58.599999999999994
+        ],
+        [
+          10.600000000000001,
+          160.4,
+          36.4,
+          20.599999999999994
+        ],
+        [
+          244,
+          124,
+          56,
+          72
+        ],
+        [
+          21.6,
+          161.4,
+          72.0,
+          60
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/dining-room-v1.png",
+      "background_sha256": "f598766588e868d829724c7fa9e8e5852bd5f4ba97e8c1cad7e845efd8ca49cb"
+    },
+    {
+      "id": "room_6",
+      "name": "Front Entry",
+      "floor": 0,
+      "obstacles": [
+        [
+          36,
+          148,
+          28,
+          27
+        ],
+        [
+          108,
+          148,
+          28,
+          12
+        ],
+        [
+          344,
+          148,
+          28,
+          12
+        ],
+        [
+          416,
+          148,
+          28,
+          27
+        ],
+        [
+          64,
+          151,
+          40,
+          26
+        ],
+        [
+          376,
+          151,
+          40,
+          26
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_6--door",
+          "at": [
+            242.4,
+            123.8
+          ],
+          "target": "hall_2",
+          "arrival": [
+            240,
+            314
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "hall_2--door_6",
+          "activation_at": [
+            242.4,
+            150
+          ],
+          "trigger_region": [
+            214.4,
+            115.8,
+            56,
+            40.2
+          ],
+          "approach_start": [
+            242.4,
+            198
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 460,
+        "y": 520,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            30,
+            150
+          ],
+          [
+            450,
+            150
+          ],
+          [
+            478,
+            322
+          ],
+          [
+            2,
+            322
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          235,
+          116.8,
+          14.400000000000006,
+          40.2
+        ],
+        [
+          214.4,
+          142,
+          56,
+          72
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/drafts/front-entry-pillars-v2.png",
+      "background_sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008"
+    },
+    {
+      "id": "secret_passage",
+      "name": "Secret passage",
+      "floor": 0,
+      "obstacles": [
+        [
+          65,
+          167,
+          90,
+          10
+        ],
+        [
+          280,
+          168,
+          43,
+          9
+        ],
+        [
+          380,
+          169,
+          28,
+          8
+        ],
+        [
+          100,
+          192,
+          95,
+          8
+        ],
+        [
+          210,
+          194,
+          74,
+          6
+        ]
+      ],
+      "portals": [],
+      "role": "secret",
+      "walk_regions": [
+        [
+          12,
+          148,
+          448,
+          62
+        ]
+      ],
+      "spawn": [
+        240,
+        194
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": -1280,
+        "y": 0,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            12,
+            175
+          ],
+          [
+            468,
+            175
+          ],
+          [
+            478,
+            198
+          ],
+          [
+            2,
+            198
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          17,
+          153.8,
+          14.8,
+          29.19999999999999
+        ],
+        [
+          449,
+          157.8,
+          14,
+          25.19999999999999
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/secret-passage-v1.png",
+      "background_sha256": "257ec8329fa00f137084a1a423267e264c1dcc41a122c04bf2bfdb10a39c126c"
+    },
+    {
+      "id": "hall_2",
+      "name": "Hall 2",
+      "floor": 0,
+      "obstacles": [
+        [
+          112,
+          132,
+          28,
+          25
+        ],
+        [
+          341,
+          132,
+          28,
+          25
+        ]
+      ],
+      "portals": [
+        {
+          "id": "hall_2--door",
+          "at": [
+            323.2,
+            93.3
+          ],
+          "target": "room_3",
+          "arrival": [
+            54,
+            230
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_3--door",
+          "activation_at": [
+            311.2,
+            117.3
+          ],
+          "trigger_region": [
+            305.2,
+            87.3,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            263.2,
+            117.3
+          ]
+        },
+        {
+          "id": "hall_2--door_2",
+          "at": [
+            237.6,
+            54.9
+          ],
+          "target": "library",
+          "arrival": [
+            240,
+            298
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "library--door",
+          "activation_at": [
+            237.6,
+            80
+          ],
+          "trigger_region": [
+            209.6,
+            46.9,
+            56,
+            39.1
+          ],
+          "approach_start": [
+            237.6,
+            128
+          ]
+        },
+        {
+          "id": "hall_2--door_3",
+          "at": [
+            156.8,
+            97.3
+          ],
+          "target": "room_2",
+          "arrival": [
+            424,
+            234
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room_2--door_2",
+          "activation_at": [
+            168.8,
+            121.3
+          ],
+          "trigger_region": [
+            148.8,
+            91.3,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            216.8,
+            121.3
+          ]
+        },
+        {
+          "id": "hall_2--door_4",
+          "at": [
+            90.4,
+            162.1
+          ],
+          "target": "room",
+          "arrival": [
+            424,
+            172
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room--door_2",
+          "activation_at": [
+            102.4,
+            186.1
+          ],
+          "trigger_region": [
+            82.4,
+            156.1,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            150.4,
+            186.1
+          ]
+        },
+        {
+          "id": "hall_2--door_5",
+          "at": [
+            41.6,
+            224.5
+          ],
+          "target": "kitchen",
+          "arrival": [
+            424,
+            174
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "kitchen--door_2",
+          "activation_at": [
+            53.6,
+            248.5
+          ],
+          "trigger_region": [
+            33.6,
+            218.5,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            101.6,
+            248.5
+          ]
+        },
+        {
+          "id": "hall_2--door_6",
+          "at": [
+            240.8,
+            350.1
+          ],
+          "target": "room_6",
+          "arrival": [
+            242,
+            174
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_6--door",
+          "activation_at": [
+            240.8,
+            338.1
+          ],
+          "trigger_region": [
+            212.8,
+            332.1,
+            56,
+            26.0
+          ],
+          "approach_start": [
+            240.8,
+            290.1
+          ]
+        },
+        {
+          "id": "hall_2--door_7",
+          "at": [
+            390.4,
+            166.9
+          ],
+          "target": "room_4",
+          "arrival": [
+            56,
+            224
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_4--door",
+          "activation_at": [
+            378.4,
+            190.9
+          ],
+          "trigger_region": [
+            372.4,
+            160.9,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            330.4,
+            190.9
+          ]
+        },
+        {
+          "id": "hall_2--door_8",
+          "at": [
+            433.6,
+            226.9
+          ],
+          "target": "room_5",
+          "arrival": [
+            54,
+            192
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_5--door",
+          "activation_at": [
+            421.6,
+            250.9
+          ],
+          "trigger_region": [
+            415.6,
+            220.9,
+            26.0,
+            60
+          ],
+          "approach_start": [
+            373.6,
+            250.9
+          ]
+        }
+      ],
+      "role": "hall",
+      "orientation": "ns",
+      "walk_regions": [
+        [
+          190,
+          24,
+          100,
+          312
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 460,
+        "y": -120,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            178,
+            73
+          ],
+          [
+            303,
+            73
+          ],
+          [
+            478,
+            305
+          ],
+          [
+            478,
+            352
+          ],
+          [
+            2,
+            352
+          ],
+          [
+            2,
+            305
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          313,
+          86.3,
+          17.19999999999999,
+          16.700000000000003
+        ],
+        [
+          230.6,
+          47.9,
+          14.400000000000006,
+          33.1
+        ],
+        [
+          149.8,
+          90.3,
+          15.199999999999989,
+          16.700000000000003
+        ],
+        [
+          83.4,
+          155.1,
+          25.599999999999994,
+          25.900000000000006
+        ],
+        [
+          34.6,
+          217.5,
+          28.4,
+          23.5
+        ],
+        [
+          233,
+          343,
+          14.800000000000011,
+          14.100000000000023
+        ],
+        [
+          373,
+          159.9,
+          24.399999999999977,
+          23.099999999999994
+        ],
+        [
+          417,
+          219.9,
+          23.600000000000023,
+          21.099999999999994
+        ],
+        [
+          247.2,
+          87.3,
+          72.0,
+          60
+        ],
+        [
+          251.2,
+          85.3,
+          80.0,
+          54.000000000000014
+        ],
+        [
+          209.6,
+          72,
+          56,
+          72
+        ],
+        [
+          160.8,
+          91.3,
+          72.0,
+          60
+        ],
+        [
+          148.8,
+          89.3,
+          80.0,
+          54.000000000000014
+        ],
+        [
+          94.4,
+          156.1,
+          72.0,
+          60
+        ],
+        [
+          82.4,
+          154.1,
+          80.0,
+          54.0
+        ],
+        [
+          45.6,
+          218.5,
+          72.0,
+          60
+        ],
+        [
+          33.6,
+          216.5,
+          80.0,
+          54.0
+        ],
+        [
+          212.8,
+          274.1,
+          56,
+          72.0
+        ],
+        [
+          314.4,
+          160.9,
+          72.0,
+          60
+        ],
+        [
+          318.4,
+          158.9,
+          80.0,
+          54.0
+        ],
+        [
+          357.6,
+          220.9,
+          72.0,
+          60
+        ],
+        [
+          361.6,
+          218.9,
+          80.0,
+          53.99999999999997
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/hall-v9.png",
+      "background_sha256": "1dac25cb1550a9eccd35cb2c78d89b97068cede101174c41aa91fb1bfb10e75a"
+    },
+    {
+      "id": "room_7",
+      "name": "Basement",
+      "floor": 0,
+      "obstacles": [
+        [
+          60,
+          115,
+          360,
+          16
+        ],
+        [
+          14,
+          239,
+          72,
+          47
+        ],
+        [
+          145,
+          242,
+          55,
+          43
+        ],
+        [
+          275,
+          243,
+          53,
+          43
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_7--door",
+          "at": [
+            388,
+            322
+          ],
+          "target": "room_3",
+          "arrival": [
+            278,
+            144
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_3--door_2",
+          "activation_at": [
+            388,
+            310
+          ],
+          "trigger_region": [
+            360,
+            304,
+            56,
+            26
+          ],
+          "approach_start": [
+            388,
+            262
+          ]
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        250
+      ],
+      "guest_spots": [],
+      "plan": {
+        "x": 1420,
+        "y": -1360,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture",
+        "painted_furniture"
+      ],
+      "guest_spot_kinds": [],
+      "guest_spot_facing": [],
+      "walk_polygons": [
+        [
+          [
+            45,
+            132
+          ],
+          [
+            433,
+            132
+          ],
+          [
+            478,
+            284
+          ],
+          [
+            2,
+            284
+          ]
+        ]
+      ],
+      "door_access_regions": [
+        [
+          381,
+          275,
+          14,
+          54
+        ],
+        [
+          360,
+          246,
+          56,
+          72
+        ]
+      ],
+      "background": "res://assets/rooms/house-02/furnishing-review/basement-v1.png",
+      "background_sha256": "ded911947621c7805a814a993ebdaace094b3dfb76a7dd7dac9b22c19c143f13"
+    }
+  ],
+  "presentation": "approved_painted_walkthrough",
+  "source_door_positions": "assets/maps/house-02.door-positions.json",
+  "calibration": "Painted floor thresholds and broad directional door lanes; original user markers preserved. Guest and item placements are separate."
+}

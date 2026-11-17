@@ -1,0 +1,36 @@
+{
+  "character": "Sarah Jo",
+  "date": "2026-11-16",
+  "status": "pending_user_review",
+  "file": "assets/characters/poses/sarah-jo/drafts/model-review-02/sarah-jo_standing_idle_south_neutral_likeness_r2.png",
+  "sha256": "85794864881b709b0ca0c194e2c76096af838d12c7aabec20127ab4e1dd1025a",
+  "tool": "built-in image_gen",
+  "edit_target": "assets/characters/poses/sarah-jo/drafts/model-review-01/sarah-jo_standing_idle_south_neutral_r1.png",
+  "face_references": [
+    "assets/characters/poses/sarah-jo/references/user-face-reference-1.png",
+    "assets/characters/poses/sarah-jo/references/user-face-reference-2.png",
+    "assets/characters/poses/sarah-jo/references/user-face-reference-3.png"
+  ],
+  "scope": "Face likeness revision from three supplied adult-woman photos; keep short hair, navy gown and stylized anime rendering. No art approved or integrated by generation.",
+  "technical_checks": {
+    "size": [
+      986,
+      1595
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bounds_alpha128": [
+      115,
+      12,
+      903,
+      1563
+    ]
+  },
+  "limitations": [
+    "Runtime scale, contact pivots and furniture fit not verified."
+  ],
+  "approval": null
+}

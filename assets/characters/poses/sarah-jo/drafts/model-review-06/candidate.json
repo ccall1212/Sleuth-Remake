@@ -1,0 +1,32 @@
+{
+  "character": "Sarah Jo",
+  "date": "2026-11-16",
+  "status": "pending_user_review",
+  "file": "assets/characters/poses/sarah-jo/drafts/model-review-06/sarah-jo_standing_idle_south_neutral_emerald_locket_fluffy_hair_r6.png",
+  "sha256": "a0ef7b217ba9a73a6d77bd658c2525191b7f0d8b4ac89dd2af0be9b8db29958c",
+  "tool": "built-in image_gen",
+  "edit_target": "assets/characters/poses/sarah-jo/drafts/model-review-04/sarah-jo_standing_idle_south_neutral_emerald_locket_r4.png",
+  "selection_evidence": "User reattached the fluffy r4 version and requested less AI-looking hair while retaining fluffiness.",
+  "scope": "Hair-only refinement: varied natural soft tufts, less repetitive spiky glossy strand structure. Preserve anime face, locket, emerald dress and pose.",
+  "technical_checks": {
+    "size": [
+      987,
+      1593
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bounds_alpha128": [
+      109,
+      8,
+      907,
+      1582
+    ]
+  },
+  "limitations": [
+    "User visual approval and runtime fit pending."
+  ],
+  "approval": null
+}

@@ -1,0 +1,16 @@
+{
+  "screen_id": "room_6",
+  "candidate": "assets/rooms/house-02/drafts/front-entry-pillars-v2.png",
+  "sha256": "c50c50c568be4b8f812c3d2857c0da57cd3c03ee9556b914f051cf5b68294008",
+  "dimensions": [
+    1448,
+    1086
+  ],
+  "status": "pending_user_review",
+  "changes": [
+    "Closed foreground wall opening",
+    "Lowered north hallway threshold toward house-02 portal"
+  ],
+  "runtime_fit": "Visual inspection only; collision and in-game alignment remain unvalidated. Side decorative footprints differ from layout guide.",
+  "integrated": false
+}

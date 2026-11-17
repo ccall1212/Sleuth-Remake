@@ -1,4 +1,4 @@
-"""Project-specific stdio MCP. No tool accepts commands or executable paths."""
+"""Project-specific stdio MCP. No tool accepts shell commands or executable paths."""
 import atexit
 import hashlib
 import json
@@ -6,6 +6,7 @@ import os
 import platform
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import threading
@@ -135,6 +136,9 @@ def launch_original_game() -> dict[str, Any]:
     """Launch the verified SLEUTH0.EXE in DOSBox-X, mounting only a disposable game copy."""
     if PROCESSES.get('original') and PROCESSES['original']['process'].poll() is None:
         return {'ok': False, 'error': 'Original already running in this session'}
+    previous = PROCESSES.get('original', {}).get('text_channel')
+    if previous:
+        previous.close()
     c = config()
     report = json.loads(inside('reference/inventory.json', ('reference',)).read_text())
     source = inside('reference/original/SLEUTH0.EXE', ('reference/original',))
@@ -156,16 +160,21 @@ def launch_original_game() -> dict[str, Any]:
     mount = str(run_dir / 'game')
     if any(ch in mount for ch in '\r\n"'):
         raise ValueError('Project path is not representable safely in DOSBox config')
+    channel = DosTextChannel()
     conf = run_dir / 'dosbox.conf'
     conf.write_text('[sdl]\nfullscreen=false\noutput=surface\nshowmenu=false\nautolock=false\n'
                     '[cpu]\ncore=normal\ncycles=fixed 1000\n[render]\naspect=true\nscaler=none\n'
-                    '[dosbox]\nmachine=vgaonly\nmemsize=16\n[autoexec]\n@echo off\n'
+                    f'[dosbox]\nmachine=vgaonly\nmemsize=16\nmcp_server={channel.port}\n[autoexec]\n@echo off\n'
                     f'mount c "{mount}"\nc:\nSLEUTH0.EXE\nexit\n', encoding='utf-8')
     log = run_dir / 'emulator.log'
-    with log.open('wb') as stream:
-        p = subprocess.Popen([str(emulator), '-conf', str(conf), '-defaultdir', str(run_dir), '-noconsole'],
-                             cwd=run_dir, stdout=stream, stderr=subprocess.STDOUT, shell=False)
-    PROCESSES['original'] = {'process': p, 'run_dir': str(run_dir), 'log': str(log)}
+    try:
+        with log.open('wb') as stream:
+            p = subprocess.Popen([str(emulator), '-conf', str(conf), '-defaultdir', str(run_dir), '-noconsole'],
+                                 cwd=run_dir, stdout=stream, stderr=subprocess.STDOUT, shell=False)
+    except OSError:
+        channel.close()
+        raise
+    PROCESSES['original'] = {'process': p, 'run_dir': str(run_dir), 'log': str(log), 'text_channel': channel}
     deadline = time.monotonic() + 12
     while p.poll() is None and time.monotonic() < deadline:
         if len(windows(p.pid)) == 1:
@@ -175,12 +184,15 @@ def launch_original_game() -> dict[str, Any]:
     if p.poll() is None:
         p.terminate()
         p.wait(timeout=5)
+    channel.close()
     return {'ok': False, 'exit_code': p.poll(), 'error': 'No unique game window within startup timeout', 'log': str(log)}
 
 
 @tool
-def launch_remake() -> dict[str, Any]:
-    """Launch the fixed Godot foyer scene. No caller-provided executable or arguments."""
+def launch_remake(mode: Literal['mansion', 'case_lab'] = 'mansion', case_seed: int = 1) -> dict[str, Any]:
+    """Launch the mansion or placeholder case lab through fixed scene allowlists."""
+    if mode not in ('mansion', 'case_lab') or not 0 <= case_seed <= 2147483647:
+        raise ValueError('Use a supported scene and a seed from 0 to 2147483647')
     if PROCESSES.get('remake') and PROCESSES['remake']['process'].poll() is None:
         return {'ok': False, 'error': 'Remake already running in this session'}
     value = config().get('godot_gui')
@@ -196,16 +208,18 @@ def launch_remake() -> dict[str, Any]:
         return {'ok': False, 'error': 'Godot resource import failed', 'diagnostics': imported}
     log = run_dir / 'remake.log'
     session_path = 'res://' + run_dir.relative_to(ROOT).as_posix()
+    scene_args = ['res://src/mystery/case_lab.tscn'] if mode == 'case_lab' else []
     with log.open('wb') as stream:
         p = subprocess.Popen([str(godot), '--path', str(ROOT), '--rendering-method', 'gl_compatibility',
-                              '--', '--dev-session=' + session_path], cwd=ROOT,
+                              *scene_args, '--', '--dev-session=' + session_path,
+                              '--case-seed=' + str(case_seed)], cwd=ROOT,
                              stdout=stream, stderr=subprocess.STDOUT, shell=False,
                              creationflags=subprocess.CREATE_NO_WINDOW)
     PROCESSES['remake'] = {'process': p, 'run_dir': str(run_dir), 'log': str(log)}
     deadline = time.monotonic() + 15
     while p.poll() is None and time.monotonic() < deadline:
         if len(windows(p.pid)) == 1 and (run_dir / 'state.json').is_file():
-            return {'ok': True, 'pid': p.pid, 'window_verified': True, 'run_dir': str(run_dir), 'scene': 'foyer'}
+            return {'ok': True, 'pid': p.pid, 'window_verified': True, 'run_dir': str(run_dir), 'scene': 'case_lab' if mode == 'case_lab' else 'foyer'}
         time.sleep(.15)
     stop_game('remake')
     return {'ok': False, 'error': 'Godot did not report a ready foyer and unique window in time', 'log': str(log)}
@@ -241,6 +255,8 @@ def get_game_status(game: Game = 'original') -> dict[str, Any]:
 def stop_game(game: Game = 'original') -> dict[str, Any]:
     """Terminate and wait for only the child process owned by this server."""
     state = PROCESSES.get(game)
+    if state and state.get('text_channel'):
+        state['text_channel'].close()
     if not state or state['process'].poll() is not None:
         return {'ok': True, 'stopped': False, 'reason': 'No owned running process'}
     p = state['process']
@@ -300,6 +316,186 @@ def send_game_input(keys: list[str], game: Game = 'original', hold_ms: int = 40)
 def send_mouse_input(game: Game = 'original') -> dict[str, Any]:
     """Report the unavailable mouse adapter; no cursor or mouse messages are emitted."""
     return {'ok': False, 'status': 'unsupported', 'error': 'Original and foyer prototype use keyboard controls; no mouse adapter is needed yet.'}
+
+
+class DosTextChannel:
+    """Private loopback channel for the owned emulator's visible text buffer only."""
+    def __init__(self):
+        self.listener = socket.socket()
+        self.listener.bind(('127.0.0.1', 0))
+        self.listener.listen(1)
+        self.listener.settimeout(3)
+        self.port = self.listener.getsockname()[1]
+        self.connection = None
+        self.reader = None
+        self.serial = 0
+
+    def request(self, command):
+        # Never expose raw debugger commands, addresses or filenames to MCP callers.
+        if command not in ('PING', 'EXEC MEMDUMPBIN 0040:004E 2 display-offset.bin',
+                            *(f'EXEC MEMDUMPBIN B800:{offset:04X} FA0 screen.bin'
+                              for offset in range(0, 0x8000, 0x1000))):
+            raise ValueError('Unsupported display-channel operation')
+        try:
+            if self.connection is None:
+                self.connection, _ = self.listener.accept()
+                self.connection.settimeout(3)
+                self.reader = self.connection.makefile('rb')
+                self.listener.close()
+            self.serial += 1
+            ident = str(self.serial)
+            self.connection.sendall(f'REQ {ident} {command}\n'.encode('ascii'))
+            lines = []
+            started = False
+            for _ in range(256):
+                raw = self.reader.readline(4097)
+                if not raw or len(raw) > 4096:
+                    raise RuntimeError('Emulator display channel closed or oversized response')
+                line = raw.decode('utf-8', errors='replace').strip()
+                if line == f'BEGIN {ident} OK':
+                    started = True
+                elif line == f'END {ident}' and started:
+                    return lines
+                elif started:
+                    lines.append(line)
+                elif line.startswith(f'BEGIN {ident} ERR'):
+                    raise RuntimeError('Emulator rejected display capture')
+            raise RuntimeError('Emulator display response exceeded limit')
+        except (OSError, RuntimeError):
+            self.close()
+            raise
+
+    def close(self):
+        if self.reader is not None:
+            self.reader.close()
+        if self.connection is not None:
+            self.connection.close()
+        self.listener.close()
+
+
+def original_screen_text():
+    """Read only the 80x25 visible color text page, without clipboard or CPU changes."""
+    window('original')
+    state = PROCESSES['original']
+    channel = state.get('text_channel')
+    if channel is None:
+        raise RuntimeError('Relaunch the owned original to enable the text channel')
+    metadata = Path(state['run_dir']) / 'display-offset.bin'
+    metadata.unlink(missing_ok=True)
+    channel.request('EXEC MEMDUMPBIN 0040:004E 2 display-offset.bin')
+    value = metadata.read_bytes()
+    if len(value) != 2:
+        raise RuntimeError('Invalid BIOS display page offset')
+    offset = int.from_bytes(value, 'little')
+    if offset not in range(0, 0x8000, 0x1000):
+        raise RuntimeError('Unsupported BIOS text page offset')
+    path = Path(state['run_dir']) / 'screen.bin'
+    path.unlink(missing_ok=True)
+    response = channel.request(f'EXEC MEMDUMPBIN B800:{offset:04X} FA0 screen.bin')
+    if not any('binary success' in line for line in response):
+        raise RuntimeError('Emulator did not confirm visible text capture')
+    data = path.read_bytes()
+    if len(data) != 4000:
+        raise RuntimeError('Expected an 80x25 DOS color text page')
+    # Attribute bytes are excluded. No code, game variables or other memory is read.
+    chars = data[::2].replace(b'\x00', b' ')
+    text = '\n'.join(chars[y*80:(y+1)*80].decode('cp437').rstrip() for y in range(25))
+    if not text.strip():
+        raise RuntimeError('Display is blank or transitioning; retry after startup')
+    return text
+
+
+@tool
+def read_original_screen() -> dict[str, Any]:
+    """Read the owned visible DOS text screen without OCR or clipboard access."""
+    try:
+        text = original_screen_text()
+    except Exception as exc:
+        return {'ok': False, 'error': str(exc), 'action': 'read_original_screen'}
+    return {'ok': True, 'text': text,
+            'screen_sha256': hashlib.sha256(text.encode('utf-8')).hexdigest(),
+            'method': 'DOSBox-X fixed visible video text buffer',
+            'hidden_game_state': False}
+
+
+def original_player_position(text):
+    """Locate the displayed yellow smiley; no hidden world coordinates are read."""
+    positions = [[x, y] for y, row in enumerate(text.split('\n')[:18])
+                 for x, char in enumerate(row) if char == '\x02']
+    if len(positions) != 1:
+        raise RuntimeError('Expected one visible player marker in the floor plan')
+    return positions[0]
+
+
+@tool
+def original_move(direction: Literal['UP', 'DOWN', 'LEFT', 'RIGHT'], steps: int = 1) -> dict[str, Any]:
+    """Walk up to 20 cells, observe each step and stop on a wall or changed prompt."""
+    if direction not in ('UP', 'DOWN', 'LEFT', 'RIGHT') or not 1 <= steps <= 20:
+        raise ValueError('Use an arrow direction and 1–20 steps')
+    text = original_screen_text()
+    if not any(row.strip() in ('>', '>_') for row in text.split('\n')[-4:]):
+        raise RuntimeError('Expected an idle gameplay prompt before movement')
+    start = position = original_player_position(text)
+    trace = []
+    reason = 'completed'
+    for _ in range(steps):
+        sent = send_game_input([direction], 'original', 20)
+        if not sent.get('ok'):
+            return sent
+        time.sleep(.05)
+        text = original_screen_text()
+        after = original_player_position(text)
+        trace.append({'from': position, 'to': after})
+        if after == position:
+            reason = 'blocked'
+            break
+        position = after
+        if not any(row.strip() in ('>', '>_') for row in text.split('\n')[-4:]):
+            reason = 'prompt_changed'
+            break
+    return {'ok': True, 'direction': direction, 'requested_steps': steps,
+            'steps_sent': len(trace), 'start': start, 'position': position,
+            'trace': trace, 'stop_reason': reason, 'text': text,
+            'hidden_game_state': False}
+
+
+@tool
+def original_command(command: str) -> dict[str, Any]:
+    """Send one bounded gameplay command and return the resulting DOS text screen.
+
+    Not a shell: only the original game's question/examine/evidence verbs are allowed.
+    """
+    command = command.strip().lower()
+    if not re.fullmatch(r'[a-z][a-z ]{0,58}', command):
+        raise ValueError('Use a short alphabetic game command')
+    verbs = {'q', 'question', 'alibi', 'ex', 'examine', 'search', 'look',
+             'get', 'take', 'drop', 'gather', 'assemble', 'accuse', 'guest',
+             'people', 'help', 'knock'}
+    if command.split()[0] not in verbs:
+        raise ValueError('Unsupported gameplay verb')
+    window('original')
+    started = time.monotonic()
+    before = original_screen_text()
+    if not any(row.strip() in ('>', '>_') for row in before.splitlines()[-4:]):
+        raise RuntimeError('Expected an idle gameplay prompt; finish the menu or dialogue first')
+    sent = send_game_input(['ESC'] + list(command) + ['ENTER'], 'original', 20)
+    if not sent.get('ok'): return sent
+    deadline = time.monotonic() + 3
+    previous = None
+    while time.monotonic() < deadline:
+        time.sleep(.08)
+        result = read_original_screen()
+        text = result.get('text', '')
+        if result.get('ok') and text == previous and any(
+                row.strip() in ('>', '>_') for row in text.splitlines()[-4:]):
+            break
+        previous = text
+    else:
+        return {'ok': False, 'command': command, 'error': 'No stable gameplay prompt after command',
+                'last_screen': result}
+    result.update(command=command, elapsed_seconds=round(time.monotonic()-started, 3),
+                  note='Visible text only; inspect prompt before issuing another command')
+    return result
 
 
 @tool

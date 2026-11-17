@@ -1,0 +1,18 @@
+{
+  "screen_id": "room_6",
+  "candidate": "assets/rooms/house-02/drafts/front-entry-pillars-v1.png",
+  "sha256": "d0c8c25730a98ac0a21532ba42960bdccfa20206cef9d39d0323c5f4980b4c98",
+  "dimensions": [
+    1448,
+    1086
+  ],
+  "status": "approved_visual_direction",
+  "runtime_fit": "unvalidated; generated footprint differs from guide; foreground central cutaway gap remains",
+  "user_direction": "North connects into house; side pillars/statues; no top windows; side windows allowed.",
+  "integrated": false,
+  "approval_evidence": {
+    "date": "2026-10-26",
+    "quote": "Yes continue",
+    "scope": "Reviewed v1 appearance; correction of bottom opening and layout fit remains necessary."
+  }
+}

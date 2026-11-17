@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://src/blockout/house_investigation.tscn" id="1"]
+
+[node name="MansionMystery" instance=ExtResource("1")]
+layout_path = "res://assets/maps/house-02.investigation.layout.json"
+random_on_start = true
+opening_on_start = true

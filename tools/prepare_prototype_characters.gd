@@ -5,6 +5,14 @@ extends SceneTree
 func _initialize() -> void:
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/characters/review-v8/cast-catalog.json"))
 	var selected := ["01","02","04","06","13","20","21"]
+	var playtest := "--playtest-cast" in OS.get_cmdline_user_args()
+	var output_folder := "res://assets/characters/playtest-cast" if playtest else "res://assets/characters/prototype"
+	if playtest:
+		selected.clear()
+		for entry in catalog.entries:
+			if entry.get("name") != null and entry.name not in ["Char", "Chris"]:
+				selected.append(entry.number)
+	DirAccess.make_dir_recursive_absolute(output_folder)
 	var roster: Array = []
 	for entry in catalog.entries:
 		if not selected.has(entry.number):
@@ -33,14 +41,22 @@ func _initialize() -> void:
 				c.a = 1.0 if c.a >= 0.5 else 0.0
 				image.set_pixel(x,y,c)
 		image = image.get_region(image.get_used_rect())
-		var path: String = "res://assets/characters/prototype/cast-"+entry.number+".png"
+		if playtest:
+			keep_character_component(image)
+			image = image.get_region(image.get_used_rect())
+		var path: String = output_folder + "/cast-"+entry.number+".png"
 		assert(image.save_png(path) == OK)
 		roster.append({"id":entry.identity_id,"name":entry.name,"review_number":entry.number,
 			"sprite":path,"height_ratio":entry.get("height_ratio",1.0),"source":variant.source,
-			"pose":"existing_standing","appearance_status":"temporary-test-use; not final approval"})
-	var file := FileAccess.open("res://assets/characters/prototype/roster.json",FileAccess.WRITE)
+			"pose":"existing_standing","appearance_status":"temporary-test-use; not final approval",
+			"source_sha256": FileAccess.get_sha256(variant.source), "sprite_sha256": FileAccess.get_sha256(path)})
+	var file := FileAccess.open(output_folder + "/roster.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify({"schema_version":1,"characters":roster},"  "))
 	file.close()
+	if playtest:
+		print("EXTRACTED_EXISTING_PLAYTEST_CAST ", roster.size())
+		quit()
+		return
 	# The user's selected revised Eleanor, reused as one existing standing pose.
 	var eleanor := Image.load_from_file("res://assets/characters/review-v2/masters/eleanor-proportion-v2.png")
 	eleanor.convert(Image.FORMAT_RGBA8)
@@ -56,6 +72,41 @@ func _initialize() -> void:
 
 static func removable(c: Color) -> bool:
 	return c.a < 0.5 or (c.b > c.r*1.08 and c.b >= c.g and c.v < 0.30 and c.v > 0.065 and c.s < 0.60)
+
+static func keep_character_component(image: Image) -> void:
+	# Review-sheet letters are disconnected from the body. Keep the body component,
+	# without recolouring or redrawing it. Used only in explicitly authorized test extraction.
+	var width := image.get_width()
+	var height := image.get_height()
+	var seen := PackedByteArray()
+	seen.resize(width * height)
+	var largest := PackedInt32Array()
+	for y in range(height):
+		for x in range(width):
+			var key := y * width + x
+			if seen[key] != 0 or image.get_pixel(x, y).a < 0.5: continue
+			var component := PackedInt32Array([key])
+			seen[key] = 1
+			var index := 0
+			while index < component.size():
+				var current := component[index]
+				index += 1
+				var at := Vector2i(current % width, current / width)
+				for dy in range(-1, 2):
+					for dx in range(-1, 2):
+						var p := at + Vector2i(dx, dy)
+						if p.x < 0 or p.x >= width or p.y < 0 or p.y >= height: continue
+						var next := p.y * width + p.x
+						if seen[next] == 0 and image.get_pixelv(p).a >= 0.5:
+							seen[next] = 1
+							component.append(next)
+			if component.size() > largest.size(): largest = component
+	var keep := PackedByteArray()
+	keep.resize(width * height)
+	for key in largest: keep[key] = 1
+	for y in range(height):
+		for x in range(width):
+			if keep[y * width + x] == 0: image.set_pixel(x, y, Color.TRANSPARENT)
 
 static func remove_matte(image: Image) -> void:
 	var queue: Array[Vector2i] = []

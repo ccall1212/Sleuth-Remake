@@ -1,5 +1,304 @@
 # Testing and validation
 
+Guest occupancy (2026-11-16): **31,507** checks pass across180 worst-crowd
+starts on both layouts, all three difficulties, false alibi pairs, replay and12
+relocation snapshots per case. All tested starts separate claimed partners;
+later relocation may reunite them, with a two-guest limit. Gatherings still fit
+six. Runtime158, painted guest20,501, danger446 and aggression6,865 pass.
+Older danger fixtures now stage at most two guests.
+
+Character pronouns/briefing (2026-11-16): **2,071** focused pronoun checks pass
+for all15 characters and independent victim/accused/partner/speaker roles;
+**955** dialogue checks pass against432 independently migrated expected strings.
+Existing dialogue session1,094, guest presentation406 and personality pose497
+checks pass. Opening screen **34 headless and34 native** checks pass, including
+paused danger, no solution slots, approved/temporary portraits, reveal/dismissal
+and restart. Inspected `test-results/case-opening/game.png` and gendered room
+narration captures. Painted walking249 and default entry6 checks pass.
+
+Win sound/random floor placement (2026-11-16): **7** win-audio checks pass,
+including exact supplied MP3 hash, single playback, correct-accusation-only trigger
+and new-case stop. Clip duration3.024s. Placement checks **26,665** pass across both
+layouts and 100 seeds per room: reachable collision-clear points, no door/mask
+overlap, seed replay stability, position variety and unchanged authored layout.
+Each painted room produces 50–96 distinct sampled positions. Existing full walking
+checks pass **218** unpainted / **249** painted, two cases each, using actual item
+positions; presentation390, dialogue73 and inventory142 pass. Native F5 entry6
+checks pass and its new item location was visually inspected. Earlier audio-active
+harness shutdown warnings prompted explicit scene-exit audio cleanup; focused win
+and entry checks after cleanup emitted no such warning.
+
+F5/timing correction (2026-11-16): configured-main-entry checks pass **6 headless
+and 6 native GPU** assertions without layout flags: painted rooms, active six-guest
+case, ten items, random startup, no debug/forced-killer mode. Inspected native
+`test-results/main-entry/game.png`. Encounter UI **17** passes, including dialogue
+starting at sting onset while the audio remains playing. The old main scene was
+`playable_mansion.tscn`; only the main-scene setting changed in project settings.
+
+User-selected MP3s (2026-11-16): audio/typewriter **20** and encounter sequence
+**17** checks pass. Both runtime files match supplied SHA-256 hashes, decode and
+play once. Door length1.896s, sting8.328s; dialogue waits for sequential playback
+instead of the old fixed synthesized-cue duration. Source paths/hashes recorded
+in `assets/audio/SOURCES.md`. Native audio probe logs are in
+`test-results/selected-audio/`; no original-game audio or image changes.
+
+Independent difficulty attacks (2026-11-16, supersedes forced-cap results below):
+**6,865** checks pass across 600 question and 600 entry cases. Exact seeded-RNG
+comparison confirms no forced attacks. Entries and ordinary questions use Easy15%,
+Normal20%, Hard25%; only true-weapon questioning uses50%. Safety/phase gates remain;
+danger447, clock36 and runtime155 regression checks pass.
+
+Louder cue: PCM peak29,883 remains below clipping; player attenuation changed from
+-10dB to0dB. Native measured bus peak about-1.4dB, master unmuted. Louder WAV sample
+is `test-results/ambush-audio/three-hit-sting-louder.wav`. Audio/typewriter19checks
+pass; pause test uses configured timing, preserving Claude's faster text settings.
+
+Aggressive solo encounters (2026-11-16): new **2,322** checks pass across 100 seeds
+per held state. Empty/glass/ordinary item: 2.73 eligible questions average, maximum
+4; true weapon: 1.78 average, maximum 3. Verified base25%/weapon50%, actual pickup,
+combined question/entry miss budget, no reset from object switching or safe exits,
+and preserved calm/witness/hall/frozen protections. Same-room waiting/walking still
+does not roll. Existing danger **447**, weighted clock **36**, runtime **155** pass.
+These are controlled eligible-encounter samples, not whole-mystery win-rate results.
+
+Weapon/glass ambush investigation (2026-11-16): **1,203** read-only scratch checks
+pass. All **100** identical-phase/solo-room weapon/glass pairs attack on the same
+eligible question attempt (mean 9.53, longest 62). Same-room waiting/walking does
+not create attack rolls; real room entry and culprit questioning do. No held-item
+gate or glass-only unlock reproduced, and probabilities remain unchanged. Evidence:
+`test-results/ambush-hold/checks.json`. Native audio probe confirms an unmuted
+default output, 1.35s sting, measured bus peak about -14 dB; exported local listening
+sample is `test-results/ambush-audio/three-hit-sting.wav`. This verifies signal
+playback, not the user's system speaker volume or perceptual sound quality.
+
+Personality presentation (2026-11-16): **418** preview/confession checks, **74**
+eight-case UI checks and **497** approved world/portrait pose checks pass. All
+eight voices and 48 new confession templates are covered. Existing presentation
+checks **406** and authored dialogue **955 / 432 fixture strings** pass. Native
+captures `test-results/personality-ui/Char-curious.png` and `Chris-nervous.png`
+show matching thinking/fidget portraits and authored voice text. No artwork or
+Claude dialogue/source edits were overwritten; phase calm is distinct from personality.
+
+## Encounter, notebook and single-knife corrections — 2026-11-16
+
+Focused checks pass: single-knife catalog **4,657 / 270 cases**; notebook **15**;
+typewriter/audio **19**; collision-aware ambush approach **27**; native encounter
+UI **17 headless / 17 GPU**. Native captures under `test-results/encounter-ui/`
+show the full floor/wound popup, evidence-first Summary, in-room approach and
+partially revealed ambush dialogue. Final captures refresh HUD state before
+rendering, so case labels correspond to the staged fixture.
+
+Regressions: core case **3,362**, session **1,430**, item art **136**, unpainted
+walking **218**, painted walking **249**, play presentation **390**, killer preview
+**43**, dialogue UI **73**, inventory UI **143** all pass. Walking checks complete
+two cases per layout. Reference generator remains unchanged; actual catalog item
+kinds/stains are authoritative for this single-knife playtest.
+
+The wound was previously clipped in a 34px HUD strip; session state already stored
+the discovery. No state-loss bug was reproduced. Notebook now exposes blood room
+and wound before accounts and always resets to Summary. Encounter checks confirm
+approach, sting-before-dialogue timing, gradual reveal and Space-to-finish without
+rewriting authored text or case facts. Cue duration is 1.35s, non-clipping PCM;
+listening quality and human encounter pacing still need user review. No approved
+art or dialogue JSON changed in this correction; Claude owns the pending item text.
+
+## Single-slot inventory/lens port — 2026-11-16
+
+Final focused runs: full-field generator parity **10,503 checks / 900 cases**;
+inventory/lens session **1,430 / 36 cases / all five outcomes**; weighted clock
+**36**; dialogue **957** including **432 exact first/repeat strings**; silent
+refusals **690** over **48 authored lines**. All passed.
+
+Migrated rule regressions pass: core case **3,362**, danger **447**, assembly
+**2,951**, dialogue/session **1,094**, original walking integration **216** and
+painted walking integration **247**, each with two complete cases. The walking
+routes identify the weapon from observed stains/kinds/wound rather than truth.
+Guest runtime **21,027**, play presentation **390**, dialogue UI **73**, art
+mapping/hash checks **416**, killer preview **43** also pass. Existing PNGs remain
+unchanged; 38 named variants use existing type artwork.
+
+`tools/lens_ui_checks.gd` passes **142 headless and 142 native GPU** assertions:
+real item selection/take/drop callbacks, portable glass and stains, arbitrary hall
+drops, stacked-item chooser and exact recovery, hands-full controls, notebook
+without automatic weapon answer, same-room gathering with a decoy, post-gather
+drop/recovery, final empty-hand block and visible wrong-weapon correction. Inspected
+native captures under `test-results/lens-ui/`: stain, notebook, stack, wrong-weapon.
+Visible action bounds fit the viewport. Commands use the painted investigation
+layout and optional `--capture-ui`; no index was created/changed.
+
+Remaining: human held-key/control feel, clue clarity and clock/difficulty tuning;
+variant-specific art; explicitly marked missing dialogue; packaged export and save
+migration are not established by these checks. The current painted playtest has
+no inventory save/load feature. Updated local game opened for user review.
+
+Confession role wording (2026-11-16): **957** dialogue checks and **861** session
+checks pass. Three regressions render Char/John with distinct killer/victim roles;
+all 432 first/repeat fixture strings remain exact. Updated reviewed personality
+hash accounts for only the three corrected confession/correction templates.
+
+North-facing conversation portrait correction (2026-11-16): **406** presentation
+checks and **70** native GPU dialogue UI checks pass. Portraits expose the face
+while north-facing seated/world poses remain unchanged; downcast mood is preserved.
+Inspected `test-results/dialogue-ui/north-face-portrait.png` above the text box.
+
+Guest portrait restoration (2026-11-16): **68** focused dialogue UI checks pass,
+including all 15 speaker identities, approved/current seated pose, refusals,
+above-dialog bounds and cleanup on close/item/system text. Native conversation
+capture `test-results/dialogue-ui/warm-first.png` inspected: enlarged guest above
+text, no text occlusion. Killer playtest checks: **112** seed-selection assertions
+and **43** scene assertions pass for six alternating Char/Chris cases, unchanged
+generated facts, actual ambush/accusation art and fixed replay after expiry.
+
+Current-room gathering correction (2026-11-16): **2,949 headless / 2,950 GPU**
+assembly checks pass. All ten ordinary painted spaces fit six guests; the narrow
+secret passage rejects without moving anyone. Kitchen remains Kitchen, including
+after cached plans for other rooms. An artificially blocked room leaves progress
+and guests unchanged. Native `test-results/house-investigation/assembly-kitchen-preview.png`
+shows all six guests and investigator, with no overlap or mask hiding. Full walked
+mystery checks pass **215** painted / **164** unpainted. No alternate-room fallback.
+
+## Painted doors and final gathering — 2026-11-16
+
+Focused Godot checks passed: painted door approaches **581** (72 crossings:
+center and ±15px offsets for all 24 directed doors); painted end-to-end **217**
+(two complete walked mysteries, separate gathering/accusation, locked exits and
+free movement); unpainted investigation **164**; assembly **2,924** headless and
+**2,925** GPU across 20 seeds on both layouts; refusal wording **402**; dialogue
+session **861**; dialogue UI **36**; play presentation **390**; solo-killer danger
+regression **422**. No failures in final runs.
+
+Inspected native `test-results/house-investigation/assembly-preview.png`: all six
+living guests and investigator visible, no furniture-mask occlusion or overlap,
+accusation menu withheld until requested. Corrected a phantom item interaction
+after pickup. Broader trigger lanes required the test route planner to avoid
+outward edges through unintended doors; the revised routes pass. Human held-key
+door feel remains a manual playtest. Updated painted game opened for that review.
+
+## Placeholder case lab — 2026-10-25
+
+Second iteration after human feedback that the first seeds were similar and easy:
+**30 targeted pytest tests passed; 3,714 native checks across 200 cases** (100 seeds
+per family). The new timed-access family is deterministic, uniquely solvable from
+obtained evidence and independent of hidden-answer fields. Removing time or access
+leaves two possible suspects; testimony alone leaves more alternatives. Both attack
+windows are exercised. Gameplay and JSON saves cover both families and all three
+notebook modes; Classic stores no automatic notes. Bound UI checks cover the opening
+setup, independent settings, raw Standard observations and Assisted comparisons.
+
+The owned preview opened on seed 4, showing the new-game settings. Native screenshot
+`test-results/screenshots/case-lab-start-cc6a7d273d.png` was visually inspected; labels,
+descriptions and start/load controls fit. It remains open for human testing. The
+new settings currently apply to the lab, not the mansion scene. Existing v1 lab saves
+are preserved; the new generator uses a separate v2 slot. No new art or HTML index.
+Human feedback on the second structure, notebook usability and difficulty is pending.
+This remains a constrained two-pattern lab without danger or NPC schedules.
+
+First iteration evidence (before the second family and notebook settings):
+
+`pytest tests/test_case_lab.py tests/test_server.py tests/test_original_navigation.py -q`:
+**30 passed**. The native Godot lab harness passes **2,508 checks across 100 seeds**,
+with 97 distinct claim/room/weapon bindings, all four culprit roles, all four crime
+rooms, both false-claim variants and weapon/crime-room co-location represented.
+These are bindings within one case family, not 97 structurally different mysteries.
+
+The validator receives only observed testimony/physical propositions. Tests change
+the hidden culprit and voice bindings without changing its inferred candidates,
+reject a hidden answer inconsistent with clues, retain alternatives when evidence
+is absent, and reject contradictory physical observations. Gameplay checks exercise
+connected room travel, glass collection, testimony and stable recaps, object/floor
+inspection, delayed weapon collection, wrong triples, a clue-derived correct ending,
+JSON save/restore and rejection of altered saved testimony. UI checks instantiate
+the real scene and activate connected glass, room and question buttons, verify the
+notebook updates, and reset to another seed. A JSON number-type restore bug was
+found and fixed during those checks.
+
+The actual lab window was launched with the official MCP client, reached its own
+ready state and produced a viewport capture. The refreshed comparison-notebook UI
+was visually inspected at 960x720 logical / 1280x960 window size. Current capture:
+`test-results/screenshots/case-lab-start-4f6a94f670.png`. The preview session stays
+owned while the user plays and stops when its window closes. The existing mansion
+save and default scene are separate. No new image assets or review index were made.
+
+Human feedback subsequently confirmed that these cases felt similar and easy,
+prompting the second iteration above. Automated consistency does not establish fun, pacing or a
+10–15-minute duration. This version has no danger timer or autonomous NPC schedule.
+
+## Focused behavioral study — 2026-10-25
+
+Research-only update; no runtime/adapter implementation changed. A bounded official
+MCP session finished in 53.82 seconds and confirmed the glass pickup before its
+study. Screenshots at baseline, four/eight seconds of passive waiting and after
+questions/search show unchanged marker positions. Re-entry shows the same piano
+anchor/activity with a different named occupant; both entry captures were inspected.
+Six short questions produced five consistent alibis and one transient refusal;
+the next question after that refusal succeeded. One guest search found nothing.
+No weapon pickup, gathering or accusation occurred; the owned process was stopped.
+
+Local record: test-results/original-research/behavior-2ee94a3d/case-5.json. Comparison
+of the four previous survey transcripts is recorded locally in dialogue-comparison.json:
+67 parsed alibi replies, nine manually checked refusals, and one consistent claim
+per observed speaker/case combination (15 combinations). Including the focused
+study yields 72 answered claims and ten refusals across 82 asks / 16 combinations.
+These are sample descriptions, not fitted probabilities or proof of an RNG rule.
+The private study driver is an observation aid; the complete playthrough/ending
+was intentionally not attempted. Documentation was checked with `git diff --check`;
+no gameplay tests were rerun for this research/prose-only change.
+
+## Original navigation and investigation survey — 2026-10-25
+
+`python tools/dos-game-mcp/research_original.py --cases 3` completed all three
+planned surveys through the official MCP client: wide/split/wide layouts,
+75.14/67.21/81.26 seconds, 532 movement keys, 15 guest encounters and 60 captured
+question/alibi responses. All three introduction/roster fingerprints differed.
+The split-floor stair transfer and sampled dialogue were checked against captures.
+These are navigation and dialogue samples, not wins or complete suspect coverage.
+
+After the user's workflow clarification, one additional live survey first confirmed
+the glass pickup, then completed inspection/interview routes in 136.48 seconds:
+328 movement keys, 16 responses, 12 object/floor examinations. The displayed text
+identified both a weapon and murder-room bloodstains. Only `get magnifying glass`
+was sent; no weapon pickup, assembly or accusation occurred. The new policy fails
+closed if no glass is found on the visible route. The test used full examination
+commands; the later shortening to `q` / `ex` and head-noun keywords is unit checked
+and uses command aliases established by the user and earlier observations.
+
+`pytest tests/test_server.py tests/test_original_navigation.py -q`: **28 passed**.
+Coverage includes movement verification and wall stops, map doorways/intermediate
+columns, odd/even guest-column approach, both-layout connectivity, malformed-map
+rejection, glass-first gating, pickup confirmation and weapon-pickup rejection.
+All owned processes were stopped. Local evidence: original-research/cb946831c391
+and original-research/f10633b3fd19 under ignored test-results. No original assets
+or dialogue transcripts were added to tracked files.
+
+## DOS text adapter — 2026-10-25
+
+Replaced the unstable clipboard experiment with the installed DOSBox-X debugger
+control protocol. The private loopback connection exposes only the BIOS display
+page offset and its 4,000-byte visible color text page. No original executable is
+changed or disassembled; no solution variables, CPU state or arbitrary memory
+commands are exposed. Host clipboard access was removed. Supported protocol is
+[documented by DOSBox-X](https://github.com/joncampbell123/dosbox-x/blob/b6abbd5/README.debugger).
+
+`read_original_screen` returns the 80x25 text grid. Blank transitional screens
+return an explicit retry error. `original_command` checks for an idle gameplay
+prompt, sends an allowlisted command to the owned HWND, then waits for a stable
+prompt. Menu input uses `send_game_input`; verified walking uses `original_move`. Original
+`look` was observed to be rejected by the game; the adapter reports that response
+without interpreting it as a successful gameplay action.
+
+Live official-MCP smoke: three independent case starts, different guest rosters,
+and nine captured responses (`guest`, `look`, `gather` per case), initially
+0.595–0.726 seconds per command. After adding prompt/stability checks, one further
+case passed all three commands at 0.843–0.972 seconds each. Title and gameplay
+screenshots agree with text captures. This verifies transport and short command
+cycles, not solved cases, autonomous navigation or 50 playthroughs. Every owned
+process was stopped. Captures, emulator copies and response transcripts remain
+ignored under test-results.
+
+`pytest tests/test_server.py -q`: 18 passed, including both MCP discovery modes,
+protocol framing/disconnect/error handling, fixed display-page selection,
+unsupported memory-command rejection, menu input gating and owned-process limits.
+
 ## Original dialogue data audit — 2026-10-25
 
 `python tools/audit_original_dialogue.py` verifies all 33 archive entries against
@@ -446,3 +745,27 @@ Opposite-door preparation: tools/opposite_door_checks.gd passes 18 reciprocal li
 
 ## Current update: compact-3 opposite-door integration
 User approved the four current room candidates (“Looks good to me”, 2026-10-24). See [OPPOSITE_DOOR_LAYOUT.md](OPPOSITE_DOOR_LAYOUT.md) for the superseding route plan, hashes, provisional furniture status and validation. All 18 directed crossings now use opposite-side arrivals and automatic walking triggers. Fixed mansion checks: 108 passed; first-case checks: 31 passed. Older compact-2 route notes above are historical.
+
+
+## House-02 blockout — 2026-10-26
+
+Godot 4.7.2 native checks: **161 passed, zero failures** (`tools/house_blockout_checks.gd`). All 24 authored directed doors were traversed with collision-aware walking routes, checking exact arrivals and room-entry counts; both secret transitions were reached through real open-floor routes. Additional checks cover 24px walking steps, thin-obstacle tunnelling, blocked/idle movement, teleport distance exclusion and inspection counter resets. A doorway-plane condition prevents adjacent hall doors from capturing the player prematurely.
+
+The standalone scene starts cleanly headless; GPU renders of Front Entry and Hall 2 were captured and visually inspected. The revised sidebar fits the viewport. Captures are local in ignored `test-results/house-blockout/`. Walking feel and layout suitability still require human playtesting; no generator or danger-clock behaviour is claimed. See [launch and controls](HOUSE_BLOCKOUT.md).
+
+
+## House-02 investigation — 2026-10-26
+
+Godot-native results: generator parity **15,374 checks** over **795 Python case fixtures** and 44 RNG streams; session rules **2,562 checks** over 80 base cases; playable integration **151 checks**, including two complete cases walked through the authored geometry; blockout regression **161 checks**. All passed. No original-game files or unpublished design branch were merged.
+
+The integration harness uses actual proximity, inspection, question, pickup and accusation callbacks. It checks all 162 pose records are available, directional sprite hash/loading, permitted facing, unblocked guest placement and modal startup. Native GPU captures of Char/Chris room presentation, questioning, accusation and the Chris pose viewer were inspected; dialogs fit and source PNGs were unchanged. Capture files are local under `test-results/house-investigation/`. Human readability, puzzle satisfaction and furniture/activity fit remain unverified. No clock or guest-movement validation is claimed. Launch and fixture reproduction: [House investigation](HOUSE_INVESTIGATION.md).
+
+
+## House-02 guests and danger clock — 2026-10-26
+
+Native runtime checks: **16,336 passed**, zero failures. Coverage includes exact warning/stalking thresholds, seed/frame-batch invariance, no idle time advancement, unconditional hall safety, question/entry ambushes, weapon-dependent loss narratives, terminal freeze, refusals and immutable answered claims, real Hard staring evidence, all authored door reachability and 159 sampled NPC screen crossings with every sampled position on open floor. Playable scene checks: **160 passed**, including two controlled route regressions with risk/wander/refusal disabled and added live-runtime HUD/Hard/location checks. These are not default-risk win-rate measurements. Core case rules remained at 2,562 passing checks; generator code is unchanged. Native GPU warning and stalking captures were inspected and fit the viewport. See [runtime rules and limitations](HOUSE_RUNTIME.md).
+
+
+## Correction: room-entry guest snapshots — 2026-10-26
+
+The user explicitly rejected visible NPC walking. Guest pathfinding/travel has been removed. Guests stay at fixed positions and activities throughout a visit; only entering a non-hall room resolves the chance that they had relocated, placing them directly at their new spots. The existing elapsed-step rate is applied at that entry, not continuously. The danger clock remains separate and unchanged. Previous spatial-walking implementation/test descriptions above are superseded. Focused snapshot/clock checks and UI regressions cover the corrected behaviour. See [current rules](HOUSE_RUNTIME.md).

@@ -1,0 +1,161 @@
+{
+  "characters": [
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-first-A",
+      "name": "Justin",
+      "pose": "existing_standing",
+      "review_number": "02",
+      "source": "res://assets/characters/review-v6/sources/selected-party-hm.png",
+      "source_sha256": "6631c02f7aa707629b88893aba8d9e797d070703b4831c81032903984ed14037",
+      "sprite": "res://assets/characters/playtest-cast/cast-02.png",
+      "sprite_sha256": "f67f9ba8af337b71156113daf40ef08d2f0f1f95d3065ae0af431653ab3f0e92"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-first-B",
+      "name": "Danny",
+      "pose": "existing_standing",
+      "review_number": "03",
+      "source": "res://assets/characters/review-v5/masters/photo-03-f-scruff-v5.png",
+      "source_sha256": "238cbd4931e178f81e6109e61a1223977186035eae7df7a94b30dc45ba5c8e4c",
+      "sprite": "res://assets/characters/playtest-cast/cast-03.png",
+      "sprite_sha256": "6deb4d541e738d217c6062a8aef5739b816ae0194fa833a4aa85de124a31cf30"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-first-C",
+      "name": "Gage",
+      "pose": "existing_standing",
+      "review_number": "04",
+      "source": "res://assets/characters/review-v5/masters/photo-03-f-scruff-v5.png",
+      "source_sha256": "238cbd4931e178f81e6109e61a1223977186035eae7df7a94b30dc45ba5c8e4c",
+      "sprite": "res://assets/characters/playtest-cast/cast-04.png",
+      "sprite_sha256": "a31f64e786b93c6c7bf14e80a23896df29a6801160b8708348112af18fd100df"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-first-D",
+      "name": "Robbie",
+      "pose": "existing_standing",
+      "review_number": "05",
+      "source": "res://assets/characters/review-v6/sources/selected-party-ag.png",
+      "source_sha256": "e103de62ed236b2884d3fd559b01aee8db2f34b538f26bc299c03ddab7f87c36",
+      "sprite": "res://assets/characters/playtest-cast/cast-05.png",
+      "sprite_sha256": "847f976267f41c627af0041704956114f0184788dda40f51a0fd5e58327d742c"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-first-F",
+      "name": "Kwinn",
+      "pose": "existing_standing",
+      "review_number": "07",
+      "source": "res://assets/characters/review-v6/sources/selected-party-hm.png",
+      "source_sha256": "6631c02f7aa707629b88893aba8d9e797d070703b4831c81032903984ed14037",
+      "sprite": "res://assets/characters/playtest-cast/cast-07.png",
+      "sprite_sha256": "27d3c8a02e7e2ae95fea2d527b1f30a517db2d8a020f46dc53fe4dbaa181fb7e"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-A",
+      "name": "Chloe",
+      "pose": "existing_standing",
+      "review_number": "08",
+      "source": "res://assets/characters/review-v3/masters/photo-04-upper-five-v3.png",
+      "source_sha256": "55f9f7653d0ef5f1585e64bbaeb3db8f5ee3055e090037b7f05f42142bd20386",
+      "sprite": "res://assets/characters/playtest-cast/cast-08.png",
+      "sprite_sha256": "78ac956dc93f46dfd26a4f8875ae766300b315d842ef2c0cedbc4d5cb3fd3b17"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-B",
+      "name": "Matt",
+      "pose": "existing_standing",
+      "review_number": "09",
+      "source": "res://assets/characters/review-v3/masters/photo-04-upper-five-v3.png",
+      "source_sha256": "55f9f7653d0ef5f1585e64bbaeb3db8f5ee3055e090037b7f05f42142bd20386",
+      "sprite": "res://assets/characters/playtest-cast/cast-09.png",
+      "sprite_sha256": "b065f477710fdc3b47da5f68e4b2dc2b3b0732b0544491551f6674536407d7ba"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-E",
+      "name": "Camille",
+      "pose": "existing_standing",
+      "review_number": "10",
+      "source": "res://assets/characters/review-v3/masters/photo-04-upper-five-v3.png",
+      "source_sha256": "55f9f7653d0ef5f1585e64bbaeb3db8f5ee3055e090037b7f05f42142bd20386",
+      "sprite": "res://assets/characters/playtest-cast/cast-10.png",
+      "sprite_sha256": "135da568d0be6058b33fc4ad3c790d22568287c8f5054d402e4041879d0f2ac0"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-H",
+      "name": "Carolyn",
+      "pose": "existing_standing",
+      "review_number": "11",
+      "source": "res://assets/characters/review-v5/masters/photo-04-k-cheek-scruff-v5.png",
+      "source_sha256": "de171491ebadd8b3f7d6d5f41f37a97d9fdbb1e37d8f5ba02bca235e09cab1f4",
+      "sprite": "res://assets/characters/playtest-cast/cast-11.png",
+      "sprite_sha256": "c9c7b75ae50738af9999db6a3ea74f122b4fae903e18067a39ace8765680d1c7"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-J",
+      "name": "Isabelle",
+      "pose": "existing_standing",
+      "review_number": "12",
+      "source": "res://assets/characters/review-v5/masters/photo-04-k-cheek-scruff-v5.png",
+      "source_sha256": "de171491ebadd8b3f7d6d5f41f37a97d9fdbb1e37d8f5ba02bca235e09cab1f4",
+      "sprite": "res://assets/characters/playtest-cast/cast-12.png",
+      "sprite_sha256": "93787268056cbb0c617d18b0ec368be5b1d01772e0af1beebd6fbb81ca8a671d"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-party-L",
+      "name": "Sarah Jo",
+      "pose": "existing_standing",
+      "review_number": "13",
+      "source": "res://assets/characters/review-v7/masters/sarah-jo-short-hair-proportions-v7.png",
+      "source_sha256": "4dbb457f8556504d16ec47f3289046b583ab087e1c4177a135e043a7813621c0",
+      "sprite": "res://assets/characters/playtest-cast/cast-13.png",
+      "sprite_sha256": "8d1f5465ed0971f86c7c4b36e0849a5b874cc2af4fc6ac9f813c1f1be736b8e4"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 0.85,
+      "id": "likeness-new-left",
+      "name": "Jessica",
+      "pose": "existing_standing",
+      "review_number": "20",
+      "source": "res://assets/characters/review-v8/masters/jessica-cartoon-v8.png",
+      "source_sha256": "853bfb1bf237230563cee3780abc2c1a6c9cb9b92d378b5c332550c3aac003fc",
+      "sprite": "res://assets/characters/playtest-cast/cast-20.png",
+      "sprite_sha256": "7edce28c71253e37dff2bcf9052c776ff026cc478f8920ef72f27e54b2f57aea"
+    },
+    {
+      "appearance_status": "temporary-test-use; not final approval",
+      "height_ratio": 1.0,
+      "id": "likeness-new-right",
+      "name": "John",
+      "pose": "existing_standing",
+      "review_number": "21",
+      "source": "res://assets/characters/review-v8/masters/john-cartoon-v8.png",
+      "source_sha256": "e7f08d20a8632f290249c74f6caf0bbd5fa18f29f11a265137b96bd19d4cfd99",
+      "sprite": "res://assets/characters/playtest-cast/cast-21.png",
+      "sprite_sha256": "16f2004a83cff563a3906b3bef40a28f260b27d1c4a08fef060544b64a9eb035"
+    }
+  ],
+  "schema_version": 1
+}

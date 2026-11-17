@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "warning_min": 140,
+  "warning_max": 200,
+  "stalking_gap_min": 80,
+  "stalking_gap_max": 115,
+  "ambush_chance_by_difficulty": {"easy": 0.15, "normal": 0.20, "hard": 0.25},
+  "weapon_question_death": 0.5,
+  "stalking_isolation_chance": 0.5,
+  "guest_leave": 0.01,
+  "stare_share": 0.27,
+  "activity_redraw": 0.004,
+  "question_refusal": 0.1,
+  "hall_share": 0.45,
+  "hard_murder_pull": 0.3,
+  "action_steps": 0,
+  "portal_steps": 0,
+  "notes": "Guests are stationary room snapshots. Only entering a non-hall room resolves whether they had relocated, using the elapsed-step probability 1-(1-guest_leave)^elapsed. During stalking, a separate 50% isolation roll on room entry can relocate bystanders out of the culprit room when compatible space exists. Ambush entry/question rolls require the culprit physically present with no other guests; halls remain safe. No visible NPC walking or mid-room relocation/activity changes. Danger remains a separate walking-only clock. The true weapon silently doubles danger-clock increments while held. Physical walking steps and guest snapshot probabilities remain unweighted. Silent authored refusal rate is 10%.",
+  "weapon_clock_multiplier": 2.0
+}

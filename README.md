@@ -11,6 +11,34 @@ Inspired by the classic DOS game *Sleuth*, Mansion Mystery brings that style of
 deduction into an atmospheric mansion with expressive characters and illustrated
 Victorian interiors.
 
+## Current local playtest
+
+**Godot F5 now starts the current painted mystery.** Its main entry scene is
+`src/mystery/painted_mystery.tscn`, with painted rooms and a randomized case.
+
+The working checkout now has a full seeded investigation through eleven painted
+rooms, with six suspects, personality dialogue, stable repeat accounts, clues,
+danger and accusation endings. Char and Chris use directional poses; the remaining
+cast uses temporary standing artwork. The investigator, object sprites, inspection
+closeups and house map are available. Item floor positions are still provisional.
+
+Launch the current painted mystery from PowerShell:
+
+```powershell
+.\tools\run_house_blockout.ps1 -Painted -Investigate
+```
+
+Use WASD/arrows to walk, E for nearby interactions and N for learned evidence.
+Q drops the held item. The magnifying glass occupies the single carrying slot;
+drop it to carry another object. On Normal/Hard compare stained-item kinds with
+the wound clue before choosing what to present. Nearby stacked items have a chooser.
+Find the magnifying glass, compare accounts and inspect the house. Carry the
+identified weapon before assembling an accusation. The seed and difficulty
+menu starts a fresh randomized case. Turn off Random mystery to replay a case
+number; the launcher also accepts `-CaseSeed <number>`. An ambush requires being
+alone with the killer; other guests prevent an attack. The older authored mansion
+remains available as its own scene, separate from the previously released version below.
+
 ## In the current version
 
 - One playable case: **The Silent Library**.
@@ -26,6 +54,13 @@ This is an early prototype. Room artwork, character presentation and the
 investigation are still being refined. There is no packaged game download yet.
 
 ## Where the game is heading
+
+An experimental **placeholder case lab** now tests generated mysteries separately
+from the mansion: four suspects, four rooms, evidence, a notebook and replayable
+seeds. See the [case-lab launch instructions](docs/development/README.md#placeholder-mystery-case-lab).
+It offers an introductory witness conflict and a standard time-and-access case,
+with Assisted, Standard or Classic notebook settings. Its fun and replayability
+need playtesting.
 
 Future plans include replayable randomized cases, characters with changing
 personalities and activities, richer evidence, a difficulty-based

@@ -1,0 +1,2237 @@
+{
+  "schema_version": 1,
+  "id": "house-02",
+  "blockout": true,
+  "description": "Ten-room blockout made by the user in the layout editor (one north-south hall with eight doors, nine rooms plus the secret passage), with furniture kinds and wall-aware guest-spot kinds and facing added by tools/case_design/auto_label.py. Plain rectangles, no art; backgrounds are painted afterwards to match.",
+  "screen_size": [
+    480,
+    360
+  ],
+  "px_per_step": 24,
+  "supports_suspects": [
+    6
+  ],
+  "start": "room_6",
+  "secret": {
+    "screen": "secret_passage",
+    "entrance_room": "library",
+    "exit_room": "kitchen",
+    "panel_wall": "north",
+    "panel_columns": [
+      60,
+      110,
+      160,
+      210,
+      260,
+      310,
+      360
+    ]
+  },
+  "screens": [
+    {
+      "id": "library",
+      "name": "Library",
+      "floor": 0,
+      "obstacles": [
+        [
+          90,
+          148,
+          180,
+          36
+        ],
+        [
+          116,
+          194,
+          28,
+          24
+        ],
+        [
+          204,
+          194,
+          28,
+          24
+        ],
+        [
+          324,
+          216,
+          48,
+          40
+        ],
+        [
+          428,
+          196,
+          28,
+          124
+        ],
+        [
+          24,
+          288,
+          124,
+          32
+        ],
+        [
+          404,
+          80,
+          36,
+          32
+        ],
+        [
+          24,
+          64,
+          156,
+          36
+        ],
+        [
+          204,
+          64,
+          152,
+          36
+        ],
+        [
+          24,
+          140,
+          16,
+          32
+        ],
+        [
+          24,
+          224,
+          16,
+          48
+        ]
+      ],
+      "portals": [
+        {
+          "id": "library--door_2",
+          "at": [
+            24,
+            204
+          ],
+          "target": "room_2",
+          "arrival": [
+            440,
+            180
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room_2--door"
+        },
+        {
+          "id": "library--door",
+          "at": [
+            240,
+            322
+          ],
+          "target": "hall_2",
+          "arrival": [
+            240,
+            40
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "hall_2--door_2"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          64,
+          432,
+          258
+        ]
+      ],
+      "spawn": [
+        240,
+        235
+      ],
+      "item_slot": [
+        192,
+        64
+      ],
+      "guest_spots": [
+        [
+          108,
+          288
+        ],
+        [
+          424,
+          252
+        ],
+        [
+          220,
+          232
+        ],
+        [
+          452,
+          144
+        ],
+        [
+          152,
+          104
+        ],
+        [
+          76,
+          104
+        ],
+        [
+          252,
+          104
+        ],
+        [
+          320,
+          104
+        ],
+        [
+          400,
+          100
+        ],
+        [
+          296,
+          232
+        ],
+        [
+          152,
+          236
+        ],
+        [
+          124,
+          176
+        ],
+        [
+          184,
+          176
+        ],
+        [
+          248,
+          176
+        ],
+        [
+          364,
+          232
+        ],
+        [
+          292,
+          292
+        ],
+        [
+          332,
+          292
+        ],
+        [
+          372,
+          292
+        ],
+        [
+          44,
+          156
+        ]
+      ],
+      "plan": {
+        "x": 460,
+        "y": -680,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "table",
+        "chair",
+        "chair",
+        "armchair",
+        "bookshelf",
+        "sofa",
+        "plant",
+        "bookshelf",
+        "bookshelf",
+        "pillar",
+        "pillar"
+      ],
+      "guest_spot_kinds": [
+        "seat",
+        "browse",
+        "seat",
+        "stand",
+        "browse",
+        "browse",
+        "browse",
+        "browse",
+        "stand",
+        "seat",
+        "seat",
+        "table",
+        "table",
+        "table",
+        "seat",
+        "seat",
+        "seat",
+        "seat",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "north",
+        "east",
+        "north",
+        "any",
+        "north",
+        "north",
+        "north",
+        "north",
+        "any",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Removed the isolated bottom row of stools; paired two chairs with the reading table; kept a separate armchair and sofa.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "kitchen",
+      "name": "Study",
+      "floor": 0,
+      "obstacles": [
+        [
+          64,
+          208,
+          48,
+          40
+        ],
+        [
+          124,
+          224,
+          24,
+          24
+        ],
+        [
+          440,
+          200,
+          16,
+          52
+        ],
+        [
+          24,
+          148,
+          36,
+          36
+        ],
+        [
+          24,
+          276,
+          100,
+          32
+        ],
+        [
+          330,
+          264,
+          104,
+          48
+        ],
+        [
+          350,
+          224,
+          28,
+          26
+        ],
+        [
+          300,
+          148,
+          156,
+          16
+        ],
+        [
+          76,
+          148,
+          116,
+          12
+        ]
+      ],
+      "portals": [
+        {
+          "id": "kitchen--door",
+          "at": [
+            236,
+            148
+          ],
+          "target": "room",
+          "arrival": [
+            236,
+            306
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room--door"
+        },
+        {
+          "id": "kitchen--door_2",
+          "at": [
+            456,
+            180
+          ],
+          "target": "hall_2",
+          "arrival": [
+            206,
+            300
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_5"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          148,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        236,
+        232
+      ],
+      "item_slot": [
+        28,
+        320
+      ],
+      "guest_spots": [
+        [
+          116,
+          240
+        ],
+        [
+          340,
+          288
+        ],
+        [
+          420,
+          168
+        ],
+        [
+          348,
+          168
+        ],
+        [
+          436,
+          224
+        ],
+        [
+          148,
+          164
+        ],
+        [
+          320,
+          244
+        ],
+        [
+          44,
+          188
+        ],
+        [
+          284,
+          224
+        ],
+        [
+          92,
+          164
+        ],
+        [
+          72,
+          284
+        ]
+      ],
+      "plan": {
+        "x": -400,
+        "y": 540,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "armchair",
+        "side_table",
+        "bookshelf",
+        "plant",
+        "bookshelf",
+        "desk",
+        "chair",
+        "bookshelf",
+        "bookshelf"
+      ],
+      "guest_spot_kinds": [
+        "seat",
+        "table",
+        "browse",
+        "browse",
+        "browse",
+        "browse",
+        "seat",
+        "stand",
+        "seat",
+        "browse",
+        "browse"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "east",
+        "north",
+        "north",
+        "east",
+        "north",
+        "south",
+        "any",
+        "south",
+        "north",
+        "south"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Grouped desk and chair; replaced thin disconnected lower shelves with one cabinet; paired reading chair with side table.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room",
+      "name": "Master-Bedroom",
+      "floor": 0,
+      "obstacles": [
+        [
+          24,
+          212,
+          60,
+          40
+        ],
+        [
+          100,
+          282,
+          44,
+          36
+        ],
+        [
+          440,
+          248,
+          16,
+          72
+        ],
+        [
+          348,
+          150,
+          104,
+          24
+        ],
+        [
+          188,
+          184,
+          112,
+          92
+        ],
+        [
+          148,
+          192,
+          28,
+          28
+        ],
+        [
+          312,
+          192,
+          28,
+          28
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room--door",
+          "at": [
+            236,
+            322
+          ],
+          "target": "kitchen",
+          "arrival": [
+            236,
+            164
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "kitchen--door"
+        },
+        {
+          "id": "room--door_2",
+          "at": [
+            456,
+            212
+          ],
+          "target": "hall_2",
+          "arrival": [
+            206,
+            180
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_4"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        72,
+        176
+      ],
+      "item_slot": [
+        380,
+        285
+      ],
+      "guest_spots": [
+        [
+          120,
+          235
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          380,
+          200
+        ],
+        [
+          158,
+          190
+        ],
+        [
+          272,
+          190
+        ],
+        [
+          400,
+          192
+        ],
+        [
+          262,
+          262
+        ],
+        [
+          70,
+          284
+        ]
+      ],
+      "plan": {
+        "x": -400,
+        "y": -20,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "dresser",
+        "armchair",
+        "wardrobe",
+        "wardrobe",
+        "bed",
+        "nightstand",
+        "nightstand"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "browse",
+        "window",
+        "window",
+        "browse",
+        "seat",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "north",
+        "north",
+        "north",
+        "north",
+        "any",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Enlarged bed to a usable footprint and added matching nightstands. Windows are wall decoration, not floor blockers.",
+        "wall_windows_from_original": [
+          [
+            136,
+            148,
+            44,
+            24
+          ],
+          [
+            252,
+            148,
+            40,
+            24
+          ]
+        ],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_2",
+      "name": "Living-Room",
+      "floor": 0,
+      "obstacles": [
+        [
+          380,
+          220,
+          76,
+          16
+        ],
+        [
+          24,
+          150,
+          60,
+          40
+        ],
+        [
+          24,
+          244,
+          60,
+          40
+        ],
+        [
+          152,
+          184,
+          40,
+          32
+        ],
+        [
+          288,
+          184,
+          40,
+          32
+        ],
+        [
+          178,
+          260,
+          124,
+          36
+        ],
+        [
+          208,
+          220,
+          64,
+          24
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_2--door",
+          "at": [
+            456,
+            180
+          ],
+          "target": "library",
+          "arrival": [
+            40,
+            204
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "library--door_2"
+        },
+        {
+          "id": "room_2--door_2",
+          "at": [
+            456,
+            276
+          ],
+          "target": "hall_2",
+          "arrival": [
+            206,
+            84
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "hall_2--door_3"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        235
+      ],
+      "item_slot": [
+        380,
+        285
+      ],
+      "guest_spots": [
+        [
+          120,
+          235
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          416,
+          216
+        ],
+        [
+          88,
+          168
+        ],
+        [
+          220,
+          224
+        ],
+        [
+          260,
+          224
+        ],
+        [
+          216,
+          248
+        ],
+        [
+          244,
+          248
+        ],
+        [
+          272,
+          248
+        ],
+        [
+          88,
+          264
+        ],
+        [
+          416,
+          240
+        ]
+      ],
+      "plan": {
+        "x": -420,
+        "y": -680,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "console_table",
+        "fireplace",
+        "bookshelf",
+        "armchair",
+        "armchair",
+        "sofa",
+        "coffee_table"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "table",
+        "fireplace",
+        "seat",
+        "seat",
+        "seat",
+        "seat",
+        "seat",
+        "browse",
+        "table"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "south",
+        "west",
+        "east",
+        "west",
+        "north",
+        "north",
+        "north",
+        "west",
+        "north"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Enlarged seats and coffee table into one conversation group, clear of both east exits. Windows are wall decoration.",
+        "wall_windows_from_original": [
+          [
+            248,
+            148,
+            64,
+            16
+          ],
+          [
+            120,
+            316,
+            44,
+            8
+          ],
+          [
+            224,
+            316,
+            32,
+            8
+          ]
+        ],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_3",
+      "name": "Guest Bedroom",
+      "floor": 0,
+      "obstacles": [
+        [
+          396,
+          216,
+          60,
+          40
+        ],
+        [
+          104,
+          150,
+          88,
+          100
+        ],
+        [
+          204,
+          162,
+          28,
+          28
+        ],
+        [
+          276,
+          284,
+          80,
+          32
+        ],
+        [
+          300,
+          248,
+          28,
+          24
+        ],
+        [
+          24,
+          280,
+          32,
+          40
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_3--door",
+          "at": [
+            24,
+            244
+          ],
+          "target": "hall_2",
+          "arrival": [
+            274,
+            84
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door"
+        },
+        {
+          "id": "room_3--door_2",
+          "at": [
+            324,
+            150
+          ],
+          "target": "room_7",
+          "arrival": [
+            388,
+            306
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room_7--door"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        235
+      ],
+      "item_slot": [
+        380,
+        285
+      ],
+      "guest_spots": [
+        [
+          120,
+          235
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          380,
+          200
+        ],
+        [
+          260,
+          156
+        ],
+        [
+          368,
+          156
+        ],
+        [
+          392,
+          236
+        ],
+        [
+          304,
+          276
+        ],
+        [
+          44,
+          172
+        ],
+        [
+          64,
+          304
+        ],
+        [
+          272,
+          220
+        ]
+      ],
+      "plan": {
+        "x": 1460,
+        "y": -780,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "wardrobe",
+        "bed",
+        "nightstand",
+        "desk",
+        "chair",
+        "plant"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "browse",
+        "window",
+        "window",
+        "browse",
+        "table",
+        "window",
+        "stand",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "east",
+        "north",
+        "north",
+        "east",
+        "south",
+        "west",
+        "any",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Enlarged bed, added bedside table and paired desk with chair; preserved basement and hall access.",
+        "wall_windows_from_original": [
+          [
+            356,
+            148,
+            24,
+            4
+          ],
+          [
+            252,
+            148,
+            20,
+            4
+          ],
+          [
+            24,
+            152,
+            12,
+            44
+          ]
+        ],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_4",
+      "name": "Kitchen",
+      "floor": 0,
+      "obstacles": [
+        [
+          112,
+          150,
+          132,
+          32
+        ],
+        [
+          260,
+          150,
+          84,
+          32
+        ],
+        [
+          388,
+          150,
+          68,
+          72
+        ],
+        [
+          152,
+          228,
+          84,
+          40
+        ],
+        [
+          24,
+          184,
+          24,
+          64
+        ],
+        [
+          164,
+          280,
+          24,
+          24
+        ],
+        [
+          204,
+          280,
+          24,
+          24
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_4--door_2",
+          "at": [
+            256,
+            322
+          ],
+          "target": "room_5",
+          "arrival": [
+            256,
+            166
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_5--door_2"
+        },
+        {
+          "id": "room_4--door",
+          "at": [
+            24,
+            280
+          ],
+          "target": "hall_2",
+          "arrival": [
+            274,
+            180
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door_7"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        308,
+        268
+      ],
+      "item_slot": [
+        332,
+        172
+      ],
+      "guest_spots": [
+        [
+          144,
+          184
+        ],
+        [
+          200,
+          272
+        ],
+        [
+          384,
+          184
+        ],
+        [
+          208,
+          184
+        ],
+        [
+          452,
+          256
+        ],
+        [
+          126,
+          250
+        ],
+        [
+          256,
+          250
+        ],
+        [
+          194,
+          290
+        ]
+      ],
+      "plan": {
+        "x": 1460,
+        "y": -220,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "counter",
+        "range",
+        "pantry",
+        "island",
+        "counter",
+        "stool",
+        "stool"
+      ],
+      "guest_spot_kinds": [
+        "table",
+        "table",
+        "browse",
+        "table",
+        "stand",
+        "table",
+        "table",
+        "table"
+      ],
+      "guest_spot_facing": [
+        "north",
+        "north",
+        "east",
+        "north",
+        "any",
+        "east",
+        "west",
+        "north"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Added a range and two stools tucked along the island; south exit kept clear.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_5",
+      "name": "Dining Room",
+      "floor": 0,
+      "obstacles": [
+        [
+          120,
+          216,
+          240,
+          44
+        ],
+        [
+          404,
+          150,
+          52,
+          28
+        ],
+        [
+          148,
+          184,
+          28,
+          24
+        ],
+        [
+          216,
+          184,
+          28,
+          24
+        ],
+        [
+          284,
+          184,
+          28,
+          24
+        ],
+        [
+          148,
+          272,
+          28,
+          24
+        ],
+        [
+          216,
+          272,
+          28,
+          24
+        ],
+        [
+          284,
+          272,
+          28,
+          24
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_5--door_2",
+          "at": [
+            256,
+            150
+          ],
+          "target": "room_4",
+          "arrival": [
+            256,
+            306
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "room_4--door_2"
+        },
+        {
+          "id": "room_5--door",
+          "at": [
+            24,
+            256
+          ],
+          "target": "hall_2",
+          "arrival": [
+            274,
+            300
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "hall_2--door_8"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          148,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        416,
+        240
+      ],
+      "item_slot": [
+        380,
+        285
+      ],
+      "guest_spots": [
+        [
+          116,
+          236
+        ],
+        [
+          160,
+          264
+        ],
+        [
+          364,
+          240
+        ],
+        [
+          160,
+          212
+        ],
+        [
+          204,
+          212
+        ],
+        [
+          264,
+          212
+        ],
+        [
+          316,
+          212
+        ],
+        [
+          320,
+          264
+        ],
+        [
+          208,
+          264
+        ],
+        [
+          268,
+          264
+        ],
+        [
+          400,
+          160
+        ],
+        [
+          452,
+          224
+        ],
+        [
+          440,
+          316
+        ],
+        [
+          96,
+          316
+        ],
+        [
+          36,
+          180
+        ]
+      ],
+      "plan": {
+        "x": 1360,
+        "y": 480,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "dining_table",
+        "sideboard",
+        "chair",
+        "chair",
+        "chair",
+        "chair",
+        "chair",
+        "chair"
+      ],
+      "guest_spot_kinds": [
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "table",
+        "browse",
+        "stand",
+        "stand",
+        "stand",
+        "window"
+      ],
+      "guest_spot_facing": [
+        "east",
+        "north",
+        "west",
+        "south",
+        "south",
+        "south",
+        "south",
+        "north",
+        "north",
+        "north",
+        "east",
+        "any",
+        "any",
+        "any",
+        "west"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Added six chairs grouped around dining table, leaving circulation around both ends.",
+        "wall_windows_from_original": [
+          [
+            24,
+            156,
+            8,
+            40
+          ]
+        ],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_6",
+      "name": "Front Entry",
+      "floor": 0,
+      "obstacles": [
+        [
+          36,
+          152,
+          28,
+          28
+        ],
+        [
+          108,
+          152,
+          28,
+          28
+        ],
+        [
+          344,
+          152,
+          28,
+          28
+        ],
+        [
+          416,
+          152,
+          28,
+          28
+        ],
+        [
+          64,
+          184,
+          40,
+          32
+        ],
+        [
+          376,
+          184,
+          40,
+          32
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_6--door",
+          "at": [
+            240,
+            150
+          ],
+          "target": "hall_2",
+          "arrival": [
+            240,
+            320
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "hall_2--door_6"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        308
+      ],
+      "item_slot": [
+        128,
+        164
+      ],
+      "guest_spots": [
+        [
+          140,
+          240
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          330,
+          230
+        ],
+        [
+          190,
+          185
+        ],
+        [
+          290,
+          185
+        ],
+        [
+          240,
+          240
+        ]
+      ],
+      "plan": {
+        "x": 460,
+        "y": 520,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "pillar",
+        "pillar",
+        "pillar",
+        "pillar",
+        "statue",
+        "statue"
+      ],
+      "guest_spot_kinds": [
+        "stairs",
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "west",
+        "any",
+        "any",
+        "any",
+        "any",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Replaced erroneous stairs with localized pillar and statue bases. No north windows; northern opening leads inside.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "secret_passage",
+      "name": "Secret passage",
+      "floor": 0,
+      "obstacles": [
+        [
+          52,
+          148,
+          48,
+          12
+        ],
+        [
+          112,
+          198,
+          40,
+          12
+        ],
+        [
+          228,
+          198,
+          36,
+          12
+        ],
+        [
+          312,
+          148,
+          36,
+          12
+        ],
+        [
+          412,
+          148,
+          40,
+          12
+        ],
+        [
+          420,
+          198,
+          20,
+          12
+        ]
+      ],
+      "portals": [],
+      "role": "secret",
+      "walk_regions": [
+        [
+          12,
+          148,
+          448,
+          62
+        ]
+      ],
+      "spawn": [
+        40,
+        180
+      ],
+      "item_slot": [
+        420,
+        180
+      ],
+      "guest_spots": [
+        [
+          120,
+          180
+        ],
+        [
+          240,
+          180
+        ],
+        [
+          360,
+          180
+        ],
+        [
+          170,
+          176
+        ],
+        [
+          300,
+          176
+        ]
+      ],
+      "plan": {
+        "x": -1280,
+        "y": 0,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "crate",
+        "crate",
+        "crate",
+        "crate",
+        "crate",
+        "rubble"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "any",
+        "any",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Removed rubble from the exit and tucked crates against corridor edges.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "hall_2",
+      "name": "Hall 2",
+      "floor": 0,
+      "obstacles": [
+        [
+          190,
+          24,
+          16,
+          16
+        ],
+        [
+          274,
+          24,
+          16,
+          16
+        ],
+        [
+          190,
+          220,
+          8,
+          36
+        ],
+        [
+          282,
+          220,
+          8,
+          36
+        ],
+        [
+          190,
+          320,
+          16,
+          16
+        ],
+        [
+          274,
+          320,
+          16,
+          16
+        ]
+      ],
+      "portals": [
+        {
+          "id": "hall_2--door",
+          "at": [
+            290,
+            84
+          ],
+          "target": "room_3",
+          "arrival": [
+            40,
+            244
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_3--door"
+        },
+        {
+          "id": "hall_2--door_2",
+          "at": [
+            240,
+            24
+          ],
+          "target": "library",
+          "arrival": [
+            240,
+            306
+          ],
+          "facing": [
+            0,
+            -1
+          ],
+          "side": "north",
+          "kind": "door",
+          "link": "library--door"
+        },
+        {
+          "id": "hall_2--door_3",
+          "at": [
+            190,
+            84
+          ],
+          "target": "room_2",
+          "arrival": [
+            440,
+            276
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room_2--door_2"
+        },
+        {
+          "id": "hall_2--door_4",
+          "at": [
+            190,
+            180
+          ],
+          "target": "room",
+          "arrival": [
+            440,
+            212
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "room--door_2"
+        },
+        {
+          "id": "hall_2--door_5",
+          "at": [
+            190,
+            300
+          ],
+          "target": "kitchen",
+          "arrival": [
+            440,
+            180
+          ],
+          "facing": [
+            -1,
+            0
+          ],
+          "side": "west",
+          "kind": "door",
+          "link": "kitchen--door_2"
+        },
+        {
+          "id": "hall_2--door_6",
+          "at": [
+            240,
+            336
+          ],
+          "target": "room_6",
+          "arrival": [
+            240,
+            166
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_6--door"
+        },
+        {
+          "id": "hall_2--door_7",
+          "at": [
+            290,
+            180
+          ],
+          "target": "room_4",
+          "arrival": [
+            40,
+            280
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_4--door"
+        },
+        {
+          "id": "hall_2--door_8",
+          "at": [
+            290,
+            300
+          ],
+          "target": "room_5",
+          "arrival": [
+            40,
+            256
+          ],
+          "facing": [
+            1,
+            0
+          ],
+          "side": "east",
+          "kind": "door",
+          "link": "room_5--door"
+        }
+      ],
+      "role": "hall",
+      "orientation": "ns",
+      "walk_regions": [
+        [
+          190,
+          24,
+          100,
+          312
+        ]
+      ],
+      "spawn": [
+        240,
+        180
+      ],
+      "guest_spots": [
+        [
+          240,
+          80
+        ],
+        [
+          240,
+          180
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          215,
+          130
+        ],
+        [
+          265,
+          240
+        ]
+      ],
+      "plan": {
+        "x": 460,
+        "y": -120,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "pillar",
+        "pillar",
+        "console_table",
+        "console_table",
+        "pillar",
+        "pillar"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "stand",
+        "stand",
+        "table"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "any",
+        "any",
+        "east"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Kept shallow consoles between door rows and narrowed end pillars to preserve the center route.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    },
+    {
+      "id": "room_7",
+      "name": "Basement",
+      "floor": 0,
+      "obstacles": [
+        [
+          24,
+          150,
+          160,
+          36
+        ],
+        [
+          208,
+          150,
+          148,
+          36
+        ],
+        [
+          372,
+          150,
+          84,
+          36
+        ],
+        [
+          24,
+          276,
+          52,
+          40
+        ],
+        [
+          172,
+          278,
+          52,
+          36
+        ],
+        [
+          284,
+          276,
+          44,
+          40
+        ]
+      ],
+      "portals": [
+        {
+          "id": "room_7--door",
+          "at": [
+            388,
+            322
+          ],
+          "target": "room_3",
+          "arrival": [
+            324,
+            166
+          ],
+          "facing": [
+            0,
+            1
+          ],
+          "side": "south",
+          "kind": "door",
+          "link": "room_3--door_2"
+        }
+      ],
+      "role": "room",
+      "walk_regions": [
+        [
+          24,
+          150,
+          432,
+          172
+        ]
+      ],
+      "spawn": [
+        240,
+        235
+      ],
+      "item_slot": [
+        196,
+        192
+      ],
+      "guest_spots": [
+        [
+          120,
+          235
+        ],
+        [
+          240,
+          290
+        ],
+        [
+          380,
+          200
+        ],
+        [
+          100,
+          208
+        ],
+        [
+          280,
+          208
+        ],
+        [
+          410,
+          208
+        ],
+        [
+          240,
+          262
+        ],
+        [
+          110,
+          262
+        ]
+      ],
+      "plan": {
+        "x": 1420,
+        "y": -1360,
+        "rot": 0
+      },
+      "obstacle_kinds": [
+        "shelf",
+        "shelf",
+        "shelf",
+        "crate",
+        "crate",
+        "crate"
+      ],
+      "guest_spot_kinds": [
+        "stand",
+        "stand",
+        "browse",
+        "browse",
+        "browse",
+        "browse",
+        "stand",
+        "stand"
+      ],
+      "guest_spot_facing": [
+        "any",
+        "any",
+        "north",
+        "north",
+        "north",
+        "north",
+        "any",
+        "any"
+      ],
+      "art_review": {
+        "status": "proposed_not_runtime",
+        "notes": "Grouped storage against walls; left the southern doorway clear.",
+        "wall_windows_from_original": [],
+        "guest_positions": "Existing markers are provisional and must be recalibrated after room-art approval."
+      }
+    }
+  ],
+  "art_review": {
+    "status": "proposed_not_runtime",
+    "source_layout_sha256": "5a0b8c90093b44f1ce15cfb8d8eab8ab9f6031b2d0d620dddbdada8c6c7181d0",
+    "evidence": {
+      "date": "2026-10-29",
+      "quote": "go through each of the rooms and add or remove certain obstacles"
+    },
+    "preserved": "Screen IDs, room connections, portal coordinates, walk regions and case logic",
+    "guest_positions": "Deferred until furnishing review; old markers are not final.",
+    "door_marker_policy": "Final coordinates are chosen by user on finished art after review; existing portals preserve topology only and are not final trigger positions."
+  }
+}

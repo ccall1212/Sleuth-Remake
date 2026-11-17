@@ -92,6 +92,47 @@ the new connection after reopening rather than assuming hot reload occurred.
 
 ## Launch, inspect and test
 
+### Placeholder mystery case lab
+
+For deduction/replayability playtesting with procedural UI and no art dependencies:
+
+```powershell
+.\.venv\Scripts\python.exe tools/dos-game-mcp/case_lab_preview.py --seed 1
+```
+
+This launches the isolated scene through the owned MCP adapter. Close the game
+window when finished. Choose difficulty and notebook assistance before Start mystery.
+Use New mystery to replay a seed or Next seed for another.
+The lab save/load slot is separate from mansion saves. Direct Godot launch also
+works: `Godot --path . res://src/mystery/case_lab.tscn -- --case-seed=1`.
+In a fresh MCP connection, `launch_remake(mode="case_lab", case_seed=1)` opens it;
+the default remains `launch_remake(mode="mansion")`.
+
+Collect the foyer magnifier, question guests, inspect objects and traces, compare
+the four accounts in the notebook, then collect the identified weapon and choose
+a suspect/weapon/room reconstruction. Only connected room buttons allow travel.
+Current guest positions are distinct from their historical accounts. Innocent
+accounts are truthful throughout the stated interval in Introductory; the culprit
+may lie. Standard's accounts are all verified and accurate; combine whereabouts
+with attack-time and key-access evidence. There is no danger timer and wrong
+guesses permit another try.
+
+Two case families are implemented: Introductory (conflicting witnesses) and
+Standard (two time windows plus weapon access). Notebook assistance is independent:
+Assisted organizes facts and offers comparison prompts; Standard records raw
+observations; Classic has no automatic clue history. Classic retains internal
+investigation flags for progress and save/load but exposes no clue ledger.
+Settings persist in the separate v2 lab save; v1 lab saves remain untouched.
+This is a small deduction experiment, not a claim of broad story variety or
+measured difficulty. Play several seeds before adding more art.
+
+Checks: `python -m pytest tests/test_case_lab.py -q`, or configured Godot with
+`--headless --path . --script tools/case_lab_checks.gd`. These exercise the actual
+GDScript generator, independent validator, gameplay state, JSON round trips and
+bound UI controls over 200 cases (100 seeds per family). Human playtesting remains required.
+
+### Original game
+
 In a connected Codex session, call `get_game_environment`, `inspect_game_archive`,
 then `launch_original_game`. Wait about eight seconds for the animated title to
 finish, capture it with `capture_game_screenshot`, and send `keys=["ENTER"]` with
@@ -109,6 +150,29 @@ For a standalone end-to-end test including a real game window:
 ```powershell
 .\.venv\Scripts\python.exe tools/dos-game-mcp/smoke.py
 ```
+
+The text adapter adds `read_original_screen`, `original_command` and
+`original_move`. Movement observes each keypress and stops when the displayed
+player does not move. Text capture reads only the active visible video page and
+its BIOS page offset; it does not inspect hidden case facts or use the clipboard.
+
+For a bounded survey of up to five original cases through the official MCP client:
+
+```powershell
+.\.venv\Scripts\python.exe tools/dos-game-mcp/research_original.py --cases 3
+```
+
+This first finds and confirms pickup of the magnifying glass, then reads the
+visible map, inspects displayed objects, approaches nearby guests and samples
+initial/repeated `q` responses. Examinations use `ex` plus an object keyword. The
+survey never collects a weapon or assembles suspects; those require a solving step. It supports the two observed layouts, with explicit
+stair transfer verification in the split layout. Each case has a 400-call and
+180-second budget. It always attempts to stop its owned process. Original text,
+screenshots and reports stay in ignored `test-results/original-research/` and
+`test-results/screenshots/`. A completed survey means the planned route finished;
+it does not mean every suspect was interviewed or a mystery was solved. The
+introduction/roster fingerprint detects repeated setups without claiming unique
+solutions or deterministic original RNG control.
 
 For automated tests without launching the game:
 

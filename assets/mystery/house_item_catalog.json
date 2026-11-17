@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "source": "assets/objects/object-manifest.json",
+  "scope": "Ten distinct existing item types, including at most one kitchen knife per case. Existing approved PNGs are unchanged.",
+  "items": [
+    {
+      "name": "Kitchen knife",
+      "kind": "sharp",
+      "evidence_id": "knife",
+      "variant": "ordinary"
+    },
+    {
+      "name": "Bound estate ledger",
+      "kind": "heavy",
+      "evidence_id": "book",
+      "variant": "whole"
+    },
+    {
+      "name": "Cut-glass decanter",
+      "kind": "blunt",
+      "evidence_id": "decanter",
+      "variant": "stoppered"
+    },
+    {
+      "name": "Iron fire poker",
+      "kind": "blunt",
+      "evidence_id": "poker",
+      "variant": "straight"
+    },
+    {
+      "name": "Joiner’s hammer",
+      "kind": "blunt",
+      "evidence_id": "hammer",
+      "variant": "ordinary"
+    },
+    {
+      "name": "Stone scholar bust",
+      "kind": "heavy",
+      "evidence_id": "bust",
+      "variant": "intact"
+    },
+    {
+      "name": "Green champagne bottle",
+      "kind": "blunt",
+      "evidence_id": "bottle",
+      "variant": "sealed"
+    },
+    {
+      "name": "Oak kitchen stool",
+      "kind": "blunt",
+      "evidence_id": "stool",
+      "variant": "upright"
+    },
+    {
+      "name": "Brass hand mirror",
+      "kind": "blunt",
+      "evidence_id": "mirror",
+      "variant": "intact"
+    },
+    {
+      "name": "Wooden mallet",
+      "kind": "blunt",
+      "evidence_id": "mallet",
+      "variant": "sound"
+    }
+  ],
+  "magnifier": {
+    "name": "Magnifying glass",
+    "evidence_id": "magnifier",
+    "variant": "ordinary"
+  }
+}
