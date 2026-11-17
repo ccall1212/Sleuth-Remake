@@ -3,10 +3,10 @@ const Dialogue = preload("res://src/mystery/case_dialogue.gd")
 const Case = preload("res://src/mystery/generated_case.gd")
 const Stream = preload("res://src/mystery/seed_stream.gd")
 const SNAPSHOT_HASHES := {
-	"res://assets/dialogue/personalities.json": "7c3615f4e352f9aef27205128f03f04b36ff4e9bb7eb27b131a9965ba28bffb2",
-	"res://assets/dialogue/system.json": "172e545f1db4155811bb238fc0c5ecc23580ab9107f7c632bacf3fd894901273",
+	"res://assets/dialogue/personalities.json": "1389e03b2d8d0612495c400b00a9cb92b49c8a18cb525f969c45bdc0be3614fa",
+	"res://assets/dialogue/system.json": "6e585247aeb6f8b57e9ab25b9d9ead1b39e9c492392581d6052c0363976c05e6",
 	"res://assets/dialogue/styles.json": "f9b8e9ff6c2173d37af55d2003d7c0feaadcb6bb49bda4cc251c040f35eb27a6",
-	"res://tests/fixtures/dialogue_v2.json": "e5e8f581aac4472c48c2d6334714f98d10a558b9126ba2e2ccc6b5c8263fbdca",
+	"res://tests/fixtures/dialogue_v2.json": "7762ba66e3a2348d70184205d5ea2745bfc9cff4fcb6a4c3f2b295c30939222e",
 }
 var checks := 0
 var failures: Array[String] = []
@@ -15,6 +15,12 @@ func check(ok: bool, message: String) -> void:
 	checks += 1
 	if not ok and failures.size() < 30: failures.append(message)
 
+func lf_sha256(path: String) -> String:
+	# Line endings differ between Windows checkouts and the repository (eol=lf), so hash the LF form.
+	return FileAccess.get_file_as_string(path).replace("
+", "
+").sha256_text()
+
 func _initialize() -> void:
 	call_deferred("run")
 
@@ -22,7 +28,7 @@ func run() -> void:
 	var dialogue = Dialogue.new()
 	check(dialogue.last_error.is_empty(), "Authored dialogue loads")
 	for path in SNAPSHOT_HASHES:
-		check(FileAccess.get_sha256(path) == SNAPSHOT_HASHES[path], "Reviewed authored snapshot " + path)
+		check(lf_sha256(path) == SNAPSHOT_HASHES[path], "Reviewed authored snapshot " + path)
 	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/dialogue_v2.json"))
 	var strings := 0
 	for row in fixture.cases:
