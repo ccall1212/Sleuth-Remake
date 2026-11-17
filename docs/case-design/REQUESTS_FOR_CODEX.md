@@ -86,3 +86,7 @@ Decisions behind these are on `docs/DESIGN_DECISIONS.md`; numbers and evidence a
 20. **Refusals: 10% and silent (decided 2026-11-16).** Set `question_refusal` to 0.10 in `house_runtime_rules.json`. A refusal shows one `refusal` line from the asked guest's personality
     (now silent narration, no quoted speech, e.g. "... fusses with a cushion and does not seem to hear you."); nothing is recorded, asking again just works, and it costs no steps.
     The old quoted refusal lines no longer exist.
+21. **Placeholders to replace, and a capitalisation bug (user screenshots, 2026-11-16).** The game was showing `[PENDING_DIALOGUE:...]` for keys that now exist in `system.json`: `item_needs_glass`, `inspect_glass`, `no_item`,
+    `no_floor`, `floor_needs_glass`, `floor_inconclusive`, `drop_blocked`, `no_held_item`, `investigation_ended`, `case_closed`, `case_ended`, `truth_summary`. `item_catalog_capacity` is a developer guard, not
+    dialogue. **Item names are inserted mid-sentence, so pass them lower-case:** the screens read "the Oak kitchen stool", "the Magnifying glass" and "eyes on the Magnifying glass in your grip"; use `lcfirst`
+    on `{item}`, `{weapon}`, `{chosen_weapon}` and `{held_item}` (they are common nouns, not names). Keep title case only where an item name is shown on its own (the inspect panel title).

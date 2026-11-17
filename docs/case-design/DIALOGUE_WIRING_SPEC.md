@@ -93,6 +93,11 @@ words. The investigation's current phase colours (`house_investigation.gd`) shou
 | asking someone too far away | `too_far_to_hear` {speaker} |
 | the front door, the secret panel | `front_stoop`, `secret_panel` |
 | notebook header for the guest list | `guest_list_header` |
+| examining an item without the glass / the glass itself / nothing to examine / a hall floor / floor without glass / Hard floor nobody watches | `item_needs_glass` {item} / `inspect_glass` / `no_item` / `no_floor` / `floor_needs_glass` / `floor_inconclusive` |
+| putting down with nothing held / nowhere to put it | `no_held_item` / `drop_blocked` |
+| the closing lines of an ambush or an accusation | `investigation_ended`, `case_closed`, `case_ended`, `truth_summary` {culprit} {victim} {weapon} {true_room} |
+
+Pass item names to `{item}`, `{weapon}`, `{chosen_weapon}` and `{held_item}` **lower-case** (`lcfirst`): they sit mid-sentence ("the oak kitchen stool").
 | win screen | `win` {culprit} {victim} {moves} {rank} |
 
 `ranks` is exactly five titles, best to worst, invented for this game and **not yet confirmed by the user**. How `moves` maps to a rank is undecided: the

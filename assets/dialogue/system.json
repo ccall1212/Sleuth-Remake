@@ -143,5 +143,65 @@
     "You lay the magnifying glass down where you stand. Mind that you remember it is there.",
     "The magnifying glass goes down on the floor. It will be there when you come back for it.",
     "You put the magnifying glass down and leave it where it lies."
+  ],
+  "item_needs_glass": [
+    "You look the {item} over. Without the magnifying glass it tells you nothing.",
+    "The {item} is only an object until you have the magnifying glass in your hand.",
+    "You turn the {item} this way and that, but the naked eye finds nothing worth noting."
+  ],
+  "inspect_glass": [
+    "A good brass-rimmed lens with a clear, steady glass. It will show you what the naked eye misses.",
+    "The magnifying glass is plainly well made. Everything in the house will look a little more honest through it.",
+    "A fine magnifying glass, heavy in the palm. Hold it, and the house must account for itself."
+  ],
+  "no_item": [
+    "There is nothing here worth a closer look.",
+    "Nothing in this room catches your eye.",
+    "You find no loose object here to examine."
+  ],
+  "no_floor": [
+    "Too many feet have crossed this floor for it to tell you anything.",
+    "This floor has seen far too much traffic to keep a secret.",
+    "Whatever this floor once knew has long since been scuffed away."
+  ],
+  "floor_needs_glass": [
+    "You study the floor, but without the magnifying glass you can make nothing of it.",
+    "The boards look like any others until you have the magnifying glass in your hand.",
+    "There may be something on the floor, but you will not see it with the naked eye."
+  ],
+  "floor_inconclusive": [
+    "The floor shows nothing you can be sure of. It might read differently if someone else were studying it too.",
+    "You find no mark you would swear to. A floor tells more when other eyes are on it.",
+    "Nothing certain shows on the boards. Perhaps it needs someone else's attention to give itself away."
+  ],
+  "drop_blocked": [
+    "There is no room to put anything down here.",
+    "You cannot set anything down in this spot.",
+    "Nowhere here to leave it. Step aside and try again."
+  ],
+  "no_held_item": [
+    "Your hands are empty.",
+    "You are not carrying anything.",
+    "There is nothing in your hands to put down."
+  ],
+  "investigation_ended": [
+    "Your investigation has ended.",
+    "This is where your investigation ends.",
+    "There is nothing more you can do here."
+  ],
+  "case_closed": [
+    "The case is closed.",
+    "That settles it. The case is closed.",
+    "The matter is closed, and the house can breathe again."
+  ],
+  "case_ended": [
+    "The case ends here.",
+    "And that is the end of the case.",
+    "The case is over, and not as you had hoped."
+  ],
+  "truth_summary": [
+    "{culprit} killed {victim} in the {true_room} with the {weapon}.",
+    "The truth: {victim} died in the {true_room}, struck down by {culprit} with the {weapon}.",
+    "It was {culprit}, in the {true_room}, with the {weapon}. {victim} never had a chance."
   ]
 }

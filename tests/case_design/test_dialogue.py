@@ -263,3 +263,14 @@ def test_every_personality_corrects_the_weapon_in_six_distinct_lines():
             assert all(slot in line for slot in ("{speaker}", "{victim}", "{weapon}", "{chosen_weapon}"))
             assert line not in seen
             seen.add(line)
+
+
+def test_messages_the_game_was_showing_as_placeholders_now_exist():
+    system = DATA["system"]
+    for key in ("item_needs_glass", "inspect_glass", "no_item", "no_floor", "floor_needs_glass", "floor_inconclusive", "drop_blocked",
+                "no_held_item", "investigation_ended", "case_closed", "case_ended", "truth_summary"):
+        assert key in system and len(system[key]) >= 3, key
+    assert all("{item}" in line for line in system["item_needs_glass"])
+    assert all(all(f"{{{s}}}" in line for s in ("culprit", "victim", "weapon", "true_room")) for line in system["truth_summary"])
+    # nothing that needs the glass may promise a result, and no line may give the weapon away
+    assert not any("weapon" in line.lower() for key in ("item_needs_glass", "floor_needs_glass", "no_item", "no_floor") for line in system[key])

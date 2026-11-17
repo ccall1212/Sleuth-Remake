@@ -49,7 +49,9 @@ Single string: `guest_list_header`, `accuse_need_assembly`. Lists (at least 3 un
 Carrying and the lens (user, 2026-11-16; the player holds one item and the glass is an item): `assemble_need_item` (assembling needs a non-glass item);
 `lens_stain` {item} (at least 6; shown for the weapon and for decoys alike, so the wording must never tell them apart); `lens_clean` {item} (at least 4);
 `wound_blunt`, `wound_sharp`, `wound_heavy` (shown with the murder-room trace; never name the item); `hands_full` {item}; `take_item` {item}; `take_glass`;
-`drop_item` {item}; `drop_glass`. The old `assemble_need_weapon_found`, `assemble_need_weapon_carried`, `get_refused_not_weapon` and `carrying_limit` are gone.
+`drop_item` {item}; `drop_glass`; `drop_blocked`; `no_held_item`. Examining: `item_needs_glass` {item} (no glass in hand), `inspect_glass`, `no_item`, `no_floor` (a hall),
+`floor_needs_glass`, `floor_inconclusive` (Hard, nobody watching the floor). Endings: `investigation_ended`, `case_closed`, `case_ended`, and `truth_summary` {culprit} {victim}
+{weapon} {true_room} (the closing recap after an ambush or a final accusation). The old `assemble_need_weapon_found`, `assemble_need_weapon_carried`, `get_refused_not_weapon` and `carrying_limit` are gone.
 
 ## Text colours (`styles.json`, user decision 2026-11-16)
 
