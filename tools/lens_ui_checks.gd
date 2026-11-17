@@ -34,6 +34,7 @@ func go_item(view: Control, id: int) -> void:
 
 func run() -> void:
 	root.gui_embed_subwindows = true
+	root.size = Vector2i(960, 720) # fixed reference window so layout checks do not depend on the headless window
 	var view = View.instantiate()
 	root.add_child(view)
 	await process_frame

@@ -6,6 +6,18 @@ const RoomTexture = preload("res://src/blockout/approved_room_texture.gd")
 const GuestPreview = preload("res://src/blockout/house_guest_preview.gd")
 const ORIGIN := Vector2(20, 120)
 const MAP_SCALE := 1.45
+## The investigation view fills the window: the room art is scaled uniformly (never stretched) and centred, and the HUD overlays it.
+var overlay_layout := false
+var room_origin := ORIGIN
+var room_scale := MAP_SCALE
+
+func update_room_transform() -> void:
+	if not overlay_layout or size.x <= 0.0 or size.y <= 0.0:
+		room_origin = ORIGIN
+		room_scale = MAP_SCALE
+		return
+	room_scale = minf(size.x / 480.0, size.y / 360.0)
+	room_origin = ((size - Vector2(480.0, 360.0) * room_scale) * 0.5).floor()
 const SPEED := 100.0
 const FLOOR_COLOR := Color("263c48")
 const DOOR_COLOR := Color("57d5e0")
@@ -180,17 +192,20 @@ func room_background(screen: Dictionary) -> Texture2D:
 func _draw() -> void:
 	if font == null:
 		return
-	draw_rect(Rect2(Vector2.ZERO, size), Color("101b26"))
-	text(Vector2(22, 31), "HOUSE 02 / PAINTED WALKTHROUGH" if painted else "HOUSE 02 / WALKABLE BLOCKOUT", Color("9bb8ca"), 16)
+	draw_rect(Rect2(Vector2.ZERO, size), Color("101b26") if not overlay_layout else Color("070b10"))
+	update_room_transform()
+	if not overlay_layout:
+		text(Vector2(22, 31), "HOUSE 02 / PAINTED WALKTHROUGH" if painted else "HOUSE 02 / WALKABLE BLOCKOUT", Color("9bb8ca"), 16)
 	if model.current_id.is_empty():
 		text(Vector2(22, 80), model.error, Color.SALMON, 16)
 		return
-	text(Vector2(22, 65), str(model.screen().name), Color.WHITE, 27)
-	text(Vector2(22, 94), "WASD / arrows to walk  ·  E interact  ·  R restart", Color("9bb8ca"), 14)
-	text(Vector2(498, 48), "%d STEPS" % model.steps, ITEM_COLOR, 27)
-	text(Vector2(498, 73), "%d room entries  ·  %.0f px walked" % [model.room_entries, model.walked_pixels], Color("b9cbd6"), 13)
-	text(Vector2(498, 95), "%d logical px = 1 walking step" % int(model.data.px_per_step), Color("9bb8ca"), 13)
-	draw_set_transform(ORIGIN, 0, Vector2.ONE * MAP_SCALE)
+	if not overlay_layout:
+		text(Vector2(22, 65), str(model.screen().name), Color.WHITE, 27)
+		text(Vector2(22, 94), "WASD / arrows to walk  ·  E interact  ·  R restart", Color("9bb8ca"), 14)
+		text(Vector2(498, 48), "%d STEPS" % model.steps, ITEM_COLOR, 27)
+		text(Vector2(498, 73), "%d room entries  ·  %.0f px walked" % [model.room_entries, model.walked_pixels], Color("b9cbd6"), 13)
+		text(Vector2(498, 95), "%d logical px = 1 walking step" % int(model.data.px_per_step), Color("9bb8ca"), 13)
+	draw_set_transform(room_origin, 0, Vector2.ONE * room_scale)
 	draw_rect(Rect2(0, 0, 480, 360), Color("172630"))
 	var screen: Dictionary = model.screen()
 	var background: Texture2D = room_background(screen)
@@ -265,6 +280,7 @@ func _draw() -> void:
 		draw_circle(player, 6, Color("f6f5e9"))
 		draw_circle(player, 8, Color("efffff"), false, 1)
 	draw_set_transform(Vector2.ZERO)
+	if overlay_layout: return
 	text(Vector2(22, 675), model.notice, Color("c9dbe4"), 14)
 	text(Vector2(22, 703), "PLACEMENT PREVIEW / Saved guest spots and furniture masks / Case casting and clues come next." if painted else "BLOCKOUT ONLY  /  Door positions and floor geometry come from the layout file; no painted room art.", Color("7996a9"), 12)
 

@@ -22,7 +22,9 @@ func show_asset(actor_name: String, pose: String, asset: Dictionary, reference_h
 	atlas.region = bounds
 	texture = atlas
 	size = bounds.size * factor
-	position = Vector2(690.0 - size.x if facing == "west" else 36.0, 450.0 - size.y)
+	# Placed against the 960x720 reference frame, centred in the real viewport so it stays beside the centred dialogue.
+	var shift := (get_viewport_rect().size - Vector2(960.0, 720.0)) * 0.5
+	position = Vector2(690.0 - size.x if facing == "west" else 36.0, 450.0 - size.y) + shift.max(Vector2.ZERO)
 	speaker_name = actor_name
 	pose_id = pose
 	show()

@@ -43,6 +43,7 @@ func run() -> void:
 	if capture_ui:
 		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output))
 	root.gui_embed_subwindows = true
+	root.size = Vector2i(960, 720) # fixed reference window so layout checks do not depend on the headless window
 	var view = View.instantiate()
 	root.add_child(view)
 	await process_frame

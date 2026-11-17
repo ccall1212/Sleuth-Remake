@@ -9,6 +9,7 @@ const Investigator = preload("res://src/blockout/investigator_presentation.gd")
 const WindowPresentation = preload("res://src/presentation.gd")
 const ItemArt = preload("res://src/mystery/house_item_art.gd")
 const HouseMap = preload("res://src/blockout/house_map_panel.gd")
+const GameHud = preload("res://src/blockout/game_hud.gd")
 @export var random_on_start := false
 @export var opening_on_start := false
 var investigation = Session.new()
@@ -77,6 +78,8 @@ var victim_label: Label
 var map_panel: Control
 var developer_tools: VBoxContainer
 var killer_preview_remaining := 0
+var hud: Control
+var hud_hint_shown := {}
 var killer_preview_index := 0
 
 func _ready() -> void:
@@ -84,6 +87,7 @@ func _ready() -> void:
 	if model.current_id.is_empty():
 		return
 	sidebar.hide()
+	overlay_layout = true # the room fills the window; the HUD overlays it
 	theme = MysteryTheme.create()
 	show_preview_guests = false
 	show_guest_spots = false
@@ -93,11 +97,13 @@ func _ready() -> void:
 	DisplayServer.window_set_title("Mansion Mystery")
 	WindowPresentation.fit_window_to_screen()
 	var card := Panel.new()
+	card.visible = false # the permanent sidebar is replaced by the HUD overlay
 	card.position = Vector2(736, 112)
 	card.size = Vector2(208, 536)
 	card.add_theme_stylebox_override("panel", MysteryTheme.panel("152025", "514936", 7))
 	add_child(card)
 	var controls := VBoxContainer.new()
+	controls.visible = false # kept as hidden state holders; the HUD mirrors them
 	controls.position = Vector2(748, 126)
 	controls.size = Vector2(184, 510)
 	controls.add_theme_constant_override("separation", 6)
@@ -261,13 +267,19 @@ func _ready() -> void:
 	choices.add_child(room_choice)
 	accusation_dialog.confirmed.connect(finish_accusation)
 	feedback_text = RichTextLabel.new()
-	feedback_text.position = Vector2(22, 657)
-	feedback_text.size = Vector2(916, 34)
+	feedback_text.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	feedback_text.offset_left = 150
+	feedback_text.offset_right = -150
+	feedback_text.offset_top = -116
+	feedback_text.offset_bottom = -66
+	feedback_text.add_theme_stylebox_override("normal", MysteryTheme.panel("0a1116d8", "514936", 6))
+	feedback_text.fit_content = false
 	feedback_text.add_theme_font_size_override("normal_font_size", 13)
 	feedback_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	feedback_text.scroll_active = false
 	add_child(feedback_text)
 	warning_text = RichTextLabel.new()
+	warning_text.visible = false # the HUD shows the murderer's status
 	warning_text.position = Vector2(22, 693)
 	warning_text.size = Vector2(916, 27)
 	warning_text.add_theme_font_size_override("normal_font_size", 12)
@@ -275,6 +287,10 @@ func _ready() -> void:
 	warning_text.scroll_active = false
 	add_child(warning_text)
 	build_pose_viewer()
+	hud = GameHud.new()
+	hud.set_anchors_preset(Control.PRESET_FULL_RECT)
+	hud.action_pressed.connect(on_hud_action)
+	add_child(hud)
 	if random_on_start: seed_input.value = randi_range(0, 999999999)
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--killer-preview-count="):
@@ -296,6 +312,7 @@ func add_action(parent: VBoxContainer, title: String, callback: Callable) -> But
 	return button
 
 func start_case() -> void:
+	hud_hint_shown.clear()
 	for window in [case_menu, pause_menu, message_dialog, notebook_dialog, accusation_dialog, pose_window, map_menu]:
 		if is_instance_valid(window): window.hide()
 	if painted and (model.data.get("mode", "") != "painted_investigation" or not guest_preview.error.is_empty() or FileAccess.get_sha256(GuestPreview.PATH) != str(model.data.get("source_guest_positions_sha256", ""))):
@@ -464,6 +481,7 @@ func _physics_process(delta: float) -> void:
 	feedback_text.add_theme_color_override("default_color", feedback_color)
 	warning_text.text = investigation.runtime.warning() if investigation.runtime.phase() != "calm" else "E Interact  ·  N Notebook  ·  Tab House map  ·  Esc Menu"
 	warning_text.add_theme_color_override("default_color", phase_color())
+	update_hud(near_person, near_object, held)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo:
@@ -489,6 +507,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		interact_nearby()
 	elif event.physical_keycode == KEY_Q:
 		drop_nearby()
+	elif event.physical_keycode == KEY_F:
+		examine_floor() # identical to the Floor button
 
 func interact_nearby() -> void:
 	sync_world()
@@ -949,19 +969,62 @@ func _draw() -> void:
 	super()
 	if investigation.data.is_empty() or font == null:
 		return
-	draw_rect(Rect2(0, 0, 960, 116), Color("101b26"))
-	text(Vector2(22, 27), "M A N S I O N   M Y S T E R Y", Color("c9ab70"), 13)
-	text(Vector2(22, 64), str(model.screen().name), Color("f1e5cd"), 29)
-	text(Vector2(22, 94), "Explore the house. Listen carefully. Follow the evidence.", Color("aeb8b6"), 13)
-	var phase: String = investigation.runtime.phase()
-	var phase_color := phase_color()
-	text(Vector2(515, 48), "Murderer: " + phase if investigation.active() else str(investigation.progress.outcome).replace("_", " ").to_upper(), phase_color, 14)
 	if diagnostics:
-		text(Vector2(498, 76), "Case %s / %d steps" % [investigation.data.seed, model.steps], ITEM_COLOR, 12)
-	draw_set_transform(ORIGIN, 0, Vector2.ONE * MAP_SCALE)
+		text(Vector2(size.x - 260, 76), "Case %s / %d steps" % [investigation.data.seed, model.steps], ITEM_COLOR, 12)
+	draw_set_transform(room_origin, 0, Vector2.ONE * room_scale)
 	draw_case_population()
 	if diagnostics:
 		for item in investigation.all_items_in(model.current_id):
 			text(item.position + Vector2(8, -7), str(item.name), ITEM_COLOR, 9)
 	draw_set_transform(Vector2.ZERO)
-	draw_rect(Rect2(0, 656, 960, 64), Color("101b26"))
+
+func on_hud_action(id: String) -> void:
+	match id:
+		"interact": interact_nearby()
+		"examine": examine_nearby()
+		"take": take_nearby()
+		"drop": drop_nearby()
+		"floor": examine_floor()
+		"notebook": show_notebook()
+		"map": show_house_map()
+		"accuse": assemble_case()
+		"menu": show_pause_menu()
+
+func hud_label(button: Button) -> String:
+	return button.text.split("   ")[0].strip_edges()
+
+func update_hud(near_person: int, near_object: bool, held: Dictionary) -> void:
+	if not is_instance_valid(hud) or investigation.data.is_empty(): return
+	var live: bool = investigation.active() and not modal_open() and not ambush_pending
+	hud.set_room(str(model.screen().name))
+	hud.set_inventory(bool(investigation.progress.glass), str(held.get("name", "")))
+	var phase: String = investigation.runtime.phase()
+	hud.set_phase(phase if phase in ["calm", "suspicious", "stalking"] else "stalking", phase_color())
+	var assembled: bool = bool(investigation.progress.get("assembled", false))
+	hud.set_actions({
+		"interact": {"visible": true, "enabled": live, "label": hud_label(primary_button)},
+		"examine": {"visible": item_button.visible, "enabled": live and not item_button.disabled, "label": "Examine"},
+		"take": {"visible": take_button.visible, "enabled": live and not take_button.disabled, "label": "Take"},
+		"drop": {"visible": not held.is_empty(), "enabled": live, "label": "Drop"},
+		"floor": {"visible": bool(investigation.progress.glass), "enabled": live, "label": "Floor"},
+		"notebook": {"visible": true, "enabled": not ambush_pending, "label": "Notebook"},
+		"map": {"visible": true, "enabled": not ambush_pending, "label": "Map"},
+		"accuse": {"visible": not held.is_empty() or assembled, "enabled": live and not accuse_button.disabled, "label": "Accuse" if assembled else "Gather everyone"},
+		"menu": {"visible": true, "enabled": true, "label": "Menu"},
+	})
+	hint_for_state(near_object)
+
+func hint_once(key: String, text: String) -> void:
+	if hud_hint_shown.has(key): return
+	hud_hint_shown[key] = true
+	hud.show_hint(text)
+
+func hint_for_state(near_object: bool) -> void:
+	# Short, one-time onboarding hints; they never block input and reset with each new case.
+	if modal_open() or ambush_pending or not investigation.active(): return
+	if not bool(investigation.progress.glass):
+		if near_object and bool(current_item().get("is_glass", false)): hint_once("glass", "A magnifying glass. Take it: you keep it for the whole case.")
+		else: hint_once("find_glass", "Look for the magnifying glass. Questioning guests costs nothing.")
+	elif near_object and investigation.progress.items_seen.size() == 0: hint_once("inspect", "Examine objects and floors with the glass. Stains and wounds are clues, not proof.")
+	elif investigation.progress.heard.size() >= 2: hint_once("notebook", "Record what you learn in the notebook (N).")
+	elif bool(investigation.progress.get("assembled", false)): hint_once("accuse", "Everyone is gathered. Choose who you accuse.")
