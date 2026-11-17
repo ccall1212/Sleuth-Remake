@@ -20,7 +20,8 @@ DEFAULT_DIR = Path(__file__).resolve().parents[2] / "assets" / "dialogue"
 PERSONALITY_IDS = ("warm", "nervous", "proud", "guarded", "hot_tempered", "curious", "fragile", "calm")
 
 # line type -> (allowed slots, slots every variant must contain)
-_CONFESSION = (("speaker", "victim", "weapon", "room"), ("speaker", "victim", "weapon", "room"))
+# One confession per voice (user, 2026-11-16): a plain motive story, no stage directions. Weapon and room are optional.
+_CONFESSION = (("speaker", "victim", "weapon", "room"), ("speaker", "victim"))
 PERSONALITY_LINES: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
     "opening": (("speaker",), ("speaker",)),
     "claim_solo": (("room",), ("room",)),
@@ -31,11 +32,7 @@ PERSONALITY_LINES: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
     "refusal": (("speaker",), ("speaker",)),
     "repeat_lead": ((), ()),
     "repeat_close": ((), ()),
-    "confession_defiant": _CONFESSION,
-    "confession_remorseful": _CONFESSION,
-    "confession_triumphant": _CONFESSION,
-    "confession_furious": _CONFESSION,
-    "confession_resigned": _CONFESSION,
+    "confession": _CONFESSION,
     "ambush_locked": (("speaker", "victim", "room", "weapon"), ("speaker", "victim", "room", "weapon")),
     "ambush_grab": (("speaker", "weapon"), ("speaker", "weapon")),
     "culprit_corrects_room": (
@@ -52,7 +49,7 @@ PERSONALITY_LINES: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
 
 # Line types where talking about guilt or confessing is expected.
 GUILT_OK_TYPES = frozenset(
-    {k for k in PERSONALITY_LINES if k.startswith(("confession_", "ambush_", "culprit_corrects_"))}
+    {k for k in PERSONALITY_LINES if k.startswith(("confession", "ambush_", "culprit_corrects_"))}
 )
 
 # system key -> (allowed slots, minimum variants; 0 means "a single string")

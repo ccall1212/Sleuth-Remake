@@ -26,7 +26,7 @@ Wording for questioning, confessions and narrator text lives in two JSON files u
 | `refusal` | **speaker** | **Silent narration only** (user, 2026-11-16): the game never shows the question, so nobody is quoted. One short sentence (at most 100 characters), no hint to ask again (the game lets you retry), no body-part phrasing, no alibi, never final. The rate is 10% of questions. |
 | `repeat_lead` | none | Starts a repeated answer. Ends with a comma. |
 | `repeat_close` | none | Closes a repeated answer. One short sentence. |
-| `confession_defiant`, `_remorseful`, `_triumphant`, `_furious`, `_resigned` | **speaker, victim, weapon, room** | Full block, narration then speech. |
+| `confession` | **speaker, victim, weapon, room, alibi** | One short story per voice (2026-11-16): admits the lie in `alibi`, gives a motive, the room and the weapon. Up to 700 characters. `alibi` is rendered by the game from the culprit's own claim: "the Library with Dana" or "the Library on my own". |
 | `ambush_locked` | **speaker, victim, room, weapon** | Murderer locks the door, explains, threatens. |
 | `ambush_grab` | **speaker, weapon** | Murderer snatches the carried weapon and strikes. |
 | `culprit_corrects_room` | **speaker, victim, weapon, room, chosen_room** | Accused correctly, wrong room. |

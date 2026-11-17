@@ -56,15 +56,13 @@ Per-personality lines use the stream `dialogue/<suspect>/<kind>/<n>` (kind and n
 | Guest refuses (22%) | `refusal` | No alibi, never recorded; asking again can succeed |
 | Culprit ambushes, player not carrying the weapon | `ambush_locked` | slots speaker, victim, room, weapon |
 | Culprit ambushes, player carries the weapon | `ambush_grab` | slots speaker, weapon |
-| Accusation: right person and room | `confession_<tone>` | tone below |
+| Accusation: right person and room | `confession` | slots speaker, victim, weapon, room, **alibi** (the culprit's false claim, e.g. "the Library with Dana" / "the Library on my own"). One story per voice; the tone is built into each personality's lines |
 | Accusation: right person, wrong room | `culprit_corrects_room` | adds `chosen_room` |
 | Accusation: wrong person, right room | `culprit_corrects_person` | the culprit stands up |
 | Accusation: right person and room, wrong item in hand | `culprit_corrects_weapon` | slots `weapon` (true) and `chosen_weapon` (carried); new 2026-11-16 |
 | Accusation: both wrong | system `accuse_wrong_both` | slots culprit, victim, true_room, chosen_room |
 
-Confession tone by personality, a **proposal for the user to confirm**: warm, fragile, nervous → `remorseful`; proud, curious → `triumphant`;
-hot_tempered → `furious`; guarded, calm → `resigned`; `defiant` is available as an alternate for any personality. Keep the tone a pure function of
-the personality so it never signals guilt before the accusation.
+The five confession tones were replaced on 2026-11-16 by a single `confession` type per voice, written as a short story (the lie, a motive, the room and weapon). No tone mapping is needed.
 
 ## 4b. Colours
 

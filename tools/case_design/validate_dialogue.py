@@ -25,6 +25,7 @@ REQUIRED_PHRASES = {
     "warning_stalking": "The murderer is stalking you",
 }
 HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
+LONG_TYPES = {"confession": (500, 560)}   # (max length, max with worst-case slots): the payoff is a short story
 MAX_EXPANDED = 270   # after slots are filled with worst-case values (names the player types, long rooms)
 SLOT_WIDTH = {"weapon": 24, "rank": 24, "moves": 5}
 DEFAULT_SLOT_WIDTH = 16
@@ -48,7 +49,7 @@ def _strings(value) -> list[str]:
     return [value] if isinstance(value, str) else list(value)
 
 
-def _check_text(where: str, text: str, allowed: tuple[str, ...], required: tuple[str, ...]) -> list[str]:
+def _check_text(where: str, text: str, allowed: tuple[str, ...], required: tuple[str, ...], kind: str = "") -> list[str]:
     errors = []
     used = dlg.slots_in(text)
     for name in sorted(set(used) - set(allowed)):
@@ -58,11 +59,12 @@ def _check_text(where: str, text: str, allowed: tuple[str, ...], required: tuple
             errors.append(f"{where}: must contain {{{name}}}: {text!r}")
     if "{" in dlg._SLOT.sub("", text) or "}" in dlg._SLOT.sub("", text):
         errors.append(f"{where}: stray brace: {text!r}")
-    if len(text) > MAX_LENGTH:
-        errors.append(f"{where}: {len(text)} characters, max {MAX_LENGTH}: {text!r}")
+    max_len, max_expanded = LONG_TYPES.get(kind, (MAX_LENGTH, MAX_EXPANDED))
+    if len(text) > max_len:
+        errors.append(f"{where}: {len(text)} characters, max {max_len}: {text!r}")
     expanded = dlg._SLOT.sub(lambda m: "x" * SLOT_WIDTH.get(m.group(1), DEFAULT_SLOT_WIDTH), text)
-    if len(expanded) > MAX_EXPANDED:
-        errors.append(f"{where}: {len(expanded)} characters with worst-case slots, max {MAX_EXPANDED}: {text!r}")
+    if len(expanded) > max_expanded:
+        errors.append(f"{where}: {len(expanded)} characters with worst-case slots, max {max_expanded}: {text!r}")
     lowered = text.lower()
     for phrase in BANNED_PHRASES:
         if phrase.lower() in lowered:
@@ -124,7 +126,7 @@ def _check_personalities(personalities: dict) -> list[str]:
                 errors.append(f"{pid}.{kind}: {len(variants)} variants, need {MIN_VARIANTS}")
             for number, text in enumerate(variants):
                 where = f"{pid}.{kind}[{number}]"
-                errors += _check_text(where, text, allowed, required)
+                errors += _check_text(where, text, allowed, required, kind)
                 errors += _check_personality_line(where, kind, text)
     return errors
 

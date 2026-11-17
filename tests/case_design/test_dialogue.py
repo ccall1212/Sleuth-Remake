@@ -81,8 +81,8 @@ def test_validator_flags_bad_slots_and_braces():
     assert _bad(lambda d: d["personalities"]["warm"]["opening"].__setitem__(0, "{speaker} frowns, {room}"))
     assert _bad(lambda d: d["personalities"]["warm"]["claim_solo"].__setitem__(0, "Alone all evening in the library."))
     assert _bad(lambda d: d["personalities"]["warm"]["repeat_lead"].__setitem__(0, "As I said, {oops"))
-    assert _bad(lambda d: d["personalities"]["warm"]["confession_defiant"].__setitem__(
-        0, '{speaker} says, "Fine, I did it. {victim} died in the {room}."'))  # no {weapon}
+    assert _bad(lambda d: d["personalities"]["warm"]["confession"].__setitem__(
+        0, '{speaker} says, "Fine, I did it. {victim} died."'.replace('{victim}', '{oops}')))  # unknown slot
 
 
 def test_validator_flags_banned_guilt_long_and_duplicate_lines():
@@ -202,7 +202,7 @@ def test_validator_flags_lines_too_long_once_slots_are_filled():
     filler = "x" * 170
     line = "{speaker} says: " + filler + " {victim} {room} {weapon} {speaker} {victim}."
     assert len(line) <= validate_dialogue.MAX_LENGTH
-    errs = _bad(lambda d: d["personalities"]["warm"]["confession_defiant"].__setitem__(0, line))
+    errs = _bad(lambda d: d["personalities"]["warm"]["claim_solo"].__setitem__(0, line))
     assert any("worst-case slots" in e for e in errs)
 
 
