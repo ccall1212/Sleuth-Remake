@@ -1,5 +1,7 @@
 class_name JournalNotebook
 extends Control
+
+const CaseDialogue = preload("res://src/mystery/case_dialogue.gd")
 ## Player-owned investigation journal UI. Writes only to JournalState; never reads case truth.
 const StateScript = preload("res://src/mystery/journal_state.gd")
 const JournalTheme = preload("res://src/blockout/mystery_theme.gd")
@@ -241,7 +243,7 @@ func _build_suspects() -> void:
 		var name_text := str(suspect)
 		var parts: Array = _card(Portrait.bust(name_text), true)
 		var column: VBoxContainer = parts[1]
-		column.add_child(_label(name_text, 18))
+		column.add_child(_label(CaseDialogue.shown(name_text), 18))
 		column.add_child(_flag_grid("suspect", name_text, SUSPECT_LABELS, 3))
 		column.add_child(_note_edit("suspect", name_text))
 		suspect_box.add_child(parts[0])

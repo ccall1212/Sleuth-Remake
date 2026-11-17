@@ -6,3 +6,4 @@
 layout_path = "res://assets/maps/house-02.investigation.layout.json"
 random_on_start = true
 opening_on_start = true
+title_on_start = true

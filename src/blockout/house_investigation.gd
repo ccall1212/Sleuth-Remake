@@ -12,11 +12,13 @@ const HouseMap = preload("res://src/blockout/house_map_panel.gd")
 const GameHud = preload("res://src/blockout/game_hud.gd")
 const AccusationCards = preload("res://src/blockout/accusation_cards.gd")
 const CastPortrait = preload("res://src/blockout/cast_portrait.gd")
+const TitleScreen = preload("res://src/blockout/title_screen.gd")
 const MurdererZoom = preload("res://src/blockout/murderer_zoom.gd")
 const JournalState = preload("res://src/mystery/journal_state.gd")
 const JournalNotebook = preload("res://src/blockout/journal_notebook.gd")
 @export var random_on_start := false
 @export var opening_on_start := false
+@export var title_on_start := false
 var investigation = Session.new()
 var actor_art = ActorArt.new()
 var seed_input: SpinBox
@@ -83,6 +85,9 @@ var developer_tools: VBoxContainer
 var killer_preview_remaining := 0
 var hud: Control
 var zoom: Control
+var title_menu: Control
+var title_open := false
+var pending_names: Array = [] # personalized names for the session (7 entries) or empty for the default cast
 var ambush_zoom_enabled := DisplayServer.get_name() != "headless" # headless checks keep the instant dialogue unless a test turns the zoom on
 var ambush_zoom_overrides := {}
 var hud_hint_shown := {}
@@ -196,6 +201,7 @@ func _ready() -> void:
 	menu_actions.add_theme_constant_override("separation", 10)
 	pause_menu.add_child(menu_actions)
 	add_action(menu_actions, "New mystery…", func(): pause_menu.hide(); case_menu.popup_centered())
+	add_action(menu_actions, "Title screen", func(): pause_menu.hide(); open_title())
 	add_action(menu_actions, "Fullscreen / windowed", WindowPresentation.toggle_fullscreen)
 	developer_tools = VBoxContainer.new()
 	developer_tools.visible = false
@@ -286,13 +292,22 @@ func _ready() -> void:
 	add_child(hud)
 	zoom = MurdererZoom.new()
 	add_child(zoom) # last child: the full-screen reveal draws above the HUD
+	title_menu = TitleScreen.new()
+	title_menu.hide()
+	add_child(title_menu)
+	title_menu.start_requested.connect(on_title_start)
+	title_menu.setup_opened.connect(preview_title_cast)
+	title_menu.cast_reroll_requested.connect(preview_title_cast)
+	title_menu.quit_requested.connect(func(): get_tree().quit())
 	if random_on_start: seed_input.value = randi_range(0, 999999999)
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--killer-preview-count="):
 			killer_preview_remaining = clampi(int(arg.trim_prefix("--killer-preview-count=")), 0, 20)
 		if arg == "--random-case": seed_input.value = randi_range(0, 999999999)
 		if arg.begins_with("--case-seed="): seed_input.value = int(arg.trim_prefix("--case-seed="))
+	if title_on_start: title_open = true # the first case is only a backdrop until the player begins
 	start_case()
+	if title_on_start: open_title()
 	if model.screens.has(review_screen):
 		model.inspect_screen(review_screen)
 		investigation.enter_screen(model.current_id)
@@ -327,7 +342,7 @@ func start_case() -> void:
 			feedback = "Could not prepare the requested killer playtest case."
 			return
 		seed_input.value = matching_seed
-	if not investigation.begin(int(seed_input.value), model.data, difficulty):
+	if not investigation.begin(int(seed_input.value), model.data, difficulty, pending_names):
 		feedback = "This layout cannot host a six-suspect case."
 		return
 	journal_state.reset() # player notes belong to one case
@@ -361,7 +376,7 @@ func start_case() -> void:
 	feedback_color = Color("dbe6ec")
 	seed_input.get_line_edit().release_focus()
 	queue_redraw()
-	if opening_on_start: show_case_opening()
+	if opening_on_start and not title_open: show_case_opening()
 
 func show_case_opening() -> void:
 	# The briefing receives only public victim identity, never the solution.
@@ -380,7 +395,7 @@ func show_case_opening() -> void:
 	message_dialog.popup_centered(Vector2i(700, 330))
 
 func modal_open() -> bool:
-	return ambush_pending or (is_instance_valid(message_dialog) and (message_dialog.visible or notebook_dialog.visible or accusation_dialog.visible or pose_window.visible or case_menu.visible or pause_menu.visible or (is_instance_valid(map_menu) and map_menu.visible) or (is_instance_valid(item_choice) and item_choice.get_popup().visible)))
+	return title_open or ambush_pending or (is_instance_valid(message_dialog) and (message_dialog.visible or notebook_dialog.visible or accusation_dialog.visible or pose_window.visible or case_menu.visible or pause_menu.visible or (is_instance_valid(map_menu) and map_menu.visible) or (is_instance_valid(item_choice) and item_choice.get_popup().visible)))
 
 func _process(delta: float) -> void:
 	reveal.advance(delta)
@@ -445,7 +460,7 @@ func _physics_process(delta: float) -> void:
 		investigator_room = model.current_id
 	else:
 		investigator.update(model.position, delta if not modal_open() else 0.0)
-	victim_label.text = "Victim: " + str(investigation.data.cast[-1])
+	victim_label.text = "Victim: " + investigation.display(str(investigation.data.cast[-1]))
 	var held: Dictionary = investigation.held_item()
 	status_label.text = "Magnifying glass: %s\nHolding: %s\nAccounts: %d / 6" % ["found" if investigation.progress.glass else "not found", str(held.name) if not held.is_empty() else "nothing", investigation.progress.heard.size()]
 	refresh_item_choice()
@@ -456,7 +471,7 @@ func _physics_process(delta: float) -> void:
 		context_label.text = "Everyone is gathered. Look around, then make your accusation. Exits are locked."
 	primary_button.text = "Interact   E"
 	if near_person >= 0:
-		var guest_name: String = investigation.data.cast[near_person]
+		var guest_name: String = investigation.display(str(investigation.data.cast[near_person]))
 		context_label.text = guest_name + (" is studying the floor." if investigation.runtime.guests[near_person].staring else " is nearby.")
 		primary_button.text = "Speak   E"
 	elif near_object:
@@ -673,7 +688,7 @@ func ask_nearby() -> void:
 			var presentation := guest_presentation(person, true)
 			# No stage-direction narration before answers (user, 2026-11-17): the voice tag in the dialogue is enough.
 			say_case(response, true)
-			message_dialog.title = "Questioning " + str(investigation.data.cast[person])
+			message_dialog.title = "Questioning " + investigation.display(str(investigation.data.cast[person]))
 			show_guest_portrait(person, presentation)
 		else:
 			present_ending({"message": response}, "standing_threaten_south")
@@ -996,7 +1011,7 @@ func draw_case_population() -> void:
 			var floor_at: Vector2 = guest.get("interaction_at", at)
 			draw_circle(floor_at + Vector2(0, 6), 3, ITEM_COLOR, false, 1)
 		if diagnostics or guest.staring or model.position.distance_to(at) < 50:
-			var caption := str(investigation.data.cast[person]) + (" · studying the floor" if guest.staring else "")
+			var caption := investigation.display(str(investigation.data.cast[person])) + (" · studying the floor" if guest.staring else "")
 			var width := font.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, 9).x
 			var caption_at := at + Vector2(10, 12)
 			if caption_at.x + width > 476: caption_at.x = maxf(4, at.x - width - 10)
@@ -1071,3 +1086,32 @@ func hint_for_state(near_object: bool) -> void:
 	elif near_object and investigation.progress.items_seen.size() == 0: hint_once("inspect", "Examine objects and floors with the glass. Stains and wounds are clues, not proof.")
 	elif investigation.progress.heard.size() >= 2: hint_once("notebook", "Record what you learn in the notebook (N).")
 	elif bool(investigation.progress.get("assembled", false)): hint_once("accuse", "Everyone is gathered. Choose who you accuse.")
+
+func open_title() -> void:
+	title_open = true
+	if is_instance_valid(hud): hud.hide()
+	for screen in model.data.screens:
+		var texture := room_background(screen)
+		if texture != null:
+			title_menu.set_background(texture)
+			break
+	title_menu.show()
+	title_menu.open()
+
+func on_title_start(config: Dictionary) -> void:
+	pending_names = Array(config.get("custom_names", []))
+	var order: Array = ["normal", "easy", "hard"]
+	difficulty_input.select(maxi(0, order.find(str(config.get("difficulty", "normal")))))
+	random_case.button_pressed = true
+	var chosen_seed := int(config.get("seed", -1))
+	seed_input.value = chosen_seed if chosen_seed >= 0 else randi_range(0, 999999999) # the seed whose cast the player just saw
+	title_menu.hide()
+	title_open = false
+	if is_instance_valid(hud): hud.show()
+	start_case()
+
+func preview_title_cast() -> void:
+	# The cast comes from the seed, so the title can show exactly who the player is about to name.
+	var seed_value := randi_range(0, 999999999)
+	var preview: Dictionary = Session.Case.generate(seed_value, 6, "normal", Session.Case.POOL, [], Session.blocked_rooms(model.data))
+	title_menu.set_cast_preview(preview.cast, seed_value)

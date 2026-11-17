@@ -21,7 +21,7 @@ func ambush_run(view: Control, carrying: bool, skip_midway: bool) -> void:
 	check(view.ambush_pending and not view.message_dialog.visible, "Approach starts first; dialogue waits")
 	view._process(2.0)  # the approach is over: the zoom begins
 	check(view.zoom.playing and view.ambush_pending and not view.message_dialog.visible, "Zoom plays before any dialogue (%s)" % key)
-	check(view.zoom.get_parent() == view and view.zoom.get_index() == view.get_child_count() - 1, "Zoom is a separate full-screen layer above the HUD")
+	check(view.zoom.get_parent() == view and view.zoom.get_index() > view.hud.get_index(), "Zoom is a separate full-screen layer above the HUD")
 	var before: Vector2 = view.guest_portrait.size
 	if skip_midway:
 		view.zoom.skip()

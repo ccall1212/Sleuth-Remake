@@ -52,7 +52,7 @@ func truth_summary() -> String:
 		return "[PENDING_DIALOGUE:truth_summary]"
 	return dialogue.system_line("truth_summary", truth_slots(), data, "truth")
 
-func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
+func begin(seed_value: int, layout: Dictionary, difficulty := "normal", custom_names: Array = []) -> bool:
 	runtime = null
 	case_layout = layout
 	refusal_counts.clear()
@@ -81,6 +81,11 @@ func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
 	data = Case.generate(seed_value, 6, difficulty, Case.POOL, [], no_item_rooms)
 	if data.is_empty() or room_ids.size() != data.rooms.size():
 		return false
+	# Personalized names change only the words shown; identities (art, poses, pronouns, truth) are untouched.
+	Dialogue.aliases = {}
+	if custom_names.size() == data.cast.size():
+		for index in range(data.cast.size()):
+			Dialogue.aliases[str(data.cast[index])] = str(custom_names[index])
 	for index in range(room_ids.size()):
 		binding[room_ids[index]] = index
 	progress = {"room": -1, "glass": false, "heard": {}, "clean_floors": [], "clear_items": [],
@@ -101,6 +106,9 @@ static func blocked_rooms(layout: Dictionary) -> Array:
 	for index in range(ids.size()):
 		if not ids[index].has("item_slot"): blocked.append(index)
 	return blocked
+
+func display(actor_name: String) -> String:
+	return Dialogue.shown(actor_name)
 
 func has_item_slot(screen_id: String) -> bool:
 	for screen in case_layout.get("screens", []):
@@ -414,13 +422,13 @@ func accuse(person: int, room := -1) -> Dictionary:
 	return {"result": result, "message": text, "message_key": key, "message_group": group}
 
 func notebook() -> String:
-	var lines: Array[String] = ["Victim: " + str(data.cast[-1]), "Carrying: " + str(held_item().get("name", "nothing")), "", "ACCOUNTS HEARD"]
+	var lines: Array[String] = ["Victim: " + display(str(data.cast[-1])), "Carrying: " + str(held_item().get("name", "nothing")), "", "ACCOUNTS HEARD"]
 	for person in range(data.claims.size()):
 		var key := str(person)
 		if not progress.heard.has(key): continue
 		var claim: Dictionary = progress.heard[key]
-		var company := "alone" if claim.partner == null else "with " + str(data.cast[int(claim.partner)])
-		lines.append("%s: %s, %s" % [data.cast[person], room_names[int(claim.room)], company])
+		var company := "alone" if claim.partner == null else "with " + display(str(data.cast[int(claim.partner)]))
+		lines.append("%s: %s, %s" % [display(str(data.cast[person])), room_names[int(claim.room)], company])
 	if progress.heard.is_empty(): lines.append("No accounts recorded yet.")
 	lines.append("\nPHYSICAL OBSERVATIONS")
 	if progress.crime_room != null: lines.append("Crime traces: " + str(room_names[progress.crime_room]))

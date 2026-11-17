@@ -4,6 +4,13 @@ extends RefCounted
 const Pronouns = preload("res://src/mystery/character_pronouns.gd")
 const Stream = preload("res://src/mystery/seed_stream.gd")
 const BASE := "res://assets/dialogue/"
+## Personalized names (title screen option B). The case keeps the generated character identities for art, poses and pronouns;
+## only the words shown for a person change. identity name -> typed name; empty for the default cast.
+static var aliases: Dictionary = {}
+const NAME_SLOTS := ["speaker", "victim", "culprit", "partner", "other", "accused"]
+static func shown(actor_name: String) -> String:
+	return str(aliases.get(actor_name, actor_name))
+
 var data: Dictionary = {}
 var refusal_variants: Dictionary = {}
 var last_error := ""
@@ -40,7 +47,9 @@ func render(template: String, slots: Dictionary) -> String:
 		var name: String = matched.get_string(1)
 		if not slots.has(name):
 			return fail("Missing dialogue slot: " + name)
-		result += template.substr(cursor, matched.get_start() - cursor) + str(slots[name])
+		var value := str(slots[name])
+		if name in NAME_SLOTS: value = shown(value)
+		result += template.substr(cursor, matched.get_start() - cursor) + value
 		cursor = matched.get_end()
 	return result + template.substr(cursor)
 

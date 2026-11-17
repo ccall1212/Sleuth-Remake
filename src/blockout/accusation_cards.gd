@@ -2,6 +2,7 @@ extends ConfirmationDialog
 ## Pick-the-suspect accusation dialog: portrait cards, no dropdown, two-step confirmation.
 const MysteryTheme = preload("res://src/blockout/mystery_theme.gd")
 const CastPortrait = preload("res://src/blockout/cast_portrait.gd")
+const CaseDialogue = preload("res://src/mystery/case_dialogue.gd")
 signal suspect_confirmed(index: int)
 const COLUMNS := 3
 var cards: Array[PanelContainer] = []
@@ -94,7 +95,7 @@ func _make_card(i: int) -> PanelContainer:
 	if tex == null:
 		var initial := Label.new()
 		initial.name = "initial"
-		initial.text = str(names[i]).left(1).to_upper()
+		initial.text = CaseDialogue.shown(str(names[i])).left(1).to_upper()
 		initial.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		initial.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		initial.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -104,7 +105,7 @@ func _make_card(i: int) -> PanelContainer:
 		tex_holder.add_child(initial)
 	var label := Label.new()
 	label.name = "name_label"
-	label.text = str(names[i])
+	label.text = CaseDialogue.shown(str(names[i]))
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.add_theme_font_size_override("font_size", 16)
 	label.mouse_filter = Control.MOUSE_FILTER_PASS
@@ -185,7 +186,7 @@ func _handle_key(event: InputEventKey, source: Control) -> void:
 
 func request_accuse() -> void:
 	if _selected < 0: return
-	_confirm.dialog_text = "Accuse %s? Are you sure? This cannot be undone." % str(names[_selected])
+	_confirm.dialog_text = "Accuse %s? Are you sure? This cannot be undone." % CaseDialogue.shown(str(names[_selected]))
 	if is_inside_tree() and DisplayServer.get_name() != "headless": _confirm.popup_centered()
 
 func _on_confirm_yes() -> void:
