@@ -203,14 +203,5 @@
     "{culprit} killed {victim} in the {true_room} with the {weapon}.",
     "The truth: {victim} died in the {true_room}, struck down by {culprit} with the {weapon}.",
     "It was {culprit}, in the {true_room}, with the {weapon}. {victim} never had a chance."
-  ],
-  "guest_answer_seated": "{speaker_Subject} answers from {speaker_possessive} seat without changing position.",
-  "guest_answer_waking": "{speaker_Subject} wakes and answers from {speaker_possessive} seat.",
-  "guest_answer_inspecting": "{speaker_Subject} answers without turning from {speaker_possessive} inspection.",
-  "guest_answer_downcast": "Without lifting {speaker_possessive} downcast eyes, {speaker_subject} answers.",
-  "guest_answer_nervous": "Keeping {speaker_possessive} eyes lowered, {speaker_subject} answers quietly.",
-  "guest_answer_floor": "Keeping {speaker_possessive} eyes on the floor, {speaker_subject} answers.",
-  "guest_turn": "{speaker_Subject} turns to address you.",
-  "guest_answer": "{speaker_Subject} answers you.",
-  "case_opening": "A murder has been committed in the mansion.\n\n{victim} is dead. {victim_Subject} was killed by someone still inside this house. Six guests remain, and one of them is the murderer.\n\nFind where it happened, identify the murder weapon and work out whose account cannot be true.\n\nQuestion guests as you search for the magnifying glass. Once you find it, use it to examine floors and items around the house."
+  ]
 }

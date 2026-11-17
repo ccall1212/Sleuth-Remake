@@ -1,0 +1,1037 @@
+{
+ "schema_version": 1,
+ "id": "house-01",
+ "blockout": true,
+ "description": "Blockout for the larger house: plain rectangles, no art. Doors and walkable floor are authoritative; backgrounds are painted afterwards to match.",
+ "screen_size": [
+  480,
+  360
+ ],
+ "px_per_step": 24,
+ "supports_suspects": [
+  6
+ ],
+ "start": "hall_1",
+ "secret": {
+  "screen": "secret_passage",
+  "entrance_room": "library",
+  "exit_room": "sewing",
+  "panel_wall": "north",
+  "panel_columns": [
+   60,
+   110,
+   160,
+   210,
+   260,
+   310,
+   360
+  ]
+ },
+ "screens": [
+  {
+   "id": "hall_1",
+   "name": "Main hall",
+   "role": "hall",
+   "orientation": "ew",
+   "floor": 0,
+   "walk_regions": [
+    [
+     16,
+     170,
+     448,
+     50
+    ]
+   ],
+   "obstacles": [],
+   "portals": [
+    {
+     "id": "hall_1--library",
+     "at": [
+      90,
+      170
+     ],
+     "target": "library",
+     "arrival": [
+      240,
+      300
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--study",
+     "at": [
+      240,
+      170
+     ],
+     "target": "study",
+     "arrival": [
+      240,
+      300
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--ballroom",
+     "at": [
+      390,
+      170
+     ],
+     "target": "ballroom",
+     "arrival": [
+      240,
+      300
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--kitchen",
+     "at": [
+      150,
+      222
+     ],
+     "target": "kitchen",
+     "arrival": [
+      240,
+      190
+     ],
+     "facing": [
+      0,
+      1
+     ],
+     "side": "south",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--parlor",
+     "at": [
+      330,
+      222
+     ],
+     "target": "parlor",
+     "arrival": [
+      240,
+      190
+     ],
+     "facing": [
+      0,
+      1
+     ],
+     "side": "south",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--hall_2",
+     "at": [
+      462,
+      195
+     ],
+     "target": "hall_2",
+     "arrival": [
+      240,
+      50
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    },
+    {
+     "id": "hall_1--front_door",
+     "at": [
+      18,
+      195
+     ],
+     "target": "hall_1",
+     "arrival": [
+      30,
+      195
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "front_door"
+    }
+   ],
+   "spawn": [
+    240,
+    195
+   ],
+   "guest_spots": [
+    [
+     90,
+     195
+    ],
+    [
+     240,
+     195
+    ],
+    [
+     390,
+     195
+    ]
+   ]
+  },
+  {
+   "id": "hall_2",
+   "name": "East hall (north-south)",
+   "role": "hall",
+   "orientation": "ns",
+   "floor": 0,
+   "walk_regions": [
+    [
+     190,
+     24,
+     100,
+     312
+    ]
+   ],
+   "obstacles": [],
+   "portals": [
+    {
+     "id": "hall_2--bedroom",
+     "at": [
+      190,
+      110
+     ],
+     "target": "bedroom",
+     "arrival": [
+      440,
+      240
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--bathroom",
+     "at": [
+      290,
+      110
+     ],
+     "target": "bathroom",
+     "arrival": [
+      40,
+      240
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--dining",
+     "at": [
+      190,
+      250
+     ],
+     "target": "dining",
+     "arrival": [
+      440,
+      240
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--sewing",
+     "at": [
+      290,
+      250
+     ],
+     "target": "sewing",
+     "arrival": [
+      40,
+      240
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    },
+    {
+     "id": "hall_2--hall_1",
+     "at": [
+      240,
+      26
+     ],
+     "target": "hall_1",
+     "arrival": [
+      450,
+      195
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    180
+   ],
+   "guest_spots": [
+    [
+     240,
+     80
+    ],
+    [
+     240,
+     180
+    ],
+    [
+     240,
+     290
+    ]
+   ]
+  },
+  {
+   "id": "library",
+   "name": "Library",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     40,
+     156,
+     120,
+     26
+    ],
+    [
+     300,
+     156,
+     110,
+     26
+    ],
+    [
+     200,
+     250,
+     90,
+     36
+    ]
+   ],
+   "portals": [
+    {
+     "id": "library--hall_1",
+     "at": [
+      240,
+      326
+     ],
+     "target": "hall_1",
+     "arrival": [
+      90,
+      186
+     ],
+     "facing": [
+      0,
+      1
+     ],
+     "side": "south",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    235
+   ],
+   "item_slot": [
+    370,
+    250
+   ],
+   "guest_spots": [
+    [
+     110,
+     230
+    ],
+    [
+     330,
+     205
+    ],
+    [
+     90,
+     290
+    ]
+   ]
+  },
+  {
+   "id": "study",
+   "name": "Study",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     300,
+     156,
+     120,
+     30
+    ],
+    [
+     40,
+     156,
+     100,
+     26
+    ],
+    [
+     90,
+     250,
+     120,
+     40
+    ]
+   ],
+   "portals": [
+    {
+     "id": "study--hall_1",
+     "at": [
+      240,
+      326
+     ],
+     "target": "hall_1",
+     "arrival": [
+      240,
+      186
+     ],
+     "facing": [
+      0,
+      1
+     ],
+     "side": "south",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    235
+   ],
+   "item_slot": [
+    400,
+    285
+   ],
+   "guest_spots": [
+    [
+     150,
+     215
+    ],
+    [
+     350,
+     225
+    ],
+    [
+     250,
+     295
+    ]
+   ]
+  },
+  {
+   "id": "ballroom",
+   "name": "Ballroom",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     28,
+     156,
+     90,
+     50
+    ],
+    [
+     360,
+     156,
+     90,
+     50
+    ]
+   ],
+   "portals": [
+    {
+     "id": "ballroom--hall_1",
+     "at": [
+      240,
+      326
+     ],
+     "target": "hall_1",
+     "arrival": [
+      390,
+      186
+     ],
+     "facing": [
+      0,
+      1
+     ],
+     "side": "south",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    235
+   ],
+   "item_slot": [
+    235,
+    215
+   ],
+   "guest_spots": [
+    [
+     120,
+     260
+    ],
+    [
+     340,
+     260
+    ],
+    [
+     235,
+     300
+    ]
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     36,
+     160,
+     150,
+     30
+    ],
+    [
+     300,
+     160,
+     130,
+     30
+    ],
+    [
+     200,
+     260,
+     100,
+     40
+    ]
+   ],
+   "portals": [
+    {
+     "id": "kitchen--hall_1",
+     "at": [
+      240,
+      152
+     ],
+     "target": "hall_1",
+     "arrival": [
+      150,
+      208
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    420,
+    295
+   ],
+   "guest_spots": [
+    [
+     120,
+     230
+    ],
+    [
+     360,
+     215
+    ],
+    [
+     80,
+     295
+    ]
+   ]
+  },
+  {
+   "id": "parlor",
+   "name": "Parlor",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     40,
+     160,
+     160,
+     40
+    ],
+    [
+     330,
+     165,
+     90,
+     34
+    ],
+    [
+     190,
+     270,
+     110,
+     34
+    ]
+   ],
+   "portals": [
+    {
+     "id": "parlor--hall_1",
+     "at": [
+      240,
+      152
+     ],
+     "target": "hall_1",
+     "arrival": [
+      330,
+      208
+     ],
+     "facing": [
+      0,
+      -1
+     ],
+     "side": "north",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    410,
+    295
+   ],
+   "guest_spots": [
+    [
+     140,
+     235
+    ],
+    [
+     370,
+     240
+    ],
+    [
+     80,
+     295
+    ]
+   ]
+  },
+  {
+   "id": "bedroom",
+   "name": "Bedroom",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     36,
+     156,
+     130,
+     56
+    ],
+    [
+     330,
+     156,
+     100,
+     30
+    ]
+   ],
+   "portals": [
+    {
+     "id": "bedroom--hall_2",
+     "at": [
+      462,
+      240
+     ],
+     "target": "hall_2",
+     "arrival": [
+      206,
+      110
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    405,
+    275
+   ],
+   "guest_spots": [
+    [
+     200,
+     250
+    ],
+    [
+     350,
+     235
+    ],
+    [
+     90,
+     290
+    ]
+   ]
+  },
+  {
+   "id": "bathroom",
+   "name": "Bathroom",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     40,
+     160,
+     150,
+     56
+    ],
+    [
+     330,
+     165,
+     80,
+     30
+    ]
+   ],
+   "portals": [
+    {
+     "id": "bathroom--hall_2",
+     "at": [
+      18,
+      240
+     ],
+     "target": "hall_2",
+     "arrival": [
+      274,
+      110
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    415,
+    290
+   ],
+   "guest_spots": [
+    [
+     140,
+     270
+    ],
+    [
+     330,
+     250
+    ],
+    [
+     250,
+     300
+    ]
+   ]
+  },
+  {
+   "id": "dining",
+   "name": "Dining room",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     150,
+     195,
+     180,
+     40
+    ],
+    [
+     36,
+     160,
+     90,
+     30
+    ]
+   ],
+   "portals": [
+    {
+     "id": "dining--hall_2",
+     "at": [
+      462,
+      240
+     ],
+     "target": "hall_2",
+     "arrival": [
+      206,
+      250
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    420,
+    290
+   ],
+   "guest_spots": [
+    [
+     110,
+     250
+    ],
+    [
+     370,
+     250
+    ],
+    [
+     250,
+     300
+    ]
+   ]
+  },
+  {
+   "id": "sewing",
+   "name": "Sewing room",
+   "role": "room",
+   "floor": 0,
+   "walk_regions": [
+    [
+     24,
+     150,
+     432,
+     172
+    ]
+   ],
+   "obstacles": [
+    [
+     40,
+     160,
+     100,
+     30
+    ],
+    [
+     300,
+     165,
+     110,
+     34
+    ],
+    [
+     190,
+     270,
+     100,
+     30
+    ]
+   ],
+   "portals": [
+    {
+     "id": "sewing--hall_2",
+     "at": [
+      18,
+      240
+     ],
+     "target": "hall_2",
+     "arrival": [
+      274,
+      250
+     ],
+     "facing": [
+      -1,
+      0
+     ],
+     "side": "west",
+     "kind": "door"
+    }
+   ],
+   "spawn": [
+    240,
+    255
+   ],
+   "item_slot": [
+    150,
+    295
+   ],
+   "guest_spots": [
+    [
+     250,
+     230
+    ],
+    [
+     380,
+     280
+    ],
+    [
+     80,
+     240
+    ]
+   ]
+  },
+  {
+   "id": "secret_passage",
+   "name": "Secret passage",
+   "role": "secret",
+   "floor": 0,
+   "walk_regions": [
+    [
+     16,
+     150,
+     448,
+     60
+    ]
+   ],
+   "obstacles": [],
+   "portals": [
+    {
+     "id": "secret_passage--sewing",
+     "at": [
+      462,
+      180
+     ],
+     "target": "sewing",
+     "arrival": [
+      60,
+      250
+     ],
+     "facing": [
+      1,
+      0
+     ],
+     "side": "east",
+     "kind": "secret_exit"
+    }
+   ],
+   "spawn": [
+    40,
+    180
+   ],
+   "item_slot": [
+    420,
+    180
+   ],
+   "guest_spots": [
+    [
+     120,
+     180
+    ],
+    [
+     240,
+     180
+    ],
+    [
+     360,
+     180
+    ]
+   ]
+  }
+ ]
+}

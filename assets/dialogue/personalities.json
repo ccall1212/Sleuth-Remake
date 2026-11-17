@@ -28,7 +28,7 @@
       "Poor {victim}. I can scarcely believe it, and I keep expecting a knock at the door.",
       "I'll be honest, {victim} was never easy company, but nobody deserves a fate like this.",
       "I hardly knew {victim} well enough to grieve properly, and I feel dreadful about that.",
-      "{victim} was always kind to me, in a distant sort of way, and now I can never thank {victim_object} for it.",
+      "{victim} was always kind to me, in a distant sort of way, and now I can never thank them for it.",
       "{victim} could be a trial at dinner, I admit it, but I never wished any harm.",
       "I keep thinking of {victim} laughing at supper. It seems such a short while ago."
     ],
@@ -74,10 +74,10 @@
     ],
     "confession": [
       "{speaker} says, \"Well, dear, you're right. It was me. {victim} spent years borrowing money from me, and tonight I found out every penny had gone to someone else. I kept smiling and listening, and then I stopped being able to smile.\"",
-      "{speaker} says, \"Yes, it was me. {victim} wanted to sell this house, my home of forty years, to pay a debt {victim_subject} never told anyone about. I asked nicely, three times. I'm sorry, dear, but I wasn't going to ask a fourth.\"",
-      "{speaker} says, \"I did it, and I'd like to say it was in a rage, but it wasn't. I thought about it for weeks. {victim} was cruel to everyone who loved {victim_object}, and I got tired of watching people get hurt and calling it manners.\"",
-      "{speaker} says, \"It was me. I loved {victim} like family, and then I learned {victim_subject}'d been telling people I was losing my mind so {victim_subject} could take over my affairs. Do I look like I'm losing my mind, dear? I planned all of it.\"",
-      "{speaker} says, \"Oh, I did it. I'd never done anything like it, you understand. {victim} cheated at everything: cards, business, friendship. Tonight {victim_subject} cheated someone who couldn't afford it. I thought somebody ought to stop {victim_object}, and nobody else was going to.\"",
+      "{speaker} says, \"Yes, it was me. {victim} wanted to sell this house, my home of forty years, to pay a debt they never told anyone about. I asked nicely, three times. I'm sorry, dear, but I wasn't going to ask a fourth.\"",
+      "{speaker} says, \"I did it, and I'd like to say it was in a rage, but it wasn't. I thought about it for weeks. {victim} was cruel to everyone who loved them, and I got tired of watching people get hurt and calling it manners.\"",
+      "{speaker} says, \"It was me. I loved {victim} like family, and then I learned they'd been telling people I was losing my mind so they could take over my affairs. Do I look like I'm losing my mind, dear? I planned all of it.\"",
+      "{speaker} says, \"Oh, I did it. I'd never done anything like it, you understand. {victim} cheated at everything: cards, business, friendship. Tonight they cheated someone who couldn't afford it. I thought somebody ought to stop them, and nobody else was going to.\"",
       "{speaker} says, \"It was me, dear. {victim} was the only one who knew what I did when I was young, and had started to hint at it over dinner. I kept that quiet for fifty years. I wasn't going to start paying for it now.\""
     ],
     "ambush_locked": [
@@ -105,9 +105,9 @@
       "{speaker} stands, shaking a little. \"You've named the wrong room, and I'd hate for you to leave it so. {victim} died in the {room}, by the {weapon}, and it was my doing. Not the {chosen_room}.\""
     ],
     "culprit_corrects_person": [
-      "{speaker} stands, looking stricken. \"Please don't blame {accused_object}, {accused_subject} has done nothing. It was the {weapon} in the {room}, and {victim} died by my hand. It was me.\"",
+      "{speaker} stands, looking stricken. \"Please don't blame them, they've done nothing. It was the {weapon} in the {room}, and {victim} died by my hand. It was me.\"",
       "{speaker} rises, trembling but clear. \"You've the right room but the wrong person, dear. I took the {weapon} to {victim} in the {room}. I'll not let anyone else carry it.\"",
-      "{speaker} stands and speaks gently. \"Oh, stop, stop. It's the {room}, yes, but it wasn't {accused_object}. I used the {weapon} on {victim}. I should have said so sooner.\"",
+      "{speaker} stands and speaks gently. \"Oh, stop, stop. It's the {room}, yes, but it wasn't them. I used the {weapon} on {victim}. I should have said so sooner.\"",
       "{speaker} gets up and steps between you and the person you named. \"No, dear, you've got the wrong one. {victim} died by the {weapon} in the {room}, and I'm the one who did it.\"",
       "{speaker} pushes back a chair and says warmly, \"That poor soul has had no part in this, you know. The {weapon}, the {room}, {victim}, all of it mine.\"",
       "{speaker} stands, eyes bright. \"I can't sit and watch the wrong person pay. It was my hand, the {weapon}, the {room}, and {victim} is dead because of me.\""
@@ -147,7 +147,7 @@
       "Alone, in the {room}, all evening. I counted the clock chimes, I mean I think I counted them, so I'm fairly sure."
     ],
     "claim_pair": [
-      "I was with {partner}, in the {room}. The whole evening, I mean, we never left, did we? Ask {partner}, ask {partner_object}.",
+      "I was with {partner}, in the {room}. The whole evening, I mean, we never left, did we? Ask {partner}, ask them.",
       "{partner} and I were together in the {room}, all evening, I mean the whole of it. I'm sure about that, quite sure.",
       "Well, I mean, I was in the {room} with {partner}. All evening. Together. We talked about, oh, nothing, I'm afraid.",
       "I was in the {room}, with {partner}, the entire evening... I mean we were together, never apart, not once.",
@@ -203,10 +203,10 @@
       "I wish I had more to say."
     ],
     "confession": [
-      "{speaker} says, \"I... okay. It was me. {victim} was blackmailing me. For months I paid and paid and {victim_subject} just wanted more. I couldn't sleep, I couldn't eat, I thought if {victim_subject} was just gone it would stop. It didn't stop. I still can't breathe.\"",
+      "{speaker} says, \"I... okay. It was me. {victim} was blackmailing me. For months I paid and paid and they just wanted more. I couldn't sleep, I couldn't eat, I thought if they were just gone it would stop. It didn't stop. I still can't breathe.\"",
       "{speaker} says, \"I didn't plan it! I swear I didn't. {victim} laughed at me in front of everyone, in the {room}, and something just... snapped, and then it was done. I've never even been in a fight. I don't know who that was.\"",
-      "{speaker} says, \"It was me. I'm sorry, I'm sorry. {victim} was going to tell everyone I took the money, and I did, I did take it, but I was going to put it back. I only needed more time. {victim_Subject} wouldn't give me any.\"",
-      "{speaker} says, \"Yes. Me. {victim} was going to take the one thing I'd ever been good at and put {victim_possessive} own name on it. I asked {victim_object} not to. I begged. {victim_Subject} said nobody would ever believe me over {victim_object}. So.\"",
+      "{speaker} says, \"It was me. I'm sorry, I'm sorry. {victim} was going to tell everyone I took the money, and I did, I did take it, but I was going to put it back. I only needed more time. They wouldn't give me any.\"",
+      "{speaker} says, \"Yes. Me. {victim} was going to take the one thing I'd ever been good at and put their own name on it. I asked them not to. I begged. They said nobody would ever believe me over them. So.\"",
       "{speaker} says, \"I know how this looks. It was me. {victim} found out something I did years ago and kept bringing it up, little hints, smiling, like it was a game. I couldn't take being afraid every single day.\"",
       "{speaker} says, \"I did it. I really did. I keep thinking I'll wake up. {victim} told me I was nothing, that I'd always be nothing, and I just wanted the voice to stop. It's quiet now, isn't it? I hate that it's quiet.\""
     ],
@@ -235,11 +235,11 @@
       "{speaker} bursts out, \"It wasn't the {chosen_room}! I mean, honestly, it was the {room}! The {weapon}, {victim}, I'm the one, so stop looking there!\""
     ],
     "culprit_corrects_person": [
-      "{speaker} leaps to feet. \"Not {accused_object}! I mean, you've the {room}, but not the person! I used the {weapon} on {victim}. It was me, so leave {accused_object} alone!\"",
-      "{speaker} stands, trembling. \"Stop, please, I mean it wasn't {accused_object}. The {room}, yes, but the {weapon} was in my hand. {victim} was my doing.\"",
+      "{speaker} leaps to feet. \"Not them! I mean, you've the {room}, but not the person! I used the {weapon} on {victim}. It was me, so leave them alone!\"",
+      "{speaker} stands, trembling. \"Stop, please, I mean it wasn't them. The {room}, yes, but the {weapon} was in my hand. {victim} was my doing.\"",
       "{speaker} half rises, stammering. \"You've the, the room right, but, I mean, the wrong person. {victim} died by the {weapon} in the {room}. I did it.\"",
-      "{speaker} pushes back a chair and blurts, \"I can't, I mean, I can't let {accused_object} take the blame. It was the {weapon}, in the {room}, on {victim}. Me, all me.\"",
-      "{speaker} stands, panting. \"{accused_Subject} didn't do it! I mean I did! The {room}, the {weapon}, {victim}. I can't watch this any more.\"",
+      "{speaker} pushes back a chair and blurts, \"I can't, I mean, I can't let them take the blame. It was the {weapon}, in the {room}, on {victim}. Me, all me.\"",
+      "{speaker} stands, panting. \"They didn't do it! I mean I did! The {room}, the {weapon}, {victim}. I can't watch this any more.\"",
       "{speaker} rises with a sob. \"It's the wrong person, I mean the right room but the wrong person. I took the {weapon} to {victim} in the {room}. It's me.\""
     ]
   },
@@ -327,9 +327,9 @@
     "confession": [
       "{speaker} says, \"Of course it was me. {victim} humiliated me in front of the entire county and expected me to smile about it. People like that do not get to keep their reputations at the expense of mine. I settled the account.\"",
       "{speaker} says, \"Yes. I did it, and I will not pretend to feel guilty. {victim} was a parasite who lived off better people. I removed a stain. My only regret is that it took me so long.\"",
-      "{speaker} says, \"It was me. {victim} stole my work, my ideas, and put a name on the plans that was not mine, and took the credit in front of everyone who matters. I gave {victim_object} every chance to confess. {victim_Subject} preferred to laugh.\"",
+      "{speaker} says, \"It was me. {victim} stole my work, my ideas, and put a name on the plans that was not mine, and took the credit in front of everyone who matters. I gave them every chance to confess. They preferred to laugh.\"",
       "{speaker} says, \"Naturally I did it. {victim} threatened to expose my finances to my family. Do you know what it means to build a position over thirty years and watch one petty person nearly ruin it? I acted.\"",
-      "{speaker} says, \"I did. And I did it well, whatever you think. {victim} thought {victim_subject} was cleverer than me. It was delicious, watching {victim_object} realise {victim_subject} was not.\"",
+      "{speaker} says, \"I did. And I did it well, whatever you think. {victim} thought they were cleverer than me. It was delicious, watching them realise they were not.\"",
       "{speaker} says, \"It was me. {victim} was about to marry into my family for money, and I would not allow it. I do not apologise for protecting my own name. Someone had to be the adult.\""
     ],
     "ambush_locked": [
@@ -410,7 +410,7 @@
       "Try {other}. Ask about {victim}. See how that answer goes.",
       "{other} was in a mood this evening. Ask why.",
       "I'd look at {other}. I won't say more than that.",
-      "{other} knows more about {victim} than {other_subject} lets on. Ask.",
+      "{other} knows more about {victim} than they let on. Ask.",
       "Talk to {other}. Watch the hands.",
       "Not me. {other}, perhaps. {victim} owed {other} something."
     ],
@@ -447,9 +447,9 @@
       "That's the lot."
     ],
     "confession": [
-      "{speaker} says, \"Yeah. It was me. {victim} and I go back a long way, and {victim_subject} ruined something for me years ago. I waited. That's all. I didn't enjoy it and I'm not going to make a speech.\"",
-      "{speaker} says, \"Me. {victim} was going to talk. I can't have that. I met {victim_object} in the {room} and made sure {victim_subject} didn't. I won't explain more than that, and you won't make me.\"",
-      "{speaker} says, \"It was me. {victim} owed me, and not just money. I gave {victim_object} a long time to settle it. {victim_Subject} kept treating it like a joke. It's not a joke now.\"",
+      "{speaker} says, \"Yeah. It was me. {victim} and I go back a long way, and they ruined something for me years ago. I waited. That's all. I didn't enjoy it and I'm not going to make a speech.\"",
+      "{speaker} says, \"Me. {victim} was going to talk. I can't have that. I met them in the {room} and made sure they didn't. I won't explain more than that, and you won't make me.\"",
+      "{speaker} says, \"It was me. {victim} owed me, and not just money. I gave them a long time to settle it. They kept treating it like a joke. It's not a joke now.\"",
       "{speaker} says, \"I did it. Nobody asked what {victim} did to me, so I never said. It was bad enough. I'll leave it there.\"",
       "{speaker} says, \"Yes. {victim} was selling people out for money, and one of them was someone I care about. I could've gone to the police, but I know how that goes. So I handled it.\"",
       "{speaker} says, \"It was me. There's no clever story. {victim} was in my way, I'd had enough, and I did something about it. If that's not interesting enough for you, I can't help that.\""
@@ -479,12 +479,12 @@
       "{speaker} rises, voice flat. \"Wrong room, inspector. Not the {chosen_room}. The {room}. I held the {weapon}. {victim} never left it alive.\""
     ],
     "culprit_corrects_person": [
-      "{speaker} stands. \"Wrong person. Right room. The {weapon}, the {room}, {victim}. I did it. Leave {accused_object} be.\"",
-      "{speaker} rises and says, \"Stop. Not {accused_object}. I used the {weapon} on {victim} in the {room}. Me.\"",
+      "{speaker} stands. \"Wrong person. Right room. The {weapon}, the {room}, {victim}. I did it. Leave them be.\"",
+      "{speaker} rises and says, \"Stop. Not them. I used the {weapon} on {victim} in the {room}. Me.\"",
       "{speaker} pushes a chair back. \"You've the room right. Not the person. {victim}. The {weapon}. The {room}. Mine.\"",
-      "{speaker} gets up, jaw set. \"Leave {accused_object}. I did it. The {room}, the {weapon}, {victim}. That's the truth.\"",
+      "{speaker} gets up, jaw set. \"Leave them. I did it. The {room}, the {weapon}, {victim}. That's the truth.\"",
       "{speaker} stands slowly. \"Wrong one. I took the {weapon} to {victim} in the {room}. Don't hang this on someone else.\"",
-      "{speaker} rises, voice flat. \"Not {accused_object}. Me. {victim}, the {room}, the {weapon}. Now you know.\""
+      "{speaker} rises, voice flat. \"Not them. Me. {victim}, the {room}, the {weapon}. Now you know.\""
     ]
   },
   "hot_tempered": {
@@ -570,11 +570,11 @@
     ],
     "confession": [
       "{speaker} says, \"Yes, it was me! {victim} cheated on me and then had the gall to lie to my face about it for a year! A YEAR! I'd do it again, so don't expect me to say sorry!\"",
-      "{speaker} says, \"I did it! {victim} took everything I had and laughed about it at dinner! You want to blame someone for losing {speaker_possessive} temper? Blame whoever kept pushing!\"",
-      "{speaker} says, \"It was me, and I'm done pretending! {victim} told everyone I was a failure, every chance {victim_subject} got, for years! I finally decided I'd had enough of being everyone's joke!\"",
-      "{speaker} says, \"Fine! I killed {victim_object}! {victim} was going to take my family home away, after everything I did for {victim_object}! I begged and {victim_subject} shrugged! Nobody gets to shrug at me like that!\"",
+      "{speaker} says, \"I did it! {victim} took everything I had and laughed about it at dinner! You want to blame someone for losing their temper? Blame whoever kept pushing!\"",
+      "{speaker} says, \"It was me, and I'm done pretending! {victim} told everyone I was a failure, every chance they got, for years! I finally decided I'd had enough of being everyone's joke!\"",
+      "{speaker} says, \"Fine! I killed them! {victim} was going to take my family home away, after everything I did for them! I begged and they shrugged! Nobody gets to shrug at me like that!\"",
       "{speaker} says, \"I did it, and I'm not sorry! {victim} was a liar and a cheat and everyone in this house knew it, but none of you had the guts to say a word! I did what you all wanted to do!\"",
-      "{speaker} says, \"Of course it was me! {victim} slapped me in front of the whole party and said I'd never amount to anything! I said I'd make {victim_object} pay, and I always keep my word!\""
+      "{speaker} says, \"Of course it was me! {victim} slapped me in front of the whole party and said I'd never amount to anything! I said I'd make them pay, and I always keep my word!\""
     ],
     "ambush_locked": [
       "{speaker} storms in, slams the door and turns the key. \"Yes, I did it! {victim}, the {weapon}, the {room}! And you're going to stop nosing about, one way or another!\"",
@@ -601,7 +601,7 @@
       "{speaker} jumps to feet, furious. \"The {chosen_room}! Ha! Typical! It was the {room}, and the {weapon}, and {victim} never stood a chance!\""
     ],
     "culprit_corrects_person": [
-      "{speaker} jumps up. \"Leave {accused_object} alone! You've the {room} right, so listen, I took the {weapon} to {victim}! It was me!\"",
+      "{speaker} jumps up. \"Leave them alone! You've the {room} right, so listen, I took the {weapon} to {victim}! It was me!\"",
       "{speaker} slams back a chair. \"Wrong person, you blockhead! The {weapon}, the {room}, {victim}, it was all mine!\"",
       "{speaker} stands, red in the face. \"I won't have an innocent blamed for my work! It was the {room}, and the {weapon}, and {victim} is dead by my hand!\"",
       "{speaker} rises with a roar. \"Stop it! I did it! The {room}, the {weapon}, {victim}! Blame me and be done!\"",
@@ -694,9 +694,9 @@
       "{speaker} says, \"Yes, it was me. I'll tell you honestly, I'd wondered for years what it would be like, and tonight everything lined up. {victim} was simply there. I expected to feel something enormous, and mostly I felt interested.\"",
       "{speaker} says, \"It was me. {victim} found out about an experiment of mine, a rather unkind one, and meant to report it. I couldn't let that stand. I should be horrified, I know. Mostly I'm astonished at how easy it was.\"",
       "{speaker} says, \"I did it. {victim} had a secret I'd spent years trying to uncover, and when I finally found it, I realised I was the only one who knew. That is an enormous amount of power, you see. I wanted to know what I'd do with it.\"",
-      "{speaker} says, \"It was me. {victim} had cheated everyone in this house at some point, and I wanted to see what would happen if somebody finally made {victim_object} stop. Now I know. It was not nearly as satisfying as I'd hoped.\"",
-      "{speaker} says, \"Yes, I did it. I'd thought about it for a long time, in the abstract. {victim} was a good candidate: nobody would miss {victim_object} very much. I realise how that sounds. It is how it was.\"",
-      "{speaker} says, \"It was me. I read {victim}'s letters, and learned {victim_subject} was planning to take away everything I'd built. I could have argued. I preferred to see if I could win a different way. That was a mistake.\""
+      "{speaker} says, \"It was me. {victim} had cheated everyone in this house at some point, and I wanted to see what would happen if somebody finally made them stop. Now I know. It was not nearly as satisfying as I'd hoped.\"",
+      "{speaker} says, \"Yes, I did it. I'd thought about it for a long time, in the abstract. {victim} was a good candidate: nobody would miss them very much. I realise how that sounds. It is how it was.\"",
+      "{speaker} says, \"It was me. I read {victim}'s letters, and learned they were planning to take away everything I'd built. I could have argued. I preferred to see if I could win a different way. That was a mistake.\""
     ],
     "ambush_locked": [
       "{speaker} slips in, locks the door and tilts the head. \"Curious, aren't you? Then know this: I killed {victim} with the {weapon} in the {room}. And what do you suppose happens now?\"",
@@ -723,11 +723,11 @@
       "{speaker} rises, almost eager. \"The wrong room, I'm afraid. Do you want to know the right one? The {room}, not the {chosen_room}. {victim}, the {weapon}, me.\""
     ],
     "culprit_corrects_person": [
-      "{speaker} stands. \"Why blame {accused_object}? I'm the one. The {room} is right, but I used the {weapon} on {victim}. You see how it fits?\"",
+      "{speaker} stands. \"Why blame them? I'm the one. The {room} is right, but I used the {weapon} on {victim}. You see how it fits?\"",
       "{speaker} rises, curious to the last. \"Do you know, you've the right room and the wrong person? I took the {weapon} to {victim} in the {room}. Me.\"",
-      "{speaker} pushes back a chair. \"{accused_Subject} didn't do it. How could {accused_subject}? I did, with the {weapon}, in the {room}, to {victim}.\"",
-      "{speaker} gets up with a frown. \"You've pointed the wrong way. The {room}, yes. The {weapon}, yes. {victim}, yes. But it was me, not {accused_object}.\"",
-      "{speaker} stands, tapping a finger. \"I can't let you leave it half right. The {room}, the {weapon}, {victim}. And me. Not {accused_object}.\"",
+      "{speaker} pushes back a chair. \"They didn't do it. How could they? I did, with the {weapon}, in the {room}, to {victim}.\"",
+      "{speaker} gets up with a frown. \"You've pointed the wrong way. The {room}, yes. The {weapon}, yes. {victim}, yes. But it was me, not them.\"",
+      "{speaker} stands, tapping a finger. \"I can't let you leave it half right. The {room}, the {weapon}, {victim}. And me. Not them.\"",
       "{speaker} rises, almost apologetic. \"A shame to spoil your reasoning. You've the room right, but the hand was mine. The {weapon} in the {room}, {victim}, all me.\""
     ]
   },
@@ -813,11 +813,11 @@
       "Thank you for being patient with me."
     ],
     "confession": [
-      "{speaker} says, \"It was me. {victim} was the only person who ever made me feel like I was worth anything, and then I found out {victim_subject}'d been laughing at me with everyone else. I couldn't stand it. I didn't know what else to do.\"",
+      "{speaker} says, \"It was me. {victim} was the only person who ever made me feel like I was worth anything, and then I found out they'd been laughing at me with everyone else. I couldn't stand it. I didn't know what else to do.\"",
       "{speaker} says, \"I did it. {victim} cheated on me with someone I trusted, and I didn't find out until tonight. I wanted it to stop hurting. It hasn't. It's worse.\"",
-      "{speaker} says, \"It was me. {victim} was going to leave and take everything with {victim_object}, and I'd already lost so much. I thought if {victim_subject} couldn't go, {victim_subject} couldn't leave me. I know how that sounds. I know.\"",
-      "{speaker} says, \"Yes. I'm so sorry. {victim} told me I'd never be anything without {victim_object}, and I believed it for years. Tonight I just couldn't believe it anymore, and it all came out wrong.\"",
-      "{speaker} says, \"I did it. I've been tired for such a long time. {victim} knew I wasn't well and used it, over and over, to get what {victim_subject} wanted. I wanted it to end, and I picked the wrong ending.\"",
+      "{speaker} says, \"It was me. {victim} was going to leave and take everything with them, and I'd already lost so much. I thought if they couldn't go, they couldn't leave me. I know how that sounds. I know.\"",
+      "{speaker} says, \"Yes. I'm so sorry. {victim} told me I'd never be anything without them, and I believed it for years. Tonight I just couldn't believe it anymore, and it all came out wrong.\"",
+      "{speaker} says, \"I did it. I've been tired for such a long time. {victim} knew I wasn't well and used it, over and over, to get what they wanted. I wanted it to end, and I picked the wrong ending.\"",
       "{speaker} says, \"It was me. {victim} promised me everything, for years, and then gave it to someone else. I sat with that for weeks, and tonight I couldn't sit with it anymore.\""
     ],
     "ambush_locked": [
@@ -845,12 +845,12 @@
       "{speaker} stands slowly, face wet. \"Not the {chosen_room}, I'm afraid. The {room}. I used the {weapon} on {victim} there. I'd rather you knew.\""
     ],
     "culprit_corrects_person": [
-      "{speaker} stands, shaking. \"Please don't blame {accused_object}. It was the {weapon}, in the {room}, on {victim}. I did it. It was me.\"",
+      "{speaker} stands, shaking. \"Please don't blame them. It was the {weapon}, in the {room}, on {victim}. I did it. It was me.\"",
       "{speaker} rises, tears falling. \"You have the {room} right, but not the person. I took the {weapon} to {victim}. Please stop.\"",
-      "{speaker} gets up, whispering. \"Not {accused_object}. Never {accused_object}. The {room}, the {weapon}, {victim}. All my doing.\"",
-      "{speaker} stands, voice breaking. \"I can't let someone else carry this. I killed {victim} in the {room} with the {weapon}. Let {accused_object} go.\"",
+      "{speaker} gets up, whispering. \"Not them. Never them. The {room}, the {weapon}, {victim}. All my doing.\"",
+      "{speaker} stands, voice breaking. \"I can't let someone else carry this. I killed {victim} in the {room} with the {weapon}. Let them go.\"",
       "{speaker} half-rises, trembling. \"It's the wrong person. I'm sorry. I used the {weapon} on {victim} in the {room}, and it was me.\"",
-      "{speaker} stands slowly, face wet. \"No, not {accused_object}. I did it. The {room}, {victim}, the {weapon}. I'm so tired of hiding it.\""
+      "{speaker} stands slowly, face wet. \"No, not them. I did it. The {room}, {victim}, the {weapon}. I'm so tired of hiding it.\""
     ]
   },
   "calm": {
@@ -935,11 +935,11 @@
       "Please feel free to confirm it with anyone."
     ],
     "confession": [
-      "{speaker} says, \"Yes, it was me. I thought about it carefully. {victim} had ruined three families I know of, and the law was never going to touch {victim_object}. I decided that waiting any longer was a choice too.\"",
-      "{speaker} says, \"It was me. {victim} had been cheating me for years, small amounts, so I wouldn't notice. I noticed. I gave {victim_object} a chance to explain. The explanation was a laugh.\"",
+      "{speaker} says, \"Yes, it was me. I thought about it carefully. {victim} had ruined three families I know of, and the law was never going to touch them. I decided that waiting any longer was a choice too.\"",
+      "{speaker} says, \"It was me. {victim} had been cheating me for years, small amounts, so I wouldn't notice. I noticed. I gave them a chance to explain. The explanation was a laugh.\"",
       "{speaker} says, \"I did it, in the {room}. I will not claim I was provoked. {victim} was simply in the way of something I wanted, and I decided that was sufficient. I find that it was.\"",
       "{speaker} says, \"It was me. {victim} was going to destroy someone I love, and not out of anger, out of boredom. I considered every alternative I could think of. There weren't many.\"",
-      "{speaker} says, \"Yes. {victim} betrayed me, and then asked me for help. I think {victim_subject} believed I would forgive {victim_object}, because I always had. That was {victim_possessive} mistake.\"",
+      "{speaker} says, \"Yes. {victim} betrayed me, and then asked me for help. I think they believed I would forgive them, because I always had. That was their mistake.\"",
       "{speaker} says, \"It was me. I agreed to keep a secret for {victim}, and the price of keeping it grew every year. Tonight I stopped paying. I would do it again, and I'd like you to know I'm sorry about that.\""
     ],
     "ambush_locked": [
@@ -968,7 +968,7 @@
     ],
     "culprit_corrects_person": [
       "{speaker} rises. \"I regret to interrupt, but you have the wrong person. The room is correct. It was the {room}, the {weapon}, and {victim}, and it was I.\"",
-      "{speaker} stands, composed. \"That person did nothing of the kind. I used the {weapon} on {victim} in the {room}. Do release {accused_object}.\"",
+      "{speaker} stands, composed. \"That person did nothing of the kind. I used the {weapon} on {victim} in the {room}. Do release them.\"",
       "{speaker} sets down a cup. \"A small matter of accuracy: the {room}, yes; the person, no. {victim} died at my hand, with the {weapon}.\"",
       "{speaker} gets up, calm as ever. \"I could not let that stand. It was I. The {weapon}, the {room}, {victim}. Let the record show it.\"",
       "{speaker} stands with a courteous nod. \"You are very nearly right, inspector, but you have the wrong person. I took the {weapon} to {victim} in the {room}.\"",

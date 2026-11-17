@@ -1,0 +1,3249 @@
+{
+ "_meta": {
+  "version": 2,
+  "pick_stream": "dialogue/<suspect>/<ask>",
+  "cases": 36
+ },
+ "cases": [
+  {
+   "seed": 0,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Carolyn",
+      "partner": "Justin"
+     },
+     "first": "Matt says smoothly, \"Justin and I were together in the Pantry all evening. Please feel free to compare our accounts. Danny and I were acquaintances of long standing, which is to say we tolerated one another.\"",
+     "repeat": "\"The answer has not changed, I was in the Pantry with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Justin",
+      "partner": "Sarah Jo"
+     },
+     "first": "Carolyn says smoothly, \"I was in the Bedroom with Sarah Jo the entire evening. We discussed nothing of note, which I find is the usual way. I regret Danny's death more than I expected. One does not appreciate a person until the chair is empty.\"",
+     "repeat": "\"To restate the matter, in the Bedroom, with Sarah Jo, the whole evening. I trust our accounts will agree, as the facts do. Please feel free to confirm it with anyone.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Isabelle",
+      "partner": "Matt"
+     },
+     "first": "Justin says with a smile, \"I sat with Matt in the Pantry all evening long, and we talked until the whole dreadful business began. I'm sure it's nothing, but Isabelle did not look at all well tonight, and Danny had been so unkind to Isabelle lately.\"",
+     "repeat": "\"Of course, dear, I'll say it again, Matt and I were together in the Pantry all evening. Ask away, we'll both tell you the same. I'd tell you more if there were more to tell.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Library",
+      "victim": "Danny",
+      "other": "Jessica",
+      "partner": "Jessica"
+     },
+     "first": "Isabelle answers brightly, \"Jessica and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"Why, I told you already, I was with Jessica in the Library the whole evening. You'll want to know what we discussed, won't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Library",
+      "victim": "Danny",
+      "other": "Sarah Jo"
+     },
+     "first": "Jessica says coolly, \"My evening was spent alone in the Library, inspector, in pursuits you would hardly follow. I did not stir from it. Danny had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"To repeat what I said for your benefit, I passed the whole evening alone in the Library. A person of my standing does not account for every minute, but I shall oblige you. I trust that settles it.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Matt",
+      "partner": "Carolyn"
+     },
+     "first": "Sarah Jo says after a pause, \"Together with Carolyn in the Bedroom all evening. Check it if you must. Don't take the short answers personally. It's how I am.\"",
+     "repeat": "\"Again, then, Carolyn and I, the Bedroom, together all evening. That's it. That's the lot.\""
+    }
+   ]
+  },
+  {
+   "seed": 0,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Carolyn",
+      "partner": "Justin"
+     },
+     "first": "Matt says smoothly, \"Justin and I were together in the Pantry all evening. Please feel free to compare our accounts. Danny and I were acquaintances of long standing, which is to say we tolerated one another.\"",
+     "repeat": "\"The answer has not changed, I was in the Pantry with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Justin",
+      "partner": "Sarah Jo"
+     },
+     "first": "Carolyn says smoothly, \"I was in the Bedroom with Sarah Jo the entire evening. We discussed nothing of note, which I find is the usual way. I regret Danny's death more than I expected. One does not appreciate a person until the chair is empty.\"",
+     "repeat": "\"To restate the matter, in the Bedroom, with Sarah Jo, the whole evening. I trust our accounts will agree, as the facts do. Please feel free to confirm it with anyone.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Isabelle",
+      "partner": "Matt"
+     },
+     "first": "Justin says with a smile, \"I sat with Matt in the Pantry all evening long, and we talked until the whole dreadful business began. I'm sure it's nothing, but Isabelle did not look at all well tonight, and Danny had been so unkind to Isabelle lately.\"",
+     "repeat": "\"Of course, dear, I'll say it again, Matt and I were together in the Pantry all evening. Ask away, we'll both tell you the same. I'd tell you more if there were more to tell.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Library",
+      "victim": "Danny",
+      "other": "Jessica",
+      "partner": "Jessica"
+     },
+     "first": "Isabelle answers brightly, \"Jessica and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"Why, I told you already, I was with Jessica in the Library the whole evening. You'll want to know what we discussed, won't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Library",
+      "victim": "Danny",
+      "other": "Sarah Jo"
+     },
+     "first": "Jessica says coolly, \"My evening was spent alone in the Library, inspector, in pursuits you would hardly follow. I did not stir from it. Danny had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"To repeat what I said for your benefit, I passed the whole evening alone in the Library. A person of my standing does not account for every minute, but I shall oblige you. I trust that settles it.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Matt",
+      "partner": "Carolyn"
+     },
+     "first": "Sarah Jo says after a pause, \"Together with Carolyn in the Bedroom all evening. Check it if you must. Don't take the short answers personally. It's how I am.\"",
+     "repeat": "\"Again, then, Carolyn and I, the Bedroom, together all evening. That's it. That's the lot.\""
+    }
+   ]
+  },
+  {
+   "seed": 0,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Carolyn",
+      "partner": "Justin"
+     },
+     "first": "Matt says smoothly, \"Justin and I were together in the Pantry all evening. Please feel free to compare our accounts. Danny and I were acquaintances of long standing, which is to say we tolerated one another.\"",
+     "repeat": "\"The answer has not changed, I was in the Pantry with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Justin",
+      "partner": "Sarah Jo"
+     },
+     "first": "Carolyn says smoothly, \"I was in the Bedroom with Sarah Jo the entire evening. We discussed nothing of note, which I find is the usual way. I regret Danny's death more than I expected. One does not appreciate a person until the chair is empty.\"",
+     "repeat": "\"To restate the matter, in the Bedroom, with Sarah Jo, the whole evening. I trust our accounts will agree, as the facts do. Please feel free to confirm it with anyone.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Pantry",
+      "victim": "Danny",
+      "other": "Isabelle",
+      "partner": "Matt"
+     },
+     "first": "Justin says with a smile, \"I sat with Matt in the Pantry all evening long, and we talked until the whole dreadful business began. I'm sure it's nothing, but Isabelle did not look at all well tonight, and Danny had been so unkind to Isabelle lately.\"",
+     "repeat": "\"Of course, dear, I'll say it again, Matt and I were together in the Pantry all evening. Ask away, we'll both tell you the same. I'd tell you more if there were more to tell.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Parlor",
+      "victim": "Danny",
+      "other": "Jessica",
+      "partner": "Justin"
+     },
+     "first": "Isabelle answers brightly, \"Justin and I were together in the Parlor all evening. Strange how a house empties when something's afoot, isn't it? Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"Why, I told you already, I was with Justin in the Parlor the whole evening. You'll want to know what we discussed, won't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Library",
+      "victim": "Danny",
+      "other": "Sarah Jo"
+     },
+     "first": "Jessica says coolly, \"My evening was spent alone in the Library, inspector, in pursuits you would hardly follow. I did not stir from it. Danny had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"To repeat what I said for your benefit, I passed the whole evening alone in the Library. A person of my standing does not account for every minute, but I shall oblige you. I trust that settles it.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Bedroom",
+      "victim": "Danny",
+      "other": "Matt",
+      "partner": "Carolyn"
+     },
+     "first": "Sarah Jo says after a pause, \"Together with Carolyn in the Bedroom all evening. Check it if you must. Don't take the short answers personally. It's how I am.\"",
+     "repeat": "\"Again, then, Carolyn and I, the Bedroom, together all evening. That's it. That's the lot.\""
+    }
+   ]
+  },
+  {
+   "seed": 1,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Dining room",
+      "victim": "Isabelle",
+      "other": "Danny"
+     },
+     "first": "Kwinn replies with some impatience, \"The Dining room, alone, the whole evening. I trust that is plain enough, even for you. A sad business about Isabelle. One does not expect such things to happen under a respectable roof.\"",
+     "repeat": "\"As I made perfectly clear before, my evening was spent alone in the Dining room, inspector, in pursuits you would hardly follow. I did not stir from it. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "Robbie"
+     },
+     "first": "Danny stammers, \"I was with Robbie, in the Study. The whole evening, I mean, we never left, did we? Ask Robbie, ask them. I never liked how Isabelle looked at me, I mean not that it matters now, I shouldn't speak ill of the dead.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, Robbie and I were together in the Study, all evening, I mean the whole of it. I'm sure about that, quite sure. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Robbie",
+      "partner": "Carolyn"
+     },
+     "first": "Jessica says smoothly, \"My evening was spent with Carolyn in the Kitchen, from supper onward. We did not part at any point. I had little feeling for Isabelle either way. That is not a boast, merely a fact.\"",
+     "repeat": "\"To restate the matter, I was in the Kitchen with Carolyn the entire evening. We discussed nothing of note, which I find is the usual way. That is the whole of it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Danny"
+     },
+     "first": "Robbie replies quietly, \"Together with Danny in the Study all evening. Check it if you must. John was in a mood this evening. Ask why.\"",
+     "repeat": "\"As I said, the Study, with Danny, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Dining room",
+      "victim": "Isabelle",
+      "other": "Carolyn",
+      "partner": "Kwinn"
+     },
+     "first": "John answers tiredly, \"With Kwinn, in the Dining room, all evening. I'd have been so lonely otherwise. Everything seems very far away today. I'm doing my best to stay in the room.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Dining room with Kwinn all evening. Someone had to keep me from thinking, and Kwinn did. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Kwinn",
+      "partner": "Jessica"
+     },
+     "first": "Carolyn says primly, \"Jessica will confirm that we were together in the Kitchen the whole evening. I trust that will suffice. Between ourselves, Kwinn was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Kitchen with Jessica. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 1,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Dining room",
+      "victim": "Isabelle",
+      "other": "Danny"
+     },
+     "first": "Kwinn replies with some impatience, \"The Dining room, alone, the whole evening. I trust that is plain enough, even for you. A sad business about Isabelle. One does not expect such things to happen under a respectable roof.\"",
+     "repeat": "\"As I made perfectly clear before, my evening was spent alone in the Dining room, inspector, in pursuits you would hardly follow. I did not stir from it. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "Robbie"
+     },
+     "first": "Danny stammers, \"I was with Robbie, in the Study. The whole evening, I mean, we never left, did we? Ask Robbie, ask them. I never liked how Isabelle looked at me, I mean not that it matters now, I shouldn't speak ill of the dead.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, Robbie and I were together in the Study, all evening, I mean the whole of it. I'm sure about that, quite sure. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Robbie",
+      "partner": "Carolyn"
+     },
+     "first": "Jessica says smoothly, \"My evening was spent with Carolyn in the Kitchen, from supper onward. We did not part at any point. I had little feeling for Isabelle either way. That is not a boast, merely a fact.\"",
+     "repeat": "\"To restate the matter, I was in the Kitchen with Carolyn the entire evening. We discussed nothing of note, which I find is the usual way. That is the whole of it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Danny"
+     },
+     "first": "Robbie replies quietly, \"Together with Danny in the Study all evening. Check it if you must. John was in a mood this evening. Ask why.\"",
+     "repeat": "\"As I said, the Study, with Danny, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Carolyn",
+      "partner": "Carolyn"
+     },
+     "first": "John answers tiredly, \"With Carolyn, in the Sewing room, all evening. I'd have been so lonely otherwise. Everything seems very far away today. I'm doing my best to stay in the room.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Sewing room with Carolyn all evening. Someone had to keep me from thinking, and Carolyn did. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Kwinn",
+      "partner": "Jessica"
+     },
+     "first": "Carolyn says primly, \"Jessica will confirm that we were together in the Kitchen the whole evening. I trust that will suffice. Between ourselves, Kwinn was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Kitchen with Jessica. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 1,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Dining room",
+      "victim": "Isabelle",
+      "other": "Danny"
+     },
+     "first": "Kwinn replies with some impatience, \"The Dining room, alone, the whole evening. I trust that is plain enough, even for you. A sad business about Isabelle. One does not expect such things to happen under a respectable roof.\"",
+     "repeat": "\"As I made perfectly clear before, my evening was spent alone in the Dining room, inspector, in pursuits you would hardly follow. I did not stir from it. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "Robbie"
+     },
+     "first": "Danny stammers, \"I was with Robbie, in the Study. The whole evening, I mean, we never left, did we? Ask Robbie, ask them. I never liked how Isabelle looked at me, I mean not that it matters now, I shouldn't speak ill of the dead.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, Robbie and I were together in the Study, all evening, I mean the whole of it. I'm sure about that, quite sure. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Robbie",
+      "partner": "Carolyn"
+     },
+     "first": "Jessica says smoothly, \"My evening was spent with Carolyn in the Kitchen, from supper onward. We did not part at any point. I had little feeling for Isabelle either way. That is not a boast, merely a fact.\"",
+     "repeat": "\"To restate the matter, I was in the Kitchen with Carolyn the entire evening. We discussed nothing of note, which I find is the usual way. That is the whole of it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Danny"
+     },
+     "first": "Robbie replies quietly, \"Together with Danny in the Study all evening. Check it if you must. John was in a mood this evening. Ask why.\"",
+     "repeat": "\"As I said, the Study, with Danny, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Gallery",
+      "victim": "Isabelle",
+      "other": "Carolyn",
+      "partner": "Jessica"
+     },
+     "first": "John answers tiredly, \"With Jessica, in the Gallery, all evening. I'd have been so lonely otherwise. Everything seems very far away today. I'm doing my best to stay in the room.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Gallery with Jessica all evening. Someone had to keep me from thinking, and Jessica did. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Kitchen",
+      "victim": "Isabelle",
+      "other": "Kwinn",
+      "partner": "Jessica"
+     },
+     "first": "Carolyn says primly, \"Jessica will confirm that we were together in the Kitchen the whole evening. I trust that will suffice. Between ourselves, Kwinn was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Kitchen with Jessica. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Sarah Jo",
+      "partner": "Justin"
+     },
+     "first": "Char replies calmly, \"I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. I won't pretend I was fond of Robbie. I will say I find the manner of this regrettable.\"",
+     "repeat": "\"In case it was not clear, I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "John",
+      "partner": "John"
+     },
+     "first": "Sarah Jo barks, \"I was in the Ballroom with John the whole evening. Together. Is that plain enough for you? Don't ask me to weep for Robbie. Respect, yes. Weeping, no.\"",
+     "repeat": "\"I've said it already, and I'll say it again, with John! In the Ballroom! The entire evening! Ask John, and don't dare pester us both. Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "Chris",
+      "partner": "Sarah Jo"
+     },
+     "first": "John replies in a low voice, \"I was with Sarah Jo in the Ballroom the whole evening. Sarah Jo was kind enough not to ask me to talk. Please don't think me cold. I'm trying very hard to be brave and not managing.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, I was in the Ballroom with Sarah Jo the whole evening. We said very little, but it was a comfort. I wish it were more useful.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Library",
+      "victim": "Robbie",
+      "other": "Matt"
+     },
+     "first": "Chris answers in a quiet voice, \"I was alone in the Library all evening. I just wanted quiet, that's all. I didn't mean to be alone, only it happened. Robbie never really noticed me, I think, and that's all right. I'm used to it.\"",
+     "repeat": "\"Yes, I said it before, I sat alone in the Library the whole evening. It was where I could be sad without anyone seeing. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Library",
+      "victim": "Robbie",
+      "other": "Justin",
+      "partner": "Chris"
+     },
+     "first": "Matt says with a thoughtful look, \"Chris and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? Now, what did Robbie know that made this happen? That's what keeps me awake.\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, Chris and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Char",
+      "partner": "Char"
+     },
+     "first": "Justin says coolly, \"Char and I were in the Kitchen together the whole evening. You may verify it, though I find the exercise tedious. I find that I mourn Robbie rather more than I had expected, which does me credit.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Kitchen with Char all evening. I selected the company myself, and I selected well. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Sarah Jo",
+      "partner": "Justin"
+     },
+     "first": "Char replies calmly, \"I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. I won't pretend I was fond of Robbie. I will say I find the manner of this regrettable.\"",
+     "repeat": "\"In case it was not clear, I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "John",
+      "partner": "John"
+     },
+     "first": "Sarah Jo barks, \"I was in the Ballroom with John the whole evening. Together. Is that plain enough for you? Don't ask me to weep for Robbie. Respect, yes. Weeping, no.\"",
+     "repeat": "\"I've said it already, and I'll say it again, with John! In the Ballroom! The entire evening! Ask John, and don't dare pester us both. Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "Chris",
+      "partner": "Sarah Jo"
+     },
+     "first": "John replies in a low voice, \"I was with Sarah Jo in the Ballroom the whole evening. Sarah Jo was kind enough not to ask me to talk. Please don't think me cold. I'm trying very hard to be brave and not managing.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, I was in the Ballroom with Sarah Jo the whole evening. We said very little, but it was a comfort. I wish it were more useful.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Library",
+      "victim": "Robbie",
+      "other": "Matt"
+     },
+     "first": "Chris answers in a quiet voice, \"I was alone in the Library all evening. I just wanted quiet, that's all. I didn't mean to be alone, only it happened. Robbie never really noticed me, I think, and that's all right. I'm used to it.\"",
+     "repeat": "\"Yes, I said it before, I sat alone in the Library the whole evening. It was where I could be sad without anyone seeing. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Library",
+      "victim": "Robbie",
+      "other": "Justin",
+      "partner": "Chris"
+     },
+     "first": "Matt says with a thoughtful look, \"Chris and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? Now, what did Robbie know that made this happen? That's what keeps me awake.\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, Chris and I were together in the Library all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Char",
+      "partner": "Char"
+     },
+     "first": "Justin says coolly, \"Char and I were in the Kitchen together the whole evening. You may verify it, though I find the exercise tedious. I find that I mourn Robbie rather more than I had expected, which does me credit.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Kitchen with Char all evening. I selected the company myself, and I selected well. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Sarah Jo",
+      "partner": "Justin"
+     },
+     "first": "Char replies calmly, \"I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. I won't pretend I was fond of Robbie. I will say I find the manner of this regrettable.\"",
+     "repeat": "\"In case it was not clear, I was in the Kitchen with Justin for the whole evening. We were seated together throughout, and neither of us left. The facts remain as they were.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "John",
+      "partner": "John"
+     },
+     "first": "Sarah Jo barks, \"I was in the Ballroom with John the whole evening. Together. Is that plain enough for you? Don't ask me to weep for Robbie. Respect, yes. Weeping, no.\"",
+     "repeat": "\"I've said it already, and I'll say it again, with John! In the Ballroom! The entire evening! Ask John, and don't dare pester us both. Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Ballroom",
+      "victim": "Robbie",
+      "other": "Chris",
+      "partner": "Sarah Jo"
+     },
+     "first": "John replies in a low voice, \"I was with Sarah Jo in the Ballroom the whole evening. Sarah Jo was kind enough not to ask me to talk. Please don't think me cold. I'm trying very hard to be brave and not managing.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, I was in the Ballroom with Sarah Jo the whole evening. We said very little, but it was a comfort. I wish it were more useful.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Library",
+      "victim": "Robbie",
+      "other": "Matt"
+     },
+     "first": "Chris answers in a quiet voice, \"I was alone in the Library all evening. I just wanted quiet, that's all. I didn't mean to be alone, only it happened. Robbie never really noticed me, I think, and that's all right. I'm used to it.\"",
+     "repeat": "\"Yes, I said it before, I sat alone in the Library the whole evening. It was where I could be sad without anyone seeing. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Justin",
+      "partner": "Sarah Jo"
+     },
+     "first": "Matt says with a thoughtful look, \"Sarah Jo and I were together in the Kitchen all evening. Strange how a house empties when something's afoot, isn't it? Now, what did Robbie know that made this happen? That's what keeps me awake.\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, Sarah Jo and I were together in the Kitchen all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Kitchen",
+      "victim": "Robbie",
+      "other": "Char",
+      "partner": "Char"
+     },
+     "first": "Justin says coolly, \"Char and I were in the Kitchen together the whole evening. You may verify it, though I find the exercise tedious. I find that I mourn Robbie rather more than I had expected, which does me credit.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Kitchen with Char all evening. I selected the company myself, and I selected well. That is quite enough on the subject.\""
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Chloe"
+     },
+     "first": "Camille answers gently, \"I was with Chloe in the Dining room the whole evening, and I'm so glad of the company, tonight of all nights. You might have a quiet word with Danny, dear. Danny and Jessica had a rather chilly exchange this week.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Dining room the entire evening. We never parted for a minute. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Gage",
+      "partner": "Char"
+     },
+     "first": "Danny says primly, \"Char and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Char, in the Library, from supper onward. We were not parted for a moment. I shall not say it a third time.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Kwinn"
+     },
+     "first": "Gage says with a smile, \"Oh, I was all alone in the Ballroom the entire evening. I do wish somebody had kept me company! Ask me anything you like. I'd much rather help than sit and fret.\"",
+     "repeat": "\"As I told you a moment ago, I was quite alone in the Ballroom the whole evening, I'm afraid, so I haven't a soul to vouch for me. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Chloe",
+      "partner": "Gage"
+     },
+     "first": "Kwinn replies in a low voice, \"With Gage, in the Ballroom, all evening. I'd have been so lonely otherwise. I can't say it was Chloe. I only know Chloe wasn't well, and it frightens me.\"",
+     "repeat": "\"I'll say it again, if it helps, with Gage, in the Ballroom, all evening. I'd have been so lonely otherwise. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Char",
+      "partner": "Camille"
+     },
+     "first": "Chloe says unsteadily, \"I was with Camille in the Dining room the whole evening. Camille was kind enough not to ask me to talk. Please be gentle with Char. But, perhaps, ask about Jessica. I heard raised voices.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Dining room with Camille all evening. Someone had to keep me from thinking, and Camille did. There isn't anything more.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Danny"
+     },
+     "first": "Char says crisply, \"Danny will confirm that we were together in the Library the whole evening. I trust that will suffice. I would not waste time on me, inspector. Camille, now, was seen loitering near Jessica's door.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Library with Danny all evening. I selected the company myself, and I selected well. Please do try to keep up.\""
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Chloe"
+     },
+     "first": "Camille answers gently, \"I was with Chloe in the Dining room the whole evening, and I'm so glad of the company, tonight of all nights. You might have a quiet word with Danny, dear. Danny and Jessica had a rather chilly exchange this week.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Dining room the entire evening. We never parted for a minute. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Gage",
+      "partner": "Char"
+     },
+     "first": "Danny says primly, \"Char and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Char, in the Library, from supper onward. We were not parted for a moment. I shall not say it a third time.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Kwinn"
+     },
+     "first": "Gage says with a smile, \"Oh, I was all alone in the Ballroom the entire evening. I do wish somebody had kept me company! Ask me anything you like. I'd much rather help than sit and fret.\"",
+     "repeat": "\"As I told you a moment ago, I was quite alone in the Ballroom the whole evening, I'm afraid, so I haven't a soul to vouch for me. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Kwinn replies in a low voice, \"With Chloe, in the Library, all evening. I'd have been so lonely otherwise. I can't say it was Chloe. I only know Chloe wasn't well, and it frightens me.\"",
+     "repeat": "\"I'll say it again, if it helps, with Chloe, in the Library, all evening. I'd have been so lonely otherwise. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Char",
+      "partner": "Camille"
+     },
+     "first": "Chloe says unsteadily, \"I was with Camille in the Dining room the whole evening. Camille was kind enough not to ask me to talk. Please be gentle with Char. But, perhaps, ask about Jessica. I heard raised voices.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Dining room with Camille all evening. Someone had to keep me from thinking, and Camille did. There isn't anything more.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Danny"
+     },
+     "first": "Char says crisply, \"Danny will confirm that we were together in the Library the whole evening. I trust that will suffice. I would not waste time on me, inspector. Camille, now, was seen loitering near Jessica's door.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Library with Danny all evening. I selected the company myself, and I selected well. Please do try to keep up.\""
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Chloe"
+     },
+     "first": "Camille answers gently, \"I was with Chloe in the Dining room the whole evening, and I'm so glad of the company, tonight of all nights. You might have a quiet word with Danny, dear. Danny and Jessica had a rather chilly exchange this week.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Dining room the entire evening. We never parted for a minute. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Gage",
+      "partner": "Char"
+     },
+     "first": "Danny says primly, \"Char and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Char, in the Library, from supper onward. We were not parted for a moment. I shall not say it a third time.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Kwinn"
+     },
+     "first": "Gage says with a smile, \"Oh, I was all alone in the Ballroom the entire evening. I do wish somebody had kept me company! Ask me anything you like. I'd much rather help than sit and fret.\"",
+     "repeat": "\"As I told you a moment ago, I was quite alone in the Ballroom the whole evening, I'm afraid, so I haven't a soul to vouch for me. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Bathroom",
+      "victim": "Jessica",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Kwinn replies in a low voice, \"With Chloe, in the Bathroom, all evening. I'd have been so lonely otherwise. I can't say it was Chloe. I only know Chloe wasn't well, and it frightens me.\"",
+     "repeat": "\"I'll say it again, if it helps, with Chloe, in the Bathroom, all evening. I'd have been so lonely otherwise. There isn't anything more.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Char",
+      "partner": "Camille"
+     },
+     "first": "Chloe says unsteadily, \"I was with Camille in the Dining room the whole evening. Camille was kind enough not to ask me to talk. Please be gentle with Char. But, perhaps, ask about Jessica. I heard raised voices.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed in the Dining room with Camille all evening. Someone had to keep me from thinking, and Camille did. There isn't anything more.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Library",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Danny"
+     },
+     "first": "Char says crisply, \"Danny will confirm that we were together in the Library the whole evening. I trust that will suffice. I would not waste time on me, inspector. Camille, now, was seen loitering near Jessica's door.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Library with Danny all evening. I selected the company myself, and I selected well. Please do try to keep up.\""
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "John"
+     },
+     "first": "Sarah Jo answers gently, \"Let me see now. I was alone in the Dining room for the whole evening, with a novel I hardly read. I'm sure it's nothing, but John did not look at all well tonight, and Jessica had been so unkind to John lately.\"",
+     "repeat": "\"Why, certainly, once more, oh, I was all alone in the Dining room the entire evening. I do wish somebody had kept me company! That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Camille"
+     },
+     "first": "John says through clenched teeth, \"I was with Camille in the Study the whole evening, and I'll not hear a word against it! I'll answer, but I won't enjoy it, and I won't be spoken to like a servant.\"",
+     "repeat": "\"I've said it already, and I'll say it again, where do you think I was? In the Study, with Camille, all evening, that's where. That's the same answer, and it'll be the same tomorrow.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Carolyn",
+      "partner": "John"
+     },
+     "first": "Camille answers gently, \"I had John for company in the Study all evening. A kinder soul you could not ask for. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Goodness, did I not say? Well, John and I were together in the Study all evening. Ask away, we'll both tell you the same. It's all I have, I'm afraid.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Robbie",
+      "partner": "Sarah Jo"
+     },
+     "first": "Carolyn answers in a quiet voice, \"We were together, Sarah Jo and I, in the Dining room the entire evening. I'm grateful for it. I don't want to cause trouble for anyone, but Robbie left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I told you already, I'm sorry, we were together, Sarah Jo and I, in the Dining room the entire evening. I'm grateful for it. Please, may I rest now?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Chris",
+      "partner": "Chris"
+     },
+     "first": "Robbie says flatly, \"The Sewing room, with Chris, the entire evening. We stayed put. Jessica is dead. I'm told it's sad. I'll take your word.\"",
+     "repeat": "\"Once more, I was in the Sewing room with Chris the whole evening. Ask Chris, not me. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Robbie"
+     },
+     "first": "Chris says quickly, \"Well, I mean, I was in the Sewing room with Robbie. All evening. Together. We talked about, oh, nothing, I'm afraid. Jessica was... I mean, I didn't know Jessica very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, Robbie and I were together in the Sewing room, all evening, I mean the whole of it. I'm sure about that, quite sure. I wish I had more to say.\""
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "John"
+     },
+     "first": "Sarah Jo answers gently, \"Let me see now. I was alone in the Dining room for the whole evening, with a novel I hardly read. I'm sure it's nothing, but John did not look at all well tonight, and Jessica had been so unkind to John lately.\"",
+     "repeat": "\"Why, certainly, once more, oh, I was all alone in the Dining room the entire evening. I do wish somebody had kept me company! That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Camille"
+     },
+     "first": "John says through clenched teeth, \"I was with Camille in the Study the whole evening, and I'll not hear a word against it! I'll answer, but I won't enjoy it, and I won't be spoken to like a servant.\"",
+     "repeat": "\"I've said it already, and I'll say it again, where do you think I was? In the Study, with Camille, all evening, that's where. That's the same answer, and it'll be the same tomorrow.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Carolyn",
+      "partner": "John"
+     },
+     "first": "Camille answers gently, \"I had John for company in the Study all evening. A kinder soul you could not ask for. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Goodness, did I not say? Well, John and I were together in the Study all evening. Ask away, we'll both tell you the same. It's all I have, I'm afraid.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Robbie",
+      "partner": "Sarah Jo"
+     },
+     "first": "Carolyn answers in a quiet voice, \"We were together, Sarah Jo and I, in the Dining room the entire evening. I'm grateful for it. I don't want to cause trouble for anyone, but Robbie left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I told you already, I'm sorry, we were together, Sarah Jo and I, in the Dining room the entire evening. I'm grateful for it. Please, may I rest now?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Chris",
+      "partner": "Chris"
+     },
+     "first": "Robbie says flatly, \"The Sewing room, with Chris, the entire evening. We stayed put. Jessica is dead. I'm told it's sad. I'll take your word.\"",
+     "repeat": "\"Once more, I was in the Sewing room with Chris the whole evening. Ask Chris, not me. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Robbie"
+     },
+     "first": "Chris says quickly, \"Well, I mean, I was in the Sewing room with Robbie. All evening. Together. We talked about, oh, nothing, I'm afraid. Jessica was... I mean, I didn't know Jessica very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, Robbie and I were together in the Sewing room, all evening, I mean the whole of it. I'm sure about that, quite sure. I wish I had more to say.\""
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "John"
+     },
+     "first": "Sarah Jo answers gently, \"Let me see now. I was alone in the Dining room for the whole evening, with a novel I hardly read. I'm sure it's nothing, but John did not look at all well tonight, and Jessica had been so unkind to John lately.\"",
+     "repeat": "\"Why, certainly, once more, oh, I was all alone in the Dining room the entire evening. I do wish somebody had kept me company! That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Camille",
+      "partner": "Camille"
+     },
+     "first": "John says through clenched teeth, \"I was with Camille in the Study the whole evening, and I'll not hear a word against it! I'll answer, but I won't enjoy it, and I won't be spoken to like a servant.\"",
+     "repeat": "\"I've said it already, and I'll say it again, where do you think I was? In the Study, with Camille, all evening, that's where. That's the same answer, and it'll be the same tomorrow.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Study",
+      "victim": "Jessica",
+      "other": "Carolyn",
+      "partner": "John"
+     },
+     "first": "Camille answers gently, \"I had John for company in the Study all evening. A kinder soul you could not ask for. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Goodness, did I not say? Well, John and I were together in the Study all evening. Ask away, we'll both tell you the same. It's all I have, I'm afraid.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Conservatory",
+      "victim": "Jessica",
+      "other": "Robbie",
+      "partner": "Camille"
+     },
+     "first": "Carolyn answers in a quiet voice, \"We were together, Camille and I, in the Conservatory the entire evening. I'm grateful for it. I don't want to cause trouble for anyone, but Robbie left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I told you already, I'm sorry, we were together, Camille and I, in the Conservatory the entire evening. I'm grateful for it. Please, may I rest now?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Chris",
+      "partner": "Chris"
+     },
+     "first": "Robbie says flatly, \"The Sewing room, with Chris, the entire evening. We stayed put. Jessica is dead. I'm told it's sad. I'll take your word.\"",
+     "repeat": "\"Once more, I was in the Sewing room with Chris the whole evening. Ask Chris, not me. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Robbie"
+     },
+     "first": "Chris says quickly, \"Well, I mean, I was in the Sewing room with Robbie. All evening. Together. We talked about, oh, nothing, I'm afraid. Jessica was... I mean, I didn't know Jessica very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, Robbie and I were together in the Sewing room, all evening, I mean the whole of it. I'm sure about that, quite sure. I wish I had more to say.\""
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Justin",
+      "partner": "Justin"
+     },
+     "first": "Jessica says angrily, \"Where do you think I was? In the Parlor, with Justin, all evening, that's where. Try Justin, for pity's sake! Camille had been threatening to do something about Justin for weeks.\"",
+     "repeat": "\"Again?! Very well, I was in the Parlor with Justin the whole evening. Together. Is that plain enough for you? Write it down and be done!\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Chloe",
+      "partner": "Jessica"
+     },
+     "first": "Justin stammers, \"I was with Jessica, in the Parlor. The whole evening, I mean, we never left, did we? Ask Jessica, ask them. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was never alone, I mean, Jessica was with me in the Parlor the whole evening, so, well, there you are. I wish I had more to say.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Kwinn",
+      "partner": "Chris"
+     },
+     "first": "Chloe says thoughtfully, \"The Pantry, with Chris, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"As I said, and I'm curious why it matters, I sat with Chris in the Pantry the entire evening. Have you spoken to Chris yet? I'd love to hear the version. Does that match what the others said?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Char"
+     },
+     "first": "Kwinn snaps, \"Alone! The Sewing room! All evening! What else do you want, a signed statement? Go and bother Char! Char has been slinking about ever since Camille was found!\"",
+     "repeat": "\"I've said it already, and I'll say it again, you want to know? I was alone in the Sewing room the entire evening, and nobody was fool enough to bother me. Are we quite finished?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Chris",
+      "partner": "Kwinn"
+     },
+     "first": "Char answers stiffly, \"My evening was passed with Kwinn, in the Sewing room, from supper onward. We were not parted for a moment. Between ourselves, Chris was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, Kwinn and I were in the Sewing room together the whole evening. You may verify it, though I find the exercise tedious. Please do try to keep up.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Jessica",
+      "partner": "Chloe"
+     },
+     "first": "Chris says evenly, \"I was in the Pantry with Chloe for the whole evening. We were seated together throughout, and neither of us left. You may ask me anything. I find a question answered is a question dismissed.\"",
+     "repeat": "\"I am happy to repeat myself, I was in the Pantry with Chloe the entire evening. We discussed nothing of note, which I find is the usual way. The facts remain as they were.\""
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Justin",
+      "partner": "Justin"
+     },
+     "first": "Jessica says angrily, \"Where do you think I was? In the Parlor, with Justin, all evening, that's where. Try Justin, for pity's sake! Camille had been threatening to do something about Justin for weeks.\"",
+     "repeat": "\"Again?! Very well, I was in the Parlor with Justin the whole evening. Together. Is that plain enough for you? Write it down and be done!\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Chloe",
+      "partner": "Jessica"
+     },
+     "first": "Justin stammers, \"I was with Jessica, in the Parlor. The whole evening, I mean, we never left, did we? Ask Jessica, ask them. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was never alone, I mean, Jessica was with me in the Parlor the whole evening, so, well, there you are. I wish I had more to say.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Kwinn",
+      "partner": "Chris"
+     },
+     "first": "Chloe says thoughtfully, \"The Pantry, with Chris, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"As I said, and I'm curious why it matters, I sat with Chris in the Pantry the entire evening. Have you spoken to Chris yet? I'd love to hear the version. Does that match what the others said?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Char"
+     },
+     "first": "Kwinn snaps, \"Alone! The Sewing room! All evening! What else do you want, a signed statement? Go and bother Char! Char has been slinking about ever since Camille was found!\"",
+     "repeat": "\"I've said it already, and I'll say it again, you want to know? I was alone in the Sewing room the entire evening, and nobody was fool enough to bother me. Are we quite finished?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Chris",
+      "partner": "Chris"
+     },
+     "first": "Char answers stiffly, \"My evening was passed with Chris, in the Sewing room, from supper onward. We were not parted for a moment. Between ourselves, Chris was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, Chris and I were in the Sewing room together the whole evening. You may verify it, though I find the exercise tedious. Please do try to keep up.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Jessica",
+      "partner": "Chloe"
+     },
+     "first": "Chris says evenly, \"I was in the Pantry with Chloe for the whole evening. We were seated together throughout, and neither of us left. You may ask me anything. I find a question answered is a question dismissed.\"",
+     "repeat": "\"I am happy to repeat myself, I was in the Pantry with Chloe the entire evening. We discussed nothing of note, which I find is the usual way. The facts remain as they were.\""
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Justin",
+      "partner": "Justin"
+     },
+     "first": "Jessica says angrily, \"Where do you think I was? In the Parlor, with Justin, all evening, that's where. Try Justin, for pity's sake! Camille had been threatening to do something about Justin for weeks.\"",
+     "repeat": "\"Again?! Very well, I was in the Parlor with Justin the whole evening. Together. Is that plain enough for you? Write it down and be done!\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Parlor",
+      "victim": "Camille",
+      "other": "Chloe",
+      "partner": "Jessica"
+     },
+     "first": "Justin stammers, \"I was with Jessica, in the Parlor. The whole evening, I mean, we never left, did we? Ask Jessica, ask them. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was never alone, I mean, Jessica was with me in the Parlor the whole evening, so, well, there you are. I wish I had more to say.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Kwinn",
+      "partner": "Chris"
+     },
+     "first": "Chloe says thoughtfully, \"The Pantry, with Chris, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Ask me anything. I'd like to know what you're looking for, though, if it's allowed.\"",
+     "repeat": "\"As I said, and I'm curious why it matters, I sat with Chris in the Pantry the entire evening. Have you spoken to Chris yet? I'd love to hear the version. Does that match what the others said?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Char"
+     },
+     "first": "Kwinn snaps, \"Alone! The Sewing room! All evening! What else do you want, a signed statement? Go and bother Char! Char has been slinking about ever since Camille was found!\"",
+     "repeat": "\"I've said it already, and I'll say it again, you want to know? I was alone in the Sewing room the entire evening, and nobody was fool enough to bother me. Are we quite finished?\""
+    },
+    {
+     "suspect": 4,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Sewing room",
+      "victim": "Camille",
+      "other": "Chris",
+      "partner": "Justin"
+     },
+     "first": "Char answers stiffly, \"My evening was passed with Justin, in the Sewing room, from supper onward. We were not parted for a moment. Between ourselves, Chris was ever so slightly too eager at supper. One notices such things, even if you do not.\"",
+     "repeat": "\"As I stated a moment ago, Justin and I were in the Sewing room together the whole evening. You may verify it, though I find the exercise tedious. Please do try to keep up.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Camille",
+      "other": "Jessica",
+      "partner": "Chloe"
+     },
+     "first": "Chris says evenly, \"I was in the Pantry with Chloe for the whole evening. We were seated together throughout, and neither of us left. You may ask me anything. I find a question answered is a question dismissed.\"",
+     "repeat": "\"I am happy to repeat myself, I was in the Pantry with Chloe the entire evening. We discussed nothing of note, which I find is the usual way. The facts remain as they were.\""
+    }
+   ]
+  },
+  {
+   "seed": 6,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Chris",
+      "partner": "Chloe"
+     },
+     "first": "Justin answers without much interest, \"Chloe and I, the Gallery, together all evening. That's it. I keep my own counsel. Always have.\"",
+     "repeat": "\"Again, then, with Chloe. The Gallery. All evening. That's all.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Carolyn",
+      "partner": "Jessica"
+     },
+     "first": "Chris says nervously, \"Well, I mean, I was in the Pantry with Jessica. All evening. Together. We talked about, oh, nothing, I'm afraid. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was never alone, I mean, Jessica was with me in the Pantry the whole evening, so, well, there you are. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Library",
+      "victim": "Char",
+      "other": "Chloe"
+     },
+     "first": "Carolyn says evenly, \"My evening was spent alone in the Library. A dull account, but an accurate one. I will leave the conclusions to you, inspector, but I might begin with Chloe. Char did mention Chloe recently.\"",
+     "repeat": "\"To summarise once more, I spent the evening alone in the Library, reading, and I stayed there all of it. Dull, but precise. The facts remain as they were.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Jessica",
+      "partner": "Justin"
+     },
+     "first": "Chloe says loftily, \"I sat the whole evening in the Gallery with Justin. Naturally, we conversed on matters rather above the common run. I have been asked far more intelligent questions by far more intelligent people, but go on.\"",
+     "repeat": "\"I shall say it once more, slowly, Justin will confirm that we were together in the Gallery the whole evening. I trust that will suffice. I trust that settles it.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Camille",
+      "partner": "Chris"
+     },
+     "first": "Jessica says warmly, \"I had Chris for company in the Pantry all evening. A kinder soul you could not ask for. Bless Camille, who has been so helpful, but I did overhear some sharp words between Camille and Char.\"",
+     "repeat": "\"Why, certainly, once more, I sat with Chris in the Pantry all evening long, and we talked until the whole dreadful business began. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Library",
+      "victim": "Char",
+      "other": "Justin",
+      "partner": "Carolyn"
+     },
+     "first": "Camille says unsteadily, \"We were together, Carolyn and I, in the Library the entire evening. I'm grateful for it. Justin might know something. I don't mean to say it, but Char confided in Justin, I think.\"",
+     "repeat": "\"Yes, I said it before, we were together, Carolyn and I, in the Library the entire evening. I'm grateful for it. I hope it's enough.\""
+    }
+   ]
+  },
+  {
+   "seed": 6,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Chris",
+      "partner": "Chloe"
+     },
+     "first": "Justin answers without much interest, \"Chloe and I, the Gallery, together all evening. That's it. I keep my own counsel. Always have.\"",
+     "repeat": "\"Again, then, with Chloe. The Gallery. All evening. That's all.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Carolyn",
+      "partner": "Jessica"
+     },
+     "first": "Chris says nervously, \"Well, I mean, I was in the Pantry with Jessica. All evening. Together. We talked about, oh, nothing, I'm afraid. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was never alone, I mean, Jessica was with me in the Pantry the whole evening, so, well, there you are. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Library",
+      "victim": "Char",
+      "other": "Chloe"
+     },
+     "first": "Carolyn says evenly, \"My evening was spent alone in the Library. A dull account, but an accurate one. I will leave the conclusions to you, inspector, but I might begin with Chloe. Char did mention Chloe recently.\"",
+     "repeat": "\"To summarise once more, I spent the evening alone in the Library, reading, and I stayed there all of it. Dull, but precise. The facts remain as they were.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Jessica",
+      "partner": "Justin"
+     },
+     "first": "Chloe says loftily, \"I sat the whole evening in the Gallery with Justin. Naturally, we conversed on matters rather above the common run. I have been asked far more intelligent questions by far more intelligent people, but go on.\"",
+     "repeat": "\"I shall say it once more, slowly, Justin will confirm that we were together in the Gallery the whole evening. I trust that will suffice. I trust that settles it.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Camille",
+      "partner": "Chris"
+     },
+     "first": "Jessica says warmly, \"I had Chris for company in the Pantry all evening. A kinder soul you could not ask for. Bless Camille, who has been so helpful, but I did overhear some sharp words between Camille and Char.\"",
+     "repeat": "\"Why, certainly, once more, I sat with Chris in the Pantry all evening long, and we talked until the whole dreadful business began. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Bathroom",
+      "victim": "Char",
+      "other": "Justin",
+      "partner": "Chloe"
+     },
+     "first": "Camille says unsteadily, \"We were together, Chloe and I, in the Bathroom the entire evening. I'm grateful for it. Justin might know something. I don't mean to say it, but Char confided in Justin, I think.\"",
+     "repeat": "\"Yes, I said it before, we were together, Chloe and I, in the Bathroom the entire evening. I'm grateful for it. I hope it's enough.\""
+    }
+   ]
+  },
+  {
+   "seed": 6,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Chris",
+      "partner": "Chloe"
+     },
+     "first": "Justin answers without much interest, \"Chloe and I, the Gallery, together all evening. That's it. I keep my own counsel. Always have.\"",
+     "repeat": "\"Again, then, with Chloe. The Gallery. All evening. That's all.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chris",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Carolyn",
+      "partner": "Jessica"
+     },
+     "first": "Chris says nervously, \"Well, I mean, I was in the Pantry with Jessica. All evening. Together. We talked about, oh, nothing, I'm afraid. I'd tell you everything twice if it helped, I mean I would, I just worry I'll muddle it.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was never alone, I mean, Jessica was with me in the Pantry the whole evening, so, well, there you are. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "calm",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Library",
+      "victim": "Char",
+      "other": "Chloe"
+     },
+     "first": "Carolyn says evenly, \"My evening was spent alone in the Library. A dull account, but an accurate one. I will leave the conclusions to you, inspector, but I might begin with Chloe. Char did mention Chloe recently.\"",
+     "repeat": "\"To summarise once more, I spent the evening alone in the Library, reading, and I stayed there all of it. Dull, but precise. The facts remain as they were.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Gallery",
+      "victim": "Char",
+      "other": "Jessica",
+      "partner": "Justin"
+     },
+     "first": "Chloe says loftily, \"I sat the whole evening in the Gallery with Justin. Naturally, we conversed on matters rather above the common run. I have been asked far more intelligent questions by far more intelligent people, but go on.\"",
+     "repeat": "\"I shall say it once more, slowly, Justin will confirm that we were together in the Gallery the whole evening. I trust that will suffice. I trust that settles it.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Char",
+      "other": "Camille",
+      "partner": "Chris"
+     },
+     "first": "Jessica says warmly, \"I had Chris for company in the Pantry all evening. A kinder soul you could not ask for. Bless Camille, who has been so helpful, but I did overhear some sharp words between Camille and Char.\"",
+     "repeat": "\"Why, certainly, once more, I sat with Chris in the Pantry all evening long, and we talked until the whole dreadful business began. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Camille",
+      "room": "Conservatory",
+      "victim": "Char",
+      "other": "Justin",
+      "partner": "Chris"
+     },
+     "first": "Camille says unsteadily, \"We were together, Chris and I, in the Conservatory the entire evening. I'm grateful for it. Justin might know something. I don't mean to say it, but Char confided in Justin, I think.\"",
+     "repeat": "\"Yes, I said it before, we were together, Chris and I, in the Conservatory the entire evening. I'm grateful for it. I hope it's enough.\""
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Chloe",
+      "partner": "Justin"
+     },
+     "first": "Kwinn says cheerfully, \"I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. I keep thinking of Isabelle laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"I don't mind saying it twice, I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Justin",
+      "partner": "Jessica"
+     },
+     "first": "Chloe says with a sigh, \"We were together, Jessica and I, in the Study the entire evening. I'm grateful for it. I feel so empty about Isabelle. I think I ought to cry, but there's nothing left to do it with.\"",
+     "repeat": "\"I told you already, I'm sorry, Jessica and I sat together in the Study all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Char",
+      "partner": "Kwinn"
+     },
+     "first": "Justin says crisply, \"Kwinn and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. Isabelle had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Kwinn, in the Library, from supper onward. We were not parted for a moment. I trust that settles it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "John"
+     },
+     "first": "Char answers politely, \"John and I were together in the Sewing room all evening. Please feel free to compare our accounts. You might find Jessica worth a conversation. Jessica and Isabelle had a disagreement recently.\"",
+     "repeat": "\"I am happy to repeat myself, John and I were together in the Sewing room all evening. Please feel free to compare our accounts. The facts remain as they were.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Chloe"
+     },
+     "first": "Jessica replies brightly, \"We were together, Chloe and I, in the Study the whole evening. I'd gladly say so to anyone. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Study the entire evening. We never parted for a minute. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "John",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Kwinn"
+     },
+     "first": "John says thoughtfully, \"The whole evening, alone in the Sewing room. And what do you make of a house where nobody checks on anybody? I hardly knew Isabelle, if I'm honest, but I can't stop thinking about the last thing Isabelle said at supper.\"",
+     "repeat": "\"Once more, then, since you ask, alone in the Sewing room, the whole evening. I watched the shadows on the wall move, which is a poor sort of witness, isn't it? Is it as you expected?\""
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Chloe",
+      "partner": "Justin"
+     },
+     "first": "Kwinn says cheerfully, \"I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. I keep thinking of Isabelle laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"I don't mind saying it twice, I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Justin",
+      "partner": "Jessica"
+     },
+     "first": "Chloe says with a sigh, \"We were together, Jessica and I, in the Study the entire evening. I'm grateful for it. I feel so empty about Isabelle. I think I ought to cry, but there's nothing left to do it with.\"",
+     "repeat": "\"I told you already, I'm sorry, Jessica and I sat together in the Study all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Char",
+      "partner": "Kwinn"
+     },
+     "first": "Justin says crisply, \"Kwinn and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. Isabelle had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Kwinn, in the Library, from supper onward. We were not parted for a moment. I trust that settles it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "John"
+     },
+     "first": "Char answers politely, \"John and I were together in the Sewing room all evening. Please feel free to compare our accounts. You might find Jessica worth a conversation. Jessica and Isabelle had a disagreement recently.\"",
+     "repeat": "\"I am happy to repeat myself, John and I were together in the Sewing room all evening. Please feel free to compare our accounts. The facts remain as they were.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Chloe"
+     },
+     "first": "Jessica replies brightly, \"We were together, Chloe and I, in the Study the whole evening. I'd gladly say so to anyone. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Study the entire evening. We never parted for a minute. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "John",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Kwinn"
+     },
+     "first": "John says thoughtfully, \"The whole evening, alone in the Sewing room. And what do you make of a house where nobody checks on anybody? I hardly knew Isabelle, if I'm honest, but I can't stop thinking about the last thing Isabelle said at supper.\"",
+     "repeat": "\"Once more, then, since you ask, alone in the Sewing room, the whole evening. I watched the shadows on the wall move, which is a poor sort of witness, isn't it? Is it as you expected?\""
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Chloe",
+      "partner": "Justin"
+     },
+     "first": "Kwinn says cheerfully, \"I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. I keep thinking of Isabelle laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"I don't mind saying it twice, I was with Justin in the Library the whole evening, and I'm so glad of the company, tonight of all nights. That is the plain account of it, dear.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "Justin",
+      "partner": "Jessica"
+     },
+     "first": "Chloe says with a sigh, \"We were together, Jessica and I, in the Study the entire evening. I'm grateful for it. I feel so empty about Isabelle. I think I ought to cry, but there's nothing left to do it with.\"",
+     "repeat": "\"I told you already, I'm sorry, Jessica and I sat together in the Study all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Library",
+      "victim": "Isabelle",
+      "other": "Char",
+      "partner": "Kwinn"
+     },
+     "first": "Justin says crisply, \"Kwinn and I were in the Library together the whole evening. You may verify it, though I find the exercise tedious. Isabelle had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, my evening was passed with Kwinn, in the Library, from supper onward. We were not parted for a moment. I trust that settles it.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "calm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Conservatory",
+      "victim": "Isabelle",
+      "other": "Jessica",
+      "partner": "Jessica"
+     },
+     "first": "Char answers politely, \"Jessica and I were together in the Conservatory all evening. Please feel free to compare our accounts. You might find Jessica worth a conversation. Jessica and Isabelle had a disagreement recently.\"",
+     "repeat": "\"I am happy to repeat myself, Jessica and I were together in the Conservatory all evening. Please feel free to compare our accounts. The facts remain as they were.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Study",
+      "victim": "Isabelle",
+      "other": "John",
+      "partner": "Chloe"
+     },
+     "first": "Jessica replies brightly, \"We were together, Chloe and I, in the Study the whole evening. I'd gladly say so to anyone. You must forgive the state of me. I've been fetching tea for people all day and I'm quite worn through.\"",
+     "repeat": "\"Happy to repeat myself, why, Chloe was with me in the Study the entire evening. We never parted for a minute. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "John",
+      "room": "Sewing room",
+      "victim": "Isabelle",
+      "other": "Kwinn"
+     },
+     "first": "John says thoughtfully, \"The whole evening, alone in the Sewing room. And what do you make of a house where nobody checks on anybody? I hardly knew Isabelle, if I'm honest, but I can't stop thinking about the last thing Isabelle said at supper.\"",
+     "repeat": "\"Once more, then, since you ask, alone in the Sewing room, the whole evening. I watched the shadows on the wall move, which is a poor sort of witness, isn't it? Is it as you expected?\""
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Sarah Jo",
+      "partner": "Jessica"
+     },
+     "first": "Isabelle replies in a low voice, \"We were together, Jessica and I, in the Pantry the entire evening. I'm grateful for it. It's all been such a weight. I only want it to end, and for everyone to go home.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, Jessica and I sat together in the Pantry all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Chloe",
+      "partner": "Danny"
+     },
+     "first": "Sarah Jo barks, \"Danny and I were together in the Gallery all evening, so put that in your notebook and be done. Matt had a tongue like a saw, and I never kept quiet about it. Don't act so shocked.\"",
+     "repeat": "\"For the second time, then, Danny and I were together in the Gallery all evening, so put that in your notebook and be done. I won't say it a third time!\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Jessica",
+      "partner": "Gage"
+     },
+     "first": "Chloe says crisply, \"I sat the whole evening in the Bedroom with Gage. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Bedroom with Gage all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Danny",
+      "partner": "Isabelle"
+     },
+     "first": "Jessica answers stiffly, \"Isabelle will confirm that we were together in the Pantry the whole evening. I trust that will suffice. Matt had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, I was in the Pantry with Isabelle all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Gage"
+     },
+     "first": "Danny says softly, \"I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I don't want to cause trouble for anyone, but Gage left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Isabelle",
+      "partner": "Chloe"
+     },
+     "first": "Gage answers hesitantly, \"I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. Isabelle was awfully quiet this evening, which is, I mean, unusual. Not that I'm accusing anyone, I'm only saying.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. That's all of it, I mean, I promise.\""
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Sarah Jo",
+      "partner": "Jessica"
+     },
+     "first": "Isabelle replies in a low voice, \"We were together, Jessica and I, in the Pantry the entire evening. I'm grateful for it. It's all been such a weight. I only want it to end, and for everyone to go home.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, Jessica and I sat together in the Pantry all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Chloe",
+      "partner": "Danny"
+     },
+     "first": "Sarah Jo barks, \"Danny and I were together in the Gallery all evening, so put that in your notebook and be done. Matt had a tongue like a saw, and I never kept quiet about it. Don't act so shocked.\"",
+     "repeat": "\"For the second time, then, Danny and I were together in the Gallery all evening, so put that in your notebook and be done. I won't say it a third time!\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Jessica",
+      "partner": "Gage"
+     },
+     "first": "Chloe says crisply, \"I sat the whole evening in the Bedroom with Gage. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Bedroom with Gage all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Danny",
+      "partner": "Isabelle"
+     },
+     "first": "Jessica answers stiffly, \"Isabelle will confirm that we were together in the Pantry the whole evening. I trust that will suffice. Matt had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, I was in the Pantry with Isabelle all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Gage"
+     },
+     "first": "Danny says softly, \"I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I don't want to cause trouble for anyone, but Gage left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Isabelle",
+      "partner": "Chloe"
+     },
+     "first": "Gage answers hesitantly, \"I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. Isabelle was awfully quiet this evening, which is, I mean, unusual. Not that I'm accusing anyone, I'm only saying.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. That's all of it, I mean, I promise.\""
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Sarah Jo",
+      "partner": "Jessica"
+     },
+     "first": "Isabelle replies in a low voice, \"We were together, Jessica and I, in the Pantry the entire evening. I'm grateful for it. It's all been such a weight. I only want it to end, and for everyone to go home.\"",
+     "repeat": "\"As I said, though it hurts to repeat it, Jessica and I sat together in the Pantry all evening. It helped, a little, not to be alone. I wish it were more useful.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Sarah Jo barks, \"Chloe and I were together in the Gallery all evening, so put that in your notebook and be done. Matt had a tongue like a saw, and I never kept quiet about it. Don't act so shocked.\"",
+     "repeat": "\"For the second time, then, Chloe and I were together in the Gallery all evening, so put that in your notebook and be done. I won't say it a third time!\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Jessica",
+      "partner": "Gage"
+     },
+     "first": "Chloe says crisply, \"I sat the whole evening in the Bedroom with Gage. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I was in the Bedroom with Gage all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Jessica",
+      "room": "Pantry",
+      "victim": "Matt",
+      "other": "Danny",
+      "partner": "Isabelle"
+     },
+     "first": "Jessica answers stiffly, \"Isabelle will confirm that we were together in the Pantry the whole evening. I trust that will suffice. Matt had talent, I grant, but no taste whatever, and I shan't pretend to weep.\"",
+     "repeat": "\"I shall say it once more, slowly, I was in the Pantry with Isabelle all evening. I selected the company myself, and I selected well. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "fragile",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Gallery",
+      "victim": "Matt",
+      "other": "Gage"
+     },
+     "first": "Danny says softly, \"I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I don't want to cause trouble for anyone, but Gage left the table very suddenly last night, and I've thought of it since.\"",
+     "repeat": "\"I'll say it again, if it helps, I stayed alone in the Gallery all evening. It's quiet there, and I couldn't face the others. I'm sorry, that's all I have.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Bedroom",
+      "victim": "Matt",
+      "other": "Isabelle",
+      "partner": "Chloe"
+     },
+     "first": "Gage answers hesitantly, \"I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. Isabelle was awfully quiet this evening, which is, I mean, unusual. Not that I'm accusing anyone, I'm only saying.\"",
+     "repeat": "\"Sorry, I'll say it again, I mean, I was with Chloe, in the Bedroom. The whole evening, I mean, we never left, did we? Ask Chloe, ask them. That's all of it, I mean, I promise.\""
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Dining room",
+      "victim": "Kwinn",
+      "other": "Justin"
+     },
+     "first": "Isabelle replies with some impatience, \"I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. You will find Justin a person of very doubtful character. Ask what Justin wanted from Kwinn.\"",
+     "repeat": "\"As I stated a moment ago, I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "Matt",
+      "partner": "Matt"
+     },
+     "first": "Justin stammers, \"Oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. Kwinn was... I mean, I didn't know Kwinn very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Oh, I told you, didn't I? Well, oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. It's the same as before, I swear it is.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "John",
+      "partner": "Justin"
+     },
+     "first": "Matt answers stiffly, \"I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Dining room",
+      "victim": "Kwinn",
+      "other": "Char",
+      "partner": "Isabelle"
+     },
+     "first": "John stammers, \"I was with Isabelle, in the Dining room. The whole evening, I mean, we never left, did we? Ask Isabelle, ask them. I don't know what to do with myself, I mean sitting still or walking about, so I do both, I'm sorry.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, I was in the Dining room, with Isabelle, the entire evening... I mean we were together, never apart, not once. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Carolyn",
+      "partner": "Carolyn"
+     },
+     "first": "Char replies quietly, \"I sat with Carolyn in the Bedroom the whole evening. Nothing else happened. I didn't like Kwinn. I didn't wish this either.\"",
+     "repeat": "\"Same as before, Carolyn and I, the Bedroom, together all evening. That's it. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Isabelle",
+      "partner": "Char"
+     },
+     "first": "Carolyn answers in a quiet voice, \"I was with Char in the Bedroom the whole evening. Char was kind enough not to ask me to talk. Kwinn was so kind to me once. It was a long time ago, but I remember it.\"",
+     "repeat": "\"Forgive me for repeating, with Char, in the Bedroom, all evening. I'd have been so lonely otherwise. I wish it were more useful.\""
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Dining room",
+      "victim": "Kwinn",
+      "other": "Justin"
+     },
+     "first": "Isabelle replies with some impatience, \"I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. You will find Justin a person of very doubtful character. Ask what Justin wanted from Kwinn.\"",
+     "repeat": "\"As I stated a moment ago, I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "Matt",
+      "partner": "Matt"
+     },
+     "first": "Justin stammers, \"Oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. Kwinn was... I mean, I didn't know Kwinn very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Oh, I told you, didn't I? Well, oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. It's the same as before, I swear it is.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "John",
+      "partner": "Justin"
+     },
+     "first": "Matt answers stiffly, \"I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Dining room",
+      "victim": "Kwinn",
+      "other": "Char",
+      "partner": "Isabelle"
+     },
+     "first": "John stammers, \"I was with Isabelle, in the Dining room. The whole evening, I mean, we never left, did we? Ask Isabelle, ask them. I don't know what to do with myself, I mean sitting still or walking about, so I do both, I'm sorry.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, I was in the Dining room, with Isabelle, the entire evening... I mean we were together, never apart, not once. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Carolyn",
+      "partner": "Carolyn"
+     },
+     "first": "Char replies quietly, \"I sat with Carolyn in the Bedroom the whole evening. Nothing else happened. I didn't like Kwinn. I didn't wish this either.\"",
+     "repeat": "\"Same as before, Carolyn and I, the Bedroom, together all evening. That's it. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Isabelle",
+      "partner": "Char"
+     },
+     "first": "Carolyn answers in a quiet voice, \"I was with Char in the Bedroom the whole evening. Char was kind enough not to ask me to talk. Kwinn was so kind to me once. It was a long time ago, but I remember it.\"",
+     "repeat": "\"Forgive me for repeating, with Char, in the Bedroom, all evening. I'd have been so lonely otherwise. I wish it were more useful.\""
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Dining room",
+      "victim": "Kwinn",
+      "other": "Justin"
+     },
+     "first": "Isabelle replies with some impatience, \"I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. You will find Justin a person of very doubtful character. Ask what Justin wanted from Kwinn.\"",
+     "repeat": "\"As I stated a moment ago, I passed the whole evening alone in the Dining room. A person of my standing does not account for every minute, but I shall oblige you. I do not repeat myself for amusement.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Justin",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "Matt",
+      "partner": "Matt"
+     },
+     "first": "Justin stammers, \"Oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. Kwinn was... I mean, I didn't know Kwinn very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"Oh, I told you, didn't I? Well, oh, with Matt. In the Bathroom. All evening, I mean it, we were together, I can tell you what we talked about. It's the same as before, I swear it is.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bathroom",
+      "victim": "Kwinn",
+      "other": "John",
+      "partner": "Justin"
+     },
+     "first": "Matt answers stiffly, \"I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. I will answer, since I must. I trust you will remember to whom you are speaking.\"",
+     "repeat": "\"As I stated a moment ago, I sat the whole evening in the Bathroom with Justin. Naturally, we conversed on matters rather above the common run. That is quite enough on the subject.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Parlor",
+      "victim": "Kwinn",
+      "other": "Char",
+      "partner": "Carolyn"
+     },
+     "first": "John stammers, \"I was with Carolyn, in the Parlor. The whole evening, I mean, we never left, did we? Ask Carolyn, ask them. I don't know what to do with myself, I mean sitting still or walking about, so I do both, I'm sorry.\"",
+     "repeat": "\"Yes, yes, as I said, I mean, I was in the Parlor, with Carolyn, the entire evening... I mean we were together, never apart, not once. Sorry, I'm repeating myself.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Char",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Carolyn",
+      "partner": "Carolyn"
+     },
+     "first": "Char replies quietly, \"I sat with Carolyn in the Bedroom the whole evening. Nothing else happened. I didn't like Kwinn. I didn't wish this either.\"",
+     "repeat": "\"Same as before, Carolyn and I, the Bedroom, together all evening. That's it. I have nothing to add.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "fragile",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Bedroom",
+      "victim": "Kwinn",
+      "other": "Isabelle",
+      "partner": "Char"
+     },
+     "first": "Carolyn answers in a quiet voice, \"I was with Char in the Bedroom the whole evening. Char was kind enough not to ask me to talk. Kwinn was so kind to me once. It was a long time ago, but I remember it.\"",
+     "repeat": "\"Forgive me for repeating, with Char, in the Bedroom, all evening. I'd have been so lonely otherwise. I wish it were more useful.\""
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Sarah Jo"
+     },
+     "first": "Isabelle says with a thoughtful look, \"The Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. I did not much like Jessica, but I did find Jessica fascinating. Is that a terrible thing to say?\"",
+     "repeat": "\"Let me say it once more, in case I missed something, the Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Is it as you expected?\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Bedroom",
+      "victim": "Jessica",
+      "other": "Carolyn"
+     },
+     "first": "Danny says angrily, \"I sat alone in the Bedroom the whole evening, and a fine thing it is to be asked about it now. Jessica was a good friend once, and this makes my blood boil to think of.\"",
+     "repeat": "\"Do keep up! As I said, alone! The Bedroom! All evening! What else do you want, a signed statement? Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "John",
+      "partner": "Kwinn"
+     },
+     "first": "Carolyn says with curiosity, \"I was in the Sewing room with Kwinn the whole evening. Does it help or hinder, being two? I can't decide. If it were me, I'd press John. Why would John take such an interest in Jessica's habits?\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, with Kwinn, in the Sewing room, the entire evening. I've been wondering since what the others were doing. Haven't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Bedroom",
+      "victim": "Jessica",
+      "other": "Kwinn",
+      "partner": "Danny"
+     },
+     "first": "John stammers, \"Danny and I were together in the Bedroom, all evening, I mean the whole of it. I'm sure about that, quite sure. Poor Jessica. I mean it's terrible, of course, but I'd be fibbing if I said I knew what to feel.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Bedroom, with Danny, the entire evening... I mean we were together, never apart, not once. There's nothing else, I mean really nothing.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Carolyn"
+     },
+     "first": "Kwinn says with a smile, \"I sat with Carolyn in the Sewing room all evening long, and we talked until the whole dreadful business began. I hardly knew Jessica well enough to grieve properly, and I feel dreadful about that.\"",
+     "repeat": "\"Of course, dear, I'll say it again, I was with Carolyn in the Sewing room the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Isabelle",
+      "partner": "Isabelle"
+     },
+     "first": "Sarah Jo says with a smile, \"Why, Isabelle was with me in the Ballroom the entire evening. We never parted for a minute. I keep thinking of Jessica laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"Why, certainly, once more, I was with Isabelle in the Ballroom the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Sarah Jo"
+     },
+     "first": "Isabelle says with a thoughtful look, \"The Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. I did not much like Jessica, but I did find Jessica fascinating. Is that a terrible thing to say?\"",
+     "repeat": "\"Let me say it once more, in case I missed something, the Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Is it as you expected?\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Bedroom",
+      "victim": "Jessica",
+      "other": "Carolyn"
+     },
+     "first": "Danny says angrily, \"I sat alone in the Bedroom the whole evening, and a fine thing it is to be asked about it now. Jessica was a good friend once, and this makes my blood boil to think of.\"",
+     "repeat": "\"Do keep up! As I said, alone! The Bedroom! All evening! What else do you want, a signed statement? Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "John",
+      "partner": "Kwinn"
+     },
+     "first": "Carolyn says with curiosity, \"I was in the Sewing room with Kwinn the whole evening. Does it help or hinder, being two? I can't decide. If it were me, I'd press John. Why would John take such an interest in Jessica's habits?\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, with Kwinn, in the Sewing room, the entire evening. I've been wondering since what the others were doing. Haven't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Dining room",
+      "victim": "Jessica",
+      "other": "Kwinn",
+      "partner": "Kwinn"
+     },
+     "first": "John stammers, \"Kwinn and I were together in the Dining room, all evening, I mean the whole of it. I'm sure about that, quite sure. Poor Jessica. I mean it's terrible, of course, but I'd be fibbing if I said I knew what to feel.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Dining room, with Kwinn, the entire evening... I mean we were together, never apart, not once. There's nothing else, I mean really nothing.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Carolyn"
+     },
+     "first": "Kwinn says with a smile, \"I sat with Carolyn in the Sewing room all evening long, and we talked until the whole dreadful business began. I hardly knew Jessica well enough to grieve properly, and I feel dreadful about that.\"",
+     "repeat": "\"Of course, dear, I'll say it again, I was with Carolyn in the Sewing room the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Isabelle",
+      "partner": "Isabelle"
+     },
+     "first": "Sarah Jo says with a smile, \"Why, Isabelle was with me in the Ballroom the entire evening. We never parted for a minute. I keep thinking of Jessica laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"Why, certainly, once more, I was with Isabelle in the Ballroom the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Danny",
+      "partner": "Sarah Jo"
+     },
+     "first": "Isabelle says with a thoughtful look, \"The Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. I did not much like Jessica, but I did find Jessica fascinating. Is that a terrible thing to say?\"",
+     "repeat": "\"Let me say it once more, in case I missed something, the Ballroom, with Sarah Jo, all evening. We were so deep in talk, I scarcely heard a sound from the rest of the house. Is it as you expected?\""
+    },
+    {
+     "suspect": 1,
+     "personality": "hot_tempered",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Danny",
+      "room": "Bedroom",
+      "victim": "Jessica",
+      "other": "Carolyn"
+     },
+     "first": "Danny says angrily, \"I sat alone in the Bedroom the whole evening, and a fine thing it is to be asked about it now. Jessica was a good friend once, and this makes my blood boil to think of.\"",
+     "repeat": "\"Do keep up! As I said, alone! The Bedroom! All evening! What else do you want, a signed statement? Are we quite finished?\""
+    },
+    {
+     "suspect": 2,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "John",
+      "partner": "Kwinn"
+     },
+     "first": "Carolyn says with curiosity, \"I was in the Sewing room with Kwinn the whole evening. Does it help or hinder, being two? I can't decide. If it were me, I'd press John. Why would John take such an interest in Jessica's habits?\"",
+     "repeat": "\"Same as before, though I wonder why you ask twice, with Kwinn, in the Sewing room, the entire evening. I've been wondering since what the others were doing. Haven't you? Is it as you expected?\""
+    },
+    {
+     "suspect": 3,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "John",
+      "room": "Parlor",
+      "victim": "Jessica",
+      "other": "Kwinn",
+      "partner": "Kwinn"
+     },
+     "first": "John stammers, \"Kwinn and I were together in the Parlor, all evening, I mean the whole of it. I'm sure about that, quite sure. Poor Jessica. I mean it's terrible, of course, but I'd be fibbing if I said I knew what to feel.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Parlor, with Kwinn, the entire evening... I mean we were together, never apart, not once. There's nothing else, I mean really nothing.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Kwinn",
+      "room": "Sewing room",
+      "victim": "Jessica",
+      "other": "Sarah Jo",
+      "partner": "Carolyn"
+     },
+     "first": "Kwinn says with a smile, \"I sat with Carolyn in the Sewing room all evening long, and we talked until the whole dreadful business began. I hardly knew Jessica well enough to grieve properly, and I feel dreadful about that.\"",
+     "repeat": "\"Of course, dear, I'll say it again, I was with Carolyn in the Sewing room the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "warm",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Sarah Jo",
+      "room": "Ballroom",
+      "victim": "Jessica",
+      "other": "Isabelle",
+      "partner": "Isabelle"
+     },
+     "first": "Sarah Jo says with a smile, \"Why, Isabelle was with me in the Ballroom the entire evening. We never parted for a minute. I keep thinking of Jessica laughing at supper. It seems such a short while ago.\"",
+     "repeat": "\"Why, certainly, once more, I was with Isabelle in the Ballroom the whole evening, and I'm so glad of the company, tonight of all nights. I do wish I had more to offer you.\""
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "suspects": 6,
+   "difficulty": "easy",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Robbie",
+      "partner": "Robbie"
+     },
+     "first": "Matt says coolly, \"I sat the whole evening in the Bedroom with Robbie. Naturally, we conversed on matters rather above the common run. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"As I stated a moment ago, I was with Robbie in the Bedroom all evening, discussing weightier subjects than this wretched affair. Please do try to keep up.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Carolyn",
+      "partner": "Matt"
+     },
+     "first": "Robbie says in a small voice, \"Well, I mean, I was in the Bedroom with Matt. All evening. Together. We talked about, oh, nothing, I'm afraid. Chris was... I mean, I didn't know Chris very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Bedroom, with Matt, the entire evening... I mean we were together, never apart, not once. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Carolyn answers without much interest, \"Together with Chloe in the Pantry all evening. Check it if you must. I answered. That should do.\"",
+     "repeat": "\"Again, then, the Pantry, with Chloe, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Gage",
+      "partner": "Carolyn"
+     },
+     "first": "Chloe says eagerly, \"I was in the Pantry with Carolyn the whole evening. Does it help or hinder, being two? I can't decide. You must hear a great deal, inspector. Do people ever tell you the truth the first time?\"",
+     "repeat": "\"Once more, then, since you ask, Carolyn and I were together in the Pantry all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Parlor",
+      "victim": "Chris",
+      "other": "Isabelle"
+     },
+     "first": "Gage replies with interest, \"I was alone in the Parlor the whole evening. Does that sound suspicious to you? It does to me, a little. I wonder about Isabelle, truthfully. Why did Isabelle stop speaking with Chris so suddenly?\"",
+     "repeat": "\"Didn't I say? Well, again then, I was alone in the Parlor all evening. Rather odd, now I think on it, that no one looked in once. Don't you find that odd? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Parlor",
+      "victim": "Chris",
+      "other": "Matt",
+      "partner": "Gage"
+     },
+     "first": "Isabelle says angrily, \"The Parlor, with Gage, the entire evening, and I resent having to prove it. I owe Chris nothing and I miss Chris anyway, which makes me angrier than anything.\"",
+     "repeat": "\"I've said it already, and I'll say it again, I was with Gage in the Parlor the whole evening, and I'll not hear a word against it! Write it down and be done!\""
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "suspects": 6,
+   "difficulty": "normal",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Robbie",
+      "partner": "Robbie"
+     },
+     "first": "Matt says coolly, \"I sat the whole evening in the Bedroom with Robbie. Naturally, we conversed on matters rather above the common run. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"As I stated a moment ago, I was with Robbie in the Bedroom all evening, discussing weightier subjects than this wretched affair. Please do try to keep up.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Carolyn",
+      "partner": "Matt"
+     },
+     "first": "Robbie says in a small voice, \"Well, I mean, I was in the Bedroom with Matt. All evening. Together. We talked about, oh, nothing, I'm afraid. Chris was... I mean, I didn't know Chris very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Bedroom, with Matt, the entire evening... I mean we were together, never apart, not once. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Carolyn answers without much interest, \"Together with Chloe in the Pantry all evening. Check it if you must. I answered. That should do.\"",
+     "repeat": "\"Again, then, the Pantry, with Chloe, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Gage",
+      "partner": "Carolyn"
+     },
+     "first": "Chloe says eagerly, \"I was in the Pantry with Carolyn the whole evening. Does it help or hinder, being two? I can't decide. You must hear a great deal, inspector. Do people ever tell you the truth the first time?\"",
+     "repeat": "\"Once more, then, since you ask, Carolyn and I were together in the Pantry all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Parlor",
+      "victim": "Chris",
+      "other": "Isabelle"
+     },
+     "first": "Gage replies with interest, \"I was alone in the Parlor the whole evening. Does that sound suspicious to you? It does to me, a little. I wonder about Isabelle, truthfully. Why did Isabelle stop speaking with Chris so suddenly?\"",
+     "repeat": "\"Didn't I say? Well, again then, I was alone in the Parlor all evening. Rather odd, now I think on it, that no one looked in once. Don't you find that odd? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Parlor",
+      "victim": "Chris",
+      "other": "Matt",
+      "partner": "Gage"
+     },
+     "first": "Isabelle says angrily, \"The Parlor, with Gage, the entire evening, and I resent having to prove it. I owe Chris nothing and I miss Chris anyway, which makes me angrier than anything.\"",
+     "repeat": "\"I've said it already, and I'll say it again, I was with Gage in the Parlor the whole evening, and I'll not hear a word against it! Write it down and be done!\""
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "suspects": 6,
+   "difficulty": "hard",
+   "asks": [
+    {
+     "suspect": 0,
+     "personality": "proud",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Matt",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Robbie",
+      "partner": "Robbie"
+     },
+     "first": "Matt says coolly, \"I sat the whole evening in the Bedroom with Robbie. Naturally, we conversed on matters rather above the common run. I do hope this will not take long. I have letters to write which will not wait.\"",
+     "repeat": "\"As I stated a moment ago, I was with Robbie in the Bedroom all evening, discussing weightier subjects than this wretched affair. Please do try to keep up.\""
+    },
+    {
+     "suspect": 1,
+     "personality": "nervous",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Robbie",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Carolyn",
+      "partner": "Matt"
+     },
+     "first": "Robbie says in a small voice, \"Well, I mean, I was in the Bedroom with Matt. All evening. Together. We talked about, oh, nothing, I'm afraid. Chris was... I mean, I didn't know Chris very well, but it's dreadful, isn't it? Simply dreadful.\"",
+     "repeat": "\"I did say, I mean I'm sure I said it, I was in the Bedroom, with Matt, the entire evening... I mean we were together, never apart, not once. That's all of it, I mean, I promise.\""
+    },
+    {
+     "suspect": 2,
+     "personality": "guarded",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Carolyn",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Chloe",
+      "partner": "Chloe"
+     },
+     "first": "Carolyn answers without much interest, \"Together with Chloe in the Pantry all evening. Check it if you must. I answered. That should do.\"",
+     "repeat": "\"Again, then, the Pantry, with Chloe, the entire evening. We stayed put. Same answer, always.\""
+    },
+    {
+     "suspect": 3,
+     "personality": "curious",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Chloe",
+      "room": "Pantry",
+      "victim": "Chris",
+      "other": "Gage",
+      "partner": "Carolyn"
+     },
+     "first": "Chloe says eagerly, \"I was in the Pantry with Carolyn the whole evening. Does it help or hinder, being two? I can't decide. You must hear a great deal, inspector. Do people ever tell you the truth the first time?\"",
+     "repeat": "\"Once more, then, since you ask, Carolyn and I were together in the Pantry all evening. Strange how a house empties when something's afoot, isn't it? I do hope that's useful.\""
+    },
+    {
+     "suspect": 4,
+     "personality": "curious",
+     "claim_kind": "solo",
+     "slots": {
+      "speaker": "Gage",
+      "room": "Parlor",
+      "victim": "Chris",
+      "other": "Isabelle"
+     },
+     "first": "Gage replies with interest, \"I was alone in the Parlor the whole evening. Does that sound suspicious to you? It does to me, a little. I wonder about Isabelle, truthfully. Why did Isabelle stop speaking with Chris so suddenly?\"",
+     "repeat": "\"Didn't I say? Well, again then, I was alone in the Parlor all evening. Rather odd, now I think on it, that no one looked in once. Don't you find that odd? I do hope that's useful.\""
+    },
+    {
+     "suspect": 5,
+     "personality": "hot_tempered",
+     "claim_kind": "pair",
+     "slots": {
+      "speaker": "Isabelle",
+      "room": "Bedroom",
+      "victim": "Chris",
+      "other": "Matt",
+      "partner": "Carolyn"
+     },
+     "first": "Isabelle says angrily, \"The Bedroom, with Carolyn, the entire evening, and I resent having to prove it. I owe Chris nothing and I miss Chris anyway, which makes me angrier than anything.\"",
+     "repeat": "\"I've said it already, and I'll say it again, I was with Carolyn in the Bedroom the whole evening, and I'll not hear a word against it! Write it down and be done!\""
+    }
+   ]
+  }
+ ]
+}
