@@ -29,8 +29,8 @@ Launch the current painted mystery from PowerShell:
 ```
 
 Use WASD/arrows to walk, E for nearby interactions and N for learned evidence.
-Q drops the held item. The magnifying glass occupies the single carrying slot;
-drop it to carry another object. On Normal/Hard compare stained-item kinds with
+Q drops the held item. The magnifying glass is a permanent tool that never
+occupies the carrying slot. On Normal/Hard compare stained-item kinds with
 the wound clue before choosing what to present. Nearby stacked items have a chooser.
 Find the magnifying glass, compare accounts and inspect the house. Carry the
 identified weapon before assembling an accusation. The seed and difficulty
@@ -38,6 +38,22 @@ menu starts a fresh randomized case. Turn off Random mystery to replay a case
 number; the launcher also accepts `-CaseSeed <number>`. An ambush requires being
 alone with the killer; other guests prevent an attack. The older authored mansion
 remains available as its own scene, separate from the previously released version below.
+
+## Controls and screens
+
+The room fills the window. A translucent HUD shows the room name top-left, the
+murderer's phase (Calm, Suspicious or Stalking) top-right in yellow and orange
+phase colours, and a context action bar along the bottom.
+
+- E interacts, speaks, examines or takes; Q drops the carried item.
+- F examines the floor and needs the magnifying glass; N opens the journal.
+- Tab shows the house map, Esc opens the menu and F11 toggles fullscreen.
+- You carry one evidence item at a time. No evidence item can ever be in the Front Entry.
+- The accusation screen shows six character cards and uses the room where everyone was gathered.
+- The journal is player-controlled, with checkboxes and notes. Easy adds an automatic
+  Facts tab only. Notes reset each case and never change the mystery.
+- During an ambush the murderer's portrait zooms in dramatically.
+- Char and Chris kneel to study the floor.
 
 ## In the current version
 

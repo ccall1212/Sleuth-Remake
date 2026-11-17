@@ -90,6 +90,18 @@ func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
 	enter_screen(str(layout.start))
 	return true
 
+static func blocked_rooms(layout: Dictionary) -> Array:
+	# Room indices (rooms in layout order, then the secret room) that can never hold an evidence item.
+	var ids: Array = []
+	for screen in layout.get("screens", []):
+		if screen.get("role") == "room": ids.append(screen)
+	for screen in layout.get("screens", []):
+		if screen.get("role") == "secret": ids.append(screen)
+	var blocked: Array = []
+	for index in range(ids.size()):
+		if not ids[index].has("item_slot"): blocked.append(index)
+	return blocked
+
 func has_item_slot(screen_id: String) -> bool:
 	for screen in case_layout.get("screens", []):
 		if str(screen.id) == screen_id: return screen.has("item_slot")

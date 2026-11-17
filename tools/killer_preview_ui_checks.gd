@@ -2,6 +2,7 @@ extends SceneTree
 const View = preload("res://src/blockout/house_investigation.tscn")
 const Case = preload("res://src/mystery/generated_case.gd")
 const Preview = preload("res://src/mystery/killer_preview_cases.gd")
+const Session = preload("res://src/mystery/house_case_session.gd")
 var failures: Array[String] = []
 var checks := 0
 
@@ -27,7 +28,7 @@ func run() -> void:
 		var voice: String = data.personalities[data.culprit]
 		check(voice == Preview.VOICE_ORDER[index], "Next preview uses the next unseen killer personality")
 		voices_seen[voice] = true
-		check(data == Case.generate(int(view.seed_input.value), 6, "normal"), "Selected preview is a complete original generated case")
+		check(data == Case.generate(int(view.seed_input.value), 6, "normal", Case.POOL, [], Session.blocked_rooms(view.model.data)), "Selected preview is a complete original generated case")
 		check(view.killer_preview_remaining == 7 - index, "Preview expires after eight successfully started cases")
 		var ending: Dictionary = view.investigation.ambush()
 		view.present_ending(ending, "standing_threaten_south")
@@ -48,7 +49,7 @@ func run() -> void:
 	view.random_case.button_pressed = false
 	view.seed_input.value = 123
 	view.start_case()
-	check(view.investigation.data == Case.generate(123, 6, "normal"), "Fixed replay stays exact after preview expires")
+	check(view.investigation.data == Case.generate(123, 6, "normal", Case.POOL, [], Session.blocked_rooms(view.model.data)), "Fixed replay stays exact after preview expires")
 	view.queue_free()
 	await process_frame
 	print(JSON.stringify({"checks": checks, "failures": failures}))

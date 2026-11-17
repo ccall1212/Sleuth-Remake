@@ -14,7 +14,7 @@ func run() -> void:
 	await process_frame
 	check(scene.painted and scene.model.data.get("mode") == "painted_investigation", "Default entry binds actual painted investigation without CLI flags")
 	check(scene.random_on_start and scene.random_case.button_pressed, "F5 starts a randomized case")
-	check(scene.investigation.data.claims.size() == 6 and scene.investigation.items.size() == 10, "Default game has six suspects and portable items")
+	check(scene.investigation.data.claims.size() == 6 and scene.investigation.items.size() == 9, "Default game has six suspects and nine portable items (none in the Front Entry)")
 	check(scene.model.current_id == scene.model.data.start and scene.investigation.active(), "Default entry starts a live mystery at front entry")
 	check(scene.killer_preview_remaining == 0 and not scene.diagnostics, "Default entry is normal play without debug or forced-killer mode")
 	if "--capture-ui" in OS.get_cmdline_user_args():

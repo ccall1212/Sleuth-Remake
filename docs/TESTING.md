@@ -769,3 +769,39 @@ Native runtime checks: **16,336 passed**, zero failures. Coverage includes exact
 ## Correction: room-entry guest snapshots — 2026-10-26
 
 The user explicitly rejected visible NPC walking. Guest pathfinding/travel has been removed. Guests stay at fixed positions and activities throughout a visit; only entering a non-hall room resolves the chance that they had relocated, placing them directly at their new spots. The existing elapsed-step rate is applied at that entry, not continuously. The danger clock remains separate and unchanged. Previous spatial-walking implementation/test descriptions above are superseded. Focused snapshot/clock checks and UI regressions cover the corrected behaviour. See [current rules](HOUSE_RUNTIME.md).
+
+## UX overhaul checks (2026-11-17)
+
+Branch `feature/ux-overhaul` (not yet merged to `main`). Run each headless check
+with the Godot 4.7.2 console executable from the project root:
+
+```powershell
+<Godot 4.7.2 console executable> --headless --path . --script tools/<name>.gd -- --layout=res://assets/maps/house-02.investigation.layout.json
+```
+
+Each check prints one JSON line with `checks` and `failures`.
+
+- `front_entry_checks`: no evidence in the Front Entry, generator parity with Python on 900 cases, drops refused.
+- `accusation_room_checks`: all five accusation outcomes; the room is the gathering room.
+- `floor_key_checks`: F equals the Floor button and is ignored in modals.
+- `game_hud_checks`: room name, murderer phase and action bar in the HUD.
+- `accusation_cards_checks`: six character cards on the accusation screen.
+- `journal_checks`: journal behaviour, plus the journal assertions in `encounter_ui_checks`.
+- `murderer_zoom_checks`: both ambush types, and skip.
+- `murderer_zoom_flow_checks`: both ambush types, and skip, through the full flow.
+- `kneeling_pose_checks`: Char and Chris kneel to study the floor.
+
+Python tests:
+
+```powershell
+.venv\Scripts\python.exe -m pytest tests/case_design tests/test_pose_runtime_status.py
+```
+
+Screenshot scripts run WITHOUT `--headless` and write PNGs to
+`test-results/screenshots/` (git-ignored): `tools/ux_screens_capture.gd` and
+`tools/kneel_capture.gd`.
+
+Known gap: the 13 Python dialogue tests in `tests/case_design/test_dialogue*.py`
+fail because the game's dialogue data gained pronoun slots and new keys that the
+Python dialogue library does not know yet. This is pre-existing and not caused by
+this work.

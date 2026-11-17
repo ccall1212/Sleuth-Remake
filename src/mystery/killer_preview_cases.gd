@@ -5,14 +5,14 @@ const SEED_LIMIT := 1000000000
 const SEARCH_LIMIT := 5000
 const VOICE_ORDER := ["hot_tempered", "fragile", "proud", "nervous", "guarded", "curious", "warm", "calm"]
 
-static func find_seed(start_seed: int, target: String, difficulty := "normal", voice := "") -> int:
+static func find_seed(start_seed: int, target: String, difficulty := "normal", voice := "", blocked: Array = []) -> int:
 	if not Case.POOL.has(target) or not Case.SETTINGS.has(difficulty):
 		return -1
 	if not voice.is_empty() and voice not in Case.PERSONALITIES: return -1
 	var first := posmod(start_seed, SEED_LIMIT)
 	for offset in range(SEARCH_LIMIT):
 		var candidate := posmod(first + offset, SEED_LIMIT)
-		var truth: Dictionary = Case.generate(candidate, 6, difficulty)
+		var truth: Dictionary = Case.generate(candidate, 6, difficulty, Case.POOL, [], blocked)
 		if not truth.is_empty() and str(truth.cast[truth.culprit]) == target and (voice.is_empty() or truth.personalities[truth.culprit] == voice):
 			return candidate
 	return -1

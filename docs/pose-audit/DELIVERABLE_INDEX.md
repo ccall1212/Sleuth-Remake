@@ -52,3 +52,7 @@ The seven alignment_01 samples now have user artwork approval. See
 [directional pipeline planning](../CHARACTER_DIRECTIONAL_PIPELINE_PLAN.md) and
 `assets/characters/poses/char/directional-index.json` for the authoring-only index.
 Approved export bytes are now in user-requested directional folders; the Char root index exposes them. No new expression art or runtime selector has been implemented.
+
+## Runtime integration status (2026-11-17)
+
+`assets/characters/poses/runtime-integration.json` is the machine-readable runtime status for Char and Chris. Every pose id in each directional index has one status: `integrated_world_and_portrait`, `integrated_kneeling_world`, `integrated_reveal`, `deferred_bed_interaction` (all `lying_*`; the player cannot walk onto beds yet), `reference_only_not_runtime` (Char `standing_clasp_hands_*`) or `not_yet_hooked` (with a `needs` note). Kwinn and Sarah Jo are `awaiting_approved_library`; a selector must read this file or the directional index before using them. Regenerate with `tools/build_pose_runtime_status.py`; `tests/test_pose_runtime_status.py` checks it against the indexes and export hashes. Art and metadata are never modified by this tooling.

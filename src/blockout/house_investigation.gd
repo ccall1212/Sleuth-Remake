@@ -12,6 +12,7 @@ const HouseMap = preload("res://src/blockout/house_map_panel.gd")
 const GameHud = preload("res://src/blockout/game_hud.gd")
 const AccusationCards = preload("res://src/blockout/accusation_cards.gd")
 const CastPortrait = preload("res://src/blockout/cast_portrait.gd")
+const MurdererZoom = preload("res://src/blockout/murderer_zoom.gd")
 const JournalState = preload("res://src/mystery/journal_state.gd")
 const JournalNotebook = preload("res://src/blockout/journal_notebook.gd")
 @export var random_on_start := false
@@ -81,6 +82,9 @@ var map_panel: Control
 var developer_tools: VBoxContainer
 var killer_preview_remaining := 0
 var hud: Control
+var zoom: Control
+var ambush_zoom_enabled := DisplayServer.get_name() != "headless" # headless checks keep the instant dialogue unless a test turns the zoom on
+var ambush_zoom_overrides := {}
 var hud_hint_shown := {}
 var killer_preview_index := 0
 
@@ -259,8 +263,8 @@ func _ready() -> void:
 	feedback_text.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	feedback_text.offset_left = 150
 	feedback_text.offset_right = -150
-	feedback_text.offset_top = -116
-	feedback_text.offset_bottom = -66
+	feedback_text.offset_top = -176
+	feedback_text.offset_bottom = -124
 	feedback_text.add_theme_stylebox_override("normal", MysteryTheme.panel("0a1116d8", "514936", 6))
 	feedback_text.fit_content = false
 	feedback_text.add_theme_font_size_override("normal_font_size", 13)
@@ -280,6 +284,8 @@ func _ready() -> void:
 	hud.set_anchors_preset(Control.PRESET_FULL_RECT)
 	hud.action_pressed.connect(on_hud_action)
 	add_child(hud)
+	zoom = MurdererZoom.new()
+	add_child(zoom) # last child: the full-screen reveal draws above the HUD
 	if random_on_start: seed_input.value = randi_range(0, 999999999)
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--killer-preview-count="):
@@ -316,7 +322,7 @@ func start_case() -> void:
 		var target: String = ["Char", "Chris"][killer_preview_index % 2]
 		var preview = preload("res://src/mystery/killer_preview_cases.gd")
 		var voice: String = preview.VOICE_ORDER[killer_preview_index % preview.VOICE_ORDER.size()]
-		var matching_seed: int = preview.find_seed(int(seed_input.value), target, difficulty, voice)
+		var matching_seed: int = preview.find_seed(int(seed_input.value), target, difficulty, voice, Session.blocked_rooms(model.data))
 		if matching_seed < 0:
 			feedback = "Could not prepare the requested killer playtest case."
 			return
@@ -337,6 +343,9 @@ func start_case() -> void:
 	ambush_pending = false
 	ambush_ending.clear()
 	reveal.stop()
+	if is_instance_valid(zoom) and zoom.playing:
+		if zoom.finished.is_connected(finish_ambush): zoom.finished.disconnect(finish_ambush)
+		zoom.skip()
 	sting.stop()
 	door_lock_audio.stop()
 	win_audio.stop()
@@ -392,8 +401,11 @@ func _process(delta: float) -> void:
 	var sting_delay := maxf(0.9, door_lock_audio.stream.get_length())
 	if ambush_elapsed >= sting_delay and not ambush_sting_started:
 		ambush_sting_started = true
-		sting.play_sting()
-		finish_ambush()
+		if ambush_zoom_enabled and ambush_zoom_texture() != null:
+			start_ambush_zoom()
+		else:
+			sting.play_sting()
+			finish_ambush()
 	queue_redraw()
 
 func _exit_tree() -> void:
@@ -659,15 +671,7 @@ func ask_nearby() -> void:
 		var response: String = investigation.question(person)
 		if investigation.active():
 			var presentation := guest_presentation(person, true)
-			var floor_focused: bool = bool(investigation.runtime.guests[person].staring) or presentation.activity == "look_down"
-			if presentation.posture == "seated" or floor_focused:
-				# Keep Claude's spoken words, with the actual pose's physical preface.
-				# Openings such as 'straightens to full height' must not stand a seat.
-				var speech := response.find('"')
-				if speech >= 0:
-					response = response.substr(speech)
-			if investigation.last_message_key != "refusal" and not str(presentation.narration).is_empty():
-				response = "%s\n\n%s" % [presentation.narration, response]
+			# No stage-direction narration before answers (user, 2026-11-17): the voice tag in the dialogue is enough.
 			say_case(response, true)
 			message_dialog.title = "Questioning " + str(investigation.data.cast[person])
 			show_guest_portrait(person, presentation)
@@ -812,6 +816,30 @@ func begin_ambush(ending: Dictionary, pose: String) -> void:
 	ambush_route = preload("res://src/blockout/ambush_approach.gd").route(model, model.current_id, ambush_start, model.position)
 	if not ambush_route.is_empty(): ambush_position = ambush_route[0]
 	queue_redraw()
+
+func ambush_zoom_texture() -> Texture2D:
+	# The murderer's own approved art: the reveal/threat pose when one exists, otherwise the best available portrait.
+	var culprit := int(investigation.data.culprit)
+	var actor_name := str(investigation.data.cast[culprit])
+	var record: Dictionary = actor_art.asset(actor_name, ambush_pose) if ActorArt.ACTORS.has(actor_name) else actor_art.playtest_asset(actor_name)
+	if record.is_empty() and ActorArt.ACTORS.has(actor_name):
+		record = actor_art.asset(actor_name, "standing_idle_south")
+	if record.is_empty() or not record.has("texture") or not record.has("bounds"): return null
+	var bounds: Rect2 = record.bounds
+	var crop := AtlasTexture.new() # head and torso only, so the zoom is a face, not a full-length figure
+	crop.atlas = record.texture
+	crop.region = Rect2(bounds.position, Vector2(bounds.size.x, bounds.size.y * 0.55))
+	return crop
+
+func start_ambush_zoom() -> void:
+	var texture := ambush_zoom_texture()
+	var overrides := ambush_zoom_overrides.duplicate()
+	zoom.finished.connect(finish_ambush, CONNECT_ONE_SHOT)
+	zoom.play(texture, overrides)
+	var config: Dictionary = zoom.config()
+	# The sting lands as the face hits the screen.
+	get_tree().create_timer(float(config.anticipation) + float(config.zoom_duration) * 0.8).timeout.connect(func():
+		if is_instance_valid(sting) and ambush_pending: sting.play_sting())
 
 func finish_ambush() -> void:
 	if not ambush_pending: return
@@ -1034,6 +1062,9 @@ func hint_once(key: String, text: String) -> void:
 func hint_for_state(near_object: bool) -> void:
 	# Short, one-time onboarding hints; they never block input and reset with each new case.
 	if modal_open() or ambush_pending or not investigation.active(): return
+	if bool(investigation.progress.glass) and not hud_hint_shown.has("glass_cleared"):
+		hud_hint_shown["glass_cleared"] = true
+		hud.clear_hint() # the find-the-glass hint is over once the glass is in hand
 	if not bool(investigation.progress.glass):
 		if near_object and bool(current_item().get("is_glass", false)): hint_once("glass", "A magnifying glass. Take it: you keep it for the whole case.")
 		else: hint_once("find_glass", "Look for the magnifying glass. Questioning guests costs nothing.")

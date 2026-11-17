@@ -1,0 +1,562 @@
+{
+  "characters": {
+    "char": {
+      "counts": {
+        "deferred_bed_interaction": 7,
+        "integrated_kneeling_world": 3,
+        "integrated_reveal": 5,
+        "integrated_world_and_portrait": 49,
+        "not_yet_hooked": 14,
+        "reference_only_not_runtime": 3
+      },
+      "poses": {
+        "kneeling_reach_east": {
+          "status": "integrated_kneeling_world"
+        },
+        "kneeling_reach_south": {
+          "status": "integrated_kneeling_world"
+        },
+        "kneeling_reach_west": {
+          "status": "integrated_kneeling_world"
+        },
+        "lying_idle_east_west_head_east": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_idle_east_west_head_west": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_idle_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_lounge_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_east_west_head_east": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_east_west_head_west": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "seated_idle_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_accuse_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_clasp_hands_east": {
+          "needs": "unapproved: reference-only record, excluded from runtime",
+          "status": "reference_only_not_runtime"
+        },
+        "standing_clasp_hands_south": {
+          "needs": "unapproved: reference-only record, excluded from runtime",
+          "status": "reference_only_not_runtime"
+        },
+        "standing_clasp_hands_west": {
+          "needs": "unapproved: reference-only record, excluded from runtime",
+          "status": "reference_only_not_runtime"
+        },
+        "standing_cross_arms_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cry_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_deny_east": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_deny_south": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_deny_west": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_fidget_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hold_book_east": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_north": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_south": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_west": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_idle_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_laugh_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_lean_south": {
+          "needs": "needs a furniture hook (wall/furniture lean)",
+          "status": "not_yet_hooked"
+        },
+        "standing_look_down_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_down_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_down_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_reach_table_east": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_reach_table_south": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_reach_table_west": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_read_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_shrug_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_startle_east": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_startle_south": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_startle_west": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_talk_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_threaten_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_withdraw_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_withdraw_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_withdraw_west": {
+          "status": "integrated_world_and_portrait"
+        }
+      }
+    },
+    "chris": {
+      "counts": {
+        "deferred_bed_interaction": 7,
+        "integrated_kneeling_world": 3,
+        "integrated_reveal": 5,
+        "integrated_world_and_portrait": 49,
+        "not_yet_hooked": 17
+      },
+      "poses": {
+        "crouching_cry_south": {
+          "status": "integrated_reveal"
+        },
+        "kneeling_reach_east": {
+          "status": "integrated_kneeling_world"
+        },
+        "kneeling_reach_south": {
+          "status": "integrated_kneeling_world"
+        },
+        "kneeling_reach_west": {
+          "status": "integrated_kneeling_world"
+        },
+        "lying_idle_east_west_head_east": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_idle_east_west_head_west": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_idle_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_lounge_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_east_west_head_east": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_east_west_head_west": {
+          "status": "deferred_bed_interaction"
+        },
+        "lying_sleep_north_south_head_north": {
+          "status": "deferred_bed_interaction"
+        },
+        "seated_idle_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_idle_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_read_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "seated_sleep_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_accuse_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_clasp_hands_east": {
+          "needs": "needs a conversation/event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_clasp_hands_south": {
+          "needs": "needs a conversation/event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_clasp_hands_west": {
+          "needs": "needs a conversation/event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_cross_arms_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_cross_arms_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_deny_east": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_deny_south": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_deny_west": {
+          "needs": "needs an accusation/interview event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_fidget_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_fidget_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hands_hips_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_hold_book_east": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_north": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_south": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_hold_book_west": {
+          "needs": "needs a furniture/event hook (bookshelf interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_idle_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_idle_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_laugh_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_lean_south": {
+          "needs": "needs a furniture hook (wall/furniture lean)",
+          "status": "not_yet_hooked"
+        },
+        "standing_look_down_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_down_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_down_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_look_up_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_reach_table_east": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_reach_table_south": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_reach_table_west": {
+          "needs": "needs a furniture hook (table interaction)",
+          "status": "not_yet_hooked"
+        },
+        "standing_read_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_read_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_shrug_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_startle_east": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_startle_south": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_startle_west": {
+          "needs": "needs a scare/discovery event hook",
+          "status": "not_yet_hooked"
+        },
+        "standing_talk_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_talk_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_north": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_think_west": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_threaten_south": {
+          "status": "integrated_reveal"
+        },
+        "standing_withdraw_east": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_withdraw_south": {
+          "status": "integrated_world_and_portrait"
+        },
+        "standing_withdraw_west": {
+          "status": "integrated_world_and_portrait"
+        }
+      }
+    },
+    "kwinn": {
+      "counts": {},
+      "note": "Only drafts/models exist; read this file or the directional index before use.",
+      "poses": {},
+      "status": "awaiting_approved_library"
+    },
+    "sarah_jo": {
+      "counts": {},
+      "note": "Only drafts/models exist; read this file or the directional index before use.",
+      "poses": {},
+      "status": "awaiting_approved_library"
+    }
+  },
+  "generated_by": "tools/build_pose_runtime_status.py",
+  "note": "Runtime integration status mirroring src/mystery/guest_presentation.gd, src/mystery/killer_preview_cases.gd and src/blockout/house_investigation.gd. Derived from directional-index.json; art and metadata are never modified.",
+  "schema_version": 1
+}

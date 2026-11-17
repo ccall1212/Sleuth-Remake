@@ -4,6 +4,9 @@ const Dialogue = preload("res://src/mystery/case_dialogue.gd")
 static var narrator = Dialogue.new()
 const FACINGS := ["north", "east", "south", "west"]
 const FLOOR_FOCUSED := ["curious", "fragile", "nervous"]
+## Approved kneeling_reach art exists for these actors in east, south and west only (2026-11-17). A guest studying the floor kneels to do it.
+const KNEELING_ACTORS := ["Char", "Chris"]
+const KNEELING_FACINGS := ["east", "south", "west"]
 
 static func talking_action(personality: String) -> String:
 	return {"warm": "talk", "nervous": "fidget", "proud": "hands_hips",
@@ -12,6 +15,12 @@ static func talking_action(personality: String) -> String:
 
 static func portrait_presentation(world: Dictionary) -> Dictionary:
 	var portrait := world.duplicate(true)
+	if portrait.get("posture", "") == "kneeling":
+		# The close view of someone studying the floor uses the approved standing look-down pose; the world guest keeps kneeling.
+		portrait.posture = "standing"
+		portrait.activity = "look_down"
+		portrait.pose_id = "standing_look_down_%s" % portrait.facing
+		return portrait
 	if portrait.facing != "north":
 		return portrait
 	# A back-facing chair/body stays at its calibrated room anchor. The close
@@ -89,6 +98,9 @@ static func presentation(guest: Dictionary, personality: String, player: Vector2
 			# Preserve facing rather than inventing a missing north/down sprite.
 			# Narration above deliberately does not describe a visible downward gaze.
 			activity = "idle"
+		elif activity == "look_down" and actor_name in KNEELING_ACTORS and facing in KNEELING_FACINGS:
+			posture = "kneeling"
+			activity = "reach"
 	if not narration.is_empty():
 		narration = narrator.system_line(narration, {"speaker": actor_name if not actor_name.is_empty() else "the guest"}, {})
 	return {"posture": posture, "facing": facing, "activity": activity,

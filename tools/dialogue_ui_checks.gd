@@ -72,7 +72,7 @@ func run() -> void:
 		var speech := raw.substr(raw.find('"'))
 		var presented: Dictionary = view.guest_presentation(seated, true)
 		check_portrait(view, seated, presented)
-		check(view.message_dialog.visible and view.message_text.text == presented.narration + "\n\n" + speech, "Seated popup preserves complete speech with only matching physical preface")
+		check(view.message_dialog.visible and view.message_text.text == raw and view.message_text.text.contains(speech), "Seated popup shows the plain spoken answer with no stage direction")
 		check(not view.message_text.bbcode_enabled and view.message_text.scroll_active, "Full question body is plain, scrollable text")
 		check(view.message_dialog.title == "Questioning " + str(session.data.cast[seated]), "Question window identifies its speaker")
 		check(guest.position == settled.position and guest.posture == settled.posture and guest.facing == settled.facing and guest.activity == settled.activity, "Question leaves saved seating and activity unchanged")

@@ -15,23 +15,24 @@ func _initialize() -> void:
 
 func run() -> void:
 	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/maps/house-02.investigation.layout.json"))
+	var blocked: Array = Session.blocked_rooms(layout)
 	var baseline: Dictionary = Case.generate(27, 6, "normal")
 	var wrapped := false
 	for target in ["Char", "Chris"]:
 		for difficulty in ["easy", "normal", "hard"]:
 			for first in [0, 47, 999999999]:
-				var selected: int = Preview.find_seed(first, target, difficulty)
+				var selected: int = Preview.find_seed(first, target, difficulty, "", blocked)
 				check(selected >= 0 and selected < Preview.SEED_LIMIT, "Preview seed is in supported replay range")
 				if selected < 0:
 					continue
-				var truth: Dictionary = Case.generate(selected, 6, difficulty)
+				var truth: Dictionary = Case.generate(selected, 6, difficulty, Case.POOL, [], blocked)
 				check(truth.cast[truth.culprit] == target, "Naturally generated culprit matches requested preview identity")
-				check(selected == Preview.find_seed(first, target, difficulty), "Same preview request repeats the same complete case seed")
+				check(selected == Preview.find_seed(first, target, difficulty, "", blocked), "Same preview request repeats the same complete case seed")
 				var distance := posmod(selected - first, Preview.SEED_LIMIT)
 				check(distance < Preview.SEARCH_LIMIT, "Search respects bounded candidate limit")
 				var no_match_skipped := true
 				for offset in range(distance):
-					var earlier: Dictionary = Case.generate(posmod(first + offset, Preview.SEED_LIMIT), 6, difficulty)
+					var earlier: Dictionary = Case.generate(posmod(first + offset, Preview.SEED_LIMIT), 6, difficulty, Case.POOL, [], blocked)
 					if earlier.cast[earlier.culprit] == target:
 						no_match_skipped = false
 				check(no_match_skipped, "Search chooses first matching case in sequential wrapped order")
@@ -48,13 +49,13 @@ func run() -> void:
 	for voice in Case.PERSONALITIES:
 		for target in ["Char", "Chris"]:
 			for difficulty in ["easy", "normal", "hard"]:
-				var seed_value: int = Preview.find_seed(0, target, difficulty, voice)
+				var seed_value: int = Preview.find_seed(0, target, difficulty, voice, blocked)
 				check(seed_value >= 0, "Requested killer personality is reachable: " + target + "/" + voice)
 				if seed_value < 0: continue
-				var truth: Dictionary = Case.generate(seed_value, 6, difficulty)
+				var truth: Dictionary = Case.generate(seed_value, 6, difficulty, Case.POOL, [], blocked)
 				check(truth.cast[truth.culprit] == target and truth.personalities[truth.culprit] == voice, "Preview matches identity and personality without edits")
 				check(Preview.confession_pose(voice, target) in approved_poses[target], "Personality reveal has approved artwork for " + target + "/" + voice)
-				check(Preview.find_seed(0, target, difficulty, voice) == seed_value, "Personality preview seed replays exactly")
+				check(Preview.find_seed(0, target, difficulty, voice, blocked) == seed_value, "Personality preview seed replays exactly")
 				var session := Session.new()
 				check(session.begin(seed_value, layout, difficulty) and session.data == truth, "Personality preview preserves complete generated case")
 				if target != "Char" or difficulty != "normal": continue
