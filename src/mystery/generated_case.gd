@@ -16,7 +16,7 @@ const SETTINGS := {
 static func stream(seed_value: int, name: String) -> RefCounted:
 	return Stream.new(VERSION, seed_value, name)
 
-static func generate(seed_value: int, suspects := 6, difficulty := "normal", pool: Array = POOL, voice_override: Array = []) -> Dictionary:
+static func generate(seed_value: int, suspects := 6, difficulty := "normal", pool: Array = POOL, voice_override: Array = [], no_item_rooms: Array = []) -> Dictionary:
 	if not SETTINGS.has(difficulty) or not ROOM_COUNT.has(suspects) or pool.size() < suspects + 1:
 		return {}
 	if not voice_override.is_empty() and voice_override.size() != suspects:
@@ -29,8 +29,10 @@ static func generate(seed_value: int, suspects := 6, difficulty := "normal", poo
 	var cast: Array = stream(seed_value, "cast").shuffle(pool).slice(0, suspects + 1)
 	var culprit: int = stream(seed_value, "culprit").below(suspects)
 	var murder_room: int = stream(seed_value, "crime_room").choice(ordinary)
-	var weapon_room: int = stream(seed_value, "weapon").choice(anywhere)
-	var glass_choices: Array = anywhere.filter(func(r): return r != weapon_room)
+	# Rooms that cannot hold an evidence item (the Front Entry). Murder rooms are independent of this.
+	var item_rooms: Array = anywhere.filter(func(r): return r not in no_item_rooms)
+	var weapon_room: int = stream(seed_value, "weapon").choice(item_rooms)
+	var glass_choices: Array = item_rooms.filter(func(r): return r != weapon_room)
 	var glass_room: int = stream(seed_value, "glass").choice(glass_choices)
 	# Kind draws include the glass and hidden slots. Keep names/art on a
 	# different stream so presentation cannot change the lens evidence.
@@ -40,7 +42,7 @@ static func generate(seed_value: int, suspects := 6, difficulty := "normal", poo
 		item_kinds.append(items.choice(ITEM_KINDS))
 	var wound: String = item_kinds[weapon_room]
 	var stains = stream(seed_value, "stains")
-	var decoy_pool: Array = ordinary.filter(func(r): return r != weapon_room and r != glass_room)
+	var decoy_pool: Array = ordinary.filter(func(r): return r != weapon_room and r != glass_room and r not in no_item_rooms)
 	# Python shuffles even on Easy, sorts the selected rooms, then repairs
 	# matching kinds in that sorted order using the same stains stream.
 	var decoy_rooms: Array = stains.shuffle(decoy_pool).slice(0, int(cfg.stained_decoys))
@@ -104,11 +106,13 @@ static func generate(seed_value: int, suspects := 6, difficulty := "normal", poo
 			var personality: String = voice.choice(PERSONALITIES)
 			if personalities.count(personality) < 2:
 				personalities.append(personality)
-	return {"version": VERSION, "seed": seed_value, "difficulty": difficulty, "cast": cast,
+	var result := {"version": VERSION, "seed": seed_value, "difficulty": difficulty, "cast": cast,
 		"personalities": personalities, "rooms": rooms, "claims": claims, "culprit": culprit,
 		"murder_room": murder_room, "weapon_room": weapon_room, "glass_room": glass_room,
 		"trace_mode": cfg.trace, "guest_start": guest_start,
 		"item_kinds": item_kinds, "decoy_rooms": decoy_rooms, "weapon_certain": cfg.certain}
+	if not no_item_rooms.is_empty(): result["no_item_rooms"] = no_item_rooms.duplicate()
+	return result
 
 static func weapon_candidates(item_kinds: Array, stained_items: Array, wound: String) -> Array:
 	# Public observations only: do not accept the generated truth object.

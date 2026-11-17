@@ -42,7 +42,7 @@ func run() -> void:
 			session.enter_screen(session.room_ids[session.data.glass_room])
 			session.take_item()
 			check(session.progress.glass, "Glass is discoverable and collectible")
-			check(not session.assemble(), "Glass takes the carrying slot but cannot assemble")
+			check(not session.assemble(), "The glass is a tool, not evidence: empty-handed assembly is refused")
 			for person in range(6):
 				session.enter_screen(session.room_ids[session.data.guest_start[person]])
 				var text: String = session.question(person)
@@ -55,7 +55,7 @@ func run() -> void:
 				session.inspect_item()
 			check(session.progress.crime_room == session.data.murder_room and session.progress.wound == session.items[session.data.weapon_room].kind, "Murder-room discovery supplies the actual catalog weapon's wound kind")
 			check(session.progress.weapon == (session.data.weapon_room if difficulty == "easy" else null), "Only Easy explicitly identifies the weapon")
-			check(session.progress.carried == session.data.glass_room, "Inspection never replaces the held glass")
+			check(session.progress.carried == null and session.progress.glass, "Inspection never changes the glass tool or carried slot")
 			var matching_items: Array = []
 			for key in session.progress.items_seen:
 				var seen: Dictionary = session.progress.items_seen[key]
@@ -65,12 +65,18 @@ func run() -> void:
 			check(difficulty == "easy" or not session.notebook().contains("Identified weapon:"), "Normal notebook leaves weapon deduction to player")
 			var possible: Array = Case.candidates(6, session.progress.heard, session.progress.crime_room)
 			check(possible == [session.data.culprit], "Learned evidence alone produces one reconstruction")
-			session.enter_screen(session.room_ids[matching_items[0]])
+			var other_item: int = session.items.keys().filter(func(id): return id != matching_items[0] and id != session.data.glass_room)[0]
+			session.enter_screen(str(session.items[other_item].screen))
+			session.take_item(other_item)
+			check(session.progress.carried == other_item and session.progress.glass, "Evidence can be carried together with the glass tool")
+			session.enter_screen(str(session.items[matching_items[0]].screen))
 			session.take_item(matching_items[0])
-			check(session.progress.glass and session.last_message_key == "hands_full", "Take cannot silently replace the held glass")
-			session.drop_item(session.items[matching_items[0]].position)
+			check(session.progress.carried == other_item and session.last_message_key == "hands_full", "Take cannot silently replace the held evidence")
+			session.enter_screen(str(session.progress.screen))
+			session.drop_item(session.held_item().position)
+			session.enter_screen(str(session.items[matching_items[0]].screen))
 			session.take_item(matching_items[0])
-			check(not session.progress.glass and session.progress.carried == matching_items[0], "Dropping glass permits carrying deduced item")
+			check(session.progress.glass and session.progress.carried == matching_items[0], "Dropping evidence permits carrying the deduced item and keeps the glass")
 			check(session.assemble(), "Carried true weapon permits assembly")
 			check(session.accuse(possible[0], session.progress.crime_room).result == "solved", "Accusation from discovered evidence wins")
 			check(not session.active(), "Solved case ends")

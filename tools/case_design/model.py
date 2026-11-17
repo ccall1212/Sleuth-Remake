@@ -55,6 +55,7 @@ class Case:
     guest_start: tuple[int, ...]        # starting room per suspect (they wander later)
     item_kinds: tuple[str, ...] = ()    # wound kind of each room's item (blunt, sharp, heavy); empty on old cases
     decoy_rooms: tuple[int, ...] = ()   # rooms whose item also shows a stain but is not the weapon
+    no_item_rooms: tuple[int, ...] = ()  # rooms that can never hold an evidence item (the Front Entry); the murder room is independent
     weapon_certain: bool = True         # Easy: the lens names the weapon outright; otherwise it only shows "a stain"
 
     @property
@@ -84,7 +85,7 @@ class Case:
         return len(self.rooms) - 1
 
     def to_dict(self) -> dict:
-        return {
+        data = {
             "version": self.version, "seed": self.seed, "difficulty": self.difficulty,
             "cast": list(self.cast), "personalities": list(self.personalities),
             "rooms": list(self.rooms),
@@ -95,6 +96,9 @@ class Case:
             "item_kinds": list(self.item_kinds), "decoy_rooms": list(self.decoy_rooms),
             "weapon_certain": self.weapon_certain,
         }
+        if self.no_item_rooms:                       # only present when a house forbids item rooms (older fixtures stay valid)
+            data["no_item_rooms"] = list(self.no_item_rooms)
+        return data
 
     @staticmethod
     def from_dict(d: dict) -> "Case":
@@ -105,5 +109,5 @@ class Case:
             culprit=d["culprit"], murder_room=d["murder_room"], weapon_room=d["weapon_room"],
             glass_room=d["glass_room"], trace_mode=d["trace_mode"], guest_start=tuple(d["guest_start"]),
             item_kinds=tuple(d.get("item_kinds", ())), decoy_rooms=tuple(d.get("decoy_rooms", ())),
-            weapon_certain=d.get("weapon_certain", True),
+            weapon_certain=d.get("weapon_certain", True), no_item_rooms=tuple(d.get("no_item_rooms", ())),
         )

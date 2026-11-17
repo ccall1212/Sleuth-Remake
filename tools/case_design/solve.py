@@ -85,6 +85,9 @@ def problems(case: Case) -> list[str]:
                 out.append(f"innocent {s}'s partner does not agree")
     # Independence and house rules.
     hidden = case.hidden_room
+    for label, room in (("glass", case.glass_room), ("weapon", case.weapon_room), *(("decoy", d) for d in case.decoy_rooms)):
+        if room in case.no_item_rooms:
+            out.append(f"{label} is in room {room}, which cannot hold an item")
     if case.glass_room == case.weapon_room:
         out.append("glass and weapon share an item slot")
     hidden_ok = case.difficulty == "hard"

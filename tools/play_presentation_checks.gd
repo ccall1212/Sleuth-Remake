@@ -168,14 +168,18 @@ func run() -> void:
 	for seed_value in range(24):
 		var s = Session.new()
 		check(s.begin(seed_value, view.model.data), "Case presentation binds ten item slots")
-		check(s.data == Case.generate(seed_value, 6, "normal"), "Item selection changes no culprit, claims or clue-room facts")
-		check(s.item_names.size() == 10, "Each case assigns ten evidence item names")
+		var no_item_rooms: Array = []
+		for index in range(s.room_ids.size()):
+			if not s.has_item_slot(str(s.room_ids[index])): no_item_rooms.append(index)
+		check(s.data == Case.generate(seed_value, 6, "normal", Case.POOL, [], no_item_rooms), "Item selection changes no culprit, claims or clue-room facts")
+		check(s.item_names.size() == s.room_ids.size() - 1, "Each case assigns an evidence item name to every room except the Front Entry")
 		var seen := {}
 		for room in range(s.room_ids.size()):
+			if not s.items.has(room): continue # the Front Entry holds no evidence item
 			var item: String = s.item_name(room)
 			seen[item] = true
 			check(not view.item_art.asset(item).is_empty() and view.item_art.detail(item) != null, "Assigned item has matching world and closeup art")
-		check(seen.size() == 10, "No duplicated evidence item assignment")
+		check(seen.size() == s.room_ids.size() - 1, "No duplicated evidence item assignment")
 		permutations[JSON.stringify(s.item_names)] = true
 		locations[JSON.stringify([s.data.glass_room, s.data.weapon_room])] = true
 		if seed_value == 2:

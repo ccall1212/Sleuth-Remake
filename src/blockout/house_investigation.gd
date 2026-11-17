@@ -423,7 +423,7 @@ func _physics_process(delta: float) -> void:
 		investigator.update(model.position, delta if not modal_open() else 0.0)
 	victim_label.text = "Victim: " + str(investigation.data.cast[-1])
 	var held: Dictionary = investigation.held_item()
-	status_label.text = "Holding: %s\nAccounts: %d / 6" % [str(held.name) if not held.is_empty() else "nothing", investigation.progress.heard.size()]
+	status_label.text = "Magnifying glass: %s\nHolding: %s\nAccounts: %d / 6" % ["found" if investigation.progress.glass else "not found", str(held.name) if not held.is_empty() else "nothing", investigation.progress.heard.size()]
 	refresh_item_choice()
 	var near_person := nearby_guest()
 	var near_object := near_item()
@@ -439,7 +439,7 @@ func _physics_process(delta: float) -> void:
 		var item: Dictionary = current_item()
 		context_label.text = current_item_name() + (" · " + str(item.kind) if not item.is_glass else "")
 		primary_button.text = "Examine   E"
-		if held.is_empty():
+		if held.is_empty() or bool(item.is_glass):
 			primary_button.text = "Take   E"
 	var secret: Dictionary = model.data.secret
 	if model.current_id == str(secret.entrance_room) and model.position.distance_to(model.secret_panel()) <= 26:
@@ -452,12 +452,12 @@ func _physics_process(delta: float) -> void:
 		context_label.text = "The doors are locked until you make your accusation."
 		primary_button.text = "Check door   E"
 	item_button.disabled = not near_object or not investigation.active()
-	take_button.disabled = not near_object or not held.is_empty() or not investigation.active()
+	take_button.disabled = not near_object or (not held.is_empty() and not bool(current_item().get("is_glass", false))) or not investigation.active()
 	item_button.visible = near_object and primary_button.text != "Examine   E"
 	take_button.visible = near_object and primary_button.text != "Take   E"
 	drop_button.visible = not held.is_empty()
 	drop_button.disabled = not investigation.active()
-	accuse_button.disabled = held.is_empty() or bool(held.get("is_glass", false)) or not investigation.active()
+	accuse_button.disabled = held.is_empty() or not investigation.active()
 	accuse_button.text = "Make an accusation" if investigation.progress.get("assembled", false) else "Gather everyone"
 	primary_button.disabled = not investigation.active()
 	feedback_text.text = feedback
@@ -506,7 +506,7 @@ func interact_nearby() -> void:
 	if person >= 0:
 		ask_nearby()
 	elif near_item():
-		if investigation.held_item().is_empty():
+		if investigation.held_item().is_empty() or bool(current_item().get("is_glass", false)):
 			take_nearby()
 		else:
 			examine_nearby()

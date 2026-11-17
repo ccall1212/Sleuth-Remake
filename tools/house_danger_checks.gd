@@ -113,7 +113,7 @@ func run() -> void:
 				full.runtime.geometry.screens[id].door_access_regions = []
 		check(not full.runtime.enter_player_screen(room), "No free destination means bystander stays and prevents ambush")
 		check(not full.runtime.can_ambush(room), "Isolation cannot invent space or remove a guest")
-	# The grab scene uses the actual held item, including the glass, rather
+	# The grab scene uses the actual held evidence item (the glass is a tool, not evidence), rather
 	# than naming the true weapon in hands that may contain something else.
 	for carrying in ["empty", "glass", "ordinary", "weapon"]:
 		var s := session(2, true)
@@ -128,15 +128,16 @@ func run() -> void:
 		if held != null:
 			s.enter_screen(s.room_ids[held])
 			s.take_item(held)
-		check(s.progress.carried == held and s.runtime.weapon_carried == (carrying == "weapon"), "Only true held weapon accelerates danger")
+		var evidence: Variant = null if carrying == "glass" else held
+		check(s.progress.carried == evidence and s.progress.glass == (carrying == "glass") and s.runtime.weapon_carried == (carrying == "weapon"), "Only true held weapon accelerates danger; the glass tool is never carried")
 		var room: String = s.room_ids[0]
 		stage(s, room, [s.data.culprit])
 		s.runtime.advance_to(s.runtime.stalking_at)
 		s.runtime.player_screen = s.runtime.halls[0]
 		var ending: Dictionary = s.observe_world(s.runtime.steps, room)
 		check(ending.get("result") == "ambushed", "Actual isolated room entry triggers each inventory ambush")
-		check(ending.get("message_key") == ("ambush_locked" if held == null else "ambush_grab"), "Grab applies to every held item including glass")
-		if held != null:
+		check(ending.get("message_key") == ("ambush_locked" if evidence == null else "ambush_grab"), "Grab applies to every held evidence item; the glass tool alone stays locked")
+		if evidence != null:
 			var narrative: String = str(ending.message).split("\n\n")[0]
 			check(narrative.contains(s.item_name(held)), "Grab narration names what was actually held")
 			if held != s.data.weapon_room:

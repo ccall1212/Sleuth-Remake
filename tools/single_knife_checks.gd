@@ -22,7 +22,11 @@ func run() -> void:
 		for seed_value in range(90):
 			var s = Session.new()
 			check(s.begin(seed_value, layout, difficulty), "Catalog deal can host every case")
-			check(s.data == Case.generate(seed_value, 6, difficulty), "Reference generator facts and lens fixture data remain untouched")
+			var no_item_rooms: Array = []
+			for index in range(s.room_ids.size()):
+				if not s.has_item_slot(str(s.room_ids[index])): no_item_rooms.append(index)
+			check(no_item_rooms == [s.room_ids.find("room_6")], "Only the Front Entry lacks an item slot")
+			check(s.data == Case.generate(seed_value, 6, difficulty, Case.POOL, [], no_item_rooms), "Reference generator facts and lens fixture data remain untouched")
 			var names := {}
 			var sharp := 0
 			var stains: Array = []
@@ -34,7 +38,7 @@ func run() -> void:
 					sharp += 1
 					check(item.name == "Kitchen knife", "No alternate knife names enter a case")
 				if item.stained: stains.append(item.id)
-			check(names.size() == 10 and sharp <= 1, "Every case has unique types and at most one knife")
+			check(names.size() == s.room_ids.size() - 1 and names.size() == s.items.size() and sharp <= 1, "Every case has unique types and at most one knife")
 			check(stains.size() == (1 if difficulty == "easy" else 3), "Easy has one stain; Normal and Hard retain two decoys")
 			var wound: String = s.items[s.data.weapon_room].kind
 			check(stains.filter(func(id): return s.items[id].kind == wound) == [s.data.weapon_room], "Actual wound kind singles out exactly the true weapon")

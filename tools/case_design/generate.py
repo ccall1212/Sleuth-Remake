@@ -42,7 +42,8 @@ def solo_count(innocents: int, rng: Rng) -> int:
 
 def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
              pool: Sequence[str] = DEFAULT_POOL,
-             personalities: Optional[Sequence[str]] = None) -> Case:
+             personalities: Optional[Sequence[str]] = None,
+             no_item_rooms: Sequence[int] = ()) -> Case:
     if difficulty not in DIFFICULTIES:
         raise ValueError(f"unknown difficulty {difficulty!r}")
     low, high = SUSPECT_RANGE
@@ -63,15 +64,16 @@ def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
     # --- the four independent choices ---------------------------------------------------------
     culprit = _stream(seed, "culprit").below(suspects)
     murder_room = _stream(seed, "crime_room").choice(ordinary)   # never the secret room (user, 2026-10-26)
-    weapon_room = _stream(seed, "weapon").choice(anywhere)
-    glass_room = _stream(seed, "glass").choice([r for r in anywhere if r != weapon_room])
+    item_rooms = [r for r in anywhere if r not in no_item_rooms]   # rooms that may hold an evidence item
+    weapon_room = _stream(seed, "weapon").choice(item_rooms)
+    glass_room = _stream(seed, "glass").choice([r for r in item_rooms if r != weapon_room])
 
     # --- the lens: item kinds, the wound, and stained decoys (own streams; never touch the four choices above) ---
     items = _stream(seed, "items")
     kinds = [items.choice(ITEM_KINDS) for _ in range(room_total)]
     wound = kinds[weapon_room]
     stains = _stream(seed, "stains")
-    decoy_pool = [r for r in ordinary if r not in (weapon_room, glass_room)]
+    decoy_pool = [r for r in ordinary if r not in (weapon_room, glass_room) and r not in no_item_rooms]
     decoys = sorted(stains.shuffle(decoy_pool)[: cfg["stained_decoys"]])
     for r in decoys:                                      # a decoy must be of a different kind, or the clue could not tell it apart
         if kinds[r] == wound:
@@ -136,5 +138,5 @@ def generate(seed: int, suspects: int = 6, difficulty: str = "normal",
         claims=tuple(claims[s] for s in range(suspects)), culprit=culprit,
         murder_room=murder_room, weapon_room=weapon_room, glass_room=glass_room,
         trace_mode=cfg["trace"], guest_start=guest_start,
-        item_kinds=tuple(kinds), decoy_rooms=tuple(decoys), weapon_certain=cfg["certain"],
+        item_kinds=tuple(kinds), decoy_rooms=tuple(decoys), weapon_certain=cfg["certain"], no_item_rooms=tuple(no_item_rooms),
     )

@@ -33,7 +33,7 @@ func run() -> void:
 		for seed_value in range(12):
 			var s = session(seed_value, difficulty)
 			var original: Dictionary = s.data.duplicate(true)
-			check(s.items.size() == s.room_ids.size() and s.progress.items_seen.is_empty(), "One instance per original slot; notebook starts without unseen truth")
+			check(s.items.size() == s.room_ids.size() - 1 and s.progress.items_seen.is_empty(), "One instance per item-bearing slot (no Front Entry item); notebook starts without unseen truth")
 			check(s.notebook().contains("ITEMS / LAST KNOWN LOCATIONS") and not s.notebook().contains("stain: present"), "Fresh notebook reveals no stains")
 			var names := {}
 			for item in s.items.values():
@@ -42,11 +42,13 @@ func run() -> void:
 			check(names.size() == s.items.size(), "Case item variants have distinct names")
 			var glass: int = s.data.glass_room
 			hold(s, glass)
-			check(s.progress.carried == glass and s.progress.glass and s.held_item().is_glass, "Magnifying glass occupies the sole carrying slot")
+			check(s.progress.carried == null and s.progress.glass and s.items[glass].screen == "", "Magnifying glass is a permanent tool and never occupies the carrying slot")
 			var weapon: int = s.data.weapon_room
 			s.enter_screen(s.items[weapon].screen)
 			s.take_item(weapon)
-			check(s.last_message_key == "hands_full" and s.progress.carried == glass, "Cannot secretly swap glass for any other item")
+			check(s.progress.carried == weapon and s.progress.glass, "Glass tool and one evidence item can be held together")
+			s.drop_item(s.runtime.geometry.point(s.runtime.geometry.screens[s.progress.screen].spawn))
+			check(s.progress.carried == null and s.progress.glass and s.items[weapon].screen == s.progress.screen, "Dropping evidence never removes the glass tool")
 			var stains: Array = []
 			var observed_kinds := {}
 			for id in s.items:
@@ -78,18 +80,20 @@ func run() -> void:
 			var hall: String = "hall_2"
 			s.enter_screen(hall)
 			var at: Vector2 = s.runtime.geometry.point(s.runtime.geometry.screens[hall].spawn)
+			hold(s, weapon)
+			s.enter_screen(hall)
 			s.drop_item(at)
-			check(not s.progress.glass and s.progress.carried == null and s.items[glass].screen == hall and s.items[glass].position == at, "Dropping glass in hall leaves it exactly there and disables lens")
-			check(s.progress.items_seen[str(glass)].screen == hall and not s.progress.items_seen[str(glass)].held, "Notebook tracks dropped glass location")
+			check(s.progress.glass and s.progress.carried == null and s.items[weapon].screen == hall and s.items[weapon].position == at, "Dropping evidence in hall leaves it exactly there and keeps the lens")
+			check(s.progress.items_seen[str(weapon)].screen == hall and not s.progress.items_seen[str(weapon)].held, "Notebook tracks dropped evidence location")
 			s.inspect_floor()
 			check(s.last_message_key == "no_floor", "Hall remains a non-clue floor")
-			s.take_item(glass)
-			check(s.progress.glass and s.items[glass].screen.is_empty(), "Glass can be recovered in a hall")
-			s.drop_item(at)
-			hold(s, weapon)
-			check(s.progress.carried == weapon and not s.progress.glass and s.runtime.weapon_carried, "True weapon occupies same slot and enables clock multiplier")
+			s.take_item(weapon)
+			check(s.progress.carried == weapon and s.progress.glass and s.runtime.weapon_carried, "True weapon occupies the evidence slot, keeps the lens and enables clock multiplier")
 			s.inspect_floor()
-			check(s.last_message_key == "floor_needs_glass", "Carrying weapon cannot use lens")
+			check(s.last_message_key != "floor_needs_glass", "Carrying weapon does not disable the lens")
+			s.enter_screen("room_6")
+			s.drop_item(s.runtime.geometry.point(s.runtime.geometry.screens.room_6.spawn))
+			check(s.progress.carried == weapon and s.last_message_key == "drop_blocked", "Front Entry refuses drops")
 			s.enter_screen("room_4")
 			var kitchen_at: Vector2 = s.runtime.geometry.point(s.runtime.geometry.screens.room_4.spawn)
 			s.drop_item(kitchen_at)
@@ -119,16 +123,21 @@ func run() -> void:
 		check(ending.result == result and not s.active(), "Final accusation selects terminal outcome " + result)
 		if result == "wrong_weapon": check(ending.message.contains(s.item_name(wrong)) and ending.message.contains(s.item_name(weapon)), "Wrong-weapon confession names held and actual weapon separately")
 	var s = session(17)
+	var wrong_item: int = s.items.keys().filter(func(id): return id != s.data.weapon_room and id != s.data.glass_room)[0]
 	hold(s, s.data.glass_room)
-	var held_glass: int = s.progress.carried
+	check(not s.assemble() and not s.progress.assembled, "Glass tool alone cannot gather suspects")
+	hold(s, wrong_item)
+	check(s.progress.carried == wrong_item and s.progress.glass, "Evidence is carried alongside the glass tool")
 	s.drop_item(Vector2.INF)
-	check(s.progress.carried == held_glass and s.last_message_key == "drop_blocked", "Non-finite drop cannot lose carried item")
+	check(s.progress.carried == wrong_item and s.last_message_key == "drop_blocked", "Non-finite drop cannot lose carried item")
 	s.drop_item(Vector2(-50, -50))
-	check(s.progress.carried == held_glass and s.last_message_key == "drop_blocked", "Drop outside reachable floor cannot lose carried item")
-	check(not s.assemble() and not s.progress.assembled, "Glass cannot gather suspects")
-	var glass_name: String = s.held_item().name
+	check(s.progress.carried == wrong_item and s.last_message_key == "drop_blocked", "Drop outside reachable floor cannot lose carried item")
+	var item_name: String = s.held_item().name
 	var true_name: String = s.item_name(s.data.weapon_room)
 	var ending: Dictionary = s.ambush()
-	check(ending.message.contains(glass_name) and ending.message.contains(true_name), "Ambush grabs held glass while truth summary retains actual weapon")
+	check(ending.message_key == "ambush_grab" and ending.message.contains(item_name) and ending.message.contains(true_name), "Ambush grabs held evidence while truth summary retains actual weapon")
+	var t = session(17)
+	hold(t, t.data.glass_room)
+	check(t.ambush().message_key == "ambush_locked", "Holding only the glass tool gives the locked ambush")
 	print(JSON.stringify({"checks": checks, "failures": failures, "cases": 36, "outcomes": 5}))
 	quit(0 if failures.is_empty() else 1)

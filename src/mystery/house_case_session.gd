@@ -56,7 +56,6 @@ func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
 	runtime = null
 	case_layout = layout
 	refusal_counts.clear()
-	data = Case.generate(seed_value, 6, difficulty)
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/mystery/house_item_catalog.json"))
 	item_names.clear()
 	items.clear()
@@ -75,6 +74,11 @@ func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
 		if screen.get("role") == "secret":
 			room_ids.append(screen.id)
 			room_names.append(screen.name)
+	# Rooms without an item_slot (the Front Entry) can never hold evidence; the generator is told so.
+	var no_item_rooms: Array = []
+	for index in range(room_ids.size()):
+		if not has_item_slot(str(room_ids[index])): no_item_rooms.append(index)
+	data = Case.generate(seed_value, 6, difficulty, Case.POOL, [], no_item_rooms)
 	if data.is_empty() or room_ids.size() != data.rooms.size():
 		return false
 	for index in range(room_ids.size()):
@@ -85,6 +89,18 @@ func begin(seed_value: int, layout: Dictionary, difficulty := "normal") -> bool:
 		return false
 	enter_screen(str(layout.start))
 	return true
+
+func has_item_slot(screen_id: String) -> bool:
+	for screen in case_layout.get("screens", []):
+		if str(screen.id) == screen_id: return screen.has("item_slot")
+	return false
+
+func drop_allowed(screen_id: String) -> bool:
+	# Halls take dropped items; a room without an item_slot (the Front Entry) never does.
+	for screen in case_layout.get("screens", []):
+		if str(screen.id) == screen_id:
+			return screen.has("item_slot") or str(screen.get("role", "")) == "hall"
+	return false
 
 func enter_screen(id: String) -> void:
 	if progress.get("assembled", false) and id != progress.get("assembly_room", id):
@@ -130,19 +146,19 @@ func active() -> bool:
 func prepare_items(catalog: Dictionary) -> bool:
 	var art_rng = Case.stream(int(data.seed), "item_art")
 	var pool: Array = art_rng.shuffle(catalog.get("items", []))
-	if pool.size() < room_ids.size() - 1:
+	if pool.size() < room_ids.size() - 1 - data.get("no_item_rooms", []).size():
 		message("[PENDING_DIALOGUE:item_catalog_capacity]")
 		return false
 	var dealt := {}
 	var cursor := 0
 	for id in range(room_ids.size()):
-		if id == int(data.glass_room): continue
+		if id == int(data.glass_room) or id in data.get("no_item_rooms", []): continue
 		dealt[id] = pool[cursor]
 		cursor += 1
 	var unused: Array = pool.slice(cursor)
 	var weapon: int = data.weapon_room
 	var wound: String = dealt[weapon].kind
-	var ordinary: Array = range(room_ids.size() - 1).filter(func(id): return id != weapon and id != int(data.glass_room))
+	var ordinary: Array = range(room_ids.size() - 1).filter(func(id): return id != weapon and id != int(data.glass_room) and id not in data.get("no_item_rooms", []))
 	# Unique real item types replace the reference's unconstrained kind pool.
 	# Ensure two ordinary decoys still differ from the actual weapon kind,
 	# swapping an unused/hidden type rather than relabelling any object's kind.
@@ -178,6 +194,7 @@ func prepare_items(catalog: Dictionary) -> bool:
 		remaining = Case.stream(int(data.seed), "runtime_item_stains").shuffle(remaining)
 		while decoys.size() < 2: decoys.append(remaining.pop_front())
 	for id in range(room_ids.size()):
+		if id in data.get("no_item_rooms", []): continue
 		var glass: bool = id == int(data.glass_room)
 		var kind := "" if glass else str(dealt[id].kind)
 		var name: String = str(catalog.get("magnifier", {}).get("name", "Magnifying glass")) if glass else str(dealt[id].name)
@@ -213,7 +230,7 @@ func observe_item(id: int) -> void:
 	progress.items_seen[str(id)] = seen
 
 func sync_carried_state() -> void:
-	progress.glass = bool(held_item().get("is_glass", false))
+	# The magnifying glass is a permanent tool (progress.glass), not the carried item.
 	if runtime != null and runtime.has_method("set_weapon_carried"):
 		runtime.set_weapon_carried(progress.carried == data.weapon_room)
 
@@ -286,18 +303,23 @@ func take_item(id := -1) -> String:
 	var item := available_item(id)
 	if item.is_empty(): return system_message("no_item")
 	observe_item(int(item.id))
+	if item.is_glass:
+		progress.glass = true # a permanent tool: it never occupies the carried-item slot
+		item.screen = ""
+		observe_item(int(item.id))
+		return system_message("take_glass", {"item": item.name})
 	if progress.carried != null:
 		return system_message("hands_full", {"item": held_item().name})
 	progress.carried = int(item.id)
 	item.screen = ""
 	sync_carried_state()
 	observe_item(int(item.id))
-	return system_message("take_glass" if item.is_glass else "take_item", {"item": item.name})
+	return system_message("take_item", {"item": item.name})
 
 func drop_item(at: Vector2) -> String:
 	if not active(): return system_message("investigation_ended")
 	if progress.carried == null: return system_message("no_held_item")
-	if not at.is_finite() or (runtime != null and not runtime.geometry.is_open(str(progress.screen), at)):
+	if not drop_allowed(str(progress.screen)) or not at.is_finite() or (runtime != null and not runtime.geometry.is_open(str(progress.screen), at)):
 		return system_message("drop_blocked")
 	var item := held_item()
 	item.screen = str(progress.screen)
@@ -305,7 +327,7 @@ func drop_item(at: Vector2) -> String:
 	progress.carried = null
 	sync_carried_state()
 	observe_item(int(item.id))
-	return system_message("drop_glass" if item.is_glass else "drop_item", {"item": item.name})
+	return system_message("drop_item", {"item": item.name})
 
 func assembly_hint() -> String:
 	return system_message("assemble_need_item")
@@ -316,7 +338,7 @@ func assemble_message() -> String:
 	return message(assembly_text, "system", "assemble_ok")
 
 func assemble() -> bool:
-	if not active() or progress.carried == null or bool(held_item().get("is_glass", true)):
+	if not active() or progress.carried == null:
 		assembly_hint()
 		return false
 	if progress.assembled:
@@ -352,7 +374,7 @@ func assemble() -> bool:
 func accuse(person: int, room: int) -> Dictionary:
 	if not active() or not progress.assembled:
 		return {"result": "blocked", "message": system_message("accuse_need_assembly"), "message_key": last_message_key, "message_group": last_message_group}
-	if progress.carried == null or bool(held_item().get("is_glass", true)):
+	if progress.carried == null:
 		return {"result": "blocked", "message": assembly_hint(), "message_key": last_message_key, "message_group": last_message_group}
 	if person < 0 or person >= data.claims.size() or room < 0 or room >= room_names.size():
 		return {"result": "blocked", "message": message("Choose a suspect and a room."), "message_key": last_message_key, "message_group": last_message_group}
@@ -394,7 +416,7 @@ func notebook() -> String:
 	lines.append("\nITEMS / LAST KNOWN LOCATIONS")
 	for key in progress.items_seen:
 		var seen: Dictionary = progress.items_seen[key]
-		var location := "carried" if seen.held else str(screen_names.get(seen.screen, seen.screen))
+		var location := "carried" if seen.held or (seen.is_glass and progress.glass) else str(screen_names.get(seen.screen, seen.screen))
 		var detail := "" if seen.is_glass else "; kind: " + str(seen.kind)
 		if seen.has("stain"): detail += "; stain: " + str(seen.stain)
 		lines.append("%s — %s%s" % [seen.name, location, detail])

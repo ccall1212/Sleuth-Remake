@@ -97,7 +97,7 @@ func run() -> void:
 	gates.enter_screen(gates.room_ids[gates.data.weapon_room])
 	gates.inspect_item(gates.data.weapon_room)
 	check(gates.last_message_key == "lens_stain" and gates.progress.weapon == null, "Hard lens shows authored orange stain without auto-identifying weapon")
-	check(not gates.assemble() and gates.last_message_key == "assemble_need_item", "Assembly rejects glass in the single carrying slot")
+	check(not gates.assemble() and gates.last_message_key == "assemble_need_item", "Assembly rejects the glass tool with empty hands")
 	var empty := session(8)
 	check(not empty.assemble() and empty.last_message_key == "assemble_need_item", "Assembly empty-hands hint comes from data")
 	var clean: int = (gates.data.murder_room + 1) % gates.room_ids.size()
@@ -123,7 +123,7 @@ func run() -> void:
 			ending.data.personalities[ending.data.culprit] = voice
 			equip(ending)
 			if outcome == "wrong_weapon":
-				var wrong_item: int = range(ending.room_ids.size()).filter(func(id): return id != ending.data.glass_room and id != ending.data.weapon_room)[0]
+				var wrong_item: int = ending.items.keys().filter(func(id): return id != ending.data.glass_room and id != ending.data.weapon_room)[0]
 				carry_item(ending, wrong_item)
 			ending.enter_screen("room_4")
 			check(ending.assemble(), "Any carried non-glass item permits assembly")
@@ -143,11 +143,11 @@ func run() -> void:
 			elif carrying == "glass":
 				carry_item(ending, ending.data.glass_room)
 			elif carrying == "other":
-				var item: int = range(ending.room_ids.size()).filter(func(id): return id != ending.data.glass_room and id != ending.data.weapon_room)[0]
+				var item: int = ending.items.keys().filter(func(id): return id != ending.data.glass_room and id != ending.data.weapon_room)[0]
 				carry_item(ending, item)
 			var result: Dictionary = ending.ambush()
-			check(result.message_key == ("ambush_locked" if carrying == "empty" else "ambush_grab"), "Any held item including glass selects matching grab ambush")
-			if carrying != "empty": check(ending.held_item().name in result.message, "Grab names actual held item rather than substituting true weapon")
+			check(result.message_key == ("ambush_locked" if carrying in ["empty", "glass"] else "ambush_grab"), "Any held evidence selects the grab ambush; the glass tool alone stays locked")
+			if carrying in ["weapon", "other"]: check(ending.held_item().name in result.message, "Grab names actual held item rather than substituting true weapon")
 			check(result.message_group == "personality_lines" and ending.progress.outcome == "ambushed", "Ambush metadata preserves red style and terminal state")
 			full_truth(ending, result.message)
 	var replay := session(23)

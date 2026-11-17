@@ -30,7 +30,7 @@ func session(seed_value: int, held := "empty", extra := {}, difficulty := "norma
 	if id >= 0:
 		s.enter_screen(str(s.items[id].screen))
 		s.take_item(id)
-		check(s.progress.carried == id, "Actual pickup selects requested held object")
+		check((s.progress.glass if held == "glass" else s.progress.carried == id), "Actual pickup selects requested held object")
 	stage(s, s.room_ids[0])
 	s.runtime.advance_to(s.runtime.stalking_at + 1)
 	return s

@@ -87,6 +87,7 @@ func inspect_house_with_lens(view: Control) -> Array:
 		if not travel(view, session.room_ids[room]): continue
 		view.examine_floor()
 		view.message_dialog.hide()
+		if not session.items.has(room): continue # the Front Entry holds no evidence item
 		check(walk_to(view, session.items[room].position), "Walking reaches the item's actual seeded floor location")
 		if room != session.data.glass_room:
 			check(view.select_nearby_item(room), "Initial floor item can be selected by stable identity")
@@ -113,12 +114,11 @@ func take_deduced_item(view: Control, item_id: int) -> bool:
 	if not travel(view, str(seen.screen)): return false
 	if not walk_to(view, seen.position): return false
 	view.message_dialog.hide()
-	view.drop_nearby()
-	check(session.progress.carried == null and not session.progress.glass, "Dropping glass frees the only carrying slot")
-	check(session.items[session.data.glass_room].screen == view.model.current_id, "Dropped glass stays in the actual room, not its origin")
-	check(view.select_nearby_item(item_id), "Nearby chooser selects deduced item beside the dropped glass")
+	check(session.progress.carried == null and session.progress.glass, "The glass is a tool: hands are free to take evidence without dropping it")
+	check(session.items[session.data.glass_room].screen == "", "Taken glass has left the world")
+	check(view.select_nearby_item(item_id), "Nearby chooser selects deduced item while the glass tool is held")
 	view.take_nearby()
-	check(session.progress.carried == item_id and not session.progress.glass, "Pickup holds the deduced item without also keeping glass")
+	check(session.progress.carried == item_id and session.progress.glass, "Pickup holds the deduced item and keeps the glass tool")
 	return session.progress.carried == item_id
 
 func run() -> void:

@@ -9,10 +9,24 @@ rooms and inspect specific objects while preserving Sleuth's deduction mechanics
 This supersedes the previous first-person 3D plan. Use the existing Godot 4 project,
 its 2D tools and GDScript. Read docs/GAME_DESIGN.md for the visual brief. Create
 original art; the screenshots establish direction, not reusable assets.
-The first playable foyer is src/foyer/foyer.tscn. Godot F5 launches it. Read the
-current P0 status and tests before expanding it; the full mystery remains unbuilt.
-Eleanor Vale is the first guest, by the right-hand window; E opens her question menu.
-Her statements are authored prototype dialogue, not a solved or generated case.
+The current playable game is the painted house mystery. Godot F5 launches
+src/mystery/painted_mystery.tscn, which instances src/blockout/house_investigation.tscn
+with assets/maps/house-02.investigation.layout.json, a random seeded case and the opening briefing.
+It is a seeded six-suspect murder mystery. The generator and solver in
+src/mystery/generated_case.gd match the Python reference in tools/case_design/
+(parity fixtures in tests/fixtures/). Eight personalities have authored dialogue in
+assets/dialogue/*.json (case_dialogue.gd); runtime code is in src/mystery/house_runtime.gd
+and house_case_session.gd. A magnifying glass becomes a permanent tool once found; one
+evidence item is carried at a time; all guests can be assembled in a room; accusations
+have outcomes. Char and Chris use approved directional pose libraries; other cast use
+temporary standing roster art.
+Rule (2026-11-17): evidence items (including the magnifying glass, weapon, decoys and
+dropped items) can never be in the Front Entry (room_6). The generator enforces this via
+no_item_rooms, and the session enforces it too.
+Tests are headless Godot check scripts, tools/*_checks.gd, run with the Godot 4.7.2 console
+exe: --headless --path . --script tools/<name>.gd; each prints one JSON line of checks and
+failures. Python tests are in tests/case_design (pytest in .venv). The integrated line is
+main; new work goes on feature branches; commit or push only when the user authorizes.
 The generated room backdrop is separate from colliders, clue state and UI. Reference
 character sheets remain local; runtime art must use original assets only.
 

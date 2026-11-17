@@ -5567,11 +5567,7 @@
         }
       ],
       "foreground_masks": [],
-      "item_slot": [
-        150,
-        166
-      ],
-      "item_slot_status": "provisional_reachable_floor_marker"
+      "item_slot_status": "disabled_no_items_in_front_entry"
     },
     {
       "id": "secret_passage",
