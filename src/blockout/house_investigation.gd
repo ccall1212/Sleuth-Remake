@@ -9,6 +9,9 @@ const Investigator = preload("res://src/blockout/investigator_presentation.gd")
 const WindowPresentation = preload("res://src/presentation.gd")
 const ItemArt = preload("res://src/mystery/house_item_art.gd")
 const HouseMap = preload("res://src/blockout/house_map_panel.gd")
+## The killer portrait at the case conclusion is drawn this much larger than an ordinary conversation portrait.
+const REVEAL_PORTRAIT_BOOST := 1.4
+const SHOCKED_OUTCOMES := ["solved", "wrong_room", "wrong_person", "wrong_weapon"] # outcomes where the culprit is exposed or confesses
 const GameHud = preload("res://src/blockout/game_hud.gd")
 const AccusationCards = preload("res://src/blockout/accusation_cards.gd")
 const CastPortrait = preload("res://src/blockout/cast_portrait.gd")
@@ -319,6 +322,7 @@ func add_action(parent: VBoxContainer, title: String, callback: Callable) -> But
 
 func start_case() -> void:
 	hud_hint_shown.clear()
+	if is_instance_valid(hud) and not title_open: hud.show()
 	for window in [case_menu, pause_menu, message_dialog, notebook_dialog, accusation_dialog, pose_window, map_menu]:
 		if is_instance_valid(window): window.hide()
 	if painted and (model.data.get("mode", "") != "painted_investigation" or not guest_preview.error.is_empty() or FileAccess.get_sha256(GuestPreview.PATH) != str(model.data.get("source_guest_positions_sha256", ""))):
@@ -666,7 +670,7 @@ func say(value: String, popup := false, color := Color("dbe6ec")) -> void:
 		if painted:
 			# Anchored to the 4:3 play frame, which is centred in the window at any aspect ratio.
 			update_room_transform()
-			message_dialog.popup(Rect2i(int(room_origin.x) + 20, int(room_origin.y) + 430, 690, 230))
+			message_dialog.popup(Rect2i(int(room_origin.x) + 20, int(room_origin.y) + 430, 690, 270 if ending_shown else 230)) # the conclusion text is longer
 		else:
 			message_dialog.popup_centered()
 		reveal.start(message_text)
@@ -698,7 +702,7 @@ func ask_nearby() -> void:
 		else:
 			present_ending({"message": response}, "standing_threaten_south")
 
-func show_guest_portrait(person: int, presentation: Dictionary) -> void:
+func show_guest_portrait(person: int, presentation: Dictionary, boost := 1.0) -> void:
 	presentation = Presentation.conversation_portrait(presentation, str(investigation.data.personalities[person])) if investigation.active() else Presentation.portrait_presentation(presentation)
 	var actor_name: String = investigation.data.cast[person]
 	var pose: String = presentation.pose_id
@@ -707,7 +711,7 @@ func show_guest_portrait(person: int, presentation: Dictionary) -> void:
 		guest_portrait.hide()
 		return
 	var reference: float = actor_art.standing_height(actor_name) if ActorArt.ACTORS.has(actor_name) else float(asset.reference_height) / float(asset.height_ratio)
-	guest_portrait.show_asset(actor_name, pose, asset, reference, str(presentation.facing))
+	guest_portrait.show_asset(actor_name, pose, asset, reference, str(presentation.facing), boost)
 
 func examine_nearby() -> void:
 	if near_item():
@@ -806,6 +810,7 @@ func present_ending(ending: Dictionary, pose := "") -> void:
 		begin_ambush(ending, pose)
 		return
 	ending_shown = true
+	if is_instance_valid(hud): hud.hide() # nothing to do but read the conclusion
 	if ending.get("result", "") == "solved": win_audio.play()
 	for window in [message_dialog, notebook_dialog, accusation_dialog, case_menu, pause_menu, map_menu, pose_window]:
 		if is_instance_valid(window): window.hide()
@@ -816,9 +821,9 @@ func present_ending(ending: Dictionary, pose := "") -> void:
 	message_dialog.ok_button_text = "Return to house"
 	dialogue_new_case_button.show()
 	if ActorArt.ACTORS.has(culprit_name):
-		show_guest_portrait(int(investigation.data.culprit), {"pose_id": pose, "posture": "standing", "activity": "talk", "facing": "south"})
+		show_guest_portrait(int(investigation.data.culprit), {"pose_id": pose, "posture": "standing", "activity": "talk", "facing": "south"}, REVEAL_PORTRAIT_BOOST)
 	else:
-		show_guest_portrait(int(investigation.data.culprit), {"pose_id": "standing_idle_south", "posture": "standing", "activity": "idle", "facing": "south"})
+		show_guest_portrait(int(investigation.data.culprit), {"pose_id": "standing_idle_south", "posture": "standing", "activity": "idle", "facing": "south"}, REVEAL_PORTRAIT_BOOST)
 	queue_redraw()
 
 func begin_ambush(ending: Dictionary, pose: String) -> void:
@@ -952,7 +957,7 @@ func draw_case_guest(person: int) -> void:
 	var guest: Dictionary = investigation.runtime.guests[person]
 	var at: Vector2 = guest_draw_position(person)
 	var name: String = investigation.data.cast[person]
-	var presentation := guest_presentation(person, person == talking_person)
+	var presentation := reveal_presentation(person, guest_presentation(person, person == talking_person))
 	if (ambush_pending or (ending_shown and investigation.progress.outcome == "ambushed")) and person == int(investigation.data.culprit):
 		presentation = {"pose_id": "standing_threaten_south", "posture": "standing", "facing": "south"}
 	if ActorArt.ACTORS.has(name):
@@ -1120,3 +1125,14 @@ func preview_title_cast() -> void:
 	var seed_value := randi_range(0, 999999999)
 	var preview: Dictionary = Session.Case.generate(seed_value, 6, "normal", Session.Case.POOL, [], Session.blocked_rooms(model.data))
 	title_menu.set_cast_preview(preview.cast, seed_value)
+
+func reveal_presentation(person: int, presentation: Dictionary) -> Dictionary:
+	# When the killer is exposed, every other guest with an approved startle pose shows it (Char and Chris today). Seated guests stay
+	# seated, there is no north-facing startle art, and cast members without pose libraries keep their single standing image.
+	if not ending_shown or str(investigation.progress.outcome) not in SHOCKED_OUTCOMES: return presentation
+	if person == int(investigation.data.culprit): return presentation
+	var name := str(investigation.data.cast[person])
+	var facing := str(presentation.get("facing", "south"))
+	if not ActorArt.ACTORS.has(name) or str(presentation.get("posture", "standing")) != "standing" or facing not in ["east", "south", "west"]:
+		return presentation
+	return {"pose_id": "standing_startle_" + facing, "posture": "standing", "activity": "startle", "facing": facing, "narration": ""}

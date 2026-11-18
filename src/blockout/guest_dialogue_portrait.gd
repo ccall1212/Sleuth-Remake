@@ -11,12 +11,12 @@ func _ready() -> void:
 	z_index = 10
 	hide()
 
-func show_asset(actor_name: String, pose: String, asset: Dictionary, reference_height: float, facing: String) -> void:
+func show_asset(actor_name: String, pose: String, asset: Dictionary, reference_height: float, facing: String, boost := 1.0) -> void:
 	if asset.is_empty() or reference_height <= 0:
 		hide()
 		return
 	var bounds: Rect2 = asset.bounds
-	var factor := minf(240.0 / reference_height, minf(260.0 / bounds.size.x, 300.0 / bounds.size.y))
+	var factor := minf(240.0 * boost / reference_height, minf(260.0 * boost / bounds.size.x, 300.0 * boost / bounds.size.y))
 	var atlas := AtlasTexture.new()
 	atlas.atlas = asset.texture
 	atlas.region = bounds

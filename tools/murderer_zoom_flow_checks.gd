@@ -33,7 +33,7 @@ func ambush_run(view: Control, carrying: bool, skip_midway: bool) -> void:
 	check(not view.zoom.playing and not view.zoom.visible, "Zoom ends hidden (%s)" % key)
 	check(not view.ambush_pending and view.message_dialog.visible, "Dialogue follows the zoom (%s)" % key)
 	check(view.message_text.text.contains("\n\n") or view.message_text.text.length() > 20, "Ambush dialogue is readable after the zoom")
-	check(view.guest_portrait.visible and view.guest_portrait.size.y <= 310.0 and view.guest_portrait.size.y > 0.0, "Normal dialogue portrait keeps its ordinary size after the zoom")
+	check(view.guest_portrait.visible and view.guest_portrait.size.y <= 310.0 * view.REVEAL_PORTRAIT_BOOST and view.guest_portrait.size.y > 0.0, "The conclusion portrait stays within the enlarged reveal size after the zoom")
 	check(session.progress.outcome == "ambushed", "Outcome remains ambushed")
 	view.message_dialog.hide()
 
