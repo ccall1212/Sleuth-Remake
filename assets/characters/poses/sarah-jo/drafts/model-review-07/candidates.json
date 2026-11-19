@@ -1,0 +1,27 @@
+{
+  "character": "Sarah Jo",
+  "date": "2026-11-19",
+  "status": "approved_by_user_pending_transparent_master",
+  "tool": "supplied by the user in chat (generated outside this session)",
+  "scope": "Approval of this image as Sarah Jo's base model: short brown hair, light-blue embroidered dress, gold locket, brown boots, standing south. Not approval of any pose, export or runtime integration. Earlier drafts (model-review-01 to 06) are superseded by this selection.",
+  "approval": {
+    "quote": "Here is the approved version of Sarah",
+    "evidence": "User message with the attached image on 2026-11-19; the image shown is this file's bytes.",
+    "scope": "Base model for pose production."
+  },
+  "files": [
+    {
+      "path": "assets/characters/poses/sarah-jo/drafts/model-review-07/sarah-jo-approved-model-chat-copy.webp",
+      "sha256": "134c69e772dba164b2c6ec7534b13d5d6ffcdd8bb2e9d2ec4d27cde0ddb3cda5",
+      "size": [987, 1593],
+      "mode": "RGB",
+      "alpha_extrema": [255, 255],
+      "note": "Unmodified copy of the chat attachment. It has a solid black background (no transparency), so it cannot be the runtime master. The original transparent PNG from the user's generator is still needed for masters/model-review-07/sarah-jo-model-v1.png."
+    }
+  ],
+  "pending": [
+    "Receive the original transparent PNG of this approved image from the user and record its sha256 as the master.",
+    "Then add approved_base_reference and base_approval_record for Sarah Jo in assets/characters/pose-catalog.json (same fields as Kwinn).",
+    "Pose production for Sarah Jo stays not_requested until the user asks for it."
+  ]
+}
