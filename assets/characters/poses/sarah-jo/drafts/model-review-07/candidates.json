@@ -1,27 +1,41 @@
 {
   "character": "Sarah Jo",
   "date": "2026-11-19",
-  "status": "approved_by_user_pending_transparent_master",
+  "status": "approved_master_received",
   "tool": "supplied by the user in chat (generated outside this session)",
   "scope": "Approval of this image as Sarah Jo's base model: short brown hair, light-blue embroidered dress, gold locket, brown boots, standing south. Not approval of any pose, export or runtime integration. Earlier drafts (model-review-01 to 06) are superseded by this selection.",
   "approval": {
     "quote": "Here is the approved version of Sarah",
     "evidence": "User message with the attached image on 2026-11-19; the image shown is this file's bytes.",
-    "scope": "Base model for pose production."
+    "scope": "Base model for pose production.",
+    "master_note": "The user approved the image on 2026-11-19 (\"Here is the approved version of Sarah\") and then supplied the transparent version of the same artwork; the earlier black-background and checkerboard chat copies were previews and were discarded."
   },
   "files": [
     {
-      "path": "assets/characters/poses/sarah-jo/drafts/model-review-07/sarah-jo-approved-model-chat-copy.webp",
-      "sha256": "134c69e772dba164b2c6ec7534b13d5d6ffcdd8bb2e9d2ec4d27cde0ddb3cda5",
-      "size": [987, 1593],
-      "mode": "RGB",
-      "alpha_extrema": [255, 255],
-      "note": "Unmodified copy of the chat attachment. It has a solid black background (no transparency), so it cannot be the runtime master. The original transparent PNG from the user's generator is still needed for masters/model-review-07/sarah-jo-model-v1.png."
+      "path": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp",
+      "sha256": "586726489b2cbd798ea1547f360b26f5b3019fc4ce7af53db6a61c7e28d0f4ec",
+      "size": [
+        987,
+        1593
+      ],
+      "mode": "RGBA",
+      "format": "WEBP",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "opaque_bounds_alpha128": [
+        100,
+        1,
+        914,
+        1590
+      ],
+      "note": "Original bytes, unmodified (never recompressed or cropped). Alpha profile matches the other approved masters: the figure sits at alpha 240-254 (45% of pixels) with 3.3% faint haze pixels (Char likeness 2.3%, Chris 0.9%, Kwinn 0.9%)."
     }
   ],
   "pending": [
-    "Receive the original transparent PNG of this approved image from the user and record its sha256 as the master.",
-    "Then add approved_base_reference and base_approval_record for Sarah Jo in assets/characters/pose-catalog.json (same fields as Kwinn).",
-    "Pose production for Sarah Jo stays not_requested until the user asks for it."
+    "Pose production for Sarah Jo stays not_requested until the user asks for it.",
+    "Runtime integration needs her entry in case_actor_art.gd ACTORS and a directional index; neither exists yet. Her roster standing image is still used in the game.",
+    "A PNG derivative for the pose pipeline is not made yet; create it only when pose production starts, keeping this master untouched."
   ]
 }

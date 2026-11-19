@@ -372,7 +372,9 @@
         "source": "res://assets/characters/review-v7/masters/sarah-jo-short-hair-proportions-v7.png",
         "transparent": true,
         "caption": "Very short cropped hair"
-      }
+      },
+      "approved_base_reference": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp",
+      "base_approval_record": "assets/characters/poses/sarah-jo/drafts/model-review-07/candidates.json"
     },
     {
       "character_id": "existing-protagonist",
