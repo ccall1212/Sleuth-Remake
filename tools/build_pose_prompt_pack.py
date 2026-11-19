@@ -47,6 +47,20 @@ CHARACTERS = {
 }
 
 
+CROUCH_CRY = ("A deep crouch facing the viewer, devastated and sobbing: both knees and chest face the viewer; squatting very low on bent legs, heels close under the hips, "
+              "torso folded forward over the thighs, elbows braced on the knees. BOTH hands clutch the sides of the head at the temples, fingers spread. Head bowed between the "
+              "hands while enough brow, nose, cheeks and moustache stay visible to read profound grief: eyes squeezed shut, raised inner brows, pinched anguished forehead, tear trails "
+              "down both cheeks, mouth drawn down and open in a pained sob, shoulders hunched with guilt. Both boots fully visible. The crouched figure occupies LESS height than a "
+              "standing figure; never stretch it to standing height.")
+# User-approved Chris poses that supersede the Char-derived catalog entry for men (Chris's final remorse pose is a crouch).
+MALE_OVERRIDES = {
+    "standing_cry_south": {"pose_id": "crouching_cry_south", "male_template": CROUCH_CRY,
+                           "ref": "assets/characters/poses/chris/exports/murderer-reveal/chris_crouching_cry_south_remorseful.png"},
+}
+SEATED_NOTE = " Cross the legs only if that keeps the approved chair orientation and natural anatomy; otherwise keep both feet down."
+START_POSES = ("standing_idle_east", "standing_idle_north", "standing_idle_west")  # first missing directions; south idle is the approved base
+
+
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -63,6 +77,8 @@ def orientation(entry: dict, who: dict) -> str:
 
 def reference_two(slug: str, entry: dict) -> tuple[str, str]:
     """Approved same-pose image of the example character; falls back to Char's source asset."""
+    if entry.get("override_ref"):
+        return entry["override_ref"], "chris"
     example = CHARACTERS[slug]["example"]
     pose, variant = entry["pose_id"], entry["variant_id"]
     queue_file = POSES / example / "queue.json"
@@ -82,6 +98,8 @@ def build_prompt(slug: str, entry: dict, ref2_owner: str) -> str:
     pose_text = entry["male_template"] if who["body"] == "male" else entry["female_template"]
     if who["body"] == "female":
         pose_text += " Keep the long skirt hanging naturally; the legs are hidden by the dress except the boots."
+    elif entry["pose_id"].startswith("seated"):
+        pose_text += SEATED_NOTE
     ref2 = {"chris": "Chris's", "char": "Char's"}[ref2_owner]
     avoid = f"{ref2_owner.title()}'s face, hair, clothing, jewelry, beard or cap"
     return f"""Create ONE separate full-body transparent PNG game character pose of {who['name']}, {entry['pose_id']}, variant {entry['variant_id']}.
@@ -115,7 +133,7 @@ def combined_prompt(slug: str, batch: list[dict], entries: dict[str, dict]) -> s
         "",
         f"IDENTITY LOCK (all jobs): {who['identity']} {who['style']}",
         "EXPRESSION RULES: communicate the named expression through eyes, brows, mouth and posture where visible. Suspicious does not mean furious. Nervous is anxious uncertainty, not crying or terror. Neutral has relaxed brows and a small friendly expression where the face is visible.",
-        "FACING RULES: the whole body faces the stated direction; head, chest, hips, knees and feet agree. North shows the actual back with no over-the-shoulder face. Elevated three-quarter mansion camera showing a little crown and shoulder tops. Draw every direction independently; NEVER mirror or flip another pose.",
+        "FACING RULES: the whole body faces the stated direction; head, chest, hips, knees and feet agree. North shows the actual back with no over-the-shoulder face. Elevated three-quarter mansion camera showing a little crown and shoulder tops. Draw every direction independently; NEVER mirror or flip another pose. East and west seated poses must truly face sideways, not front-facing with the head turned.",
         f"SCALE/FRAMING (all jobs): image 1 has a native {who['canvas']} canvas and an occupied standing height of about {who['height']} pixels. Keep that SAME drawing scale and a comparable portrait canvas for every job. Composition references supply pose, not stature. A standing figure is about {who['height']} pixels tall (within 4 percent) and fully inside clear transparent margins on all sides; no cropping. Do not resize seated, kneeling or lying poses to standing height. Both shoes visible when standing.",
         "OUTPUT RULES: exactly ONE complete character per image, with empty transparent space outside the silhouette, complete hands, arms, legs and boots, clean margins. No furniture, chair, floor, scenery, shadow, glow, text, labels, borders, grid or extra character. A book or similar prop only when the named action needs it. These are drafts, not approvals.",
         "",
@@ -126,6 +144,8 @@ def combined_prompt(slug: str, batch: list[dict], entries: dict[str, dict]) -> s
         pose_text = entry["male_template"] if who["body"] == "male" else entry["female_template"]
         if who["body"] == "female":
             pose_text += " Keep the long skirt hanging naturally; the legs are hidden by the dress except the boots."
+        elif entry["pose_id"].startswith("seated"):
+            pose_text += SEATED_NOTE
         lines.append(f"JOB {n}: save as {job['save_as']}. Pose {job['pose_id']}, expression {job['variant_id']}. POSE: {pose_text} FACING: {orientation(entry, who)}. Composition reference: image {n + 1}.")
     return "\n".join(lines) + "\n"
 
@@ -136,7 +156,11 @@ def stage_files(slug: str, n: int, batch: list[dict]) -> Path:
     target = ROOT / "test-results/pose-batches" / slug / f"batch-{n:02d}"
     target.mkdir(parents=True, exist_ok=True)
     first = batch[0]["attach"][0]["path"]
-    shutil.copyfile(ROOT / first, target / f"01_base-model{Path(first).suffix}")
+    if Path(first).suffix.lower() == ".webp":
+        from PIL import Image
+        Image.open(ROOT / first).convert("RGBA").save(target / "01_base-model.png")  # lossless decode; the approved WEBP original is not modified
+    else:
+        shutil.copyfile(ROOT / first, target / f"01_base-model{Path(first).suffix}")
     for k, job in enumerate(batch, 2):
         ref = job["attach"][1]["path"]
         shutil.copyfile(ROOT / ref, target / f"{k:02d}_composition_{job['pose_id']}.png")
@@ -154,6 +178,14 @@ def build(slug: str) -> Path:
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     # The approved base model IS the standing idle (south, neutral); it is imported as that export, never regenerated.
     entries = [e for e in catalog["entries"] if e["tier"] < 4 and not (e["pose_id"] == "standing_idle_south" and e["variant_id"] == "neutral")]
+    if who["body"] == "male":
+        replaced = []
+        for e in entries:
+            o = MALE_OVERRIDES.get(e["pose_id"])
+            if o and (ROOT / o["ref"]).is_file():
+                e = {**e, "pose_id": o["pose_id"], "male_template": o["male_template"], "override_ref": o["ref"]}
+            replaced.append(e)
+        entries = replaced
     entries.sort(key=lambda e: (e["tier"], e["pose_id"], e["variant_id"]))
     lookup = {e["pose_id"] + "|" + e["variant_id"]: e for e in entries}
     jobs = []
@@ -172,6 +204,11 @@ def build(slug: str) -> Path:
     (out / "README.md").write_text(readme(slug, len(jobs)), encoding="utf-8")
     batches = [jobs[i:i + BATCH] for i in range(0, len(jobs), BATCH)]
     nav = "".join(f'<a href="batch-{n:02d}.html">Batch {n} ({b[0]["order"]}-{b[-1]["order"]})</a> ' for n, b in enumerate(batches, 1))
+    start = [j for j in jobs if j["pose_id"] in START_POSES]
+    if start:
+        staged0 = stage_files(slug, 0, start)
+        (out / "batch-00.html").write_text(page(slug, start, out, "START HERE: the missing idle directions", nav, combined_prompt(slug, start, lookup), staged0), encoding="utf-8")
+        nav = '<a href="batch-00.html">START: idle directions</a> ' + nav
     for n, batch in enumerate(batches, 1):
         staged = stage_files(slug, n, batch)
         (out / f"batch-{n:02d}.html").write_text(page(slug, batch, out, f"batch {n} of {len(batches)}", nav, combined_prompt(slug, batch, lookup), staged), encoding="utf-8")
