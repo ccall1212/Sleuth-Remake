@@ -122,6 +122,7 @@ def combined_prompt(slug: str, batch: list[dict], entries: dict[str, dict]) -> s
     lines = [
         f"Create {len(batch)} SEPARATE full-body transparent PNG game character poses of {who['name']}, one image per numbered job below, in order. "
         f"Each job is its own complete image with real PNG alpha transparency. Never combine jobs on one sheet or grid. Return all {len(batch)} images.",
+        "WORK ONE JOB AT A TIME: finish a job, then STOP. Start the next job as a brand-new generation that does not reuse, copy or blend the previous result. Only the attached images and that job's own line apply to it.",
         "",
         "ATTACHED IMAGES (in this order):",
         f"- Image 1: {who['name'].title()}'s USER-APPROVED base model. Preserve this exact face, hair, costume colours, body proportions and drawing scale in every job.",
@@ -147,6 +148,7 @@ def combined_prompt(slug: str, batch: list[dict], entries: dict[str, dict]) -> s
         elif entry["pose_id"].startswith("seated"):
             pose_text += SEATED_NOTE
         lines.append(f"JOB {n}: save as {job['save_as']}. Pose {job['pose_id']}, expression {job['variant_id']}. POSE: {pose_text} FACING: {orientation(entry, who)}. Composition reference: image {n + 1}.")
+        lines.append("STOP. Start a new job." if n < len(batch) else "STOP. All jobs are finished.")
     return "\n".join(lines) + "\n"
 
 
