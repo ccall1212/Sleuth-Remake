@@ -82,7 +82,7 @@ def build_prompt(slug: str, entry: dict, ref2_owner: str) -> str:
     if who["body"] == "female":
         pose_text += " Keep the long skirt hanging naturally; the legs are hidden by the dress except the boots."
     ref2 = {"chris": "Chris's", "char": "Char's"}[ref2_owner]
-    avoid = f"{ref2.rstrip(chr(39) + 's')}'s face, hair, clothing, jewelry, beard or cap"
+    avoid = f"{ref2_owner.title()}'s face, hair, clothing, jewelry, beard or cap"
     return f"""Create ONE separate full-body transparent PNG game character pose of {who['name']}, {entry['pose_id']}, variant {entry['variant_id']}.
 REFERENCE 1 is {who['name'].title()}'s USER-APPROVED base model: preserve this exact face, hair, costume colours, body proportions and drawing scale. REFERENCE 2 is {ref2} approved SAME-POSE image: use it for pose composition, gesture and expression timing ONLY. Do not copy {avoid} or anything else about that character's identity.
 IDENTITY LOCK: {who['identity']} {who['style']}
