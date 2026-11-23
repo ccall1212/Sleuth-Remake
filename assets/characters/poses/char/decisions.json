@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "character": "char",
+  "decisions": [
+    {
+      "id": "clasp-hands-reference-examples",
+      "key": "standing_clasp_hands_east|friendly",
+      "accept_as": "reference_example",
+      "date": "2026-11-23",
+      "user_words": "Char's Clasp hands, is this currently similar to something that Chris has? If not, then just leave it out, if its something that is connected then we could just commit it.",
+      "evidence": "Chris's approved standing_clasp_hands east, south and west were built with these three images as their composition references (see chris/prompts/runner-01 and chris/queue.json). The index records the user's earlier clarification that they are example reference images, not Char pose candidates.",
+      "scope": "Accounted for as linked reference examples. They are NOT promoted to Char approvals, the index is unchanged, and a separate Char clasp-hands pose is not requested.",
+      "confirmed": {
+        "date": "2026-11-23",
+        "words": "Char's three standing clasp-hands images remain composition references, not Char pose candidates or approvals."
+      }
+    },
+    {
+      "id": "clasp-hands-reference-examples",
+      "key": "standing_clasp_hands_south|friendly",
+      "accept_as": "reference_example",
+      "date": "2026-11-23",
+      "user_words": "Char's Clasp hands, is this currently similar to something that Chris has? If not, then just leave it out, if its something that is connected then we could just commit it.",
+      "evidence": "Chris's approved standing_clasp_hands east, south and west were built with these three images as their composition references (see chris/prompts/runner-01 and chris/queue.json). The index records the user's earlier clarification that they are example reference images, not Char pose candidates.",
+      "scope": "Accounted for as linked reference examples. They are NOT promoted to Char approvals, the index is unchanged, and a separate Char clasp-hands pose is not requested.",
+      "confirmed": {
+        "date": "2026-11-23",
+        "words": "Char's three standing clasp-hands images remain composition references, not Char pose candidates or approvals."
+      }
+    },
+    {
+      "id": "clasp-hands-reference-examples",
+      "key": "standing_clasp_hands_west|friendly",
+      "accept_as": "reference_example",
+      "date": "2026-11-23",
+      "user_words": "Char's Clasp hands, is this currently similar to something that Chris has? If not, then just leave it out, if its something that is connected then we could just commit it.",
+      "evidence": "Chris's approved standing_clasp_hands east, south and west were built with these three images as their composition references (see chris/prompts/runner-01 and chris/queue.json). The index records the user's earlier clarification that they are example reference images, not Char pose candidates.",
+      "scope": "Accounted for as linked reference examples. They are NOT promoted to Char approvals, the index is unchanged, and a separate Char clasp-hands pose is not requested.",
+      "confirmed": {
+        "date": "2026-11-23",
+        "words": "Char's three standing clasp-hands images remain composition references, not Char pose candidates or approvals."
+      }
+    }
+  ]
+}

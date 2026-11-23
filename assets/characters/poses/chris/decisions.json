@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "character": "chris",
+  "decisions": [
+    {
+      "id": "standing-cry-by-body-template",
+      "key": "standing_cry_south|remorseful",
+      "accept_as": "substitute_retained",
+      "date": "2026-11-23",
+      "user_words": "The standing cry choice I think we should just make that male vs female for now, use Char's pose for females and crouch for males",
+      "scope": "For men the catalog's standing_cry_south slot is closed by the approved crouching_cry_south (Chris, Kwinn). For women Char's standing cry is used. A distinct standing cry for men is not requested. This records a design choice only: no approval, hash or index was changed.",
+      "confirmed": {
+        "date": "2026-11-23",
+        "words": "The crying-pose decision is confirmed: male characters use the crouching cry pose; female characters use the standing cry pose. Record this as the intended character-specific mapping. Chris's crouching cry satisfies the male crying slot; Char's standing cry satisfies the female slot."
+      }
+    }
+  ]
+}

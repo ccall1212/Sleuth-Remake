@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "slug": "kwinn",
+  "name": "Kwinn",
+  "file_prefix": "kwinn",
+  "body": "male",
+  "composition_example": "chris",
+  "master": "assets/characters/poses/kwinn/masters/model-review-02/kwinn-model-v1.png",
+  "canvas": [
+    985,
+    1597
+  ],
+  "standing_height": 1572,
+  "identity": "Kwinn: wavy dark-brown hair swept up and back, warm brown eyes, a wide friendly smile with white teeth, a neat moustache joined to a short goatee with light scruff along the jaw, tan skin. Cream collared shirt with the sleeves rolled to the elbow, an ORANGE pinstriped waistcoat with four brass buttons and two flap pockets, a PURPLE tie, a gold watch chain looping from a waistcoat button to the pocket on screen-LEFT in the south view (his anatomical RIGHT; keep that side across directions, never move it to make it visible), dark brown pleated trousers and brown lace-up boots. No hat.",
+  "style": "Same richly shaded, outlined anime/cartoon game rendering as the approved Kwinn model (crisp detail, no photoreal skin, no chibi anatomy).",
+  "pose_overrides": {
+    "standing_cry_south": {
+      "pose_id": "crouching_cry_south",
+      "reference": "assets/characters/poses/chris/exports/murderer-reveal/chris_crouching_cry_south_remorseful.png",
+      "pose_text": "A deep crouch facing the viewer, devastated and sobbing: both knees and chest face the viewer; squatting very low on bent legs, heels close under the hips, torso folded forward over the thighs, elbows braced on the knees. BOTH hands clutch the sides of the head at the temples, fingers spread. Head bowed between the hands while enough brow, nose, cheeks and moustache stay visible to read profound grief: eyes squeezed shut, raised inner brows, pinched anguished forehead, tear trails down both cheeks, mouth drawn down and open in a pained sob, shoulders hunched with guilt. Both boots fully visible. The crouched figure occupies LESS height than a standing figure; never stretch it to standing height.",
+      "why": "Chris's final approved remorse pose is a crouch; men follow Chris."
+    }
+  },
+  "records": "Approval records for this character live beside the masters (drafts/model-review-02/candidates.json). This profile holds only generation facts."
+}

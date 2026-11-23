@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "slug": "chris",
+  "name": "Chris",
+  "file_prefix": "chris",
+  "body": "male",
+  "composition_example": "char",
+  "master": "assets/characters/poses/chris/masters/model-review-01/chris-model-v2.png",
+  "canvas": [
+    948,
+    1659
+  ],
+  "standing_height": 1564,
+  "identity": "expressive larger blue anime eyes exactly like approved Chris v2, simplified softly shaded nose/face, full brown beard and connected moustache, brown brows, gray tweed flat cap KEPT ON. No cap removal or head scratching. RED collared shirt with rolled sleeves and small cream undershirt at throat, CHARCOAL textured waistcoat with brass buttons, gold watch chain on his anatomical LEFT waist (screen-right in south view), black tailored trousers and BLACK lace-up boots. Preserve asymmetric pocket/chain construction across directions with natural occlusion, never move it to another anatomical side to make it visible.",
+  "style": "Same richly shaded outlined anime/cartoon game rendering with deliberate crisp detail, no photoreal skin or tiny chibi anatomy.",
+  "pose_overrides": {},
+  "notes": "Chris's library (81 approved exports) is the example set for men. The catalog's standing_cry_south slot is closed in his queue by an approved crouching_cry_south (substitution at the user's request). The planner reports that slot as 'substituted' and asks the user to RETAIN the crouch or ADD a distinct standing cry; it never counts one as the other.",
+  "records": "Chris has a queue.json, production-manifest.json and directional-index.json; see the reconciliation report (pose_runner.py reconcile --character chris)."
+}

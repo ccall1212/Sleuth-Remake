@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "slug": "sarah-jo",
+  "name": "Sarah Jo",
+  "file_prefix": "sarah_jo",
+  "body": "female",
+  "composition_example": "char",
+  "master": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp",
+  "canvas": [
+    987,
+    1593
+  ],
+  "standing_height": 1590,
+  "identity": "Sarah Jo: very short, tousled brown hair (pixie cut) with a few wisps over the forehead, warm brown eyes with fine lashes, a wide open smile, tan skin. A gold locket on a thin chain over a cream lace high collar. A pale-blue Victorian dress with big puffed sleeves in textured blue fabric, long fitted forearms ending in cream lace cuffs, four gold front buttons, a blue belt, a cream embroidered floral panel down the front of the long skirt, draped bustle swags at the sides, tiered ruffled hem, and brown leather ankle boots.",
+  "style": "Same richly shaded, outlined anime/cartoon game rendering as the approved Sarah Jo model (crisp detail, no photoreal skin, no chibi anatomy).",
+  "pose_overrides": {},
+  "notes": "Women follow Char's pose set directly. Char's three standing_clasp_hands records are 'reference_only' in her directional index; use them as composition references only and say so to the user.",
+  "records": "Approval records for this character live beside the masters (drafts/model-review-07/candidates.json). This profile holds only generation facts."
+}

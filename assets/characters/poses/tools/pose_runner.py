@@ -1,6 +1,15 @@
-"""Durable Chris draft jobs, non-destructive technical QA and local review gallery.
+"""Pose production runner and read-only planning/reconciliation for any character.
 
-No image synthesis or image editing is performed here. Generation uses imagegen.
+Stages are deliberately separate and each has its own command or tool:
+  planning        `plan`, `next`           read-only: order, groups, batches and progress for a character (pose_planning.py)
+  reconciliation  `reconcile`              read-only: compares catalog, queue, manifest, directional index, exports and hashes; corrects nothing
+  generation      done by an image tool; tools/build_pose_prompt_pack.py prepares prompts and attachments for it
+  technical QA    `finish` (Chris queue) and tools/check_pose_drafts.py (any character); technical pass is not approval
+  approval        only the user's explicit words, recorded beside the masters; never done by this script
+  integration     runtime use (assets/characters/poses/runtime-integration.json); never implied by approval
+
+The legacy queue commands (`prepare`, `finish`, `visual`, `gallery`) are still Chris-specific on purpose: other characters have no queue.json and must not
+write into Chris's folder. No image synthesis or image editing is performed here. Generation uses imagegen.
 """
 import argparse
 import hashlib
@@ -12,6 +21,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from PIL import Image
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pose_planning as planning  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
 BASE = ROOT / "assets/characters/poses/chris"
@@ -200,15 +213,101 @@ def visual(pose_id,note):
     print(json.dumps({"backlog":render(queue),"visual_qa_recorded":pose_id}))
 
 
+def plan_report(slug, group=None, directions=None, max_batch=None):
+    """Read-only: the ordered plan, the real state of every pose, what needs review or recovery first, decisions, backlog caps and the next step."""
+    jobs, notes = planning.ordered_jobs(slug, directions=directions)
+    progress = planning.progress(slug, jobs)
+    batches = planning.make_batches(jobs, max_batch)
+    for number, batch in enumerate(batches, 1):
+        for job in batch:
+            job["batch"] = number
+    cap = max_batch or planning.load_plan()["defaults"]["max_batch"]
+    step = planning.next_step(slug, jobs, progress, group, batch_size=min(cap, sum(1 for v in progress.values() if v["status"] == "missing")))
+    return {"character": slug, "jobs": len(jobs), "batches": len(batches), "status": dict(Counter(v["status"] for v in progress.values())),
+            "action": step["action"], "review_or_recover_first": step["attention"], "decisions": step["decisions"], "backlog": step["backlog"],
+            "next_group": step["group_id"], "next_batches": sorted({j["batch"] for j in step["missing"]}),
+            "next_jobs": [{"order": j["order"], "pose": j["entry"]["pose_id"], "variant": j["entry"]["variant_id"], "save_as": j["save_as"],
+                           "reference": (step.get("references") or {}).get(j["key"], {}).get("kind")} for j in step["missing"]],
+            "blocked_on_reference": step.get("blocked_jobs", []), "new_catalog_families": notes["new_families"], "reused_slots": notes["reused"],
+            "note": "Progress comes from exports/, drafts/ and the directional index, never from a prompt pack. Nothing here is an approval."}
+
+
+def manifest_entry(record):
+    """A manifest line copied from the directional-index record of an already-exported pose (same fields the older lines use)."""
+    entry = {"pose_id": record["pose_id"], "variant_id": record["variant_id"], "path": record["export"], "sha256": record["export_sha256"],
+             "canvas": record.get("canvas"), "source_master": record.get("source_master"), "metadata": record.get("landmark_record"),
+             "approval": record.get("approval"), "runtime_integrated": record.get("runtime_integrated", False), "runtime_fit": "unverified"}
+    return {k: v for k, v in entry.items() if v is not None}
+
+
+def sync_manifest(slug, write=False):
+    """Make the manifest list every exported pose, labelled with the approval state the directional index records. Writes ONLY with write=True.
+    Existing lines are never changed. A file whose hash differs from the index is skipped and reported. Characters whose manifest has an
+    approved_assets list get the missing 'approved' poses appended; others get an export_inventory with every pose and its true label
+    (user_supplied and reference_only are labelled as such and are NOT approvals)."""
+    path = planning.POSES / slug / "production-manifest.json"
+    raw = path.read_bytes().decode("utf-8")
+    manifest = json.loads(raw)
+    index = planning._index(slug)
+    skipped = []
+    def usable(record):
+        file = ROOT / record["export"]
+        ok = file.is_file() and planning.sha256(file) == record["export_sha256"]
+        if not ok:
+            skipped.append(planning.key_of(record))
+        return ok
+    if "approved_assets" in manifest:
+        listed = {planning.key_of(a) for a in manifest["approved_assets"]}
+        added = [manifest_entry(r) for k, r in index.items() if r.get("approval") == "approved" and k not in listed and usable(r)]
+        manifest["approved_assets"] = manifest["approved_assets"] + added
+        result = {"mode": "append_to_approved_assets", "before": len(listed), "appended": [planning.key_of(a) for a in added], "after": len(manifest["approved_assets"])}
+    else:
+        inventory = [manifest_entry(r) for r in index.values() if r.get("export") and usable(r)]
+        manifest["export_inventory"] = inventory
+        manifest["export_inventory_note"] = ("Every exported pose with the approval label copied from directional-index.json. Only 'approved' lines are approvals; "
+                                             "'user_supplied_added_to_project' and 'reference_only' are not.")
+        counts = Counter(e["approval"] for e in inventory)
+        result = {"mode": "write_export_inventory", "entries": len(inventory), "by_label": dict(counts)}
+    result.update({"skipped_hash_mismatch_or_missing": skipped, "written": False, "character": slug})
+    if write and not skipped:
+        text = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+        if "\r\n" in raw:
+            text = text.replace("\n", "\r\n")
+        path.write_bytes(text.encode("utf-8"))
+        result["written"] = True
+    elif write and skipped:
+        result["note"] = "Nothing written: some files do not match their recorded hashes. Resolve that first."
+    return result
+
+
+LEGACY = {"prepare", "finish", "visual", "gallery"}
+
+
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
+    parser.add_argument("--character", default="chris", help="character slug with a profile.json (default chris)")
     sub=parser.add_subparsers(dest="command",required=True)
+    p=sub.add_parser("plan");p.add_argument("--group");p.add_argument("--directions",nargs="+");p.add_argument("--max-batch",type=int)
+    p=sub.add_parser("next");p.add_argument("--group");p.add_argument("--directions",nargs="+");p.add_argument("--max-batch",type=int)
+    p=sub.add_parser("reconcile");p.add_argument("--json",action="store_true",help="machine-readable output")
+    p=sub.add_parser("manifest-sync");p.add_argument("--write",action="store_true",help="write the manifest (default: report only)")
     p=sub.add_parser("prepare");p.add_argument("--pose")
     p=sub.add_parser("finish");p.add_argument("source")
     p=sub.add_parser("visual");p.add_argument("pose");p.add_argument("note")
     sub.add_parser("gallery")
     args=parser.parse_args()
-    if args.command=="prepare":prepare(args.pose)
+    if args.command in LEGACY and args.character!="chris":
+        raise SystemExit(f"'{args.command}' is the Chris queue workflow and would write into Chris's folder. "
+                         f"For {args.character} use: pose_runner.py --character {args.character} plan|next|reconcile, tools/build_pose_prompt_pack.py and tools/check_pose_drafts.py.")
+    if args.command in ("plan","next"):
+        report=plan_report(args.character,args.group,args.directions,args.max_batch)
+        print(json.dumps(report,indent=2,ensure_ascii=False))
+    elif args.command=="manifest-sync":
+        print(json.dumps(sync_manifest(args.character,args.write),indent=2,ensure_ascii=False))
+    elif args.command=="reconcile":
+        result=planning.reconcile(args.character)
+        print(json.dumps(result,indent=2,ensure_ascii=False) if args.json else planning.format_report(result))
+    elif args.command=="prepare":prepare(args.pose)
     elif args.command=="finish":finish(args.source)
     elif args.command=="visual":visual(args.pose,args.note)
     else: print(json.dumps({"backlog":render(read(QUEUE))}))

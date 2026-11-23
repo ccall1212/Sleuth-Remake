@@ -1,0 +1,235 @@
+{
+  "schema_version": 2,
+  "note": "Production order, batching and caps for pose sets. It names pose FAMILIES (posture_activity, e.g. standing_talk); the catalog (assets/characters/pose-catalog.json) supplies each family's directions, variants and tiers, so nothing is duplicated here. Read by assets/characters/poses/tools/pose_planning.py. A catalog family that no group names is NOT dropped: it is appended automatically as the last group 'catalog-additions' so a newly added pose becomes visible to the planner without editing this file. This file plans work; it records no approvals, no progress and no hashes.",
+  "defaults": {
+    "max_batch": 8,
+    "min_batch": 1,
+    "direction_order": [
+      "south",
+      "east",
+      "west",
+      "north"
+    ],
+    "include_tier4": true,
+    "backlog_cap_per_character": 24,
+    "backlog_cap_total": 48,
+    "batching": "Groups stay intact. A group larger than max_batch is split into equal-sized batches (11 jobs become 6 + 5, not 8 + 3); a small group stays a small batch (min_batch 1). Raise min_batch only if you want small groups joined with the next one. Users may override max_batch, directions and group."
+  },
+  "groups": [
+    {
+      "id": "idle",
+      "title": "Idle in every direction",
+      "families": [
+        "standing_idle"
+      ]
+    },
+    {
+      "id": "reaching",
+      "title": "Reaching to a table",
+      "families": [
+        "standing_reach_table"
+      ]
+    },
+    {
+      "id": "kneeling",
+      "title": "Kneeling",
+      "families": [
+        "kneeling_reach",
+        "kneeling_inspect"
+      ]
+    },
+    {
+      "id": "conversation",
+      "title": "Friendly talk",
+      "families": [
+        "standing_talk"
+      ]
+    },
+    {
+      "id": "suspicion-defense",
+      "title": "Suspicious and defensive",
+      "families": [
+        "standing_cross_arms",
+        "standing_deny"
+      ]
+    },
+    {
+      "id": "emotion",
+      "title": "Surprise, nerves, sadness and looking down",
+      "families": [
+        "standing_startle",
+        "standing_fidget",
+        "standing_withdraw",
+        "standing_look_down"
+      ]
+    },
+    {
+      "id": "reveal",
+      "title": "Murderer reveal set (south only)",
+      "families": [
+        "standing_accuse",
+        "standing_cry",
+        "standing_laugh",
+        "standing_threaten",
+        "standing_shrug"
+      ]
+    },
+    {
+      "id": "personality-gestures",
+      "title": "Personality gestures",
+      "families": [
+        "standing_hands_hips",
+        "standing_think",
+        "standing_clasp_hands"
+      ]
+    },
+    {
+      "id": "reading-and-props",
+      "title": "Reading, looking up and leaning",
+      "families": [
+        "standing_read",
+        "standing_hold_book",
+        "standing_look_up",
+        "standing_lean"
+      ]
+    },
+    {
+      "id": "activities-and-inspection",
+      "title": "Inspecting, peeking, drinking, looking out, warming hands (catalog tier 4)",
+      "families": [
+        "standing_inspect",
+        "standing_peek",
+        "standing_drink",
+        "standing_look_out",
+        "standing_warm_hands"
+      ]
+    },
+    {
+      "id": "seated",
+      "title": "Seated poses",
+      "families": [
+        "seated_idle",
+        "seated_read",
+        "seated_sleep",
+        "seated_talk",
+        "seated_write"
+      ]
+    },
+    {
+      "id": "lying",
+      "title": "Lying poses (artwork only; the game cannot place them until beds can be walked on)",
+      "families": [
+        "lying_idle",
+        "lying_sleep",
+        "lying_lounge"
+      ]
+    }
+  ],
+  "reveal_families": [
+    "standing_accuse",
+    "standing_cry",
+    "standing_laugh",
+    "standing_threaten",
+    "standing_shrug",
+    "crouching_cry"
+  ],
+  "reference_policy": {
+    "note": "No catalog tier-4 pose exists for any character (every tier-4 entry is 'not_generated'), so no approved SAME-POSE reference exists yet. Each family below lists PROPOSED nearest approved poses. None is confirmed: a job in an unconfirmed family is reported as 'needs a reference decision' and gets no prompt. To confirm, the user sets confirmed to true (or supplies an external reference image and says so). A confirmed nearest-pose reference is described to the image tool as a NEAREST pose, never as the same pose. Once an example character (Char for the first pass) has an approved version of a tier-4 pose, later characters use that same-pose image automatically.",
+    "families": {
+      "standing_inspect": {
+        "nearest": [
+          "standing_look_down",
+          "standing_reach_table"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Bent forward toward an object; the look-down and table-reach poses are the closest approved bodies."
+      },
+      "standing_peek": {
+        "nearest": [
+          "standing_idle"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "A lean around cover has no close approved relative; an external reference (photo or sketch) is recommended."
+      },
+      "standing_drink": {
+        "nearest": [
+          "standing_reach_table"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Raising a cup; an external reference is recommended."
+      },
+      "standing_look_out": {
+        "nearest": [
+          "standing_look_up",
+          "standing_idle"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Looking toward a window, north-facing only; the look-up pose is close."
+      },
+      "standing_warm_hands": {
+        "nearest": [
+          "standing_clasp_hands",
+          "standing_idle"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Hands held toward a fire; an external reference is recommended."
+      },
+      "kneeling_inspect": {
+        "nearest": [
+          "kneeling_reach"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Kneeling reach exists east, south and west only; the north-facing back view has no kneeling relative, so use an external reference for north."
+      },
+      "seated_talk": {
+        "nearest": [
+          "seated_idle",
+          "standing_talk"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Seat contact from seated idle, gesture from standing talk."
+      },
+      "seated_write": {
+        "nearest": [
+          "seated_read"
+        ],
+        "same_direction_first": true,
+        "confirmed": false,
+        "advice": "Same seat and posture as seated read, writing hand instead of a book."
+      }
+    }
+  },
+  "catalog_entry_fields": {
+    "note": "Optional fields a catalog entry may carry; absent means the default. Adding an entry creates a planned job for every eligible character; it never creates an approval and never implies every character needs it.",
+    "required": [
+      "pose_id",
+      "posture",
+      "activity",
+      "variant_id",
+      "directions (or body_axis and head_direction for lying)",
+      "tier"
+    ],
+    "optional": {
+      "eligible_characters": "list of slugs, or omit for everyone",
+      "exclude_characters": "list of slugs to leave out",
+      "eligible_body": "male, female or any (default any)",
+      "reuse_from": "pose_id this entry reuses (no new image; reported as accounted for, never as missing)",
+      "excluded": "true plus a reason: leave the entry out of every plan"
+    }
+  },
+  "approval_note": "This file plans work. It records no approvals, no progress and no hashes.",
+  "body_template_choices": {
+    "note": "Intended character-specific mapping chosen by the user (confirmed 2026-11-23). A choice here changes which pose satisfies a catalog slot for a body template; it never creates an approval.",
+    "standing_cry_south": {
+      "male": "crouching_cry_south (Chris's approved pose satisfies the male crying slot; Kwinn follows it)",
+      "female": "standing_cry_south (Char's approved pose satisfies the female crying slot; Sarah Jo follows it)"
+    }
+  }
+}

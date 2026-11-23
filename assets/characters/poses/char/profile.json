@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "slug": "char",
+  "name": "Char",
+  "file_prefix": "char",
+  "body": "female",
+  "composition_example": null,
+  "master": "assets/characters/poses/char/masters/likeness-review-02/char-likeness-v2.png",
+  "canvas": [916, 1716],
+  "standing_height": 1673,
+  "identity": "Char is the example set for women: long wavy brown hair, cream headband and bow, gold earrings, cream high-collar blouse with a red brooch, burgundy sash and bow, teal layered skirt, brown boots. Her pose set is complete (81 exports); this profile exists for reconciliation and reference, not for new generation.",
+  "style": "Approved richly shaded outlined anime/cartoon game rendering.",
+  "pose_overrides": {},
+  "notes": "Char's directional index mixes approval states: 32 approved, 46 user_supplied_added_to_project, 3 reference_only (standing_clasp_hands east, south, west). All 81 files are exported; runtime integration is tracked separately.",
+  "records": "production-manifest.json (no approved_assets list), directional-index.json, docs/pose-production/EXPORT_PARITY.json."
+}
