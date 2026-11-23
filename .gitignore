@@ -13,3 +13,6 @@ __pycache__/
 .pytest_cache/
 *.pyc
 *.zip
+
+# Personal face reference photos stay on this computer (public repository).
+/assets/characters/poses/*/references/
