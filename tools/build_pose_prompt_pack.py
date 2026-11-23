@@ -156,6 +156,8 @@ def stage_files(slug: str, n: int, batch: list[dict]) -> Path:
     """Copy (never move) the reference images of one batch, numbered in attachment order, into the git-ignored test-results folder."""
     import shutil
     target = ROOT / "test-results/pose-batches" / slug / f"batch-{n:02d}"
+    if target.exists():
+        shutil.rmtree(target)  # never keep files from an earlier build: the user attaches this whole folder
     target.mkdir(parents=True, exist_ok=True)
     first = batch[0]["attach"][0]["path"]
     if Path(first).suffix.lower() == ".webp":
@@ -243,7 +245,7 @@ def page(slug: str, jobs: list[dict], out: Path, title: str = "all poses", nav: 
     if combined:
         files = "".join(f"<li><code>{html.escape(f.name)}</code></li>" for f in sorted(staged.iterdir()))
         allinone = (f'<section class="all"><h2>All {len(jobs)} at once</h2><ol><li>Open this folder and attach <b>all {len(jobs) + 1} files</b> in one message: '
-                    f'<code>{html.escape(str(staged))}</code><ul>{files}</ul></li><li>Paste the text below (one copy button).</li>'
+                    f'<code>{html.escape(staged.relative_to(ROOT).as_posix())}</code> (inside the project folder)<ul>{files}</ul></li><li>Paste the text below (one copy button).</li>'
                     f'<li>Save each returned image with the file name given in its job. Then approve the batch or ask me to redo one pose (single-pose prompts are further down).</li></ol>'
                     f'<textarea readonly rows="14" id="all">{html.escape(combined)}</textarea><p><button onclick="copyAll(this)">Copy all {len(jobs)} prompts</button></p></section>')
     return f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(slug)} pose prompts - {html.escape(title)}</title>
