@@ -2284,6 +2284,62 @@
       "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
     },
     {
+      "pose_id": "kneeling_inspect_south",
+      "posture": "kneeling",
+      "activity": "inspect",
+      "variant_id": "neutral",
+      "directions": [
+        "south"
+      ],
+      "body_axis": null,
+      "head_direction": null,
+      "tier": 4,
+      "reuse_from": null,
+      "source_char_asset": null,
+      "source_char_status": "not_generated",
+      "canvas": [
+        944,
+        1665
+      ],
+      "female_template": "Use Char's matching action and gesture; preserve character identity.",
+      "male_template": "Same action with male body and own clothing; preserve contacts.",
+      "planned_source_missing": true,
+      "source_contacts": [
+        "u_bath::washroom_placeholder_upper_brazier_01::kneel",
+        "u_bath::washroom_placeholder_lower_brazier_01::kneel"
+      ],
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "added": "2026-11-23 at the user's request (kneeling inspect east, south and west)"
+    },
+    {
+      "pose_id": "kneeling_inspect_west",
+      "posture": "kneeling",
+      "activity": "inspect",
+      "variant_id": "neutral",
+      "directions": [
+        "west"
+      ],
+      "body_axis": null,
+      "head_direction": null,
+      "tier": 4,
+      "reuse_from": null,
+      "source_char_asset": null,
+      "source_char_status": "not_generated",
+      "canvas": [
+        944,
+        1665
+      ],
+      "female_template": "Use Char's matching action and gesture; preserve character identity.",
+      "male_template": "Same action with male body and own clothing; preserve contacts.",
+      "planned_source_missing": true,
+      "source_contacts": [
+        "u_bath::washroom_placeholder_upper_brazier_01::kneel",
+        "u_bath::washroom_placeholder_lower_brazier_01::kneel"
+      ],
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "added": "2026-11-23 at the user's request (kneeling inspect east, south and west)"
+    },
+    {
       "pose_id": "kneeling_inspect_north",
       "posture": "kneeling",
       "activity": "inspect",
@@ -2311,7 +2367,9 @@
         "u_study::study_archive_fireplace_01::kneel",
         "b_archive::study_archive_fireplace_01::kneel"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Kneeling inspect north looks wrong (user, 2026-11-23)."
     },
     {
       "pose_id": "seated_talk_east",
@@ -2342,7 +2400,9 @@
         "u_service_stair::upper_service_west_bench_01::seat",
         "u_guest::guest_bed_01::sit_east"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "seated_talk_south",
@@ -2376,7 +2436,9 @@
         "b_main_stair::basement_stone_bench_01::seat",
         "b_utility::basement_stone_bench_01::seat"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "seated_talk_west",
@@ -2411,7 +2473,9 @@
         "u_study::study_archive_armchair_01::seat",
         "b_archive::study_archive_armchair_01::seat"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "seated_write_south",
@@ -2439,7 +2503,9 @@
         "u_study::study_archive_desk_01::seated_work",
         "b_archive::study_archive_desk_01::seated_work"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "seated_write_west",
@@ -2466,7 +2532,9 @@
         "u_master::master_bedroom_vanity_01::seated_work",
         "u_master::master_bedroom_vanity_chair_01::seat"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_drink_north",
@@ -2492,7 +2560,9 @@
       "source_contacts": [
         "g_kitchen::kitchen_counter_01::use"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_inspect_east",
@@ -2553,7 +2623,9 @@
         "b_archive::study_archive_side_table_01::use",
         "b_utility::basement_stone_crate_01::inspect"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_inspect_north",
@@ -2654,7 +2726,9 @@
         "b_store::basement_storage_east_rack_01::inspect",
         "b_store::basement_storage_north_arch_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_inspect_south",
@@ -2685,7 +2759,9 @@
         "u_study::study_archive_south_threshold_01::inside",
         "b_archive::study_archive_south_threshold_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_inspect_west",
@@ -2752,7 +2828,9 @@
         "b_utility::basement_stone_west_door_01::inside",
         "b_store::basement_storage_west_door_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_look_out_north",
@@ -2791,7 +2869,9 @@
         "u_bath::washroom_placeholder_west_window_01::look_out",
         "u_bath::washroom_placeholder_east_window_01::look_out"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_peek_east",
@@ -2825,7 +2905,9 @@
         "u_guest::guest_bedroom_east_door_01::inside",
         "u_bath::washroom_placeholder_east_door_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_peek_north",
@@ -2861,7 +2943,9 @@
         "b_utility::basement_stone_north_arch_01::inside",
         "b_store::basement_storage_north_arch_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_peek_south",
@@ -2892,7 +2976,9 @@
         "u_study::study_archive_south_threshold_01::inside",
         "b_archive::study_archive_south_threshold_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_peek_west",
@@ -2934,7 +3020,9 @@
         "b_utility::basement_stone_west_door_01::inside",
         "b_store::basement_storage_west_door_01::inside"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_warm_hands_east",
@@ -2961,7 +3049,9 @@
         "u_bath::washroom_placeholder_upper_brazier_01::stand",
         "u_bath::washroom_placeholder_lower_brazier_01::stand"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     },
     {
       "pose_id": "standing_warm_hands_north",
@@ -2991,7 +3081,9 @@
         "u_study::study_archive_fireplace_01::stand",
         "b_archive::study_archive_fireplace_01::stand"
       ],
-      "generation_hold": "Char same-pose source missing; define and review geometry before this tier."
+      "generation_hold": "Char same-pose source missing; define and review geometry before this tier.",
+      "excluded": true,
+      "exclusion_reason": "Optional tier-4 pose not wanted for now (user, 2026-11-23)."
     }
   ],
   "caps": {
@@ -3014,5 +3106,11 @@
     "source": "user",
     "quote": "Approved. Continue",
     "scope": "100-image catalog, Chris-first proposed order, 24 per-character and 60 global unreviewed caps; drafts only."
+  },
+  "selection": {
+    "date": "2026-11-23",
+    "user_words": "I don't think we need any of those optional ones besides the kneeling inspect. That one I think we were looking at E, S, W, but never north cause it looks dumb.",
+    "result": "Planned per character: 81 core poses + kneeling inspect east, south, west = 84. All other tier-4 entries and kneeling_inspect_north carry excluded: true (kept in the catalog, left out of every plan).",
+    "note": "counts_by_tier and unique_images_per_character above describe the original catalog; the planner counts only entries without excluded: true."
   }
 }
