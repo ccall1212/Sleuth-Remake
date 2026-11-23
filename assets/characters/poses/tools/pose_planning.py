@@ -376,13 +376,18 @@ def resolve_reference(slug: str, job: dict) -> dict:
         records = {Path(r["export"]).name: r for r in _index(holder).values() if r.get("export")}
         direction = direction_of(entry)
         for cand in policy["nearest"]:
-            tries = ([direction] if policy.get("same_direction_first") and direction else []) + [None]
+            if policy.get("same_direction_only"):
+                tries = [direction] if direction else []
+            else:
+                tries = ([direction] if policy.get("same_direction_first") and direction else []) + [None]
             for d in tries:
                 prefix = f"{holder}_{cand}" + (f"_{d}_" if d else "_")
                 for name, path in sorted(files.items()):
                     rec = records.get(name)
                     if name.startswith(prefix) and (rec is None or rec.get("approval") in ("approved", "user_supplied_added_to_project")):
                         return {"kind": "nearest", "path": path.relative_to(ROOT).as_posix(), "owner": holder,
+                                "use_for": policy.get("use_for", "body mechanics and canvas"), "action_note": policy.get("action_note", ""),
+                                "label": policy.get("label", "nearest related pose"),
                                 "note": f"NEAREST related pose ({cand}), not the same pose"}
     return {"kind": "needs_decision", "proposed": (policy or {}).get("nearest"), "advice": (policy or {}).get("advice"),
             "note": "No approved same-pose reference exists and no nearest-pose reference is confirmed. Confirm one in production-plan.json or supply an external reference."}

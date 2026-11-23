@@ -184,8 +184,17 @@
           "kneeling_reach"
         ],
         "same_direction_first": true,
-        "confirmed": false,
-        "advice": "Kneeling reach exists east, south and west only; the north-facing back view has no kneeling relative, so use an external reference for north."
+        "confirmed": true,
+        "advice": "Kneeling inspect is planned for east, south and west only (north is excluded).",
+        "same_direction_only": true,
+        "use_for": "composition and kneeling posture",
+        "action_note": "The action to draw is inspecting (looking closely at the floor or an object), not reaching.",
+        "label": "nearest related pose",
+        "confirmed_by": {
+          "date": "2026-11-23",
+          "words": "Yes, confirm same-direction kneeling reach as the nearest-pose reference for kneeling inspect East, South, and West. Use it for composition and kneeling posture only; keep the action specifically about inspecting. Label it “nearest related pose,” not “same pose.” This confirms the reference policy only; generated images still need my review and approval.",
+          "scope": "Confirms this reference policy only. Generated images still need the user's review and approval."
+        }
       },
       "seated_talk": {
         "nearest": [

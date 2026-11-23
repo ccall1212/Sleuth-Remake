@@ -57,14 +57,17 @@ def pose_text(profile: dict, entry: dict) -> str:
     return text
 
 
-def single_prompt(profile: dict, entry: dict, owner: str, kind: str = "same_pose") -> str:
+def single_prompt(profile: dict, entry: dict, owner: str, kind: str = "same_pose", ref: dict | None = None) -> str:
     who, pron = profile["name"].upper(), ("his" if profile["body"] == "male" else "her")
     ref2 = owner.title()
-    ref_line = (f"REFERENCE 2 is {ref2}'s approved NEAREST related pose, NOT the same pose: use it only for body mechanics, canvas and rendering; the action to draw is described in POSE below."
+    ref = ref or {}
+    same_person = owner == profile['slug']
+    identity_note = ("It is the same character: take identity from reference 1 and the pose type only from reference 2." if same_person else f"Do not copy {ref2}'s face, hair, clothing, jewelry, beard or cap or anything else about that character's identity.")
+    ref_line = (f"REFERENCE 2 is {ref2}'s approved NEAREST RELATED POSE, NOT the same pose: use it only for {ref.get('use_for', 'body mechanics and canvas')}. {ref.get('action_note', 'The action to draw is described in POSE below.')} Do not copy its action."
                 if kind == "nearest" else
                 f"REFERENCE 2 is {ref2}'s approved SAME-POSE image: use it for pose composition, gesture and expression timing ONLY.")
     return f"""Create ONE separate full-body transparent PNG game character pose of {who}, {entry['pose_id']}, variant {entry['variant_id']}.
-REFERENCE 1 is {profile['name']}'s USER-APPROVED base model: preserve this exact face, hair, costume colours, body proportions and drawing scale. {ref_line} Do not copy {ref2}'s face, hair, clothing, jewelry, beard or cap or anything else about that character's identity.
+REFERENCE 1 is {profile['name']}'s USER-APPROVED base model: preserve this exact face, hair, costume colours, body proportions and drawing scale. {ref_line} {identity_note}
 IDENTITY LOCK: {profile['identity']} {profile['style']}
 POSE: {pose_text(profile, entry)}
 EXPRESSION: {entry['variant_id']}. Communicate it through eyes, brows, mouth and posture where visible. Suspicious does not mean furious. Nervous is anxious uncertainty, not crying or terror. Neutral has relaxed brows and a small friendly expression where the face is visible.
@@ -88,7 +91,7 @@ def combined_prompt(profile: dict, todo: list[dict]) -> str:
     for n, job in enumerate(todo, 1):
         owner = job["ref_owner"].title()
         if job["ref_kind"] == "nearest":
-            lines.append(f"- Image {n + 1}: {owner}'s approved NEAREST related pose for job {n} ({job['entry']['pose_id']}); it is NOT the same pose. Use it only for body mechanics and canvas; the action is described in the job. Do not copy {owner}'s face, hair, clothing, jewelry, beard or cap.")
+            lines.append(f"- Image {n + 1}: {owner}'s approved NEAREST RELATED POSE for job {n} ({job['entry']['pose_id']}); it is NOT the same pose. Use it only for {job['ref'].get('use_for', 'body mechanics and canvas')}. {job['ref'].get('action_note', 'The action is described in the job.')} Do not copy its action" + ("." if owner.lower() == profile["slug"] else f", nor {owner}'s face, hair, clothing, jewelry, beard or cap."))
         else:
             lines.append(f"- Image {n + 1}: {owner}'s approved SAME-POSE image for job {n} ({job['entry']['pose_id']}). Use it for pose composition, gesture and expression timing ONLY; do not copy {owner}'s face, hair, clothing, jewelry, beard or cap.")
     lines += [
@@ -198,7 +201,7 @@ def build(slug: str, group: str | None, directions: list[str] | None, max_batch:
         if job["ref_ok"] and job["status"] == "missing":
             rec["attach"] = [{"role": "reference 1: approved base model", "path": profile["master"], "sha256": sha(master)},
                              {"role": f"reference 2: {job['ref_owner']} {'nearest related pose' if job['ref_kind'] == 'nearest' else 'same-pose composition'}", "path": job["ref2"], "sha256": sha(ROOT / job["ref2"])}]
-            rec["prompt"] = single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"])
+            rec["prompt"] = single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"], job["ref"])
         records.append(rec)
     (out / "prompts.json").write_text(json.dumps({"character": profile["name"], "note": "Status comes from exports/, drafts/ and the index, not from this file.", "jobs": records}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     for old in out.glob("batch-[0-9][0-9].html"):
@@ -257,7 +260,7 @@ def page(profile: dict, slug: str, batch: list[dict], out: Path, title: str, nav
             for label, path in (("reference 1: approved base model", profile["master"]), (f"reference 2: {job['ref_owner']} " + ("nearest related pose" if job["ref_kind"] == "nearest" else "same-pose composition"), job["ref2"])):
                 rel = Path(os.path.relpath(ROOT / path, out)).as_posix()
                 refs.append(f'<figure><img src="{html.escape(rel)}" alt="{html.escape(label)}"><figcaption>{html.escape(label)}<br><small>{html.escape(path)}</small></figcaption></figure>')
-            prompt = f'<textarea readonly rows="9">{html.escape(single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"]))}</textarea><p><button onclick="copyPrompt(this)">Copy this one prompt</button> <small>(for redoing a single pose)</small></p>'
+            prompt = f'<textarea readonly rows="9">{html.escape(single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"], job["ref"]))}</textarea><p><button onclick="copyPrompt(this)">Copy this one prompt</button> <small>(for redoing a single pose)</small></p>'
         elif job["status"] == "missing":
             ref = job["ref"]
             prompt = f'<p><b>Needs a reference decision before a prompt is made.</b> {html.escape(str(ref.get("note", "")))} Proposed nearest poses: {html.escape(", ".join(ref.get("proposed") or ["none"]))}. {html.escape(str(ref.get("advice") or ""))}</p>'
