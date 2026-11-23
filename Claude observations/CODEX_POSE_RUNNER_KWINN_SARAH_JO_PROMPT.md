@@ -1,3 +1,5 @@
+**OBSOLETE (2026-11-23): the old 80-job prompt packs for Kwinn and Sarah Jo were removed. Use the plan-driven workflow instead: `pose_runner.py --character <slug> next` and `tools/build_pose_prompt_pack.py <slug>`. Rewrite this prompt before giving it to Codex.**
+
 # Codex prompt: pose production for Kwinn and Sarah Jo
 
 Replaces `CODEX_POSE_PRODUCTION_RUNNER_PROMPT.md` for the next run. That file is stale: Chris's 80 poses are done and approved, and its
