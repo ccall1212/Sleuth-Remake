@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "authoring_only": true,
+  "runtime_loaded": false,
+  "character_id": "likeness-first-F",
+  "name": "Kwinn",
+  "status": "base_model_only_standing_idle_south",
+  "note": "Only the approved base model is imported (as the standing idle south). All other poses will be produced with the pose-planning workflow.",
+  "assets": [
+    {
+      "pose_id": "standing_idle_south",
+      "variant_id": "neutral",
+      "actor_facing": "south",
+      "posture": "standing",
+      "activity": "idle",
+      "expression": "neutral",
+      "gesture": null,
+      "props": [],
+      "asset_representation": "complete_sprite",
+      "source_master": "assets/characters/poses/kwinn/masters/model-review-02/kwinn-model-v1.png",
+      "source_sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9",
+      "export": "assets/characters/poses/kwinn/exports/south/kwinn_standing_idle_south_neutral.png",
+      "export_sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9",
+      "approval": "approved",
+      "approval_scope": "artwork",
+      "runtime_integrated": false,
+      "canvas": [
+        985,
+        1597
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparency_status": "alpha_present",
+      "standing_reference_height": 1572,
+      "contact_calibration": "pending",
+      "foreground_fit": "not_runtime_validated",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-11-16",
+          "source": "user_chat",
+          "quote": "I like the orange vest and purple tie with this face. Approved.",
+          "record": "assets/characters/poses/kwinn/drafts/model-review-02/candidates.json"
+        },
+        "scope": "The approved base model, imported as this character's standing idle (south, neutral). Not approval of any other pose. Furniture fit and runtime integration are unverified.",
+        "files": [
+          {
+            "path": "assets/characters/poses/kwinn/masters/model-review-02/kwinn-model-v1.png",
+            "sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9"
+          },
+          {
+            "path": "assets/characters/poses/kwinn/exports/south/kwinn_standing_idle_south_neutral.png",
+            "sha256": "0d62836bc6f6ba3828cfea7dcd75cccb325c12749ea98f5d87cc1192f50746f9"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "authoring_only": true,
+  "runtime_loaded": false,
+  "character_id": "likeness-party-L",
+  "name": "Sarah Jo",
+  "status": "base_model_only_standing_idle_south",
+  "note": "Only the approved base model is imported (as the standing idle south). All other poses will be produced with the pose-planning workflow.",
+  "assets": [
+    {
+      "pose_id": "standing_idle_south",
+      "variant_id": "neutral",
+      "actor_facing": "south",
+      "posture": "standing",
+      "activity": "idle",
+      "expression": "neutral",
+      "gesture": null,
+      "props": [],
+      "asset_representation": "complete_sprite",
+      "source_master": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp",
+      "source_sha256": "586726489b2cbd798ea1547f360b26f5b3019fc4ce7af53db6a61c7e28d0f4ec",
+      "export": "assets/characters/poses/sarah-jo/exports/south/sarah_jo_standing_idle_south_neutral.png",
+      "export_sha256": "5af6929ffff35291d17c666347a8a9e6d1fb4b5550db2042471801c284f0ec8f",
+      "approval": "approved",
+      "approval_scope": "artwork",
+      "runtime_integrated": false,
+      "canvas": [
+        987,
+        1593
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparency_status": "alpha_present",
+      "standing_reference_height": 1590,
+      "contact_calibration": "pending",
+      "foreground_fit": "not_runtime_validated",
+      "image_approval": {
+        "status": "approved",
+        "evidence": {
+          "date": "2026-11-19",
+          "source": "user_chat",
+          "quote": "Here is the approved version of Sarah",
+          "record": "assets/characters/poses/sarah-jo/drafts/model-review-07/candidates.json"
+        },
+        "scope": "The approved base model, imported as this character's standing idle (south, neutral). Not approval of any other pose. Furniture fit and runtime integration are unverified.",
+        "files": [
+          {
+            "path": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp",
+            "sha256": "586726489b2cbd798ea1547f360b26f5b3019fc4ce7af53db6a61c7e28d0f4ec"
+          },
+          {
+            "path": "assets/characters/poses/sarah-jo/exports/south/sarah_jo_standing_idle_south_neutral.png",
+            "sha256": "5af6929ffff35291d17c666347a8a9e6d1fb4b5550db2042471801c284f0ec8f"
+          }
+        ]
+      },
+      "export_note": "Lossless decoded PNG of the approved WEBP master (pixels identical); the WEBP original is kept unmodified as the source."
+    }
+  ]
+}
