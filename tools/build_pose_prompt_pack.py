@@ -19,6 +19,7 @@ import argparse
 import hashlib
 import html
 import json
+import subprocess
 import os
 import shutil
 import sys
@@ -57,15 +58,23 @@ def pose_text(profile: dict, entry: dict) -> str:
     return text
 
 
+STATUS_WORDS = {"approved": "approved", "user_supplied": "USER-SUPPLIED (not an approved pose)", "reference_example": "linked reference example (NOT a pose approval)"}
+
+
+def ref_words(ref: dict) -> str:
+    return STATUS_WORDS.get((ref or {}).get("source_status", "approved"), "approved")
+
+
 def single_prompt(profile: dict, entry: dict, owner: str, kind: str = "same_pose", ref: dict | None = None) -> str:
     who, pron = profile["name"].upper(), ("his" if profile["body"] == "male" else "her")
     ref2 = owner.title()
     ref = ref or {}
     same_person = owner == profile['slug']
     identity_note = ("It is the same character: take identity from reference 1 and the pose type only from reference 2." if same_person else f"Do not copy {ref2}'s face, hair, clothing, jewelry, beard or cap or anything else about that character's identity.")
-    ref_line = (f"REFERENCE 2 is {ref2}'s approved NEAREST RELATED POSE, NOT the same pose: use it only for {ref.get('use_for', 'body mechanics and canvas')}. {ref.get('action_note', 'The action to draw is described in POSE below.')} Do not copy its action."
+    words = ref_words(ref)
+    ref_line = (f"REFERENCE 2 is {ref2}'s {words} NEAREST RELATED POSE, NOT the same pose: use it only for {ref.get('use_for', 'body mechanics and canvas')}. {ref.get('action_note', 'The action to draw is described in POSE below.')} Do not copy its action."
                 if kind == "nearest" else
-                f"REFERENCE 2 is {ref2}'s approved SAME-POSE image: use it for pose composition, gesture and expression timing ONLY.")
+                f"REFERENCE 2 is {ref2}'s {words} SAME-POSE composition reference: use it for pose composition, gesture and expression timing ONLY.")
     return f"""Create ONE separate full-body transparent PNG game character pose of {who}, {entry['pose_id']}, variant {entry['variant_id']}.
 REFERENCE 1 is {profile['name']}'s USER-APPROVED base model: preserve this exact face, hair, costume colours, body proportions and drawing scale. {ref_line} {identity_note}
 IDENTITY LOCK: {profile['identity']} {profile['style']}
@@ -90,10 +99,13 @@ def combined_prompt(profile: dict, todo: list[dict]) -> str:
     ]
     for n, job in enumerate(todo, 1):
         owner = job["ref_owner"].title()
+        words = ref_words(job["ref"])
+        same = job["ref_owner"] == profile["slug"]
+        who_note = "" if same else f", nor {owner}'s face, hair, clothing, jewelry, beard or cap"
         if job["ref_kind"] == "nearest":
-            lines.append(f"- Image {n + 1}: {owner}'s approved NEAREST RELATED POSE for job {n} ({job['entry']['pose_id']}); it is NOT the same pose. Use it only for {job['ref'].get('use_for', 'body mechanics and canvas')}. {job['ref'].get('action_note', 'The action is described in the job.')} Do not copy its action" + ("." if owner.lower() == profile["slug"] else f", nor {owner}'s face, hair, clothing, jewelry, beard or cap."))
+            lines.append(f"- Image {n + 1}: {owner}'s {words} NEAREST RELATED POSE for job {n} ({job['entry']['pose_id']}); it is NOT the same pose. Use it only for {job['ref'].get('use_for', 'body mechanics and canvas')}. {job['ref'].get('action_note', 'The action is described in the job.')} Do not copy its action{who_note}.")
         else:
-            lines.append(f"- Image {n + 1}: {owner}'s approved SAME-POSE image for job {n} ({job['entry']['pose_id']}). Use it for pose composition, gesture and expression timing ONLY; do not copy {owner}'s face, hair, clothing, jewelry, beard or cap.")
+            lines.append(f"- Image {n + 1}: {owner}'s {words} SAME-POSE composition reference for job {n} ({job['entry']['pose_id']}). Use it for pose composition, gesture and expression timing ONLY; do not copy{' ' + owner + chr(39) + 's face, hair, clothing, jewelry, beard or cap' if not same else ' identity from it'}.")
     lines += [
         "",
         f"IDENTITY LOCK (all jobs): {profile['identity']} {profile['style']}",
@@ -200,11 +212,11 @@ def build(slug: str, group: str | None, directions: list[str] | None, max_batch:
                "technical": job["facts"]["technical"], "integrated": job["facts"]["integrated"], "reference": job["ref"]}
         if job["ref_ok"] and job["status"] == "missing":
             rec["attach"] = [{"role": "reference 1: approved base model", "path": profile["master"], "sha256": sha(master)},
-                             {"role": f"reference 2: {job['ref_owner']} {'nearest related pose' if job['ref_kind'] == 'nearest' else 'same-pose composition'}", "path": job["ref2"], "sha256": sha(ROOT / job["ref2"])}]
+                             {"role": f"reference 2: {job['ref_owner']} {job['ref'].get('source_status', 'approved')} {'nearest related pose' if job['ref_kind'] == 'nearest' else 'same-pose composition'}", "path": job["ref2"], "sha256": sha(ROOT / job["ref2"])}]
             rec["prompt"] = single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"], job["ref"])
         records.append(rec)
     (out / "prompts.json").write_text(json.dumps({"character": profile["name"], "note": "Status comes from exports/, drafts/ and the index, not from this file.", "jobs": records}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    for old in out.glob("batch-[0-9][0-9].html"):
+    for old in list(out.glob("batch-[0-9][0-9].html")) + list(out.glob("batch-[0-9][0-9].md")):
         old.unlink()  # only this tool's own page names; nothing else in the folder is touched
     paused = step["action"] != "generate"
     for number in shown:
@@ -215,6 +227,7 @@ def build(slug: str, group: str | None, directions: list[str] | None, max_batch:
         title = f"batch {number} of {len(batches)}" + ("  (NEXT)" if generating_here else "")
         combined = combined_prompt(profile, todo) if staged is not None else ""
         banner = banner_for(step, number in next_batches)
+        (out / f"batch-{number:02d}.md").write_text(batch_markdown(profile, slug, number, len(batches), batch), encoding="utf-8")
         (out / f"batch-{number:02d}.html").write_text(page(profile, slug, batch, out, title, nav, combined, staged, banner), encoding="utf-8")
     (out / "index.html").write_text(index_page(profile, slug, jobs, batches, shown, next_batches, step, counts), encoding="utf-8")
     (out / "README.md").write_text(readme(profile, slug, len(jobs), len(batches), next_batches, step), encoding="utf-8")
@@ -232,6 +245,56 @@ def banner_for(step: dict, is_next: bool) -> str:
     return ""
 
 
+def full(path) -> str:
+    """Project-relative path for the local HTML pages (no personal absolute paths in files that may be committed)."""
+    p = Path(path).resolve()
+    return p.relative_to(ROOT).as_posix() if ROOT in p.parents else p.as_posix()
+
+
+def github_base() -> str | None:
+    """https://github.com/<owner>/<repo>/blob/<branch>, from the git remote and current branch (nothing personal is hardcoded)."""
+    try:
+        url = subprocess.run(["git", "-C", str(ROOT), "remote", "get-url", "origin"], capture_output=True, text=True, check=True).stdout.strip()
+        branch = subprocess.run(["git", "-C", str(ROOT), "branch", "--show-current"], capture_output=True, text=True, check=True).stdout.strip()
+    except Exception:
+        return None
+    url = url.removesuffix(".git").replace("git@github.com:", "https://github.com/")
+    return f"{url}|{branch}" if url.startswith("https://github.com/") and branch else None
+
+
+def raw_url(path: str) -> str:
+    base = github_base()
+    if not base:
+        return path
+    url, branch = base.split("|")
+    return f"{url.replace('https://github.com/', 'https://raw.githubusercontent.com/')}/{branch}/{path}"
+
+
+def batch_markdown(profile: dict, slug: str, number: int, total: int, batch: list[dict]) -> str:
+    """A self-contained batch handoff for an assistant that reads the repository on GitHub: every file is a full raw GitHub URL.
+    The files must be committed and pushed to that branch first."""
+    todo = [j for j in batch if j["status"] == "missing" and j["ref_ok"]]
+    blocked = [j for j in batch if j["status"] == "missing" and not j["ref_ok"]]
+    save_dir = f"assets/characters/poses/{slug}/drafts/pack-01"
+    lines = [f"# {profile['name']}: pose batch {number} of {total}", "",
+             "Draft images only. Nothing here is approved; only the user approves. Make ONE separate image per pose, in the order below.",
+             f"Repository: {(github_base() or '|').split('|')[0]} (branch `{(github_base() or '|').split('|')[1]}`). Every file below is a full URL; download each one.", ""]
+    for j in batch:
+        if j in blocked:
+            lines += [f"## {j['order']}. {j['entry']['pose_id']} ({j['entry']['variant_id']}): BLOCKED", f"Skip this one and tell the user. {j['ref'].get('note', '')}", ""]
+            continue
+        if j not in todo:
+            lines += [f"## {j['order']}. {j['entry']['pose_id']} ({j['entry']['variant_id']}): already {j['status']}, do not remake", ""]
+            continue
+        words = "NEAREST related pose" if j["ref_kind"] == "nearest" else "same-pose composition"
+        lines += [f"## {j['order']}. {j['entry']['pose_id']} ({j['entry']['variant_id']})",
+                  f"Save as: `{j['save_as']}` (repo path `{save_dir}/{j['save_as']}`)", "",
+                  f"- Reference 1 (approved base model): {raw_url(profile['master'])}",
+                  f"- Reference 2 ({j['ref_owner']}, {j['ref'].get('source_status', 'approved')}, {words}): {raw_url(j['ref2'])}", "",
+                  "```text", single_prompt(profile, j["entry"], j["ref_owner"], j["ref_kind"], j["ref"]).rstrip(), "```", ""]
+    return "\n".join(lines)
+
+
 def readme(profile: dict, slug: str, count: int, batches: int, next_batches: list[int], step: dict) -> str:
     return f"""# {slug}: pose prompt pack
 
@@ -239,7 +302,7 @@ def readme(profile: dict, slug: str, count: int, batches: int, next_batches: lis
 **Action:** {step['action']}; next group `{step['group_id']}`, batch(es) {next_batches}. Progress is read from `exports/`, `drafts/` and the directional index; this pack is not progress.
 
 Per batch page: attach the files in the staging folder (copies; originals untouched), press **Copy all**, save each result under the exact file name into
-`assets/characters/poses/{slug}/drafts/pack-01/`, then ask for the draft check and review gallery. Approve the batch or ask for a redo of a numbered pose in your own words.
+`{full(ROOT / "assets/characters/poses" / slug / "drafts/pack-01")}`, then ask for the draft check and review gallery. Approve the batch or ask for a redo of a numbered pose in your own words.
 Rebuild with `python tools/build_pose_prompt_pack.py {slug}`; options: `--group`, `--directions`, `--max-batch`, `--include-tier4` / `--no-tier4`, `--dry-run`.
 """
 
@@ -257,9 +320,9 @@ def page(profile: dict, slug: str, batch: list[dict], out: Path, title: str, nav
     for job in batch:
         refs = []
         if job["ref_ok"] and job["status"] == "missing":
-            for label, path in (("reference 1: approved base model", profile["master"]), (f"reference 2: {job['ref_owner']} " + ("nearest related pose" if job["ref_kind"] == "nearest" else "same-pose composition"), job["ref2"])):
+            for label, path in (("reference 1: approved base model", profile["master"]), (f"reference 2: {job['ref_owner']} {job['ref'].get('source_status', 'approved')} " + ("nearest related pose" if job["ref_kind"] == "nearest" else "same-pose composition"), job["ref2"])):
                 rel = Path(os.path.relpath(ROOT / path, out)).as_posix()
-                refs.append(f'<figure><img src="{html.escape(rel)}" alt="{html.escape(label)}"><figcaption>{html.escape(label)}<br><small>{html.escape(path)}</small></figcaption></figure>')
+                refs.append(f'<figure><img src="{html.escape(rel)}" alt="{html.escape(label)}"><figcaption>{html.escape(label)}<br><small>{html.escape(full(ROOT / path))}</small></figcaption></figure>')
             prompt = f'<textarea readonly rows="9">{html.escape(single_prompt(profile, job["entry"], job["ref_owner"], job["ref_kind"], job["ref"]))}</textarea><p><button onclick="copyPrompt(this)">Copy this one prompt</button> <small>(for redoing a single pose)</small></p>'
         elif job["status"] == "missing":
             ref = job["ref"]
@@ -268,13 +331,13 @@ def page(profile: dict, slug: str, batch: list[dict], out: Path, title: str, nav
             f = job["facts"]
             prompt = f'<p>approval: <b>{html.escape(str(f["approval"]))}</b> · technical: {html.escape(str(f["technical"]))} · game: {html.escape(str(f["integrated"]))}<br><code>{html.escape(str(f["path"]))}</code></p>'
         cards.append(f'''<article id="job{job['order']}"><h2>{job['order']}. {html.escape(job['entry']['pose_id'])} <small>({html.escape(job['entry']['variant_id'])}) · tier {job['entry']['tier']} · {html.escape(job['group_id'])}</small><span class="badge {job['status']}">{job['status']}</span></h2>
-<p class="save">File name: <code>{html.escape(job['save_as'])}</code></p><div class="refs">{''.join(refs)}</div>{prompt}</article>''')
+<p class="save">File name: <code>{html.escape(job['save_as'])}</code><br>Save to: <code>{html.escape(full(ROOT / "assets/characters/poses" / slug / "drafts/pack-01" / job['save_as']))}</code></p><div class="refs">{''.join(refs)}</div>{prompt}</article>''')
     allinone = ""
     if combined and staged is not None:
-        files = "".join(f"<li><code>{html.escape(f.name)}</code></li>" for f in sorted(staged.iterdir()))
+        files = "".join(f"<li><code>{html.escape(full(f))}</code></li>" for f in sorted(staged.iterdir()))
         count = sum(1 for j in batch if j["status"] == "missing" and j["ref_ok"])
         allinone = (f'<section class="all"><h2>All {count} unfinished poses at once</h2><ol><li>Attach <b>every file</b> in this folder to one message: '
-                    f'<code>{html.escape(staged.relative_to(ROOT).as_posix())}</code> (inside the project folder)<ul>{files}</ul></li><li>Paste the text below (one copy button).</li>'
+                    f'<code>{html.escape(full(staged))}</code><ul>{files}</ul></li><li>Paste the text below (one copy button).</li>'
                     f'<li>Save each returned image with the file name given in its job. Then approve the batch or ask for a redo of one numbered pose.</li></ol>'
                     f'<textarea readonly rows="14" id="all">{html.escape(combined)}</textarea><p><button onclick="copyAll(this)">Copy all prompts</button></p></section>')
     elif banner:

@@ -347,50 +347,91 @@ def decisions(jobs: list[dict], prog: dict[str, dict], slug: str | None = None) 
 
 
 # ----------------------------------------------------------------------------------------------- references
+SOURCE_LABELS = {"approved": "approved", "user_supplied_added_to_project": "user_supplied", "reference_only": "reference_only"}
+
+
+def verified_reference(owner: str, path: str, key: str | None = None) -> dict:
+    """Is this file usable as a composition reference? It must be an export of `owner` that has a record in that character's directional
+    index, and the file's SHA-256 must match the record. The recorded source status is kept (approved, user_supplied, reference_only) and is never upgraded:
+    user_supplied art is NOT described as approved, and reference_only art is usable only where the owner's decisions.json records a decision
+    (accept_as: reference_example) for that pose. Returns {"ok": bool, "source_status": ..., "reason": ...}."""
+    record = next((r for r in _index(owner).values() if r.get("export") == path), None)
+    if record is None:
+        return {"ok": False, "reason": "no directional-index record for this file"}
+    file = ROOT / path
+    if not file.is_file():
+        return {"ok": False, "reason": "file is missing"}
+    if not record.get("export_sha256") or sha256(file) != record["export_sha256"]:
+        return {"ok": False, "reason": "file hash does not match its index record"}
+    status = SOURCE_LABELS.get(record.get("approval"))
+    if status is None:
+        return {"ok": False, "reason": f"index status {record.get('approval')!r} is not usable as a reference"}
+    if status == "reference_only":
+        decided = _decisions(owner).get(key_of(record))
+        if not decided or decided.get("accept_as") != "reference_example":
+            return {"ok": False, "reason": "reference_only image and no recorded decision permits it"}
+        status = "reference_example"
+    return {"ok": True, "source_status": status, "record": key_of(record)}
+
+
 def resolve_reference(slug: str, job: dict) -> dict:
-    """Where this job's composition reference comes from. Never invents one and never treats an unapproved image as approved.
-    kind: override | same_pose | fallback | blocked_on_example | nearest | needs_decision"""
+    """Where this job's composition reference comes from. Never invents one, never uses a file without an index record and a matching hash,
+    and never upgrades a source status. kind: override | same_pose | fallback | blocked_on_example | nearest | reference_unusable | needs_decision.
+    The result carries source_status: approved | user_supplied | reference_example."""
     profile, plan = load_profile(slug), load_plan()
     entry = job["entry"]
-    if entry.get("override_ref") and (ROOT / entry["override_ref"]).is_file():
-        return {"kind": "override", "path": entry["override_ref"], "owner": profile.get("composition_example") or slug}
     example = profile.get("composition_example")
+    problems: list[str] = []
+
+    def accept(kind: str, owner: str, path: str, **extra):
+        check = verified_reference(owner, path)
+        if check["ok"]:
+            return {"kind": kind, "path": path, "owner": owner, "source_status": check["source_status"], **extra}
+        problems.append(f"{path}: {check['reason']}")
+        return None
+
+    if entry.get("override_ref"):
+        owner = next((p for p in profiles() if f"/poses/{p}/" in entry["override_ref"]), example or slug)
+        hit = accept("override", owner, entry["override_ref"])
+        if hit:
+            return hit
     if example:
         name = f"{example}_{entry['pose_id']}_{entry['variant_id']}.png"
         found = _exports(example).get(name)
-        rec = _index(example).get(key_of(entry))
-        if found and (rec is None or rec.get("approval") in ("approved", "user_supplied_added_to_project")):
-            return {"kind": "same_pose", "path": found.relative_to(ROOT).as_posix(), "owner": example}
+        if found:
+            hit = accept("same_pose", example, found.relative_to(ROOT).as_posix())
+            if hit:
+                return hit
         source = entry.get("source_char_asset")
-        if source and (ROOT / source).is_file() and example != "char":
-            return {"kind": "fallback", "path": source, "owner": "char", "note": f"{example} has no approved same-pose image; Char's was used"}
-        if example in profiles():
+        if not found and source and example != "char" and (ROOT / source).is_file():
+            hit = accept("fallback", "char", source, note=f"{example} has no approved same-pose image; Char's was used")
+            if hit:
+                return hit
+        if not found and not problems and example in profiles():
             ex_jobs, _ = ordered_jobs(example)
             if any(k["key"] == job["key"] for k in ex_jobs):
                 return {"kind": "blocked_on_example", "owner": example, "note": f"waits for {example}'s approved {entry['pose_id']}"}
     fam = family(entry)
     policy = (plan.get("reference_policy", {}).get("families") or {}).get(fam)
-    if policy and policy.get("confirmed"):
+    if policy and policy.get("confirmed") and not problems:
         holder = example or slug
         files = _exports(holder)
-        records = {Path(r["export"]).name: r for r in _index(holder).values() if r.get("export")}
         direction = direction_of(entry)
         for cand in policy["nearest"]:
-            if policy.get("same_direction_only"):
-                tries = [direction] if direction else []
-            else:
-                tries = ([direction] if policy.get("same_direction_first") and direction else []) + [None]
+            tries = [direction] if (policy.get("same_direction_only") and direction) else (([direction] if policy.get("same_direction_first") and direction else []) + [None])
             for d in tries:
                 prefix = f"{holder}_{cand}" + (f"_{d}_" if d else "_")
                 for name, path in sorted(files.items()):
-                    rec = records.get(name)
-                    if name.startswith(prefix) and (rec is None or rec.get("approval") in ("approved", "user_supplied_added_to_project")):
-                        return {"kind": "nearest", "path": path.relative_to(ROOT).as_posix(), "owner": holder,
-                                "use_for": policy.get("use_for", "body mechanics and canvas"), "action_note": policy.get("action_note", ""),
-                                "label": policy.get("label", "nearest related pose"),
-                                "note": f"NEAREST related pose ({cand}), not the same pose"}
+                    if name.startswith(prefix):
+                        hit = accept("nearest", holder, path.relative_to(ROOT).as_posix(),
+                                     use_for=policy.get("use_for", "body mechanics and canvas"), action_note=policy.get("action_note", ""),
+                                     label=policy.get("label", "nearest related pose"), note=f"NEAREST related pose ({cand}), not the same pose")
+                        if hit:
+                            return hit
+    if problems:
+        return {"kind": "reference_unusable", "reasons": problems, "note": "A reference image exists but cannot be used: " + "; ".join(problems)}
     return {"kind": "needs_decision", "proposed": (policy or {}).get("nearest"), "advice": (policy or {}).get("advice"),
-            "note": "No approved same-pose reference exists and no nearest-pose reference is confirmed. Confirm one in production-plan.json or supply an external reference."}
+            "note": "No usable approved same-pose reference exists and no nearest-pose reference is confirmed. Confirm one in production-plan.json or supply an external reference."}
 
 
 # ----------------------------------------------------------------------------------------------- caps and the next step
@@ -424,7 +465,7 @@ def next_step(slug: str, jobs: list[dict], prog: dict[str, dict], group: str | N
     gid = todo[0]["group_id"]
     missing = [j for j in todo if j["group_id"] == gid]
     refs = {j["key"]: resolve_reference(slug, j) for j in missing}
-    blocked = [j["key"] for j in missing if refs[j["key"]]["kind"] in ("needs_decision", "blocked_on_example")]
+    blocked = [j["key"] for j in missing if refs[j["key"]]["kind"] in ("needs_decision", "blocked_on_example", "reference_unusable")]
     action = "paused_backlog_cap" if over else ("needs_reference_decision" if len(blocked) == len(missing) else "generate")
     result.update({"group_id": gid, "missing": missing, "action": action, "references": refs, "blocked_jobs": blocked})
     return result

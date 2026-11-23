@@ -1,9 +1,10 @@
 """Read-only QA for user-generated pose drafts.
 
-    python tools/check_pose_drafts.py <slug> [--html]
+    python tools/check_pose_drafts.py <slug> [--html] [--pack pack-01]
 
-Checks every PNG in assets/characters/poses/<slug>/drafts/pack-01/ against prompts.json and writes only
-drafts/pack-01/review/status.json (and review/index.html with --html). Images are never modified.
+Checks every PNG in assets/characters/poses/<slug>/drafts/<pack>/ against the character's CURRENT plan (the pose catalog, production plan and
+profile, read through assets/characters/poses/tools/pose_planning.py; it no longer depends on an old prompts.json) and writes only
+drafts/<pack>/review/status.json (and review/index.html with --html). Images are never modified. A technical check is not approval.
 Thresholds follow pose_runner.finish(): alpha extrema, bbox at alpha>128, occupied standing height.
 """
 from __future__ import annotations
@@ -21,10 +22,15 @@ Image.MAX_IMAGE_PIXELS = None
 ROOT = Path(__file__).resolve().parents[1]
 POSES = ROOT / "assets/characters/poses"
 
-CONFIG = {
-    "kwinn": {"master": "assets/characters/poses/kwinn/masters/model-review-02/kwinn-model-v1.png", "canvas": (985, 1597), "height": 1572},
-    "sarah-jo": {"master": "assets/characters/poses/sarah-jo/masters/model-review-07/sarah-jo-model-v1.webp", "canvas": (987, 1593), "height": 1590},
-}
+sys.path.insert(0, str(POSES / "tools"))
+import pose_planning as planning  # noqa: E402
+
+
+def load_cfg(slug: str) -> dict:
+    """Master, canvas and standing height come from the character's profile.json."""
+    profile = planning.load_profile(slug)
+    return {"master": profile["master"], "canvas": tuple(profile["canvas"]), "height": profile["standing_height"]}
+
 
 CANVAS_TOL = 0.12
 EDGE_MARGIN = 8
@@ -129,28 +135,31 @@ def overall(results: list[dict]) -> str:
     return "fail" if "fail" in states else ("warn" if "warn" in states else "pass")
 
 
-def build_report(slug: str) -> dict | None:
+def build_report(slug: str, pack: str = "pack-01") -> dict | None:
     """Return the status dict, or None when the drafts folder is missing. Raises SystemExit(2) on setup errors."""
-    if slug not in CONFIG:
-        print(f"unknown slug: {slug} (known: {', '.join(CONFIG)})")
+    if slug not in planning.profiles():
+        print(f"unknown character: {slug} (known: {', '.join(planning.profiles())})")
         raise SystemExit(2)
-    cfg = CONFIG[slug]
-    pack = POSES / slug / "prompts/pack-01/prompts.json"
-    if not pack.is_file():
-        print(f"missing prompts.json: {pack}")
+    if not planning.SLUG.match(pack):
+        print(f"unsafe pack name: {pack!r}")
         raise SystemExit(2)
-    jobs = json.loads(pack.read_text(encoding="utf-8"))["jobs"]
-    drafts = POSES / slug / "drafts/pack-01"
+    cfg = load_cfg(slug)
+    jobs, _notes = planning.ordered_jobs(slug)
+    prog = planning.progress(slug, jobs)
+    drafts = POSES / slug / "drafts" / pack
     if not drafts.is_dir():
         return None
     files = {p.name: p for p in drafts.iterdir() if p.is_file() and p.suffix.lower() == ".png"}
     by_save = {j["save_as"]: j for j in jobs}
     entries = []
-    for job in sorted(jobs, key=lambda j: j["order"]):
-        entry = {"order": job["order"], "tier": job["tier"], "pose_id": job["pose_id"], "variant_id": job["variant_id"],
-                 "save_as": job["save_as"], "present": job["save_as"] in files, "results": [], "overall": None, "sha256": None, "size": None}
+    for job in jobs:
+        facts = prog[job["key"]]
+        view = {"pose_id": job["entry"]["pose_id"], "variant_id": job["entry"]["variant_id"]}
+        entry = {"order": job["order"], "tier": job["entry"]["tier"], "group": job["group_id"], "pose_id": view["pose_id"], "variant_id": view["variant_id"],
+                 "save_as": job["save_as"], "present": job["save_as"] in files, "planner_status": facts["status"], "approval": facts["approval"],
+                 "results": [], "overall": None, "sha256": None, "size": None}
         if entry["present"]:
-            entry["results"], info = analyze(files[job["save_as"]], job, cfg)
+            entry["results"], info = analyze(files[job["save_as"]], view, cfg)
             entry["overall"] = overall(entry["results"])
             entry["sha256"], entry["size"] = info["sha256"], info["size"]
         entries.append(entry)
@@ -166,8 +175,10 @@ def build_report(slug: str) -> dict | None:
               "pass": sum(e["overall"] == "pass" for e in present),
               "warn": sum(e["overall"] == "warn" for e in present),
               "fail": sum(e["overall"] == "fail" for e in present),
-              "unmatched": len(unmatched)}
-    return {"slug": slug, "master": cfg["master"], "counts": counts, "jobs": entries, "unmatched": unmatched}
+              "unmatched": len(unmatched),
+              "already_complete": sum(1 for e in entries if e["planner_status"] == "complete" and not e["present"]),
+              "still_missing": sum(1 for e in entries if e["planner_status"] == "missing" and not e["present"])}
+    return {"slug": slug, "pack": pack, "master": cfg["master"], "counts": counts, "jobs": entries, "unmatched": unmatched}
 
 
 def render_html(report: dict, review_dir: Path) -> str:
@@ -186,7 +197,7 @@ def render_html(report: dict, review_dir: Path) -> str:
 
     cards = [card(e["save_as"], f'{e["order"]}. {e["pose_id"]}', f'{e["variant_id"]} - tier {e["tier"]}', e) for e in report["jobs"] if e["present"]]
     cards += [card(u["file"], u["file"], "unmatched file", u) for u in report["unmatched"]]
-    missing = "".join(f'<li>{e["order"]}. {html.escape(e["pose_id"])} ({html.escape(e["variant_id"])}) - <code>{html.escape(e["save_as"])}</code></li>' for e in report["jobs"] if not e["present"])
+    missing = "".join(f'<li>{e["order"]}. {html.escape(e["pose_id"])} ({html.escape(e["variant_id"])}) - <code>{html.escape(e["save_as"])}</code></li>' for e in report["jobs"] if not e["present"] and e["planner_status"] == "missing")
     master_rel = Path(os.path.relpath(ROOT / report["master"], review_dir)).as_posix()
     return f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(slug)} draft review</title>
 <style>body{{font:14px system-ui;background:#1d242b;color:#eee6d6;margin:20px}}h1{{margin:0 0 6px}}.counts span{{margin-right:14px}}
@@ -194,8 +205,8 @@ def render_html(report: dict, review_dir: Path) -> str:
 .card img{{width:100%;height:340px;object-fit:contain;background:#7d858a;border-radius:4px}}h3{{margin:8px 0 2px;font-size:15px}}.sub{{margin:0 0 6px;color:#b9ac8a;font-size:12px;overflow-wrap:anywhere}}
 ul{{list-style:none;padding:0;margin:0;font-size:12px}}li{{margin:2px 0}}.b{{display:inline-block;padding:0 6px;border-radius:9px;font-size:11px;color:#111}}.pass{{--c:#6fcf7f}}.warn{{--c:#f0c24b}}.fail{{--c:#ef6b5f}}.b{{background:var(--c)}}
 button{{padding:6px 12px;font:inherit;margin-right:6px}}code{{background:#151b21;padding:1px 5px;border-radius:3px}}.master{{max-width:260px}}</style>
-<h1>{html.escape(slug)} / draft review (pack 01)</h1>
-<p class="counts"><span>Present {c["present"]} of {c["total"]}</span><span>{badge("pass")} {c["pass"]}</span><span>{badge("warn")} {c["warn"]}</span><span>{badge("fail")} {c["fail"]}</span><span>unmatched {c["unmatched"]}</span></p>
+<h1>{html.escape(slug)} / draft review ({html.escape(report["pack"])})</h1>
+<p class="counts"><span>Drafts present {c["present"]}</span><span>already complete {c["already_complete"]}</span><span>still missing {c["still_missing"]} of {c["total"]} planned</span><span>{badge("pass")} {c["pass"]}</span><span>{badge("warn")} {c["warn"]}</span><span>{badge("fail")} {c["fail"]}</span><span>unmatched {c["unmatched"]}</span></p>
 <p>Technical checks only; visual review and approval are yours. <button onclick="f('all')">All</button><button onclick="f('warn')">Warnings</button><button onclick="f('fail')">Failures</button></p>
 <h2>Master (comparison)</h2><div class="card master"><img src="{html.escape(master_rel)}" alt="master"><p class="sub"><code>{html.escape(report["master"])}</code></p></div>
 <h2>Drafts</h2><div class="grid">{"".join(cards) or "<p>No drafts present.</p>"}</div>
@@ -207,23 +218,28 @@ def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     want_html = "--html" in args
     args = [a for a in args if a != "--html"]
+    pack = "pack-01"
+    if "--pack" in args:
+        i = args.index("--pack")
+        pack = args[i + 1] if i + 1 < len(args) else ""
+        args = args[:i] + args[i + 2:]
     if len(args) != 1:
-        print("usage: check_pose_drafts.py <slug> [--html]")
+        print("usage: check_pose_drafts.py <slug> [--html] [--pack pack-01]")
         return 2
     try:
-        report = build_report(args[0])
+        report = build_report(args[0], pack)
     except SystemExit as exc:
         return int(exc.code or 2)
     if report is None:
         print("no drafts yet")
         return 0
-    review = POSES / args[0] / "drafts/pack-01/review"
+    review = POSES / args[0] / "drafts" / pack / "review"
     review.mkdir(parents=True, exist_ok=True)
     (review / "status.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     if want_html:
         (review / "index.html").write_text(render_html(report, review), encoding="utf-8")
     c = report["counts"]
-    print(f"present {c['present']} of {c['total']}: pass {c['pass']}, warn {c['warn']}, fail {c['fail']}, unmatched {c['unmatched']}")
+    print(f"drafts present {c['present']}: pass {c['pass']}, warn {c['warn']}, fail {c['fail']}, unmatched {c['unmatched']}; already complete {c['already_complete']}, still missing {c['still_missing']} of {c['total']} planned")
     for e in report["jobs"]:
         if e["present"]:
             print(f"  [{e['overall']}] {e['save_as']}: " + "; ".join(r["message"] for r in e["results"] if r["status"] != "pass"))
